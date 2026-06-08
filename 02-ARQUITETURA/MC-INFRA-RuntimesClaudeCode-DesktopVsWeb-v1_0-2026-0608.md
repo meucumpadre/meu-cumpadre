@@ -3,8 +3,8 @@ codigo: MC-INFRA-RuntimesClaudeCode-DesktopVsWeb
 versao: v1.0
 data: 2026-06-08
 autor: Code TALÃO (sessão web · branch claude/quirky-euler-eZHHG)
-estado: MESA DE TRABALHO (Cérebro 1 · ADR-011) — NÃO selado no Vault
-rito: R1 (operacional · infra/tooling, sem OAB/LGPD-PII de cliente)
+estado: SELADO no Vault (Cérebro 2 · ADR-011) — aprovado para vault pelo Founder em 2026-06-08
+rito: R1 (operacional · infra/tooling, sem OAB/LGPD-PII de cliente) · gate ADR-011 cumprido
 proof_first: recibos empíricos coletados na sessão (ver §4)
 tags: [infra, claude-code, mcp, notebooklm, runtime, firewall-lgpd]
 ---
@@ -104,6 +104,6 @@ Google sensível: se um dia virar secret de ambiente, **jamais commitar no repo*
 
 ---
 
-*MC-INFRA-RuntimesClaudeCode-DesktopVsWeb v1.0 · 2026-06-08 · mesa de trabalho ·
-D > C > V · Proof-First. Candidato a selagem no Vault sob "aprovado para vault"
-(ADR-011) se o Founder quiser canonizar.*
+*MC-INFRA-RuntimesClaudeCode-DesktopVsWeb v1.0 · 2026-06-08 · **SELADO no Vault**
+(Cérebro 2 · ADR-011) · gate "aprovado para vault" pelo Founder Alessandro em
+2026-06-08 · rito R1 (infra, sem OAB/LGPD-PII) · D > C > V · Proof-First.*
