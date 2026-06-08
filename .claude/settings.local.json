@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl *)",
+      "Bash(python *)",
+      "Bash(PYTHONIOENCODING=utf-8 python *)",
+      "Bash(date *)",
+      "Bash(find . -type f -not -name \"Thumbs.db\" -not -name \".DS_Store\" -not -name \"desktop.ini\" -not -name \"*.tmp\" -not -name \"*.lock\" \\\\\\( -iname \"*.pdf\" -o -iname \"*.csv\" -o -iname \"*.xlsx\" -o -iname \"*.xls\" -o -iname \"*.docx\" -o -iname \"*.doc\" -o -iname \"*.md\" -o -iname \"*.txt\" -o -iname \"*.json\" -o -iname \"*.odt\" -o -iname \"*.ods\" -o -iname \"*.ppt\" -o -iname \"*.pptx\" \\\\\\) -printf \"%p|%s|%TY-%Tm-%Td\\\\n\")",
+      "Read(//tmp/**)",
+      "Bash(mkdir -p ~/.claude)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(mkdir -p /home/user/meu-cumpadre/.claude/hooks && echo \"Diretório criado\")",
+      "Bash(cp \"/home/user/meu-cumpadre/.claude/workflows/mc-strategic-intelligence.workflow.js\" ./wf.mjs)",
+      "Bash(node --check ./wf.mjs)"
+    ]
+  }
+}

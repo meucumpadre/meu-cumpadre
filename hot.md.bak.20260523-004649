@@ -1,0 +1,49 @@
+---
+data: 2026-05-14 ~06h UTC
+sessao: C1 cofounder (esta) + Cowork C2-Visual + Code DELL C3 (este MB-034)
+total_principios: 29
+total_adrs: 13 seladas + 1 PROVISIONAL (ADR-019)
+status_cascata_28: Camadas 0+1+2+3 em execucao (Onda 1 Cowork em curso)
+proxima_reuniao_critica: Dra. Juliana 19/05/2026 - Bloco O ampliado
+---
+
+# hot.md - Contexto Ativo MC (14/05/2026 ~06h UTC)
+
+## Sessao atual
+
+3 frotas paralelas ativas:
+- **C1 cofounder (Claude.ai sessao C):** producao institucional + supervisao
+- **C2-Visual (Cowork DELL):** MB-033 Camada 3 Onda 1 (Instagram Kit + Email Newsletter Kit) em execucao autonoma
+- **C3 (Code DELL terminal HP ENVY):** MB-034 (este) - Vault Sync + Renomeacao MBs
+
+## Principios MC operacionais: 29 total
+
+#1-#20 (preservados v7.0) - #21 Camadas IA - #22 5 Pontos Humanos - #23 Cronometria do Humano - #24 Documentacao Canonica Unificada - #25 Caminho Operacional Adequado PROV - #26 Anti-Colisao Pre-Cunhagem PROV - #27 v0.2 Matriz Visual Multi-Camada PROV - #28 Texto Canonico Precede Imagem PROV - #29 Pasta 99-ARQUIVO-Legado PROV
+
+## ADRs PROVISIONAL pre-Juliana 19/05
+
+- ADR-007 v3.8 ADDENDUM (Campo de Precificacao)
+- ADR-012 v1.1 (Stack LLM Multi-Modelo Hibrido + Risco DPA Anthropic)
+- ADR-013 v1.0 (Convencoes IVCAD-MC)
+- ADR-015 (Features Avancadas ClickUp)
+- ADR-019 v0.1 (Limitacao MCP Drive) - NOVO 14/05
+
+## Camada 3 Cascata #28 em execucao
+
+Onda 1 (TASK-01 Instagram Kit + TASK-04 Email Newsletter Kit) executando via Cowork autonomo.
+Onda 2 (LinkedIn + WhatsApp + Documentos) aguarda validacao founder pos-Onda 1.
+Onda 3 (Pitch Deck FINEP/BNDES) 15-16/05.
+Onda 4 (Banco de Icones) 17-18/05 ou pos-Juliana.
+
+## Decisoes pendentes founder
+
+- Validacao Onda 1 Cowork (~20min apos Cowork reportar)
+- Conflito renomeacao MBs (MB-031 antigo Documentacao -> MB-032 retroativo) - este MB-034 resolve
+
+## Proximos MBs
+
+- MB-035 - Sprint 2 RIPDs (Phi-1 + Phi-4 + Hook 1b) com templates LGPD art. 38
+- MB-036 - Pauta Juliana v2.4 final (acrescenta O11 + O12)
+- MB-037 - Pacote consolidado 23+ docs pre-19/05
+
+D > C > V. infinito

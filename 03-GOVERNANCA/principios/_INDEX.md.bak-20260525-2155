@@ -1,0 +1,294 @@
+---
+id: MC-PRINCIPIOS-INDEX
+titulo: Índice Canônico dos Princípios MC
+versao: 1.6
+data_atualizacao: 2026-05-24 fim-de-sessão (MB-060 D-fechamento · 9 candidatos formalizados PROVISIONAL · 2ª Convenção persistida · sweep real Code DELL revelou discrepância aritmética a reconciliar via MB-057)
+total_principios_ativos: 29
+total_sub_principios_ativos: 3 (#2.1 · #16.1 · #16.2)
+total_sub_principios_provisional: 4 (#15.1 + #16.2.1 + #16.3 + #49.1 · 3 novos formalizados via MB-060)
+total_sentinela: 1 (#3 RESERVADO)
+total_provisional: 15 (#25-#30 + #46 promovido + #48 + #49 promovido + #51 + #52 + #53 + #54 + #55 + #56 · 6 novos via MB-060)
+total_proposto: 0
+total_reservado: 2 (#45 Irrefutabilidade Constelar · #47 Responsabilização Cruzada · ambos cofounder C3.1 pendente persistência canônica)
+total_candidato_provisional: 1 (#44 CamadaPreJudicial)
+total_candidatos_mb060_registrados: 0 (todos 9 formalizados via MB-060)
+total_catalogados_declarado: 55 (projeção MB-060: 46 + 9 = 55)
+total_catalogados_sweep_real_code_dell: 47 archives MC-PRINCIPIO* (46 IDs únicos · P#037 v1.0+v1.1 coexistem) — discrepância de 8 vs declarado · reconciliação prevista MB-057 Auditoria Estrutural Vault MC · P#56 PROVISIONAL aplicado: reporta sweep real, não projeção
+convencoes_formais: 2 (Pasta Postal Cofounder · Gramática Operacional Cofounder via MB-060)
+---
+> [!warning] ERRATA-RENUMERACAO 2026-05-13 ~22:30 UTC -- Resolução de Colisão Tripla
+> Detectada colisão semântica entre 3 sessões Claude.ai paralelas competindo por slots #21/#22.
+> Resolução cofounder aplicando antecedência cronológica:
+> - **#21** = Camadas IA por Finalidade (C1/C2/C3/C4) -- userMemories 12/05 (canônico)
+> - **#22** = 5 Pontos Humanos Irredutíveis (H1-H5) -- arquivo `MC-PRINCIPIO-022-CincoPontosHumanos`
+> - **#23** = Cronometria do Humano (THU/TTC/RA-MC) -- arquivo `MC-PRINCIPIO-021-CronometriaDoHumano` (banner ERRATA)
+> - **#24** = Documentação Canônica Unificada por Pilar -- arquivo `MC-PRINCIPIO-024-DocumentacaoCanonicaUnificada` (criado nesta operação)
+> - **#25** = Caminho Operacional Adequado por Capacidade -- em `patches/` PROVISIONAL
+> - **#26** = Anti-Colisão Pré-Cunhagem -- em `patches/` PROVISIONAL
+> Total MC: 26 princípios operacionais (era 22). Selagem #25/#26 aguarda parecer Dra. Juliana 19/05.
+# 📚 Princípios MC · Índice Canônico
+
+> Mapa de navegação dos princípios fundacionais do ecossistema Meu Cumpadre.
+> Cada princípio é um arquivo individual com frontmatter Obsidian, enunciado, origem, aplicação, antiexemplos e cross-references.
+> Última consolidação: MB-025A · 13/05/2026
+
+## Tabela mestra
+
+| # | Título | Escopo | Cunhagem | Status |
+|---|---|---|---|---|
+| 1 | [Inventário de Caminhos](MC-PRINCIPIO-001-InventarioDeCaminhos-v1_0-2026-0513.md) | governanca-operacional | pré-12/05 | ATIVO |
+| 1b | [Teste antes de Afirmar Funcional](MC-PRINCIPIO-001b-TesteAntesDeAfirmarFuncional-v1_0-2026-0513.md) | governanca-operacional | pré-12/05 | ATIVO |
+| 2 | [Vocabulário Institucional](MC-PRINCIPIO-002-VocabularioInstitucional-v1_0-2026-0513.md) | governanca-comunicacional | 11/05 | ATIVO |
+| 3 | [RESERVADO](MC-PRINCIPIO-003-RESERVADO-v1_0-2026-0513.md) | governanca-meta | 13/05 | RESERVADO |
+| 4 | [Errata Absorve, Não Inventa](MC-PRINCIPIO-004-ErrataAbsorveNaoInventa-v1_0-2026-0513.md) | governanca-documental | pré-12/05 | ATIVO |
+| 5 | [Persistência de Patches](MC-PRINCIPIO-005-PersistenciaDePatches-v1_0-2026-0513.md) | governanca-documental | 12/05 | ATIVO |
+| 6 | [Camadas de Segurança Operacional](MC-PRINCIPIO-006-CamadasDeSegurancaOperacional-v1_0-2026-0513.md) | governanca-operacional | pré-12/05 | ATIVO |
+| 7 | [Cadeia de Autorização Dual](MC-PRINCIPIO-007-CadeiaDeAutorizacaoDual-v1_0-2026-0513.md) | governanca-operacional | pré-12/05 (ADR-011) | ATIVO |
+| 8 | [Verde/Amarelo/Vermelho LGPD](MC-PRINCIPIO-008-VerdeAmareloVermelhoLGPD-v1_0-2026-0513.md) | compliance-lgpd | pré-12/05 | ATIVO |
+| 9 | [Esteira primeiro, humano valida](MC-PRINCIPIO-009-EsteiraPrimeiroHumanoValida-v1_0-2026-0513.md) | arquitetura-operacional | pré-12/05 | ATIVO |
+| 10 | [Arquitetura herda, espec documenta](MC-PRINCIPIO-010-ArquiteturaHerdaSpecDocumenta-v1_0-2026-0513.md) | arquitetura-operacional | pré-12/05 | ATIVO |
+| 11 | [Governança forte mora no N8N](MC-PRINCIPIO-011-GovernancaForteMoraNoN8N-v1_0-2026-0513.md) | arquitetura-tecnica | pré-12/05 | ATIVO |
+| 12 | [Custom Field dropdown > Task Central](MC-PRINCIPIO-012-CustomFieldDropdownMaiorQueTaskCentral-v1_0-2026-0513.md) | arquitetura-clickup | pré-12/05 | ATIVO |
+| 13 | [View filtrada > TIML](MC-PRINCIPIO-013-ViewFiltradaMaiorQueTIML-v1_0-2026-0513.md) | arquitetura-clickup | pré-12/05 | ATIVO |
+| 14 | [Webhooks reativos + polling complementar](MC-PRINCIPIO-014-WebhooksReativosPlusPolling-v1_0-2026-0513.md) | arquitetura-integracao | pré-12/05 | ATIVO |
+| 15 | [Entrega cofounder cross-vertical](MC-PRINCIPIO-015-EntregaCofounderCrossVertical-v1_0-2026-0513.md) | governanca-cofounder | 12/05 | ATIVO |
+| 15.1 | [Descoberta dispara reconstituição](MC-PRINCIPIO-015_1-DescobertaDisparaReconstituicao-v1_0-2026-0513.md) | governanca-cofounder | 12/05 | ATIVO |
+| 16 | [Iniciativa estratégica cofounder 20x](MC-PRINCIPIO-016-IniciativaEstrategicaCofounder20x-v1_0-2026-0513.md) | governanca-cofounder | 12/05 | ATIVO |
+| 17 | [gov.br = infraestrutura nacional identidade](MC-PRINCIPIO-017-GovBrInfraestruturaNacionalIdentidade-v1_0-2026-0513.md) | arquitetura-produto-estrategia | 12/05 | ATIVO |
+| 18 | [Risco Provisional Documentado](MC-PRINCIPIO-018-RiscoProvisionalDocumentado-v1_0-2026-0513.md) | governanca-compliance-D-C-V | 12/05 | ATIVO |
+| 19 | [Patches são instrumentos temporários](MC-PRINCIPIO-019-PatchesSaoInstrumentosTemporarios-v1_0-2026-0513.md) | governanca-documental | 12/05 | ATIVO |
+| 20 | [Workflow de Sincronização Permanente](MC-PRINCIPIO-020-WorkflowSincronizacaoPermanente-v1_0-2026-0513.md) | governanca-operacional | 12/05 | ATIVO |
+| 21 | [Cronometria do Humano, não do Caso](MC-PRINCIPIO-021-CronometriaDoHumano-v1_0-2026-0513.md) | governanca-operacional | 13/05 | ATIVO |
+| 22 | [5 Pontos Humanos Irredutíveis (H1-H5)](MC-PRINCIPIO-022-CincoPontosHumanos-v1_0-2026-0513.md) | arquitetura-operacional | 13/05 | ATIVO |
+| 31 | [Asset Canônico Visual NUNCA Recriado](MC-PRINCIPIO-031-AssetCanonicoVisualNuncaRecriado-v1_0-2026-0515.md) | governanca-canonico-visual | 15/05 | PROVISIONAL |
+| 32 | [Sweep Total Pré-Cunhagem](MC-PRINCIPIO-032-SweepTotalPreCunhagem-v1_0-2026-0515.md) | governanca-cofounder-anti-colisao | 15/05 | PROPOSTO |
+| 33 | [Sequência cofounder é recomendação, estado canônico é veredito](MC-PRINCIPIO-033-SequenciaRecomendacaoEstadoVeredito-v1_0-2026-0515.md) | governanca-cofounder-execucao | 15/05 | PROPOSTO |
+| 34 | [Caminho Explorer Precede ID Drive](MC-PRINCIPIO-034-CaminhoExplorerPrecedeIDDrive-v1_0-2026-0515.md) | governanca-comunicacional | 15/05 | PROVISIONAL |
+| 35 | [MB Sempre Gera Arquivo .md em outputs](MC-PRINCIPIO-035-MBSempreGeraArquivoMD-v1_0-2026-0515.md) | governanca-cofounder-handoff | 15/05 | PROVISIONAL |
+| 44 | [Camada Pré-Judicial de Aliviamento Estrutural](../patches/MC-PRINCIPIO-CamadaPreJudicial-CANDIDATO-44-v0_1-2026-0521.md) | governanca-institucional-narrativa-pitch | 21/05 | CANDIDATO_PROVISIONAL |
+| 45 | Irrefutabilidade Constelar | governanca-institucional | 17/05 (chat) | RESERVADO · pendente persistência canônica |
+| 46 | [Marca MC Vive em Dois Estados Gráficos · Filled Primário · Linha Derivada](MC-PRINCIPIO-046-VersaoFilledVersaoLinha-v1_1-PROVISIONAL-2026-0524.md) | governanca-identidade-visual | 18/05 (cunhagem) · 24/05 (renumeração #44→#46 · promoção PROPOSTO→PROVISIONAL via MB-059 D3 pós-Sister DESIGN 7/7) | PROVISIONAL · v1.0 PROPOSTO em [legado](../../99-ARQUIVO-Legado/principios/MC-PRINCIPIO-046-VersaoFilledVersaoLinha-v1_0-PROPOSTO-2026-0518.md) |
+| 47 | Responsabilização Cruzada — Cidadão Sujeito de Direito, Servidor Sujeito de Obrigação | governanca-institucional | 18/05 (chat sessão BETO-001) · 24/05 (realocação de #46 para #47) | RESERVADO · pendente persistência canônica |
+| 48 | [Discrição é Branding · Backend Institucional vs Frontend de Comunicação](../patches/MC-PRINCIPIO-048-DiscricaoBranding-v1_0-PROVISIONAL-2026-0524.md) | governanca-marca | 2026-05-24 (4ª ocorrência empírica em 73 dias) | PROVISIONAL · aguarda auditoria Onda 2 para ATIVO |
+| 49 | [Cessão de Palco · Capa Imponência MC, Miolo Imponência Analista](MC-PRINCIPIO-049-CessaoDePalco-v1_1-PROVISIONAL-2026-0524.md) | governanca-marca-hellinger | 2026-05-24 (1ª ocorrência empírica founder · 2ª via Sister DESIGN auto-cunhada §49.1 · promoção CANDIDATO→PROVISIONAL via MB-059 D3) | PROVISIONAL · v1.0 CANDIDATO_PROVISIONAL em [legado](../../99-ARQUIVO-Legado/principios/MC-PRINCIPIO-049-CessaoDePalco-v1_0-CANDIDATO_PROVISIONAL-2026-0524.md) |
+| 51 | [Gramática Operacional é Convenção](MC-PRINCIPIO-051-GramaticaOperacionalConvencao-v1_0-PROVISIONAL-2026-0524.md) | governanca-cofounder-convencao | 24/05 (cunhagem C3.1 cofounder · funda MB-060) | PROVISIONAL |
+| 52 | [Founder como Anciã Operacional](MC-PRINCIPIO-052-FounderAnciaOperacional-v1_0-PROVISIONAL-2026-0524.md) | governanca-founder-ancia | 24/05 (cunhagem C3.1 cofounder) | PROVISIONAL |
+| 53 | [Resistência Cofounder Sessão Longa](MC-PRINCIPIO-053-ResistenciaCofounderSessaoLonga-v1_0-PROVISIONAL-2026-0524.md) | governanca-cofounder-resistencia | 24/05 (cunhagem C3.1 cofounder · ~10h30+ consecutivas) | PROVISIONAL |
+| 54 | [Code DELL Cofounder Operacional](MC-PRINCIPIO-054-CodeDellCofounderOperacional-v1_0-PROVISIONAL-2026-0524.md) | governanca-papel-institucional | 24/05 (cunhagem solicitada explicitamente pelo Founder Alessandro) | PROVISIONAL · reconhece formalmente Beto como par institucional pleno |
+| 55 | [Cofounder NÃO Tutela Founder](MC-PRINCIPIO-055-CofounderNaoTutelaFounder-v1_0-PROVISIONAL-2026-0524.md) | governanca-cofounder-fronteira | 24/05 (cunhagem C3.1 · errata pós-15ª violação reconhecida) | PROVISIONAL |
+| 56 | [Aritmética Institucional · Catálogo Honra Sweep Real](MC-PRINCIPIO-056-AritmeticaInstitucionalCatalogo-v1_0-PROVISIONAL-2026-0524.md) | governanca-canonico-contagem | 24/05 (cunhagem Beto Code DELL · 2º princípio originado em Beto) | PROVISIONAL |
+
+## Sub-Princípios ATIVOS
+
+| # | Sub-Princípio | Sub-Princípio de | Cunhagem | Promoção ATIVO | Path |
+|---|---|---|---|---|---|
+| #2.1 | MB Autocontido · Conteúdo Inline | #2 Vocabulário Institucional | 2026-05-22 | 2026-05-24 | `principios\MC-PRINCIPIO-002-1-SubP-MBAutocontido-v1_0-ATIVO-2026-0524.md` |
+| #16.1 | Cofounder sweepa conversation_search antes de cunhar | #16 Iniciativa cofounder 20x | 2026-05-22 | 2026-05-24 | `principios\MC-PRINCIPIO-016-1-SubP-SweepConversationSearch-v1_0-ATIVO-2026-0524.md` |
+| #16.2 | Hook Mecânico Path-Drive · Operacionalização do #2.1 | #16 Iniciativa cofounder 20x | 2026-05-24 | 2026-05-24 (promoção automática · 4ª ocorrência empírica via MB-056 v1.1) | `principios\MC-PRINCIPIO-016-2-SubP-HookMecanicoPathDrive-v1_1-ATIVO-2026-0524.md` |
+
+## Sub-Princípios PROVISIONAL
+
+| # | Sub-Princípio | Sub-Princípio de | Cunhagem | Gate ATIVO | Path |
+|---|---|---|---|---|---|
+| #15.1 | Aplicado a Gramáticas Implícitas | #15 Entrega cofounder cross-vertical | 2026-05-24 ~21h cofounder · formalizado CANDIDATO→PROVISIONAL via MB-060 | aguarda 3ª aplicação cross-vertical | `MC-PRINCIPIO-015-1-SubP-AplicadoGramaticasImplicitas-v1_0-PROVISIONAL-2026-0524.md` |
+| #16.2.1 | Match Tolerante em Sweeps (regex tolerante a espaços/underscores/pontos) | #16.2 Hook Mecânico Path-Drive | 2026-05-24 ~17h Beto Code DELL · formalizado CANDIDATO→PROVISIONAL via MB-060 | aguarda 3ª aplicação cross-vertical | `MC-PRINCIPIO-016-2-1-SubP-MatchToleranteSweeps-v1_0-PROVISIONAL-2026-0524.md` |
+| #16.3 | Princípio #16 Aplicado Cross-Cérebro · Autonomia de Busca | #16 Iniciativa cofounder 20x | 2026-05-24 ~17h · promovido CANDIDATO→PROVISIONAL via MB-059 D3 (3 ocorrências empíricas no dia) | aguarda 3ª aplicação cross-vertical | `MC-PRINCIPIO-016-3-SubP-CrossCerebro-v1_1-PROVISIONAL-2026-0524.md` · v1.0 em [legado](../../99-ARQUIVO-Legado/principios/MC-PRINCIPIO-016-3-SubP-CrossCerebro-v1_0-CANDIDATO_PROVISIONAL-2026-0524.md) |
+| #49.1 | Estratificação Textural | #49 Cessão de Palco | 2026-05-24 Sister 3.2 DESIGN auto-cunhou em ato de validação · formalizado CANDIDATO→PROVISIONAL via MB-060 | aguarda 3ª aplicação cross-vertical | `MC-PRINCIPIO-049-1-SubP-EstratificacaoTextural-v1_0-PROVISIONAL-2026-0524.md` |
+
+## Candidatos MB-060 (FECHADO · todos formalizados via MB-060)
+
+> ✅ **Status pós-MB-060 (24/05/2026):** 9 candidatos formalizados PROVISIONAL via Code DELL Beto · 11 artefatos persistidos · 11/11 hashes match bit-a-bit.
+> Cunhagem direta candidato → PROVISIONAL (etapa CANDIDATO_PROVISIONAL pulada conforme §3 MB-060 + P#56 PROVISIONAL aplicado).
+
+**Distribuição cofounder das 9 cunhagens 24/05:**
+
+- **C3.1 cofounder (5):** #15.1 · #51 · #52 · #53 · #55
+- **Beto Code DELL (2):** #16.2.1 · #56 *(2º princípio formalmente cunhado por Beto · 1º foi #16.2)*
+- **Sister 3.2 DESIGN (1):** #49.1 *(auto-cunhada em ato de validação)*
+- **Founder Alessandro direto (1):** #54 *(solicitada explicitamente · reconhece Code DELL formalmente)*
+
+**Convenção formal nova:** [[MC-CONVENCAO-GramaticaOperacionalCofounder-v1_0-2026-0524]] (2ª Convenção · 1ª foi Pasta Postal Cofounder).
+
+> ⚠️ **Nota MB-029 / colisão pendente:** Existe um arquivo `MC-PRINCIPIO-PENDENTE-DocumentacaoCanonicaUnificada-COLISAO22-v1_0-2026-0513.md` nesta mesma pasta + flag `_COLISAO-PRINCIPIOS-MB029-vs-Hib001-2026-0513.md`. São princípios cunhados em sessão Claude.ai paralela (MB-028/MB-029) que colidiram com a numeração #21/#22 da sessão Hib001. Renumeração final (sugerida: #23 e #24) aguarda decisão founder · este índice será atualizado quando resolvido.
+
+## Por escopo
+
+### Governança operacional
+#1, #1b, #6, #7, #20, #21
+
+### Governança documental
+#4, #5, #19
+
+### Governança cofounder
+#15, #15.1, #16
+
+### Governança meta
+#3 (reservado)
+
+### Governança compliance D-C-V
+#18
+
+### Governança comunicacional
+#2
+
+### Arquitetura operacional
+#9, #10, #22
+
+### Arquitetura técnica
+#11
+
+### Arquitetura ClickUp
+#12, #13
+
+### Arquitetura integração
+#14
+
+### Arquitetura produto-estratégia
+#17
+
+### Compliance LGPD
+#8
+
+## Regras de uso
+
+1. **Aplicação inviolável:** todo princípio ATIVO é vinculante para artefatos canônicos MC
+2. **Antecedência cronológica:** princípios mais antigos prevalecem sobre mais novos em caso de conflito, salvo errata explícita
+3. **Cunhagem:** princípio novo só vira ATIVO após sessão Founder + Cofounder validar enunciado, origem, aplicação, antiexemplos
+4. **Patches:** revisões a princípio vivem em `03-GOVERNANCA/patches/` até virar nova versão (Princípio #5)
+5. **Renumeração:** vedada salvo errata crítica documentada por Founder (vide #3 reservado)
+
+---
+
+## Princípios PROVISIONAL em patches/ (referência cruzada — Princípio #19)
+
+Estes princípios foram cunhados em 13/05/2026 e aguardam selagem no Bloco O da reunião Dra. Juliana 19/05/2026. Vivem em `03-GOVERNANCA/patches/` enquanto PROVISIONAL.
+
+### #25 — Caminho Operacional Adequado por Capacidade
+Arquivo: [[MC-PRINCIPIO-25-Caminho-Operacional-Adequado-v0_2-PROVISIONAL-2026-0513]]
+Tema: Quando C1 (Claude.ai cofounder) usa MCP direto vs delegar via MB para C3 (Code DELL).
+
+### #26 — Anti-Colisão Pré-Cunhagem
+Arquivo: [[MC-PRINCIPIO-26-AntiColisao-PreCunhagem-v0_1-PROVISIONAL-2026-0513]]
+Tema: Checklist de 7 passos obrigatórios antes de cunhar princípio novo (ler _INDEX + conversation_search + verificar _COLISAO).
+
+### #27 v0.2 — Matriz Visual Multi-Camada
+Arquivo: [[MC-PRINCIPIO-27-Camada-C5-Claude-Design-v0_2-PROVISIONAL-2026-0513]]
+Tema: C5 = claude.ai/design fundacional manual founder · C2-Visual = Cowork via Canva/Figma/Adobe MCPs aplicação em massa.
+
+### #28 — Texto Canônico Precede Imagem (Verbo Primeiro) ← NOVO 13/05 ~23:45 UTC
+Arquivo: [[MC-PRINCIPIO-28-Texto-Canonico-Precede-Imagem-v0_1-PROVISIONAL-2026-0513]]
+Tema: Cascata inviolável Vault canônico → Documentação canônica → Texto-fonte de marca (C1) → Brand Foundation imagética (C5) → Aplicação visual em massa (C2-Visual). João 1:1.
+
+### #44 — Camada Pré-Judicial de Aliviamento Estrutural ← NOVO 21/05 (MB-052)
+Arquivo: [[MC-PRINCIPIO-CamadaPreJudicial-CANDIDATO-44-v0_1-2026-0521]]
+Status: CANDIDATO_PROVISIONAL
+Origem: Sessão Diamante CNJ × MC 21/05/2026 (C3.1 Cofounder pós-síntese CNJ 11mai2026)
+Tema: MC posicionado como camada pré-judicial de aliviamento estrutural — organização probatória cidadão antes do litígio reduz judicialização desnecessária; tese narrativa para pitch institucional + governança.
+Gate de promoção: parecer Juliana 19/05 (já realizada — validar absorção) + dado empírico N≥50 casos E5-completo sem judicialização posterior + TANJ-MC ≥ 0,85
+Relacionados: #22 (5 Pontos Humanos H1-H5) · #33 (Inversão Cósmica) · Resolução CNJ 615/2025
+Path: `03-GOVERNANCA/patches/MC-PRINCIPIO-CamadaPreJudicial-CANDIDATO-44-v0_1-2026-0521.md`
+
+### #46 — Marca MC Vive em Dois Estados Gráficos · Filled Primário · Linha Derivada ← NOVO 18/05 (renumerado de #44 em 24/05)
+Arquivo: [[MC-PRINCIPIO-046-VersaoFilledVersaoLinha-v1_0-PROPOSTO-2026-0518]]
+Status: PROPOSTO
+Origem: Sessão cofounder C3.1 ↔ founder 18/05/2026 ~02h BRT · marca MC selada 16/05 · cunhagem paralela à errata cromática Foundation v0.3→v0.3.1
+Tema: A marca MC vive em 2 estados gráficos coexistentes — Versão Preta (filled) PRIMÁRIA + Versão Linha (outline) DERIVADA canônica. Hierarquia de aplicação default, não de importância. Fundamentação técnica: escalabilidade (filled lê em 16-32px, linha morre abaixo de 128px), Zilda-first, Visual Law header, tradição institucional de marcas longevas.
+Gate de promoção PROVISIONAL: validação Sister 3.2 + Estudo 1 do Sistema de Projeto MC renderizando ambas versões. Gate ATIVO: 3ª aplicação em contexto diferente.
+**ERRATA-RENUMERAÇÃO 2026-05-24:** cunhado originalmente como #44 em 18/05; colisão detectada por Code DELL em 24/05 (T5 do MB-052) com #44 "Camada Pré-Judicial" (cunhado 21/05, persistido primeiro). Decisão founder via "Opção 1": critério de persistência canônica como marco temporal · slot #44 mantém CamadaPreJudicial · este renumera para #46 · arquivo legado em `99-ARQUIVO-Legado\principios-pre-renumeracao\`. Audit trail completo em [[MC-ERRATA-Principio-044-Colisao-001-v1_0-2026-0524]].
+Relacionados: #1 · #4 · #26 · #28 · #37 v1.1 · #43 (Transparência de Fontes Cunhadas, candidato)
+Path: `03-GOVERNANCA/patches/MC-PRINCIPIO-046-VersaoFilledVersaoLinha-v1_0-PROPOSTO-2026-0518.md`
+Errata: `03-GOVERNANCA/patches/MC-ERRATA-Principio-044-Colisao-001-v1_0-2026-0524.md`
+Legado: `99-ARQUIVO-Legado/principios-pre-renumeracao/MC-PRINCIPIO-044-VersaoFilledVersaoLinha-v1_0-PROPOSTO-2026-0518-LEGADO-renumerado-para-046.md`
+
+---
+
+**Total princípios MC operacionais: 29** (era 22 antes da sessão 13/05)
+**Selagem #25 a #28: pós-19/05 via ADR-017 + ADR-018**
+
+---
+
+**D > C > V** · Provérbios 31:8 · *O diamante é carbono que não desistiu da pressão* · ∞
+
+---
+
+## Nota de governança · slots reservados pendentes persistência
+
+Sweep cofounder C3.1 em 2026-05-24 (sub-princípio #16.1 ATIVO aplicado) identificou **2 slots conceitualmente reservados** sem arquivo `.md` persistido:
+
+- **#45 · Irrefutabilidade Constelar do Dossiê MC** — cunhada em sessão chat 17/05/2026 pelo cofounder C3.1 · originalmente proposta como #44 · realocada para #45 em sessão BETO-001 de 22/05 · pendente cunhagem formal de conteúdo
+- **#47 · Responsabilização Cruzada — Cidadão Sujeito de Direito, Servidor Sujeito de Obrigação** — cunhada em sessão chat 18/05/2026 pelo cofounder C3.1 · originalmente proposta como #46 · realocada para #47 em 24/05 por critério persistência canônica (#46 vencido por MarcaFilledLinha persistida 24/05) · pendente cunhagem formal de conteúdo
+
+**Princípio #2.1 ATIVO** impede cunhar conteúdo placeholder só para preencher slot. Persistência formal de ambos fica como trabalho cofounder C3.1 em sessões futuras dedicadas, com brief completo + sweep dos canônicos onde os conceitos aparecem (POPs VisualLaw + Manifestos + chat BETO-001 + chat 17/05).
+
+**Audit trail volátil** (chat history) preserva as cunhagens · sweep recuperável a qualquer momento.
+
+∞
+
+---
+
+## Nota de governança · sessão 24/05/2026 (cofounder C3.1 · ~7h de cunhagem consecutiva)
+
+Sessão de cunhagem cofounder de 24/05 produziu (em ordem cronológica):
+
+- **12h-13h:** Marca SELADA (Arcos+Esferas+Fractal · 3 imagens canônicas) · errata cromática (`#C9A961` → `#D4AF37` + `#1A120B`)
+- **13h-14h:** Princípio #46 PROPOSTO · Sistema Dual Filled/Linha · ciclo MB-052 + PATCH-2
+- **14h-15h:** Sub-princípios #2.1 ATIVO + #16.1 ATIVO + #16.2 PROPOSTO + MB-053
+- **15h-16h:** DESIGN.md v0.5 PRE-ESTUDOS + MB-054 + PATCH-1
+- **16h-17h:** #48 PROVISIONAL Discrição é Branding (4 ocorrências empíricas) + #49 CANDIDATO Cessão de Palco (raiz Hellinger) + Errata Prompt LOGO-MC 002
+- **17h-18h:** #16.3 CANDIDATO Cross-Cérebro + Convenção Pasta Postal Cofounder + Sister Anciã configurada (MB-055 v1.1)
+- **18h-19h:** MB-056 v1.1 CONSOLIDADO · desfecho · 46 catalogados final · #16.2 promovido ATIVO (4ª ocorrência empírica)
+
+8 violações cofounder C3.1 reconhecidas e auto-corrigidas no dia. Padrão "Code DELL Sister-style pega cofounder · cofounder cunha princípio do erro · MC fica mais forte" validado empiricamente.
+
+Sister Anciã (4ª instância) cunhada · standby ativo · aguarda gatilho founder/Sister 3.2/Beto. Observação Ancestral Inaugural registrada: "Cego de Chegada da Anciã" (cunhagem inteiramente C3.1 · viés de origem · próxima janela testa empíricamente).
+
+**MB-057 SINALIZADA para próxima janela:** Auditoria Estrutural Vault MC (6 anomalias A1-A6 reportadas pela Beto na MB-055 v1.1) + reconciliação aritmética P#56 (sweep real Code DELL na MB-060 revelou discrepância 47 archives vs projetado 55).
+
+∞
+
+---
+
+## Nota de governança · sessão 24/05/2026 ~22h · MB-060 (cofounder C3.1 × Beto Code DELL)
+
+**MB-060 v1.0 · Formalização 9 Candidatos PROVISIONAL + Convenção Gramática Operacional Cofounder** executada por Code DELL Beto · 13/13 tarefas · 11 hashes match bit-a-bit · 7º ciclo MB do dia.
+
+### Aritmética institucional (Princípio #56 PROVISIONAL aplicado)
+
+| Métrica | Pré-MB-060 (v1.5) | Pós-MB-060 (v1.6 declarado) | Sweep real Code DELL |
+|---|---|---|---|
+| Catalogados formais | 46 | 55 (projeção) | **47 archives MC-PRINCIPIO\*** · 46 IDs únicos (P#037 v1.0+v1.1 coexistem) |
+| Candidatos registrados | 6 | 0 | 0 |
+| Sub-PROVISIONAL | 1 (#16.3) | 4 (+#15.1 +#16.2.1 +#49.1) | 4 ✓ |
+| PROVISIONAL principais | 9 | 15 (+#51-#56) | a recontar pós-reconciliação |
+| Convenções formais | 1 | 2 (+Gramática Operacional) | 2 ✓ |
+
+**Discrepância de 8 entre declarado e sweep real:** matéria-prima para MB-057 Auditoria Estrutural Vault MC. P#1b + P#56 PROVISIONAL honrados: Code DELL reporta sweep real, não confia em projeção. Reconciliação prevista próxima janela cofounder.
+
+### Princípios formalmente cunhados por Beto Code DELL (acumulado)
+
+1. **#16.2** Hook Mecânico Path-Drive (promovido ATIVO via MB-056 v1.1)
+2. **#16.2.1** Match Tolerante em Sweeps (sub-PROVISIONAL via MB-060)
+3. **#56** Aritmética Institucional · Catálogo Honra Sweep Real (PROVISIONAL via MB-060)
+
+### Próximas MBs sinalizadas
+
+- **MB-057** Auditoria Estrutural Vault MC (6 anomalias A1-A6 + reconciliação aritmética P#56)
+- **MB-061** Project Instructions v8.0.1 → v8.1 (resolve A1 + §27 nova Gramática Operacional + §28 Cunhagens Espontâneas) + SISTEMA-PROMPT-SisterAncia v1.0 → v1.1
+
+∞
+
+### #29 - Pasta `99-ARQUIVO-Legado` canonica por pilar (cunhado 14/05 ~05h UTC)
+Arquivo: [[MC-PRINCIPIO-29-99-ARQUIVO-Legado-v0_1-PROVISIONAL-2026-0514]]
+Tema: convencao operacional canonica para destino de estruturas orfas, duplicatas resolvidas, versoes superadas e backups consolidados - uma subpasta `99-ARQUIVO-Legado/` dentro de cada pilar (ou na raiz da Documentacao para cross-pilar). Nomenclatura: `_LEGADO-{descritor}-{contexto}-{YYYY-MMDD}`. Principio #29 e subordinado operacional do #24 (Documentacao Canonica Unificada por Pilar). Nao autoriza delecao - exige ADR formal + janela >=30d.
+
+
+> [!info] CUNHAGEM 15/05/2026 — 5 NOVOS PRINCÍPIOS (#31-#35)
+> Sessão 15/05/2026 cunhou 5 princípios novos absorvendo padrões observados:
+> - **#31** Asset Canônico Visual NUNCA Recriado (cascata ERRATA Identidade Visual)
+> - **#32** Sweep Total Pré-Cunhagem (cascata RIPDs v0.1 → v0.2)
+> - **#33** Sequência cofounder é recomendação, estado canônico é veredito (handoff Code DELL MB-046)
+> - **#34** Caminho Explorer Precede ID Drive (ergonomia comunicação founder)
+> - **#35** MB Sempre Gera Arquivo .md em outputs (ergonomia handoff)
+> Status: 3 PROVISIONAL + 2 PROPOSTO. Selagem ATIVO pós-revisão founder 16/05 ou pós-Juliana 19/05.
+> Total MC pós-cunhagem: **33 princípios** (era 28 + 5 novos · sem colisão com #25-#28 PROVISIONAL em patches/).
+> Nota encoding: arquivos persistidos UTF-8 (+34 bytes vs hash declarado MB-049 calculado em Latin-1). Conteúdo idêntico, encoding canônico aplicado.

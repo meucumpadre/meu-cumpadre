@@ -1,0 +1,20 @@
+{
+  "case_id": "Hib001",
+  "especie": "Aposentadoria por Idade Híbrida (art. 48 §§1º e 3º Lei 8.213/91)",
+  "nb": "[NB · REDIGIDO] (exemplo público referenciado)",
+  "historico": "4 indeferimentos prévios",
+  "operadores": "Beto + Dra. Juliana Melo",
+  "tese": "Súmula 149 STJ + Tema 219 TNU + Tema 1007 STJ",
+  "tempo_e0e4_min": 420,
+  "ia_autonomia_pct": 65,
+  "hash_sha256": "presente (conforme ADR-009b)",
+  "fontes_pendentes": 0,
+  "handoff_desnecessario": false,
+  "risco_dignidade": false,
+  "router_nodes_triggered": 12,
+  "dib_urgente": false,
+  "perfil": "hibrido-rural",
+  "outcome_e7": "concedido (simulado para teste)",
+  "nps_proxy": 9,
+  "violacao_algum_filtro": false
+}

@@ -1,0 +1,28 @@
+# Vault MC — .gitattributes
+# Cunhado 2026-05-26 sob MC-ADR-020 v2.0 + Patch-Memo MB-061
+# Princípio #36 · hashes SHA-256 reproduzíveis · Founder operador único TALÃO
+
+* text=auto eol=lf
+*.md  text eol=lf
+*.yaml text eol=lf
+*.yml  text eol=lf
+*.ps1 text eol=lf
+*.csv  text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.webp binary
+*.svg  binary
+*.pdf  binary
+*.docx binary
+*.xlsx binary
+*.pptx binary
+*.zip  binary
+*.mp3  binary
+*.mp4  binary
+*.wav  binary
+*.ogg  binary

@@ -1,0 +1,103 @@
+INÍCIO: 2026-04-28T01:44:25.695411
+
+[LISTA E1-Triagem] vertical → JÁ EXISTE (pulando)
+[LISTA E1-Triagem] risco_confidence → CRIADO ✓
+[LISTA E1-Triagem] zona_router_ethics → CRIADO ✓
+[LISTA E1-Triagem] fraudscore → CRIADO ✓
+[LISTA E1-Triagem] rota → CRIADO ✓
+[LISTA E1-Triagem] phi1_modalidade → CRIADO ✓
+[LISTA E1-Triagem] parcelas_pagas → CRIADO ✓
+[LISTA E1-Triagem] drive_folder_url → CRIADO ✓
+[LISTA E1-Triagem] urgencia_dib → CRIADO ✓
+[LISTA E2-Deliberação] vertical → CRIADO ✓
+[LISTA E2-Deliberação] risco_confidence → CRIADO ✓
+[LISTA E2-Deliberação] zona_router_ethics → CRIADO ✓
+[LISTA E2-Deliberação] fraudscore → CRIADO ✓
+[LISTA E2-Deliberação] rota → CRIADO ✓
+[LISTA E2-Deliberação] phi1_modalidade → CRIADO ✓
+[LISTA E2-Deliberação] parcelas_pagas → CRIADO ✓
+[LISTA E2-Deliberação] drive_folder_url → CRIADO ✓
+[LISTA E2-Deliberação] urgencia_dib → CRIADO ✓
+[LISTA E3-Coleta] vertical → CRIADO ✓
+[LISTA E3-Coleta] risco_confidence → CRIADO ✓
+[LISTA E3-Coleta] zona_router_ethics → CRIADO ✓
+[LISTA E3-Coleta] fraudscore → CRIADO ✓
+[LISTA E3-Coleta] rota → CRIADO ✓
+[LISTA E3-Coleta] phi1_modalidade → CRIADO ✓
+[LISTA E3-Coleta] parcelas_pagas → CRIADO ✓
+[LISTA E3-Coleta] drive_folder_url → CRIADO ✓
+[LISTA E3-Coleta] urgencia_dib → CRIADO ✓
+[LISTA E3b-QA-Dossiê] vertical → CRIADO ✓
+[LISTA E3b-QA-Dossiê] risco_confidence → CRIADO ✓
+[LISTA E3b-QA-Dossiê] zona_router_ethics → CRIADO ✓
+[LISTA E3b-QA-Dossiê] fraudscore → CRIADO ✓
+[LISTA E3b-QA-Dossiê] rota → CRIADO ✓
+[LISTA E3b-QA-Dossiê] phi1_modalidade → CRIADO ✓
+[LISTA E3b-QA-Dossiê] parcelas_pagas → CRIADO ✓
+[LISTA E3b-QA-Dossiê] drive_folder_url → CRIADO ✓
+[LISTA E3b-QA-Dossiê] urgencia_dib → CRIADO ✓
+[LISTA E4-Protocolo] vertical → CRIADO ✓
+[LISTA E4-Protocolo] risco_confidence → CRIADO ✓
+[LISTA E4-Protocolo] zona_router_ethics → CRIADO ✓
+[LISTA E4-Protocolo] fraudscore → CRIADO ✓
+[LISTA E4-Protocolo] rota → CRIADO ✓
+[LISTA E4-Protocolo] phi1_modalidade → CRIADO ✓
+[LISTA E4-Protocolo] parcelas_pagas → CRIADO ✓
+[LISTA E4-Protocolo] drive_folder_url → CRIADO ✓
+[LISTA E4-Protocolo] urgencia_dib → CRIADO ✓
+[LISTA E5-Watchdog] vertical → CRIADO ✓
+[LISTA E5-Watchdog] risco_confidence → CRIADO ✓
+[LISTA E5-Watchdog] zona_router_ethics → CRIADO ✓
+[LISTA E5-Watchdog] fraudscore → CRIADO ✓
+[LISTA E5-Watchdog] rota → CRIADO ✓
+[LISTA E5-Watchdog] phi1_modalidade → CRIADO ✓
+[LISTA E5-Watchdog] parcelas_pagas → CRIADO ✓
+[LISTA E5-Watchdog] drive_folder_url → CRIADO ✓
+[LISTA E5-Watchdog] urgencia_dib → CRIADO ✓
+[LISTA E6-Resolução] vertical → CRIADO ✓
+[LISTA E6-Resolução] risco_confidence → CRIADO ✓
+[LISTA E6-Resolução] zona_router_ethics → CRIADO ✓
+[LISTA E6-Resolução] fraudscore → CRIADO ✓
+[LISTA E6-Resolução] rota → CRIADO ✓
+[LISTA E6-Resolução] phi1_modalidade → CRIADO ✓
+[LISTA E6-Resolução] parcelas_pagas → CRIADO ✓
+[LISTA E6-Resolução] drive_folder_url → CRIADO ✓
+[LISTA E6-Resolução] urgencia_dib → CRIADO ✓
+[LISTA E7-Soberania] vertical → CRIADO ✓
+[LISTA E7-Soberania] risco_confidence → CRIADO ✓
+[LISTA E7-Soberania] zona_router_ethics → CRIADO ✓
+[LISTA E7-Soberania] fraudscore → CRIADO ✓
+[LISTA E7-Soberania] rota → CRIADO ✓
+[LISTA E7-Soberania] phi1_modalidade → CRIADO ✓
+[LISTA E7-Soberania] parcelas_pagas → CRIADO ✓
+[LISTA E7-Soberania] drive_folder_url → CRIADO ✓
+[LISTA E7-Soberania] urgencia_dib → CRIADO ✓
+[LISTA Handoff-Jurídico-Pendente] vertical → CRIADO ✓
+[LISTA Handoff-Jurídico-Pendente] risco_confidence → CRIADO ✓
+[LISTA Handoff-Jurídico-Pendente] zona_router_ethics → CRIADO ✓
+[LISTA Handoff-Jurídico-Pendente] fraudscore → CRIADO ✓
+[LISTA Handoff-Jurídico-Pendente] rota → CRIADO ✓
+[LISTA Handoff-Jurídico-Pendente] phi1_modalidade → CRIADO ✓
+[LISTA Handoff-Jurídico-Pendente] parcelas_pagas → CRIADO ✓
+[LISTA Handoff-Jurídico-Pendente] drive_folder_url → CRIADO ✓
+[LISTA Handoff-Jurídico-Pendente] urgencia_dib → CRIADO ✓
+[LISTA Casos-Encerrados-AuditOnly] vertical → CRIADO ✓
+[LISTA Casos-Encerrados-AuditOnly] risco_confidence → CRIADO ✓
+[LISTA Casos-Encerrados-AuditOnly] zona_router_ethics → CRIADO ✓
+[LISTA Casos-Encerrados-AuditOnly] fraudscore → CRIADO ✓
+[LISTA Casos-Encerrados-AuditOnly] rota → CRIADO ✓
+[LISTA Casos-Encerrados-AuditOnly] phi1_modalidade → CRIADO ✓
+[LISTA Casos-Encerrados-AuditOnly] parcelas_pagas → CRIADO ✓
+[LISTA Casos-Encerrados-AuditOnly] drive_folder_url → CRIADO ✓
+[LISTA Casos-Encerrados-AuditOnly] urgencia_dib → CRIADO ✓
+
+FIM: 2026-04-28T01:46:29.295664
+Duração: 0:02:03.600253
+
+┌─────────────────────────────────────────────────┐
+│ RESULTADO mc-clickup-bootstrap.py               │
+│ Campos criados: 89/90                           │
+│ Já existiam: 1/90                               │
+│ Erros: 0/90                                     │
+│ Listas com campos completos: 10/10              │
+└─────────────────────────────────────────────────┘

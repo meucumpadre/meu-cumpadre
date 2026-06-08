@@ -1,0 +1,66 @@
+---
+tipo: INDEX
+escopo: 03-GOVERNANCA/patches/
+data-atualizacao: 2026-05-13
+---
+
+# Indice de Patches - Meu Cumpadre
+
+Patches sao instrumentos temporarios que adicionam, modificam ou suplementam ADRs canonicas. Quando aplicados (ou quando o conteudo cunhado opera plenamente), sao arquivados em `_HISTORICO_PATCHES_APLICADOS/`.
+
+> **Principio #19 (cunhado 12/05/2026):** Patches sao instrumentos temporarios, nao canonicos.
+
+---
+
+## Patches Pendentes
+
+### MC-PRINCIPIO-25-Caminho-Operacional-Adequado-v0_2-PROVISIONAL (renumerado de #22 em 13/05 ~22:30)
+- Arquivo: [[MC-PRINCIPIO-25-Caminho-Operacional-Adequado-v0_2-PROVISIONAL-2026-0513]]
+- Princípio cunhado: #25 - Caminho Operacional Adequado por Capacidade (C1 MCP vs C3 MB)
+- Status: PROVISIONAL (aguarda Bloco O Juliana 19/05, perguntas O6+O7)
+- Selagem futura: ADR-017 v1.0
+- Histórico: antigo arquivo v0.1 como #22 marcado SUPERSEDED em `patches/`
+
+### MC-PRINCIPIO-26-AntiColisao-PreCunhagem-v0_1-PROVISIONAL (cunhado 13/05 ~22:30)
+- Arquivo: [[MC-PRINCIPIO-26-AntiColisao-PreCunhagem-v0_1-PROVISIONAL-2026-0513]]
+- Princípio cunhado: #26 - Anti-Colisão Pré-Cunhagem (Inventário Princípios Obrigatório)
+- Status: PROVISIONAL (aguarda Bloco O Juliana 19/05, pergunta O8 nova)
+- Selagem futura: ADR-017 v1.0 ampliada
+- Motivo: detectada colisão tripla 3 sessões Claude.ai paralelas 13/05; este princípio previne recorrência
+
+---
+
+## Patches Aplicados (Historico)
+
+### MC-ADR-012-PATCH-v1_0-para-v1_1-2026-0512
+- Arquivo: [[_HISTORICO_PATCHES_APLICADOS/MC-ADR-012-PATCH-v1_0-para-v1_1-2026-0512]]
+- ADR resultante: [[MC-ADR-012-StackLLM-MultiModelo-v1_1-2026-0513]]
+- Principio cunhado: #18 - Risco Provisional Documentado
+- Status: APLICADO
+
+### MC-PATCH-MEMO-v3_0-1-IdentidadeExecutor
+- Arquivo: [[_HISTORICO_PATCHES_APLICADOS/MC-PATCH-MEMO-v3_0-1-IdentidadeExecutor]]
+- Principio cunhado: #15 - Entrega cofounder cross-vertical obrigatoria
+- Status: APLICADO
+
+### MC-PATCH-MEMO-v3_0-2-DuploPapelMelo
+- Arquivo: [[_HISTORICO_PATCHES_APLICADOS/MC-PATCH-MEMO-v3_0-2-DuploPapelMelo]]
+- Principio cunhado: #15.1 - Descoberta de orfao dispara MB de reconstituicao
+- Status: APLICADO
+
+### MC-PATCH-MEMO-v3_0-3-MissionBriefCodificacao
+- Arquivo: [[_HISTORICO_PATCHES_APLICADOS/MC-PATCH-MEMO-v3_0-3-MissionBriefCodificacao]]
+- Principio cunhado: #16 - Iniciativa estrategica cofounder 20x
+- Status: APLICADO
+
+### MC-PATCH-MEMO-v3_0-4-ErrataLorrane-v2_0-DEFINITIVA
+- Arquivo: [[_HISTORICO_PATCHES_APLICADOS/MC-PATCH-MEMO-v3_0-4-ErrataLorrane-v2_0-DEFINITIVA]]
+- Principio cunhado: #17 - gov.br como infraestrutura nacional de identidade digital
+- Status: APLICADO
+
+---
+
+Hierarquia: Dignidade > Compliance > Viabilidade
+Selo: "O diamante e carbono que nao desistiu da pressao."
+
+∞

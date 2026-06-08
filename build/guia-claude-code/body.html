@@ -1,0 +1,554 @@
+<!-- ===================== CAPA ===================== -->
+<section class="cover">
+  <div class="kicker">Meu Cumpadre · Crisálida Z3 · Documento de Capacitação</div>
+  <h1>O Canivete Suíço<br><span class="accent">Claude Code</span></h1>
+  <div class="diamond-rule"></div>
+  <div class="sub">Guia completo dos recursos nativos do Claude Code — explicados de forma acessível e aterrissados na stack, na jornada e na doutrina do Meu Cumpadre, com exemplos reais.</div>
+  <div class="motto">"O diamante é carbono que não desistiu da pressão."<br>Lucro é combustível · Causa é destino · Jogo é infinito.</div>
+  <div class="meta">MC-GUIA-ClaudeCode-Canivete · v1.0 · 2026-06-05 · Hierarquia D &gt; C &gt; V</div>
+</section>
+
+<!-- ===================== SUMÁRIO ===================== -->
+<section class="toc">
+  <h2>Sumário</h2>
+  <ol>
+    <li>Como usar este guia <span class="desc">Legenda, convenções e a régua D&gt;C&gt;V ao operar o Code</span></li>
+    <li>O que é o Claude Code <span class="desc">Anatomia, onde ele roda, o loop agente-ferramenta</span></li>
+    <li>CLAUDE.md — a memória do projeto <span class="desc">Hierarquia de memória, imports, o nosso próprio CLAUDE.md</span></li>
+    <li>Comandos de barra nativos <span class="desc">Catálogo completo dos /comandos embutidos</span></li>
+    <li>Gerenciamento de contexto <span class="desc">/compact, /clear, auto-compactação e o Context Budget MC</span></li>
+    <li>Skills (Agent Skills) <span class="desc">A família de skills do MC: /diario, /watchdog, /squad-r3…</span></li>
+    <li>Comandos customizados <span class="desc">.claude/commands, argumentos e atalhos de prompt</span></li>
+    <li>Subagentes <span class="desc">sister-ancia, contexto fresco e paralelismo</span></li>
+    <li>Hooks <span class="desc">mc-lint como Stop hook block-mode — enforcement determinístico</span></li>
+    <li>MCP — Model Context Protocol <span class="desc">github, Supabase, n8n, Adobe na nossa mesa</span></li>
+    <li>Plan Mode e Extended Thinking <span class="desc">Planejar antes de executar; pensar mais fundo</span></li>
+    <li>Permissões e settings.json <span class="desc">allow / deny / ask — o nosso Workaround Classifier</span></li>
+    <li>Sessões, checkpoints e rewind <span class="desc">--continue, --resume e desfazer com segurança</span></li>
+    <li>Modo headless e SDK <span class="desc">claude -p, automação, JSON — o Code como peça de pipeline</span></li>
+    <li>Claude Code na web e ambientes <span class="desc">A superfície onde este guia está sendo gerado</span></li>
+    <li>Integração com GitHub <span class="desc">Actions, revisão de PR e monitoramento de eventos</span></li>
+    <li>IDE, atalhos e modo Vim <span class="desc">VS Code, JetBrains, teclado</span></li>
+    <li>Ferramentas nativas <span class="desc">Bash, Read, Edit, Glob, Grep, WebSearch, Task…</span></li>
+    <li>Output styles, status line e /fast <span class="desc">Customização de comportamento e velocidade</span></li>
+    <li>/loop e recorrência <span class="desc">O recurso da semana — tarefas em intervalo</span></li>
+    <li>Apêndice A — Mapa do Canivete <span class="desc">Recurso → aplicação direta no MC</span></li>
+    <li>Apêndice B — Régua MC ao operar o Code <span class="desc">D&gt;C&gt;V, LGPD, Firewall OAB na prática</span></li>
+  </ol>
+</section>
+
+<!-- ===================== 1. COMO USAR ===================== -->
+<section class="section">
+  <h2><span class="num">01</span>Como usar este guia</h2>
+  <p class="lead">Este material é um mapa de capacidades. Cada recurso nativo do Claude Code é explicado em três camadas: <strong>o que é</strong>, <strong>como se usa</strong> (comando/sintaxe exata) e <strong>como se aplica ao Meu Cumpadre</strong> com exemplo real. Você não precisa decorar — precisa saber que a ferramenta existe e onde ela encaixa.</p>
+
+  <h3>Legenda dos blocos</h3>
+  <div class="box mc"><span class="tag">◆ Aplicação MC</span> Como o recurso serve à nossa causa, jornada E0–E7 ou doutrina. Exemplos usam coisas que já existem no nosso repositório.</div>
+  <div class="box ok"><span class="tag">✓ Boa prática</span> Forma recomendada de usar — alinhada às convenções MC.</div>
+  <div class="box warn"><span class="tag">▲ Atenção</span> Cuidado operacional, custo de contexto ou pegadinha comum.</div>
+  <div class="box danger"><span class="tag">✕ Linha vermelha</span> Onde uma Proibição Absoluta ou regra inviolável do MC se aplica.</div>
+
+  <h3>A régua antes de tudo</h3>
+  <p>Toda capacidade descrita aqui opera <strong>sob</strong> a hierarquia inviolável do MC. Poder técnico nunca passa por cima da doutrina:</p>
+  <div class="box danger"><span class="tag">✕ Hierarquia inviolável</span><strong>Dignidade &gt; Compliance &gt; Viabilidade.</strong> Nenhum recurso do Claude Code — por mais conveniente — autoriza exercer advocacia (Firewall OAB), prometer prazo de concessão INSS, colocar senha gov.br fora do Bitwarden, ou fabricar dado sem fonte (Proof-First). A ferramenta amplia o operador; não suspende a regra.</div>
+</section>
+
+<!-- ===================== 2. O QUE É ===================== -->
+<section class="section">
+  <h2><span class="num">02</span>O que é o Claude Code</h2>
+  <p class="lead">Claude Code é o agente de engenharia da Anthropic que opera <strong>dentro do seu ambiente</strong> — terminal, IDE, app desktop, web ou GitHub Actions. Diferente de um chat, ele <strong>lê arquivos, edita código, roda comandos e usa ferramentas</strong> em um loop: pensa → age (chama uma ferramenta) → observa o resultado → repete, até concluir a tarefa.</p>
+
+  <h3>Onde ele roda (superfícies nativas)</h3>
+  <table>
+    <tr><th>Superfície</th><th>Como se acessa</th><th>Uso típico no MC</th></tr>
+    <tr><td>Terminal (CLI)</td><td><code>claude</code> na pasta do projeto</td><td>Mesa de trabalho do Founder em TALÃO</td></tr>
+    <tr><td>App Desktop (Mac/Win)</td><td>Aplicativo Claude</td><td>Sessões longas de cunhagem</td></tr>
+    <tr><td>Web</td><td>claude.ai/code</td><td>Superfície onde este guia foi gerado</td></tr>
+    <tr><td>Extensão de IDE</td><td>VS Code / JetBrains</td><td>Backend NestJS do Igor</td></tr>
+    <tr><td>GitHub Actions</td><td>workflow CI</td><td>Revisão automática de PR</td></tr>
+  </table>
+
+  <h3>O modelo mental: agente, não autocomplete</h3>
+  <p>O Code decide <em>quais</em> ferramentas chamar e em que ordem. Ele pode rodar várias ferramentas independentes ao mesmo tempo, delegar sub-tarefas a subagentes, e parar para pedir confirmação em ações arriscadas. Tudo isso é configurável — e é exatamente o que este guia destrincha.</p>
+
+  <div class="box mc"><span class="tag">◆ Aplicação MC</span> No MC o Claude Code é a instância <strong>Code TALÃO</strong> (Arquiteto + Executor), operada exclusivamente pelo Founder Alessandro (cabeça única #50.2). Beto <strong>não</strong> opera Code/git/TALÃO (Errata #10). O Code escreve no Cérebro 1 (Documentação) livremente, mas só escreve no Vault (Cérebro 2) sob gate "aprovado para vault" (ADR-011).</div>
+</section>
+
+<!-- ===================== 3. CLAUDE.md ===================== -->
+<section class="section">
+  <h2><span class="num">03</span>CLAUDE.md — a memória do projeto</h2>
+  <p class="lead">O <code>CLAUDE.md</code> é um arquivo que o Claude Code lê automaticamente no início de cada sessão e injeta como instrução de sistema. É a memória persistente do projeto — regras, convenções, vocabulário, proibições. <strong>O MC já vive disso:</strong> o nosso <code>CLAUDE.md</code> carrega D&gt;C&gt;V, Firewall OAB, precificação corrente e as Proibições Absolutas.</p>
+
+  <h3>Hierarquia de memória (do mais amplo ao mais específico)</h3>
+  <table>
+    <tr><th>Nível</th><th>Arquivo</th><th>Escopo</th></tr>
+    <tr><td>Usuário</td><td><code>~/.claude/CLAUDE.md</code></td><td>Vale para todos os seus projetos</td></tr>
+    <tr><td>Projeto</td><td><code>./CLAUDE.md</code> (raiz)</td><td>Compartilhado no repo, versionado em git</td></tr>
+    <tr><td>Local</td><td><code>./CLAUDE.local.md</code></td><td>Seu, não versionado (preferências pessoais)</td></tr>
+    <tr><td>Subpasta</td><td><code>./pasta/CLAUDE.md</code></td><td>Carregado ao trabalhar naquela subárvore</td></tr>
+  </table>
+
+  <h3>Imports com @</h3>
+  <p>Um <code>CLAUDE.md</code> pode puxar outros arquivos com <code>@caminho/arquivo.md</code>, mantendo o arquivo principal enxuto:</p>
+  <pre>Veja as convenções de backend em @docs/convencoes-nestjs.md
+Regras de custódia: @03-GOVERNANCA/ADR-009a.md</pre>
+
+  <h3>Editar a memória</h3>
+  <p>Use o comando <code>/memory</code> para abrir e editar os arquivos de memória, ou comece uma frase com <code>#</code> que o Code pergunta em qual CLAUDE.md gravar aquilo. <code>/init</code> gera um CLAUDE.md inicial analisando o codebase.</p>
+
+  <div class="box mc"><span class="tag">◆ Aplicação MC</span> Nosso <code>CLAUDE.md v3.0</code> é o coração doutrinário. Ele passou pelo refactor enxuto (Fase 3) e aponta para o Vault como fonte de verdade. <strong>Refatorar o CLAUDE.md é cunhagem fundacional → exige Rito R2</strong> (Founder + C3.1 + Anciã). Não se mexe nele em fluxo operacional comum.</div>
+  <div class="box warn"><span class="tag">▲ Atenção</span> CLAUDE.md inteiro entra no contexto toda sessão. Mantê-lo enxuto (como já fizemos) preserva Context Budget. Detalhe vai para o Vault e entra por import/ponteiro, não inline.</div>
+</section>
+
+<!-- ===================== 4. SLASH COMMANDS ===================== -->
+<section class="section">
+  <h2><span class="num">04</span>Comandos de barra nativos</h2>
+  <p class="lead">Comandos de barra (<code>/comando</code>) são ações rápidas digitadas no prompt. Os nativos controlam a sessão, o contexto, o modelo, permissões e integrações. Abaixo, o catálogo dos principais.</p>
+
+  <h3>Sessão e contexto</h3>
+  <table>
+    <tr><th>Comando</th><th>O que faz</th></tr>
+    <tr><td><code>/clear</code></td><td>Zera o contexto da conversa (recomeça limpo)</td></tr>
+    <tr><td><code>/compact</code></td><td>Resume o histórico para liberar contexto sem perder o fio</td></tr>
+    <tr><td><code>/resume</code></td><td>Retoma uma sessão anterior pela lista</td></tr>
+    <tr><td><code>/export</code></td><td>Exporta a conversa atual</td></tr>
+    <tr><td><code>/cost</code></td><td>Mostra uso de tokens/custo da sessão</td></tr>
+    <tr><td><code>/status</code></td><td>Estado da sessão, conta, conexões</td></tr>
+  </table>
+
+  <h3>Configuração e ambiente</h3>
+  <table>
+    <tr><th>Comando</th><th>O que faz</th></tr>
+    <tr><td><code>/config</code></td><td>Abre as configurações (tema, modelo, etc.)</td></tr>
+    <tr><td><code>/model</code></td><td>Troca o modelo (Opus / Sonnet / Haiku)</td></tr>
+    <tr><td><code>/fast</code></td><td>Liga/desliga o modo rápido (Opus com saída acelerada)</td></tr>
+    <tr><td><code>/permissions</code></td><td>Gerencia regras de permissão (allow/deny/ask)</td></tr>
+    <tr><td><code>/add-dir</code></td><td>Adiciona outra pasta ao escopo de trabalho</td></tr>
+    <tr><td><code>/vim</code></td><td>Liga o modo de edição estilo Vim no prompt</td></tr>
+    <tr><td><code>/doctor</code></td><td>Diagnostica a instalação e a saúde do ambiente</td></tr>
+  </table>
+
+  <h3>Memória, extensões e integrações</h3>
+  <table>
+    <tr><th>Comando</th><th>O que faz</th></tr>
+    <tr><td><code>/init</code></td><td>Gera um CLAUDE.md analisando o codebase</td></tr>
+    <tr><td><code>/memory</code></td><td>Edita os arquivos de memória (CLAUDE.md)</td></tr>
+    <tr><td><code>/agents</code></td><td>Cria e gerencia subagentes</td></tr>
+    <tr><td><code>/mcp</code></td><td>Lista e gerencia servidores MCP conectados</td></tr>
+    <tr><td><code>/hooks</code></td><td>Configura hooks de ciclo de vida</td></tr>
+    <tr><td><code>/review</code></td><td>Revisa um pull request</td></tr>
+    <tr><td><code>/login</code> · <code>/logout</code></td><td>Autenticação da conta</td></tr>
+    <tr><td><code>/help</code></td><td>Ajuda e lista de comandos</td></tr>
+    <tr><td><code>/bug</code> · <code>/feedback</code></td><td>Reporta problema / envia feedback à Anthropic</td></tr>
+  </table>
+
+  <h3>Contexto, planejamento e automação</h3>
+  <table>
+    <tr><th>Comando</th><th>O que faz</th></tr>
+    <tr><td><code>/context</code></td><td>Mostra o que está ocupando a janela de contexto</td></tr>
+    <tr><td><code>/recap</code></td><td>Resume o trabalho até aqui sem limpar o contexto</td></tr>
+    <tr><td><code>/usage</code></td><td>Uso de tokens e rastreio de custo</td></tr>
+    <tr><td><code>/plan</code></td><td>Entra no Plan Mode (exploração read-only)</td></tr>
+    <tr><td><code>/effort</code></td><td>Ajusta o orçamento de raciocínio (low/medium/high)</td></tr>
+    <tr><td><code>/branch</code></td><td>Bifurca a sessão atual em uma nova</td></tr>
+    <tr><td><code>/batch</code></td><td>Decompõe uma mudança grande em tarefas paralelas</td></tr>
+    <tr><td><code>/tasks</code> · <code>/background</code></td><td>Lista trabalho de subagentes / roda a sessão em segundo plano</td></tr>
+    <tr><td><code>/schedule</code> · <code>/loop</code> · <code>/goal</code></td><td>Tarefa recorrente · repetir em intervalo · rodar até cumprir condição</td></tr>
+    <tr><td><code>/plugin</code></td><td>Instala e gerencia plugins</td></tr>
+    <tr><td><code>/desktop</code> · <code>/teleport</code></td><td>Passa a sessão para o Desktop / puxa sessão web ou iOS para o terminal</td></tr>
+  </table>
+
+  <div class="box mc"><span class="tag">◆ Aplicação MC</span> Note que <strong>as nossas skills aparecem como comandos de barra</strong>: <code>/diario</code>, <code>/watchdog</code>, <code>/status-caso</code>, <code>/novo-cliente</code>, <code>/squad-r3</code>. Quando o operador digita <code>/watchdog</code>, está acionando a skill homônima (capítulo 6).</p></div>
+  <div class="box warn"><span class="tag">▲ Atenção</span> A lista exata pode variar com a versão do Code. Em caso de dúvida, <code>/help</code> sempre mostra o que existe na sua instalação — não chute um comando.</div>
+</section>
+
+<!-- ===================== 5. CONTEXTO ===================== -->
+<section class="section">
+  <h2><span class="num">05</span>Gerenciamento de contexto</h2>
+  <p class="lead">O Claude tem uma janela de contexto finita. Conforme a conversa cresce, ela enche. Gerenciar contexto é manter o agente afiado: nem esquecido, nem afogado em ruído.</p>
+
+  <h3>Os três mecanismos</h3>
+  <ul>
+    <li><strong>Auto-compactação:</strong> quando o contexto fica cheio, o Code resume automaticamente o histórico e continua — você não precisa parar a tarefa no meio.</li>
+    <li><strong><code>/compact</code> manual:</strong> você força o resumo num ponto bom (fim de uma sub-tarefa), preservando as conclusões e descartando o ruído.</li>
+    <li><strong><code>/clear</code>:</strong> recomeço total — use ao trocar completamente de assunto.</li>
+  </ul>
+
+  <div class="box mc"><span class="tag">◆ Aplicação MC</span> O nosso CLAUDE.md define <strong>Context Budget</strong>: sessão em 30–40%, <code>/compact</code> ou <code>/clear</code> quando passar de 60%, e fluxo <strong>Spec-Driven</strong> (Research → PRD → Spec → Implement em <em>sessões separadas</em>). Isso evita que um caso de cidadão e uma cunhagem de ADR contaminem o mesmo contexto.</div>
+  <div class="box ok"><span class="tag">✓ Boa prática</span> Dê <code>/compact</code> ao terminar uma etapa da jornada (ex.: fechou a triagem E2, vai para a coleta E3) e <code>/clear</code> ao começar um caso novo. Contexto limpo = menos alucinação, mais Proof-First.</div>
+</section>
+
+<!-- ===================== 6. SKILLS ===================== -->
+<section class="section">
+  <h2><span class="num">06</span>Skills (Agent Skills)</h2>
+  <p class="lead">Skills são pacotes de conhecimento e procedimento que o Code carrega <strong>sob demanda</strong>. Cada skill é uma pasta com um <code>SKILL.md</code> que tem um <em>frontmatter</em> (nome + descrição + frases-gatilho) e o corpo com instruções. O Code lê só a descrição até precisar — e aí carrega a skill inteira. É a forma nativa de industrializar um procedimento repetível.</p>
+
+  <h3>Anatomia de uma skill</h3>
+  <pre>---
+name: watchdog
+description: Monitora todos os casos na fase E5 (aguardando análise
+  INSS) e gera relatório de pendências e alertas.
+  Frases-gatilho: "watchdog", "casos pendentes INSS", "fase E5".
+---
+# instruções detalhadas do procedimento...</pre>
+
+  <h3>Como se aciona</h3>
+  <p>Três formas: (1) digitando <code>/watchdog</code> como comando; (2) escrevendo uma frase-gatilho ("o que está parado no INSS?"); (3) o Code reconhece o padrão da descrição e a invoca sozinho.</p>
+
+  <div class="box mc"><span class="tag">◆ Aplicação MC</span> O MC já tem uma <strong>família de skills modulares</strong> — cada uma é um pedaço do que antes era o monólito "orquestrador-mestre" (aposentado em 2026-06-03 para não ser segunda fonte de verdade):
+  <ul>
+    <li><code>/novo-cliente</code> · onboarding E1 com DIB Urgency para B31/B91/B42/B43</li>
+    <li><code>/status-caso</code> e <code>/watchdog</code> · acompanhamento E5</li>
+    <li><code>/squad-r2</code> · rito de cunhagem fundacional (ADR/Princípio)</li>
+    <li><code>/squad-r3</code> · parecer adversarial de compliance (OAB/LGPD)</li>
+    <li><code>/mc-pre-selagem</code> · gate antes de escrever no Vault</li>
+    <li><code>/mc-dossie-proof-first</code> · linha de evidência com fonte:linha + SHA-256</li>
+    <li><code>/diario</code>, <code>/handoff-juridico</code>, <code>/checklist-docs</code>…</li>
+  </ul></div>
+  <div class="box ok"><span class="tag">✓ Boa prática</span> Uma boa <code>description</code> com frases-gatilho é o que faz o Code escolher a skill certa na hora certa. É engenharia de descoberta — não é decoração.</div>
+</section>
+
+<!-- ===================== 7. COMANDOS CUSTOMIZADOS ===================== -->
+<section class="section">
+  <h2><span class="num">07</span>Comandos de barra customizados</h2>
+  <p class="lead">Além das skills, você pode criar comandos de barra simples como arquivos Markdown em <code>.claude/commands/</code>. O nome do arquivo vira o comando. É o jeito leve de salvar um prompt que você repete.</p>
+
+  <h3>Como criar</h3>
+  <p>Crie <code>.claude/commands/revisar-contrato.md</code>:</p>
+  <pre>---
+description: Revisa uma minuta contra o Firewall OAB
+---
+Revise a minuta a seguir contra as Proibições Absolutas do MC,
+em especial promessa de resultado e success fee no Φ₁.
+Minuta: $ARGUMENTS</pre>
+  <p>Aí no prompt: <code>/revisar-contrato minuta v2.4</code>. O texto após o comando substitui <code>$ARGUMENTS</code>.</p>
+
+  <h4>Comando vs. Skill — qual usar?</h4>
+  <table>
+    <tr><th>Use comando customizado</th><th>Use skill</th></tr>
+    <tr><td>Um prompt curto e fixo que você repete</td><td>Procedimento com várias etapas, regras e arquivos de apoio</td></tr>
+    <tr><td>Sem lógica de descoberta automática</td><td>Quer que o Code invoque sozinho por contexto</td></tr>
+  </table>
+  <div class="box mc"><span class="tag">◆ Aplicação MC</span> O MC optou por <strong>skills</strong> para quase tudo (procedimentos doutrinários ricos, com gates e frases-gatilho). Comandos customizados servem para atalhos simples — ex.: um <code>/teste-zilda</code> que aplica o Teste Zilda-STF a um texto colado.</div>
+</section>
+
+<!-- ===================== 8. SUBAGENTES ===================== -->
+<section class="section">
+  <h2><span class="num">08</span>Subagentes</h2>
+  <p class="lead">Um subagente é um Claude separado, com seu próprio contexto, ferramentas e (opcionalmente) modelo, que o agente principal aciona para uma sub-tarefa. Ele trabalha isolado e devolve só a conclusão — sem entupir o contexto principal com a investigação inteira.</p>
+
+  <h3>Para que servem</h3>
+  <ul>
+    <li><strong>Contexto fresco e sem viés:</strong> um revisor que não viu você escrever o texto julga melhor.</li>
+    <li><strong>Paralelismo:</strong> várias buscas independentes ao mesmo tempo.</li>
+    <li><strong>Economia de contexto:</strong> a varredura pesada fica no subagente; volta só o resultado.</li>
+  </ul>
+
+  <h3>Como se define</h3>
+  <p>Um arquivo em <code>.claude/agents/nome.md</code> com frontmatter. Gerencie via <code>/agents</code>.</p>
+  <pre>---
+name: sister-ancia
+description: Revisor adversarial doutrinário. Aciona em contexto
+  FRESCO para revisar artefatos/diffs MC contra drift doutrinário.
+tools: Read, Grep, Glob, Bash
+model: opus
+---
+# os 9 eixos de revisão adversarial...</pre>
+
+  <div class="box mc"><span class="tag">◆ Aplicação MC</span> A <strong>Sister Anciã</strong> é exatamente isso: subagente real (<code>model: opus</code>, ferramentas só de leitura) que revisa artefatos <strong>antes de selar</strong> contra os 9 eixos — D&gt;C&gt;V, Firewall OAB, Proof-First, LGPD, Inversão Cósmica, valores superados, confusão de instância, disciplina de gate/versão. Ela <strong>reporta gaps, não conserta</strong>. Temos também o <code>mc-grok-context-engineer</code>. A skill <code>/mc-pre-selagem</code> orquestra a Anciã + o mc-lint num veredito único.</div>
+  <div class="box ok"><span class="tag">✓ Boa prática</span> Subagente para revisão deve ter contexto fresco e ferramentas mínimas (só leitura). É o desenho da Anciã: ela não pode escrever, só apontar.</div>
+</section>
+
+<!-- ===================== 9. HOOKS ===================== -->
+<section class="section">
+  <h2><span class="num">09</span>Hooks</h2>
+  <p class="lead">Hooks são comandos shell que o Claude Code executa <strong>automaticamente</strong> em momentos do ciclo de vida — não dependem de o agente "lembrar". É a diferença entre <em>orientar</em> e <em>enforçar</em>: o hook é determinístico.</p>
+
+  <h3>Eventos disponíveis</h3>
+  <table>
+    <tr><th>Evento</th><th>Quando dispara</th></tr>
+    <tr><td><code>PreToolUse</code></td><td>Antes de uma ferramenta rodar (pode bloquear)</td></tr>
+    <tr><td><code>PostToolUse</code></td><td>Depois de uma ferramenta rodar</td></tr>
+    <tr><td><code>UserPromptSubmit</code></td><td>Quando você envia um prompt</td></tr>
+    <tr><td><code>Stop</code></td><td>Quando o agente vai encerrar o turno (pode bloquear)</td></tr>
+    <tr><td><code>SessionStart</code></td><td>No início da sessão (ex.: preparar testes)</td></tr>
+    <tr><td><code>SubagentStop</code> / <code>Notification</code></td><td>Fim de subagente / notificações</td></tr>
+  </table>
+
+  <h3>Como se configura</h3>
+  <p>No <code>settings.json</code>, sob <code>"hooks"</code>. Saída do hook com código de erro em modo bloqueante <strong>impede</strong> a ação e devolve a mensagem como feedback.</p>
+  <pre>"hooks": {
+  "Stop": [
+    { "hooks": [
+      { "type": "command",
+        "command": "MC_LINT_MODE=block python3 .claude/hooks/mc-lint.py" }
+    ] }
+  ]
+}</pre>
+
+  <div class="box mc"><span class="tag">◆ Aplicação MC</span> Este é <strong>literalmente o nosso settings.json</strong>. O <code>mc-lint.py</code> roda como <strong>Stop hook em block-mode</strong>: ao fim de cada turno ele varre as linhas adicionadas e <strong>bloqueia o encerramento</strong> se encontrar uma Proibição Absoluta (R$ 1.500 standard, Φ₂ como cobrança, "Juliana Alencar", Autentique, Router-Ethics 9.0…), listando <code>label · arquivo:linha · correção</code>. Temos também o <code>mc-audit.py</code>. É enforcement, não conselho — o gate é mecânico (gate R1, Zona Verde, varre só .md/.txt/.json, sem PII).</div>
+  <div class="box danger"><span class="tag">✕ Linha vermelha</span> O hook é a última cerca. Mas ele é regex de tokens — não substitui a revisão semântica da Anciã nem o gate humano R3 para OAB/LGPD/PII. Camadas, não atalho.</div>
+</section>
+
+<!-- ===================== 10. MCP ===================== -->
+<section class="section">
+  <h2><span class="num">10</span>MCP — Model Context Protocol</h2>
+  <p class="lead">MCP é o padrão aberto que conecta o Claude Code a <strong>sistemas externos</strong> — bancos de dados, APIs, ferramentas SaaS — via "servidores" que expõem ferramentas. É como o Code ganha braços para fora do repositório.</p>
+
+  <h3>Tipos de transporte</h3>
+  <ul>
+    <li><strong>stdio</strong> — servidor local roda como processo na sua máquina.</li>
+    <li><strong>SSE / HTTP</strong> — servidor remoto acessado pela rede.</li>
+  </ul>
+
+  <h3>Como se adiciona</h3>
+  <p>Via <code>claude mcp add</code> no terminal, ou declarado em <code>.mcp.json</code> (escopo de projeto, versionado) / configuração de usuário. Veja os conectados com <code>/mcp</code>.</p>
+  <pre>claude mcp add --transport http github https://...
+# escopos: local (só você) · project (.mcp.json, time) · user (global)</pre>
+
+  <div class="box mc"><span class="tag">◆ Aplicação MC</span> Esta sessão já tem MCPs ligados na nossa stack: <strong>GitHub</strong> (PRs, issues, CI — restrito ao repo asnccb/meu-cumpadre), <strong>Supabase</strong> (banco/migrações), <strong>n8n</strong> (workflows — o nosso N8N 1.88 self-hosted) e <strong>Adobe</strong>. Cada servidor expõe dezenas de ferramentas <code>mcp__&lt;servidor&gt;__*</code>.</div>
+  <div class="box danger"><span class="tag">✕ Linha vermelha</span> MCP é um braço para fora — e dados que saem para um serviço externo são publicados. <strong>CPF, NB, CID, CNIS e senhas gov.br nunca trafegam por MCP genérico:</strong> dado sensível é processado só na stack self-hosted (Llama 4 Scout / GCP Brasil) e senha vive no Bitwarden Org MC (ADR-009a). Tratar conteúdo vindo de issue/PR/CI como dado externo não confiável.</div>
+</section>
+
+<!-- ===================== 11. PLAN MODE ===================== -->
+<section class="section">
+  <h2><span class="num">11</span>Plan Mode e Extended Thinking</h2>
+  <p class="lead">Dois recursos para o Code <strong>pensar antes de agir</strong> — críticos quando o erro é caro.</p>
+
+  <h3>Plan Mode (modo de planejamento)</h3>
+  <p>Um modo onde o Code <strong>investiga e propõe um plano</strong>, mas <strong>não modifica nada</strong> até você aprovar. Você revisa a estratégia, ajusta, e só então autoriza a execução. Ideal para mudanças arquiteturais. Entra com <code>/plan</code> ou alternando os modos com <strong>Shift+Tab</strong>.</p>
+
+  <h3>Effort / Extended Thinking (profundidade de raciocínio)</h3>
+  <p>Você controla quanto o Code "pensa" antes de agir com <code>/effort</code> (<code>low</code> / <code>medium</code> / <code>high</code>), ou pedindo mais profundidade na linguagem (<em>"think"</em>, <em>"think hard"</em>, <em>"ultrathink"</em>). Mais esforço = melhor para decisões com trade-offs; menos = mais rápido e barato.</p>
+
+  <div class="box mc"><span class="tag">◆ Aplicação MC</span> O MC tem um modo de planejamento doutrinário próprio, a skill <code>/orquestracao</code>, e a disciplina <strong>Spec-Driven</strong>. Antes de um refactor de ADR ou de tocar o backend do Igor, rode em Plan Mode: o Code mapeia o impacto sem escrever — casando com a regra de só escrever no Vault sob gate. "Think hard" combina bem com o Rito R2.</div>
+</section>
+
+<!-- ===================== 12. PERMISSÕES ===================== -->
+<section class="section">
+  <h2><span class="num">12</span>Permissões e settings.json</h2>
+  <p class="lead">O Code pede aprovação para ações sensíveis (rodar comandos, editar arquivos). Você modela isso com <strong>regras de permissão</strong> e <strong>modos</strong>, reduzindo cliques sem abrir mão da segurança.</p>
+
+  <h3>As três regras</h3>
+  <table>
+    <tr><th>Regra</th><th>Efeito</th></tr>
+    <tr><td><code>allow</code></td><td>Roda sem perguntar</td></tr>
+    <tr><td><code>deny</code></td><td>Bloqueia sempre (cerca de proteção)</td></tr>
+    <tr><td><code>ask</code></td><td>Pergunta antes (padrão)</td></tr>
+  </table>
+
+  <h3>Onde vive</h3>
+  <p><code>.claude/settings.json</code> (projeto, versionado) e <code>.claude/settings.local.json</code> (local, não versionado). Edite via <code>/permissions</code>.</p>
+  <pre>"permissions": {
+  "allow": [ "Bash(git status)", "Bash(git diff*)",
+             "Bash(git push origin main)" ],
+  "deny":  [ "Bash(git reset --hard*)", "Bash(rm -rf*)",
+             "Bash(git push --force origin main)" ]
+}</pre>
+
+  <div class="box mc"><span class="tag">◆ Aplicação MC</span> Esse é o <strong>nosso settings.json real</strong> (código MC-MB-063, "Workaround Classifier · permissions explícitas"). Liberamos git de leitura e push controlado; <strong>negamos por padrão</strong> os destrutivos: <code>git reset --hard</code>, <code>git filter-branch</code>, <code>rm -rf</code>, force-push em main. A cerca <code>deny</code> protege o substrato git (ADR-020) mesmo se algo der errado no raciocínio.</div>
+  <h3>Modos de permissão (Shift+Tab alterna)</h3>
+  <table>
+    <tr><th>Modo</th><th>Comportamento</th></tr>
+    <tr><td><code>default</code></td><td>Pergunta na primeira vez que usa cada ferramenta</td></tr>
+    <tr><td><code>plan</code></td><td>Read-only: explora, não edita</td></tr>
+    <tr><td><code>acceptEdits</code></td><td>Aceita edições de arquivo automaticamente</td></tr>
+    <tr><td><code>dontAsk</code></td><td>Nega o que não estiver pré-aprovado</td></tr>
+    <tr><td><code>bypassPermissions</code></td><td>Pula todos os prompts — só em ambiente isolado</td></tr>
+  </table>
+
+  <h3>Sandbox — a terceira camada</h3>
+  <p>Além de <code>allow/deny</code> (o que o Code <em>tenta</em>) e dos hooks (validação em runtime), existe a <strong>sandbox</strong>: restrição no nível do SO sobre quais arquivos ele lê/escreve e quais domínios acessa.</p>
+  <pre>"sandbox": {
+  "filesystem": { "denyRead": ["~/.ssh/**", "/etc/**"] },
+  "network": { "deniedDomains": ["..."] }
+}</pre>
+
+  <div class="box warn"><span class="tag">▲ Atenção</span> Os modos permissivos (<code>bypassPermissions</code>) só em ambiente isolado/efêmero (como a web). Em TALÃO, mantenha as cercas <code>deny</code> de pé. As três camadas — permissões, hooks, sandbox — são defesa em profundidade, não redundância.</div>
+  <div class="box mc"><span class="tag">◆ Aplicação MC</span> A sandbox é a trava de SO ideal para a regra LGPD: negar leitura de caminhos que possam conter PII fora da stack self-hosted, e restringir domínios de rede ao confiável. Soma-se ao <code>mc-lint</code> (hook) e às cercas <code>deny</code> (permissões).</div>
+</section>
+
+<!-- ===================== 13. SESSÕES ===================== -->
+<section class="section">
+  <h2><span class="num">13</span>Sessões, checkpoints e rewind</h2>
+  <p class="lead">O Code preserva o trabalho entre interações e deixa você voltar atrás com segurança.</p>
+
+  <h3>Continuar e retomar</h3>
+  <ul>
+    <li><code>claude --continue</code> (ou <code>-c</code>) — retoma a sessão mais recente na pasta.</li>
+    <li><code>claude --resume</code> (ou <code>/resume</code>) — escolhe de uma lista de sessões anteriores.</li>
+  </ul>
+
+  <h3>Checkpoints e rewind</h3>
+  <p>O Code cria pontos de checkpoint do estado do código ao longo da sessão, permitindo <strong>desfazer</strong> (rewind) para um estado anterior se uma sequência de edições não deu certo — sem precisar mexer no git manualmente.</p>
+
+  <div class="box mc"><span class="tag">◆ Aplicação MC</span> No ambiente web (onde este guia roda) o container é <strong>efêmero</strong>: o que não for commitado e empurrado se perde quando a sessão expira. Logo, a disciplina é <strong>commitar e dar push</strong> ao concluir — casando com Conventional Commits e o fluxo <code>main → develop → feature/MC-XXX</code>. Checkpoint/rewind é a rede de segurança <em>dentro</em> da sessão; git é a memória <em>entre</em> sessões.</div>
+</section>
+
+<!-- ===================== 14. HEADLESS / SDK ===================== -->
+<section class="section">
+  <h2><span class="num">14</span>Modo headless e SDK</h2>
+  <p class="lead">O Code não precisa de um humano no loop. No modo <strong>headless</strong> (não-interativo) ele roda um prompt e devolve a resposta — pronto para pipelines, scripts e CI.</p>
+
+  <h3>Uso básico</h3>
+  <pre># roda um prompt e sai
+claude -p "resuma as mudanças do último commit"
+
+# saída estruturada para outro programa consumir
+claude -p "liste os arquivos alterados" --output-format json
+
+# encadeado num pipe
+cat erro.log | claude -p "qual a causa raiz?"</pre>
+
+  <h3>SDK / Agent SDK</h3>
+  <p>A mesma engine está disponível como <strong>Claude Agent SDK</strong> (este guia, inclusive, roda sobre ele) para construir agentes customizados em TypeScript/Python — com ferramentas, hooks e MCP programáticos.</p>
+
+  <div class="box mc"><span class="tag">◆ Aplicação MC</span> Casamento natural com o nosso <strong>N8N self-hosted</strong> e o backend NestJS do Igor: um nó pode chamar o Code em headless para uma tarefa determinística (ex.: classificar um documento não-sensível, gerar um checklist). <strong>Mas:</strong> triagem não-sensível ~70% vai no Gemini; sensível (~25%) no Llama 4 Scout self-hosted; o Claude entra na fatia ética (~5%) via MCP. Headless não muda essa divisão de águas LGPD.</div>
+</section>
+
+<!-- ===================== 15. WEB ===================== -->
+<section class="section">
+  <h2><span class="num">15</span>Claude Code na web e ambientes</h2>
+  <p class="lead">A versão web (claude.ai/code) roda o Code em um <strong>container isolado e efêmero</strong> na nuvem, não na sua máquina. É a superfície onde este próprio guia está sendo produzido.</p>
+
+  <h3>Conceitos</h3>
+  <table>
+    <tr><th>Conceito</th><th>O que é</th></tr>
+    <tr><td>Ambiente (environment)</td><td>Config de rede, variáveis e setup do container</td></tr>
+    <tr><td>Política de rede</td><td>Quanto acesso externo o container tem</td></tr>
+    <tr><td>Sessão</td><td>Uma execução; o repo é clonado fresco no início</td></tr>
+    <tr><td>Gatilho (trigger)</td><td>O que iniciou: web, app, GitHub Action…</td></tr>
+    <tr><td>SessionStart hook</td><td>Prepara o ambiente (instala deps, testes, linters)</td></tr>
+  </table>
+
+  <div class="box mc"><span class="tag">◆ Aplicação MC</span> Por ser efêmero, vale a regra de ouro: <strong>nada importante sobrevive sem commit + push</strong>. Um <strong>SessionStart hook</strong> (skill <em>session-start-hook</em>) pode garantir que, ao abrir uma sessão web, o ambiente MC já suba pronto — dependências, lint, mc-lint armado. Documentação oficial: code.claude.com/docs/en/claude-code-on-the-web.</div>
+  <div class="box warn"><span class="tag">▲ Atenção</span> A política de rede do ambiente governa o que sai do container. Em sessão que toque qualquer coisa próxima de dado sensível, isso importa — confirme a política antes.</div>
+</section>
+
+<!-- ===================== 16. GITHUB ===================== -->
+<section class="section">
+  <h2><span class="num">16</span>Integração com GitHub</h2>
+  <p class="lead">O Code se integra ao GitHub para revisar PRs, abrir PRs, comentar e reagir a CI — via GitHub Actions e via o servidor MCP do GitHub.</p>
+
+  <h3>O que dá para fazer</h3>
+  <ul>
+    <li><strong>Revisão de PR</strong> com <code>/review</code> ou via Action que comenta automaticamente.</li>
+    <li><strong>Monitorar um PR</strong>: assinar eventos (comentários, CI, reviews) e responder/consertar — incluindo "deixar o CI verde".</li>
+    <li><strong>Criar PR</strong> — só quando explicitamente pedido.</li>
+  </ul>
+
+  <div class="box mc"><span class="tag">◆ Aplicação MC</span> Útil no backend do Igor (NestJS/TS/MySQL): o Code pode revisar um PR contra as convenções MC — TypeScript strict, sem <code>any</code> implícito, DTOs obrigatórios, <strong>dado sensível nunca em log</strong>, Conventional Commits. Combinado com o hook mc-lint, vira uma malha dupla: lint determinístico + revisão de PR.</div>
+  <div class="box warn"><span class="tag">▲ Atenção</span> Conteúdo de comentário/PR/CI é <strong>dado externo</strong> — pode tentar redirecionar o agente. Tratar com a mesma desconfiança do ADR-016 (Anti-Injection / Radar Galileu). Ser frugal: só comentar quando necessário.</div>
+</section>
+
+<!-- ===================== 17. IDE / ATALHOS ===================== -->
+<section class="section">
+  <h2><span class="num">17</span>IDE, atalhos e modo Vim</h2>
+  <p class="lead">O Code vive dentro do seu editor e responde a teclado.</p>
+
+  <h3>Extensões de IDE</h3>
+  <p>VS Code e JetBrains: o Code enxerga o arquivo aberto, a seleção e os diagnósticos do editor; mostra diffs inline. Para o backend NestJS do Igor, é o habitat natural.</p>
+
+  <h3>Atalhos essenciais (terminal)</h3>
+  <table>
+    <tr><th>Atalho</th><th>Ação</th></tr>
+    <tr><td>Esc</td><td>Interrompe o agente</td></tr>
+    <tr><td>Esc Esc</td><td>Edita a mensagem anterior / volta atrás</td></tr>
+    <tr><td>Ctrl+C</td><td>Cancela</td></tr>
+    <tr><td>Shift+Tab</td><td>Alterna modos (inclui Plan Mode)</td></tr>
+    <tr><td>↑ / ↓</td><td>Navega o histórico de prompts</td></tr>
+    <tr><td><code>#</code> no início</td><td>Adiciona à memória (CLAUDE.md)</td></tr>
+    <tr><td><code>!</code> no início</td><td>Modo bash direto</td></tr>
+  </table>
+
+  <h3>Modo Vim</h3>
+  <p><code>/vim</code> liga edição estilo Vim no campo de prompt (modos normal/insert, navegação por palavras). As teclas são customizáveis em <code>~/.claude/keybindings.json</code>.</p>
+</section>
+
+<!-- ===================== 18. FERRAMENTAS NATIVAS ===================== -->
+<section class="section">
+  <h2><span class="num">18</span>Ferramentas nativas</h2>
+  <p class="lead">Por baixo dos comandos, o Code age através de um conjunto de ferramentas embutidas. Saber quais existem ajuda a entender (e a permissionar) o que ele faz.</p>
+  <table>
+    <tr><th>Ferramenta</th><th>O que faz</th></tr>
+    <tr><td><code>Read</code></td><td>Lê arquivos (texto, imagem, PDF, notebooks)</td></tr>
+    <tr><td><code>Edit</code></td><td>Edição cirúrgica de trecho de arquivo</td></tr>
+    <tr><td><code>Write</code></td><td>Cria/sobrescreve arquivo</td></tr>
+    <tr><td><code>Glob</code></td><td>Encontra arquivos por padrão (<code>**/*.ts</code>)</td></tr>
+    <tr><td><code>Grep</code></td><td>Busca conteúdo por regex (ripgrep)</td></tr>
+    <tr><td><code>Bash</code></td><td>Roda comandos de shell (foreground/background)</td></tr>
+    <tr><td><code>WebSearch</code></td><td>Busca na web</td></tr>
+    <tr><td><code>WebFetch</code></td><td>Lê uma URL específica</td></tr>
+    <tr><td><code>Task</code> / Agent</td><td>Dispara um subagente</td></tr>
+    <tr><td>TodoWrite</td><td>Mantém a lista de tarefas da sessão</td></tr>
+  </table>
+
+  <div class="box mc"><span class="tag">◆ Aplicação MC</span> Proof-First na prática usa essas ferramentas: <code>Grep</code>/<code>Read</code> para citar <strong>arquivo:linha</strong>, <code>WebSearch</code>/<code>WebFetch</code> para fonte verificável, <code>Bash</code> para gerar o <strong>SHA-256</strong> de uma fonte. A skill <code>/mc-dossie-proof-first</code> orquestra exatamente isso. <code>Read</code> de PDF serve para ler peças e normas; <strong>nunca</strong> para ingerir PII de cidadão fora da stack self-hosted.</div>
+</section>
+
+<!-- ===================== 19. OUTPUT STYLES ===================== -->
+<section class="section">
+  <h2><span class="num">19</span>Output styles, status line e /fast</h2>
+  <h3>Output styles</h3>
+  <p>Ajustam o <strong>estilo de comportamento/resposta</strong> do Code para diferentes propósitos (ex.: mais explicativo para ensino, mais conciso para execução). Configuráveis e customizáveis.</p>
+
+  <h3>Status line</h3>
+  <p>A linha de status na base do terminal é customizável (skill <em>statusline-setup</em>) — pode mostrar branch, modelo, contexto usado, ou um indicador próprio.</p>
+
+  <h3>/fast</h3>
+  <p>Liga o <strong>modo rápido</strong>: Opus com saída acelerada (não rebaixa para um modelo menor). Disponível no Opus 4.6/4.7/4.8. Bom para iteração veloz sem perder qualidade.</p>
+
+  <div class="box mc"><span class="tag">◆ Aplicação MC</span> Uma status line MC poderia exibir o <strong>Context Budget</strong> em % (gatilho visual para <code>/compact</code> em 60%) e a branch <code>feature/MC-XXX</code> ativa. <code>/fast</code> acelera trabalho operacional R1; em cunhagem R2/R3, profundidade &gt; velocidade.</div>
+</section>
+
+<!-- ===================== 20. LOOP ===================== -->
+<section class="section">
+  <h2><span class="num">20</span>/loop e recorrência</h2>
+  <p class="lead">O recurso da semana: <code>/loop</code> roda um prompt ou comando de barra <strong>repetidamente, em intervalos</strong>.</p>
+  <pre>/loop &lt;intervalo&gt; &lt;prompt-ou-comando&gt;
+# intervalo opcional (padrão 10m)
+
+/loop 5m /watchdog
+/loop 10m verifique movimentações e me avise se algo mudou</pre>
+  <p>Serve para <strong>monitoramento e polling</strong> — acompanhar um deploy, uma fila, um status. Não use para tarefa pontual.</p>
+  <div class="box mc"><span class="tag">◆ Aplicação MC</span> Encaixe direto na <strong>fase E5 (Watchdog)</strong> da jornada: <code>/loop</code> reexecutando <code>/watchdog</code> para revarrer casos aguardando análise INSS em intervalo regular.</div>
+  <div class="box danger"><span class="tag">✕ Linha vermelha</span> Monitorar movimentação processual é dever (CDC art. 6º III — comunicar sempre). Mas <strong>jamais</strong> deixar o loop "prometer prazo de concessão": análise INSS ~52,67d (LAI SEI 24851867), variável. O loop reporta fato, não promessa.</div>
+</section>
+
+<!-- ===================== APÊNDICE A ===================== -->
+<section class="section">
+  <h2><span class="num">A</span>Apêndice — Mapa do Canivete</h2>
+  <p class="lead">Recurso nativo → aplicação direta no Meu Cumpadre. A lâmina certa para cada tarefa.</p>
+  <table>
+    <tr><th>Recurso</th><th>Aplicação MC</th><th>Já existe?</th></tr>
+    <tr><td>CLAUDE.md</td><td>Doutrina viva: D&gt;C&gt;V, Proibições, precificação</td><td>Sim · v3.0</td></tr>
+    <tr><td>Skills</td><td>/novo-cliente, /watchdog, /squad-r2, /squad-r3, /mc-pre-selagem…</td><td>Sim · família</td></tr>
+    <tr><td>Subagente</td><td>sister-ancia (revisão adversarial 9 eixos)</td><td>Sim</td></tr>
+    <tr><td>Hook (Stop)</td><td>mc-lint block-mode (Proibições) + mc-audit</td><td>Sim</td></tr>
+    <tr><td>Permissões</td><td>Cercas deny: rm -rf, reset --hard, force-push main</td><td>Sim · MB-063</td></tr>
+    <tr><td>MCP</td><td>GitHub, Supabase, n8n, Adobe</td><td>Sim</td></tr>
+    <tr><td>Plan Mode</td><td>/orquestracao · pré-refactor de ADR · Spec-Driven</td><td>Parcial</td></tr>
+    <tr><td>/loop</td><td>Watchdog E5 recorrente</td><td>Disponível</td></tr>
+    <tr><td>Headless/SDK</td><td>Nós N8N · tarefas determinísticas não-sensíveis</td><td>A explorar</td></tr>
+    <tr><td>GitHub Actions</td><td>Revisão de PR do backend NestJS</td><td>A explorar</td></tr>
+    <tr><td>SessionStart hook</td><td>Subir ambiente web MC pronto</td><td>A explorar</td></tr>
+    <tr><td>Status line</td><td>Context Budget % + branch</td><td>A explorar</td></tr>
+  </table>
+</section>
+
+<!-- ===================== APÊNDICE B ===================== -->
+<section class="section">
+  <h2><span class="num">B</span>Apêndice — Régua MC ao operar o Code</h2>
+  <p class="lead">Sete travas que valem para <strong>qualquer</strong> recurso deste guia. A ferramenta amplia o operador; nunca suspende a regra.</p>
+  <ol>
+    <li><strong>D &gt; C &gt; V</strong> — dignidade do hipervulnerável acima de tudo.</li>
+    <li><strong>Firewall OAB</strong> — MC é atividade-meio. Nunca exercer advocacia, prometer resultado, fazer match comercial. Atividade-fim = Dra. Juliana Pereira de Melo.</li>
+    <li><strong>Nunca prometer prazo de concessão INSS</strong> — "48h" = sprint interno E0→E4 com doc completa; análise INSS é variável.</li>
+    <li><strong>Proof-First</strong> — zero dado fabricado; fonte verificável (Lei + Evidência + SHA-256) ou <code>[FONTE PENDENTE]</code>. Cross-referenciar sempre.</li>
+    <li><strong>LGPD</strong> — CPF/NB/CID/CNIS só na stack self-hosted; senha gov.br só no Bitwarden Org MC. Nunca por MCP genérico, nunca em log, nunca no ClickUp.</li>
+    <li><strong>Gate de Vault</strong> — Code escreve no Cérebro 1 livre; no Vault (Cérebro 2) só com "aprovado para vault". OAB/LGPD/PII ⇒ Rito R3 (Juliana).</li>
+    <li><strong>Cercas deny de pé</strong> — destrutivos bloqueados; commit+push para sobreviver ao container efêmero.</li>
+  </ol>
+  <div class="box mc"><span class="tag">◆ Síntese</span> O Claude Code é o canivete. A doutrina MC é a mão que o segura. <strong>Lucro é combustível. Causa é destino. Jogo é infinito.</strong></div>
+  <p class="small">MC-GUIA-ClaudeCode-Canivete-v1_0-2026-0605 · Documento de capacitação · Zona Verde (método/ferramenta, sem PII) · Gate R1 · Fonte de verdade sobre recursos: documentação oficial code.claude.com/docs. Recursos e comandos podem variar com a versão do Claude Code — confirme com /help.</p>
+</section>

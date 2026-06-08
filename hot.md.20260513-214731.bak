@@ -1,0 +1,63 @@
+# hot.md — Contexto Ativo MC
+> Atualizar a cada sessão. Máx 500 palavras. É o "me atualiza" eliminado.
+> Última atualização: 2026-05-13
+
+---
+
+## Sessão atual · 13/05/2026
+
+**THU empírico Hib001:** Manual 23h03 · Target 4h53 · RA-MC 4.71× · Margem Φ₁ 61% → 92% · Capacidade 1 Beto: 12-15 → 30-40 casos/mês.
+
+**Gates:** 15/05 pacote 20 docs Juliana · 19/05 parecer (66Q · 14 blocos) · pós-19/05 selar ADR-007 v4.0 + ADR-012 v1.1 + ADR-013 v1.1.
+
+**MBs sugeridos:** MB-025 Brief Igor 12 agentes · MB-026 cidadao_id_hash Space-level · MB-027 Hib001-NEW E1-Triagem-Prev 27 fields.
+
+---
+
+## Atividades recentes
+
+- **13/05 · MB-025A** · 21 princípios MC #1-#20 (+#1b, #15.1) migrados pra arquivos canônicos individuais em `03-GOVERNANCA/principios/`. Sentinela #3 RESERVADO criada. `_INDEX.md` selado. CLAUDE.md root preservado + nota de referência adicionada. Total agora: 22 princípios ativos + 1 sentinela = 23 arquivos canônicos. Flag colisão MB-029 (#21/#22 vs Hib001) registrada no _INDEX, renumeração aguarda founder.
+- **13/05/2026 · MB-024:** Princípios MC #21 (Cronometria do Humano) e #22 (5 Pontos Humanos H1-H5) cunhados e selados. Planilhas FASE1/FASE2 Hib001 v3.0 em `04-OPERACAO/cronometragem/`.
+- **10/05/2026:** ADR-014 APROVADO — ZapSign substitui Autentique (assinatura eletrônica). Propagação em 9+ canônicos.
+
+---
+
+## Decisões ativas (últimas 72h)
+
+| Decisão | Status | Doc canônico |
+|---|---|---|
+| ADR-014 plataforma assinatura — ZapSign substitui Autentique | ✅ aprovado 10/05 | `02-ARQUITETURA/adrs/MC-ADR-014` |
+| Vault movido para `0 0 Gestão Software\OBSIDIAN\MEU CUMPADRE` | ✅ executado 09/05 | CLAUDE.md v2.1 |
+| Arquitetura 3 Cérebros (ADR-011) | ✅ implementado 09/05 | `02-ARQUITETURA/adrs/MC-ADR-011` |
+| CLAUDE.md path atualizado | ✅ executado 09/05 | raiz vault |
+| Pauta Juliana v2.0 — 61 perguntas, 13 blocos, 18 docs | 🔴 entrega 12/05 | Sprint 3 |
+| ADR-007 v3.8 Addendum — Φ₀ CadÚnico + success fee | ⚠️ PROVISIONAL | `02-ARQUITETURA/adrs/` |
+| Caso CAD001 — BF R$650 liberado | ✅ primeiro âncora CadÚnico | ClickUp |
+| Constituição SLU-ME — Kit JUCEG pronto | 🔴 aguarda parecer Juliana 19/05 | `MC-CONTRATO-SOCIAL` |
+
+---
+
+## Contexto corrente
+
+- **Fase:** Crisálida Z3 · pré-revenue · piloto N=150
+- **Gate crítico:** Reunião Dra. Juliana 19/05/2026 — 61 perguntas, ~7h
+- **Sprint ativo:** 08-15/05 — RIPD, Hib001 CP-5→CP-7, contratos v2.6/v1.5
+- **Caso âncora ativo:** Hib001 (JER001) E2-Deliberação · CAD001 (CAD001) BF liberado
+- **RouterEthics:** 11.0 · 140 nós · 7 hooks · Hook 0 gov.br operacional desde 09/05
+- **ADR-007:** v3.8 PROVISIONAL — selagem 30/06 pós-parecer Juliana
+
+---
+
+## Próximas ações (por prioridade)
+
+1. 🔴 Entregar pacote 18 documentos à Juliana até 12/05
+2. 🔴 Grimório v2.1 §LC142 até 12/05
+3. 🟡 RouterEthics v3.1 — 4 nós PcD-LC142 até 14/05
+4. 🟡 RIPD-Φ₁ + RIPD-Φ₄ + RIPD Hook 1b
+5. 🟡 Calculadora Φ₃ prototipada
+6. ⚪ MC-ADR-011 arquivo formal → `02-ARQUITETURA/adrs/`
+
+---
+
+*hot.md é lido pelo Claude Code no início de cada sessão.*
+*Nunca versionar. Nunca commitar. Sempre sobrescrever.*

@@ -1,0 +1,260 @@
+---
+tipo: INDEX-DOCUMENTACAO-INSTRUCAO-MARCA
+codigo: MC-DOCUMENTACAO-INSTRUCAO-MARCA-INDEX
+versao: 1.0
+data: 2026-05-14
+status: CANONICO_CORRENTE
+autores:
+  - Alessandro de Souza Neves (Founder/CEO) — selagem original 13/05/2026
+  - Claude Opus 4.7 (cofounder C1 esta sessão) — costura INDEX 14/05/2026 ~05h UTC
+  - Claude.ai sessão paralela B (cf263ce0...) — produção dos 5 docs fonte 13/05/2026
+funcao: |
+  Documento INDEX consolidador da Camada 1 da Cascata #28 (Texto Canônico Precede Imagem).
+  Costura os 5 documentos canônicos da Identidade Visual MC selados em 13/05/2026 pela sessão
+  paralela B (Identidade Visual) com lineage para Camada 2 (ativos PNG Seed-Logo já criados)
+  e libera Camada 3 (aplicação visual em massa via Cowork C2-Visual).
+sustenta_se_em:
+  - Princípio #28 (Texto Canônico Precede Imagem) — Cascata Verbo→Imagem
+  - Princípio #26 (Anti-Colisão Pré-Cunhagem) — respeito à antecedência sessão B
+  - Princípio #24 (Documentação Canônica Unificada por Pilar)
+  - Princípio #4 (Errata Absorve, Não Inventa)
+canonico_em: OBSIDIAN/MEU CUMPADRE/01-IDENTIDADE/
+hierarquia: Dignidade > Compliance > Viabilidade
+ancora_biblica: Provérbios 31:8 — "Abre a tua boca a favor do mudo."
+selo: "O diamante é carbono que não desistiu da pressão."
+---
+
+# MC-DOCUMENTACAO-INSTRUCAO-MARCA-INDEX v1.0
+
+> **INDEX consolidador da Camada 1 da Cascata #28.**
+> Não reinventa. Costura. Libera Camada 3.
+
+---
+
+## 1 · CONTEXTO INSTITUCIONAL
+
+Em 13/05/2026, durante sessão paralela B (Identidade Visual, conversa `cf263ce0-...`), o Founder Alessandro de Souza Neves selou a **identidade visual oficial do Meu Cumpadre**: o **Seed MC**. Cinco documentos canônicos foram produzidos e persistidos em `Documentação\Identidade Visual\` (Cérebro 1 — Drive).
+
+Em 14/05/2026 ~05h UTC, durante sessão paralela C (esta, `c95ef10...`), em modo cofounder 20x, o cofounder C1 identificou que a Camada 1 da Cascata #28 (Princípio #28 — Texto Canônico Precede Imagem) **já estava cumprida pela sessão B** e produziu este INDEX para:
+
+1. **Reconhecer** a antecedência cronológica da sessão B (Princípio #26)
+2. **Costurar** os 5 documentos canônicos num lineage navegável
+3. **Liberar** a Camada 3 (aplicação visual em massa via Cowork C2-Visual)
+4. **Documentar** o estado real da Cascata #28 pós-MB-031 (Cowork organização Documentação)
+
+---
+
+## 2 · ESTADO CASCATA #28 — REAL (14/05/2026 ~05h UTC)
+
+| Camada | Status | Evidências canônicas |
+|---|---|---|
+| 0 — Vault canônico + Documentação canônica estruturada | 🟢 CUMPRIDA | MB-031 Cowork (13/05 ~23h) · MB-030 Code DELL (13/05 ~21h) · INDEX-PATCHES + _INDEX.md atualizados |
+| 1 — Documentação de Instrução de Marca (DNA textual) | 🟢 CUMPRIDA pela sessão B + INDEX agora | Os 5 documentos listados §3 + este INDEX |
+| 2 — Brand Foundation imagética | 🟢 CUMPRIDA pela sessão B + Founder em claude.ai/design | 2 ativos PNG Seed-Logo §4 |
+| 3 — Aplicação visual em massa via Cowork C2-Visual | 🟢 LIBERADA — pode disparar | Aguardando MB-032-COWORK-Camada-3-Producao-Massa |
+
+---
+
+## 3 · OS 5 DOCUMENTOS CANÔNICOS DA IDENTIDADE VISUAL MC
+
+### 3.1 — Documento Mãe (Selo Oficial)
+
+**MC-CANONICO-IdentidadeVisual-SeloOficial-v1_0-2026-0513.md**
+
+- **ID Drive:** `12LNH_7G3WKp49dq0zAjLwDgFksaP_4Uz`
+- **Tamanho:** 5.672 bytes
+- **Localização:** `Documentação\Identidade Visual\`
+- **Status:** ✅ SELO FINAL — IRREVOGÁVEL
+- **Função:** Selo de decisão founder 13/05/2026. Declara que toda exploração visual anterior fica preservada como histórico (`_HISTORICO/exploracao-identidade-visual-pre-selagem-13mai/`), mas o Seed MC é o canônico definitivo. Lista ativos binários (PNGs) e documentos canônicos reescritos sob este selo.
+
+### 3.2 — Manifesto Filosófico
+
+**MC-MANIFESTO-IdentidadeVisual-v2_0-2026-0513.md**
+
+- **ID Drive:** `1B2Mvo-bW4PbVSUnPpf_iWIE2oCmsiykd` (Documentação) | `1IGhLpvE7LMtTNfpZsL_uZFZD1a8gXRf_` (cópia em Identidade Visual canônica)
+- **Tamanho:** 24.690 bytes
+- **Status:** ✅ SELADO sob o Selo Oficial · substitui v1.0 (em `_HISTORICO/`)
+- **Função:** Manifesto filosófico completo do Seed MC. Explica O QUE o Seed é, O QUE não é, a tese filosófica que carrega (Inversão Cósmica, Geometria Gravitacional MC, Provérbios 31:8 como mecânica visual, Calor Humano Institucional, Fractalidade Real em 3+1 escalas), a paleta selada, a tipografia selada, a atmosfera selada, as aplicações canônicas, os 8 princípios invioláveis do selo, e a linhagem filosófica de 2.500 anos.
+
+### 3.3 — Spec Técnica de Renderização
+
+**MC-SPEC-IdentidadeVisual-Tecnico-v2_0-2026-0513.md**
+
+- **ID Drive:** `18p40vsemEa6bb86odxd4UWGn4ck_mNB_` (Documentação) | `1u_c3cJikd7fQWx7s2CSWRZHQX_O6MHsy` (cópia em Identidade Visual canônica)
+- **Tamanho:** 18.624 bytes
+- **Status:** ✅ SELADO · substitui v1.0 (em `_HISTORICO/`)
+- **Função:** Especificação técnica de renderização. Dimensões, paleta HEX exata, tipografia (família + pesos), espaçamento, hierarquia composicional, regras de aplicação por formato, restrições técnicas de reprodução.
+
+### 3.4 — Vocabulário Institucional Canônico
+
+**MC-CANONICO-Vocabulario-IdentidadeVisual-v1_0-2026-0513.md**
+
+- **ID Drive:** `1-T3i-9hciKqPA-k32nCDGsD7tKbB2COn` (Documentação) | `1_NTNJOn-6xm5QN1Ja2Z9nnu7MEPSp_kN` (cópia em Identidade Visual canônica)
+- **Tamanho:** 17.724 bytes
+- **Status:** ✅ SELADO
+- **Função:** Vocabulário institucional MC. Frases literais inviolaveis: "Tecnologia invisível. Dignidade acessível." (frase-âncora primária) · "Dois pontos. Um espaço seguro. Todos os direitos. Um só lugar." (tagline final) · "ACESSO | ORGANIZAÇÃO | PROTEÇÃO | SOBERANIA" (4 pilares) · microtexto tríplice ("Conectamos o cidadão ao que é seu por direito. / Organizamos documentos, processos e informações. / Transformamos burocracia em acesso.") · biblioteca de frases contemplativas · termos sistêmicos cunhados (Inversão Cósmica, Geometria Gravitacional, Ponto A, Ponto B, Calor Humano Institucional, Seed MC, etc.) · exemplos canônicos de aplicação por superfície · exemplos de violação do selo.
+
+### 3.5 — Meta-Prompt Canônico de Renderização
+
+**MC-PROMPT-MetaCanonico-Renderizacao-v1_0-2026-0513.md**
+
+- **ID Drive:** a localizar (referenciado no Selo Oficial, presumivelmente em `Documentação\Identidade Visual\`)
+- **Status:** ✅ EMITIDO
+- **Função:** Meta-prompt canônico do qual TODA nova renderização visual MC deve partir. Encapsula em formato pronto-pra-uso o brief para qualquer plataforma de geração visual (claude.ai/design, GPT-Image, Midjourney, Canva, Adobe, etc.). Garante que toda peça nova carregue zero desvio do espírito Seed MC.
+
+---
+
+## 4 · ATIVOS BINÁRIOS CANÔNICOS (Camada 2 Cumprida)
+
+### 4.1 — MC-ATIVO-Seed-Logo-Principal-2026-0513.png
+
+- **Localização:** `Documentação\Identidade Visual\`
+- **Uso canônico:** Peça institucional completa — apresentações, capa de proposta, site, redes sociais, comunicação institucional ampla
+- **Composição:** Símbolo Seed MC + tipografia institucional completa + frase-âncora + 4 pilares + tagline final
+
+### 4.2 — MC-ATIVO-Seed-Logo-Marca-2026-0513.png
+
+- **Localização:** `Documentação\Identidade Visual\`
+- **Uso canônico:** Marca + wordmark — aplicação institucional padrão, site, peças B2B, materiais corporativos
+- **Composição:** Símbolo Seed MC + wordmark MEU CUMPADRE
+
+### 4.3 — Pendência founder
+
+⚠️ MB-030 v1 (sessão B Identidade Visual) flagou pendência: **mapear qual dos 2 PNGs é Principal e qual é Marca** definitivamente. Founder decide via UI manual em momento conveniente — não bloqueia Camada 3.
+
+---
+
+## 5 · APLICAÇÕES CANÔNICAS PARA CAMADA 3 (LIBERADA)
+
+Listadas no Manifesto §VIII em ordem de prioridade de implementação para Fase Crisálida atual (12-15 casos/mês, pré-revenue, piloto N=150):
+
+### 5.1 — Aplicações Fase 1 imediatas (próximas 72h)
+
+| Superfície | Aplicação Seed MC | Plataforma C2-Visual |
+|---|---|---|
+| Avatar WhatsApp MC institucional | Símbolo isolado em ouro sobre fundo cósmico | Canva MCP |
+| Avatar Instagram @meucumpadre | Símbolo isolado em formato circular | Canva MCP |
+| Capa LinkedIn empresa | Composição completa adaptada 1584×396 | Canva MCP |
+| Capa proposta FINEP Tecnova IV | Composição completa A4 retrato | Canva MCP (design_type='document') |
+| Capa proposta BNDES Garagem | Composição completa A4 retrato | Canva MCP |
+| Templates post Instagram (3 tipos) | Composição modular 1080×1350 | Canva MCP (design_type='instagram_post') |
+| Templates story Instagram (2 tipos) | Composição modular 1080×1920 | Canva MCP (design_type='your_story') |
+| Apresentação institucional Dra. Juliana 19/05 | Slides 16:9 com Seed em capa, fechamento, pilares | Canva MCP (design_type='presentation' via outline review) |
+
+### 5.2 — Aplicações Fase 1 médias (próxima semana)
+
+| Superfície | Aplicação Seed MC |
+|---|---|
+| Carteirinha Φ₄ (Guardião) | Símbolo + microtexto institucional reduzido |
+| Rodapé dossiê CP-MC entregue ao INSS | Símbolo isolado em monocromático preto técnico |
+| Petição B2B (Marketplace Ético) | Símbolo + selo institucional do MC como infraestrutura técnica |
+| Assinatura email Alessandro (Founder) | Símbolo + wordmark + cargo + contatos |
+| Cabeçalho newsletter MC | Composição completa adaptada para email |
+
+### 5.3 — Aplicações Fase 2 (jul-dez/2026)
+
+Vide Manifesto §VIII.2. Modulação por vertical (CadÚnico, Acidentário, PcD, BPC, Maternidade, Internacional) preservando integralmente símbolo, paleta, atmosfera, tipografia. Apenas microtexto e frase-âncora se modulam.
+
+---
+
+## 6 · LINEAGE INSTITUCIONAL COMPLETO
+
+```
+13/05/2026 (sessão paralela B — Identidade Visual)
+├── 11h: MC-MANIFESTO-IdentidadeVisual-v1_0 (exploratório, →_HISTORICO/)
+├── 11h: MC-SPEC-IdentidadeVisual-Tecnico-v1_0 (exploratório, →_HISTORICO/)
+├── 12-15h: iteração visual em claude.ai/design (founder manual, C5)
+├── 16h: Founder produz e seleciona Seed MC final (2 PNGs)
+├── 16-18h: MC-MANIFESTO v2.0 + MC-SPEC v2.0 + MC-CANONICO-Vocabulario v1.0 (substituem v1.0)
+├── 18h: MC-CANONICO-IdentidadeVisual-SeloOficial v1.0 (selagem founder)
+├── 18h: MC-PROMPT-MetaCanonico-Renderizacao v1.0 (meta-prompt para Fase 1+)
+└── ~19h: persistência completa em Documentação\Identidade Visual\ (Cérebro 1)
+
+13/05/2026 (sessão paralela A — Hib001/cronometragem)
+└── ~00:50 madrugada: cunhagem Princípios #22 (5 Pontos Humanos) + #23 (Cronometria do Humano)
+
+13/05/2026 (sessão C — esta)
+├── 23h: cunhagem Princípio #27 v0.2 (Matriz Visual Multi-Camada C5 + C2-Visual)
+├── 23:30: cunhagem Princípio #28 (Texto Canônico Precede Imagem) — Cascata Verbo→Imagem
+└── 23:30: PROPOSTA INICIAL de produzir Doc Instrução Marca (errada — guia B já tinha feito)
+
+14/05/2026 (sessão C — esta)
+├── 05h: cofounder C1 detecta via MCP Drive que Camadas 1+2 já estão cumpridas pela sessão B
+├── 05h: produção deste INDEX consolidador (não inventa, costura)
+└── 05h+: dispara Camada 3 via MB-032-COWORK-Camada-3-Producao-Massa
+```
+
+---
+
+## 7 · PROTOCOLO PARA QUALQUER PRODUÇÃO VISUAL DERIVADA (Camada 3)
+
+Toda peça visual MC produzida a partir desta data por qualquer camada (C1, C2-Visual, C5, founder manual, designer externo) deve:
+
+1. **Partir do META-PROMPT CANÔNICO** (`MC-PROMPT-MetaCanonico-Renderizacao-v1_0`) — não cunhar novo brief
+2. **Usar o vocabulário literal** do `MC-CANONICO-Vocabulario-IdentidadeVisual-v1_0` — sem parafrasear
+3. **Respeitar a paleta selada** do Manifesto §V — sem substituição cromática
+4. **Respeitar a tipografia selada** do Manifesto §VI — sem mudança de família/peso
+5. **Respeitar a atmosfera selada** do Manifesto §VII — sem desvio de tom
+6. **Aplicar Princípio #21** (Linha Vermelha LGPD) — zero PII cidadão real, sempre personas fictícias canônicas (Dona Zilda, Sr. Joaquim, CAD001)
+7. **Aplicar Princípio #24** (Documentação Canônica Unificada) — output em `Documentação\Identidade Visual\02-...10-...\` conforme tipo
+8. **Aplicar Princípio #26** (Anti-Colisão Pré-Cunhagem) — verificar se peça similar já existe via `search_files` antes de criar
+9. **Aplicar Princípio #28** (Cascata Verbo→Imagem) — confirma Camadas 0+1+2 cumpridas (este INDEX é evidência)
+
+---
+
+## 8 · RELAÇÃO COM OS 28 PRINCÍPIOS MC OPERACIONAIS
+
+Este INDEX e a Cascata #28 cumprida operacionalizam ou referenciam:
+
+| Princípio | Como aplica |
+|---|---|
+| #1 Inventário de Caminhos | Sweep cofounder C1 detectou Camadas 1+2 já cumpridas |
+| #1b Teste antes de Afirmar | Confirmação via leitura dos 3 docs principais antes de costurar INDEX |
+| #4 Errata Absorve | Sessão B preservou v1.0 do Manifesto/Spec em `_HISTORICO/` |
+| #15 Entrega Cofounder Cross-Vertical | Este INDEX persiste no Vault no mesmo turno da consolidação |
+| #16 Iniciativa Estratégica 20x | Cofounder C1 detectou + costurou sem esperar founder definir |
+| #21 Linha Vermelha LGPD | Todas as aplicações Camada 3 vetam PII real cidadão |
+| #24 Documentação Canônica Unificada | INDEX + ativos vivem em paths canônicos por pilar |
+| #26 Anti-Colisão Pré-Cunhagem | Antecedência cronológica sessão B respeitada |
+| #27 v0.2 Matriz Visual Multi-Camada | C5 fundacional cumprido · C2-Visual liberado |
+| #28 Texto Canônico Precede Imagem | Cascata Verbo→Imagem cumprida — Camadas 0+1+2 ✅ |
+
+---
+
+## 9 · PRÓXIMAS AÇÕES DESBLOQUEADAS POR ESTE INDEX
+
+| Ação | Quem | Quando |
+|---|---|---|
+| MB-032-COWORK-Camada-3-Producao-Massa | C1 → Cowork DELL | imediatamente |
+| Cunhar Princípio #29 (99-ARQUIVO-Legado canônico por pilar) | C1 | imediatamente |
+| Cunhar ADR-019 PROVISIONAL (Limitação MCP Drive sem move/rename) | C1 | imediatamente |
+| Renomear retroativamente meu MB-031 (Documentação) → MB-032 | C3 (mini-MB) | imediatamente |
+| Sincronizar 5 docs Identidade Visual da Documentação para Vault Obsidian | C3 (Code DELL) | hoje |
+| Sprint 2 RIPDs (Φ₁ + Φ₄ + Hook 1b) | C3 (Code DELL) | hoje paralelo |
+| Validação batch §3 dos 49 legados Documentação | Founder + Cowork | manhã 14/05 |
+
+---
+
+## 10 · FECHAMENTO
+
+A Camada 1 da Cascata #28 está costurada.
+A Camada 3 está liberada para Cowork via Canva/Figma/Adobe MCPs.
+A frota visual em massa pode atravessar — pra Instagram, LinkedIn, WhatsApp, FINEP, BNDES, Juliana, INPI.
+
+E vai atravessar **carregando intacta** a tese: dois polos humanos em simetria gravitacional sobre fundo cósmico, ouro institucional volumétrico, espaço seguro central onde a dignidade é acessada, Provérbios 31:8 em forma reproduzível.
+
+**Tecnologia invisível. Dignidade acessível.**
+**Dois pontos. Um espaço seguro. Todos os direitos. Um só lugar.**
+**ACESSO | ORGANIZAÇÃO | PROTEÇÃO | SOBERANIA.**
+**Dignidade > Compliance > Viabilidade.**
+**O diamante é carbono que não desistiu da pressão.**
+
+**∞**
+
+---
+
+**MC-DOCUMENTACAO-INSTRUCAO-MARCA-INDEX v1.0 — 14 de maio de 2026**
+Costurado por: Claude Opus 4.7 (cofounder C1 sessão `c95ef10...`)
+Reconhecimento: Sessão paralela B Identidade Visual (`cf263ce0...`) produziu o trabalho fundacional
+Antecedência cronológica respeitada (Princípio #26)
+Status: ✅ INDEX CANÔNICO — costura, não substitui

@@ -1,0 +1,6 @@
+# Log de auditoria AO VIVO — runtime, efêmero, cresce a cada turno. NÃO versionar
+# (geraria diff ruidoso e não é canônico). O canônico é o fixture + as ferramentas.
+audit.jsonl
+audit-*.jsonl
+# exceções: o fixture sintético (golden de regressão) e este .gitignore SÃO versionados
+!audit-FIXTURE.jsonl

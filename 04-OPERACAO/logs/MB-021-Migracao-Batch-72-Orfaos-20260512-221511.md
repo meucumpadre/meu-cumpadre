@@ -1,0 +1,53 @@
+﻿# Reporte MB-021 - Migracao Batch dos 39 Orfaos Canonicos
+
+Data: 2026-05-12 22:15:13
+Total tabela: 40
+
+## Resumo
+- Sucessos: 38
+- Skipped (ja existia): 2
+- Erros: 0
+
+## Detalhes
+
+- OK: MC-ANALISE-TamanhoMercado-Judicial-v1_0-2026-0501.md -> 02-ARQUITETURA\analises (F4D54E73A669)
+- OK: MC-ANALISE-TamanhoMercado-Judicial-v1_1-COMPLEMENTO.md -> 02-ARQUITETURA\analises (CA06E9AB3EA3)
+- OK: MC-ANALISE-EcossistemaIA-Vertical-Agentica-v2_0-2026-0503.md -> 02-ARQUITETURA\analises (8CB7D16EB4C7)
+- OK: MC-AUDITORIA-EXECUTIVA-Tratado-v1_0-2026-0502.md -> 04-OPERACAO\logs (BE977710F729)
+- OK: MC-AUDITORIA-GAP3-Resolucao-v1_0-2026-0502    realinhamento sobre o GUARDIÃO como Moat de marca fundacional.md -> 04-OPERACAO\logs (257AC6DBE5A7)
+- OK: MC-CHANGELOG-Juridico-v2_0-2026-0503.md -> 02-ARQUITETURA\changelogs (ABBFD4B94362)
+- OK: MC-CONCEITO-EssenciaDignidade-v1_0-2026-0503.md -> 05-ESTRATEGIA\conceitos (5225A071DDAE)
+- OK: MC-CONTRATO-Psi1-MINUTA-v1_3-2026-0430.md -> 03-GOVERNANCA\contratos (689AABC91AEE)
+- OK: MC-CONTRATO-Psi1-MINUTA-v1_1-2026-0430.md -> 03-GOVERNANCA\contratos (030C70364136)
+- OK: MC-CONTRATO-SOCIAL-Constituicao-v1_0-2026-0504.md -> 03-GOVERNANCA\contratos (01B24267B7FB)
+- SKIP_EXISTE: MC-CONTRATO-Psi1-MINUTA-v1_3-2026-0430.md -> 03-GOVERNANCA\contratos
+- SKIP_EXISTE: MC-CONTRATO-Psi1-MINUTA-v1_1-2026-0430.md -> 03-GOVERNANCA\contratos
+- OK: MC-GOVBR-Matriz-NivelServico-v1_0-2026-0508.md -> 02-ARQUITETURA\govbr (12D7EA82A006)
+- OK: MC-GOVBR-CatalogoTravas-v1_0-2026-0508.md -> 02-ARQUITETURA\govbr (8B82226E9625)
+- OK: MC-GOVBR-Matriz-NivelServico-v1_1-2026-0508.md -> 02-ARQUITETURA\govbr (C4DEE35AF8A5)
+- OK: MC-GOVBR-ArvoreDecisao-APIHumana-v1_0-2026-0508.md -> 02-ARQUITETURA\govbr (5A7BA7211E3E)
+- OK: MC-GOVBR-E8-ParteC-FAQ-Etica-Metricas-v1_0-2026-0508.md -> 02-ARQUITETURA\govbr (4914B5BE2554)
+- OK: MC-INDICADORES-ImpactoSocial-v1_2-2026-0505.md -> 04-OPERACAO\indicadores (342C64716642)
+- OK: MC-KIT-AntiDesespero-v1_0-2026-0430.md -> 04-OPERACAO\kits (1E5FA117723C)
+- OK: MC-KIT-DossieConstituicao-v1_0-2026-0504.md -> 04-OPERACAO\kits (81CC26F46337)
+- OK: MC-MANIFESTO-FomeDeDireito-v1_0-2026-0503.md -> 05-ESTRATEGIA\manifestos (66C0EA3D3024)
+- OK: MC-MANIFESTO-FomeDeDireitoNaodemosopeixeDemosolagodepeixes-v1_0-2026-0503.md -> 05-ESTRATEGIA\manifestos (DFE24873E80D)
+- OK: MC-POLITICA-Comunicacao-v1_0-2026-0430.md -> 05-ESTRATEGIA\politicas (45D5E8977F2D)
+- OK: MC-POP-VisualLaw-DossieSelado-PARTE2-v1_0-2026-0501.md -> 04-OPERACAO\pops (3D7090D93BA1)
+- OK: MC-POP-VisualLaw-DossieSelado-PARTE3-v1_2-2026-0502.md -> 04-OPERACAO\pops (1661C73AA375)
+- OK: MC-POP-VisualLaw-DossieSelado-PARTE2-v1_2-2026-0502.md -> 04-OPERACAO\pops (E2BD1DBF0BE2)
+- OK: MC-POP-VisualLaw-DossieSelado-PARTE1-v1_0-2026-0501.md -> 04-OPERACAO\pops (138AE6243DF2)
+- OK: MC-POP-VisualLaw-DossieSelado-PARTE3-v1_0-2026-0501.md -> 04-OPERACAO\pops (B05CBDC29751)
+- OK: MC-POP-Desbloqueio-GovBR-v1_0-2026-0429.md -> 04-OPERACAO\pops (A68CCF8FA6E6)
+- OK: MC-PROCESSO-Jornada_E0E7_Mestre-v1_3-2026-0507.md -> 02-ARQUITETURA\specs (290607549795)
+- OK: MC-PRODUTO-JornadaEcossistema-v2_0-2026-0503.md -> 05-ESTRATEGIA\produtos (1479190DC0AA)
+- OK: MC-RELATORIO-CRPS-Palco-Recursal-v1_0-2026-0430.md -> 06-COMUNICACAO\relatorios (478043119142)
+- OK: MC-RELATORIO-ArcaboucoLegal-PcD-TA-v1_1-2026-0503.docx.md -> 06-COMUNICACAO\relatorios (EE839A98B8ED)
+- OK: MC-SCRIPT-E6-Resolucao-v1_0-2026-0430.md -> 04-OPERACAO\scripts (11D75086D00B)
+- OK: MC-SPEC-PLAYWRIGHT-MEUINSS-v1_0-2026-0327.md -> 02-ARQUITETURA\specs (6D5A9E7B4925)
+- OK: MC-Spec-Driven-Workflow-v1_0-2026-0404.md -> 02-ARQUITETURA\specs (B10E279F7D23)
+- OK: MC-SPEC-Marketplace-CriteriosAdmissao-v1_1-2026-0430.md -> 02-ARQUITETURA\specs (3BE03B183285)
+- OK: MC-SPEC-Marketplace-SeloPremium-v1_0-2026-0430.md -> 02-ARQUITETURA\specs (282F17E06F2D)
+- OK: MC-SPEC-ADR009b-TTA-Igor-v1_0-2026-0430.md -> 02-ARQUITETURA\specs (D82133DBAC30)
+- OK: MC-SPEC-Marketplace-CriteriosAdmissao-v1_0-2026-0430.md -> 02-ARQUITETURA\specs (32A52B2D2AE0)
+

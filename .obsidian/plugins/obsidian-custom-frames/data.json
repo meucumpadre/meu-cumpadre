@@ -1,0 +1,17 @@
+{
+  "frames": [
+    {
+      "url": "https://notebooklm.google.com/",
+      "displayName": "NotebookLM-Engineering",
+      "icon": "",
+      "hideOnMobile": true,
+      "addRibbonIcon": false,
+      "openInCenter": false,
+      "zoomLevel": 1,
+      "forceIframe": false,
+      "customCss": "",
+      "customJs": ""
+    }
+  ],
+  "padding": 5
+}

@@ -1,0 +1,141 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Escritório Virtual — Laboratório Institucional MC — Claude Design (Engenharia Reversa)</title>
+<style>
+:root{--bg:#0e1116;--panel:#161b22;--line:#243040;--txt:#e6edf3;--mut:#8b97a7}
+*{box-sizing:border-box}body{margin:0;font:14px/1.5 system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--txt)}
+header{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+header h1{font-size:17px;margin:0}
+.sub{color:var(--mut);font-size:13px}
+.wrap{padding:18px 22px;max-width:1100px;margin:0 auto}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:22px 0 10px}
+.office{display:flex;gap:14px;flex-wrap:wrap}
+.desk{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:10px;padding:14px;width:150px;text-align:center;transition:.2s}
+.desk.active{outline:2px solid var(--c);transform:translateY(-3px)}
+.desk .emoji{font-size:30px}.desk .role{font-weight:600;text-transform:capitalize}
+.desk .sid{color:var(--mut);font-size:12px}
+.desk .badge{margin-top:6px;font-size:11px;color:var(--c)}
+.chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px 12px;display:flex;flex-direction:column}
+.chip b{font-size:11px;color:var(--mut);text-transform:uppercase}
+.chip.good span{color:#37d67a}.chip.bad span{color:#e35;font-weight:700}
+.stage{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px}
+.stage.active{outline:2px solid #f5c451}
+.stage-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.tag{font-size:11px;background:#22303f;color:var(--mut);padding:2px 7px;border-radius:20px}
+.tag.warn{background:#5a3a12;color:#f59e0b}
+.bar{display:flex;align-items:center;gap:8px;margin:3px 0}
+.bar span{width:42px;color:var(--mut);font-size:12px}
+.bar i{height:8px;border-radius:4px;background:#37d67a;display:block}
+.bar i.danger{background:#e35}.bar b{font-size:12px;width:28px;text-align:right}
+small{color:var(--mut)}
+button{background:#1f6feb;color:#fff;border:0;border-radius:8px;padding:8px 14px;cursor:pointer;font-size:13px}
+details{margin-top:18px}pre{background:#0a0d12;border:1px solid var(--line);border-radius:8px;padding:12px;overflow:auto;max-height:320px;font-size:12px}
+.foot{color:var(--mut);font-size:12px;margin-top:24px;border-top:1px solid var(--line);padding-top:12px}
+</style></head><body>
+<header>
+  <h1>🏢 Escritório Virtual · MC-Squad</h1>
+  <span class="sub">Laboratório Institucional MC — Claude Design (Engenharia Reversa)</span>
+  <span style="flex:1"></span>
+  <button id="replay">▶ Replay</button>
+</header>
+<div class="wrap">
+  <h2>Gates de governança</h2>
+  <div class="chips"><div class="chip good"><b>Zona LGPD</b><span>segura (cloud)</span></div><div class="chip good"><b>Provider</b><span>gemini-2.5-flash</span></div><div class="chip good"><b>D&gt;C&gt;V</b><span>PROSSEGUIR</span></div><div class="chip bad"><b>Compliance</b><span>REPROVADO</span></div></div>
+
+  <h2>Mesas (agentes)</h2>
+  <div class="office"><div class="desk" data-stage="ingestao" style="--c:#37d67a">
+      <div class="emoji">🔎</div>
+      <div class="role">pesquisador</div>
+      <div class="sid">ingestao</div>
+      <div class="badge">concluido</div>
+    </div><div class="desk" data-stage="engenharia-reversa" style="--c:#37d67a">
+      <div class="emoji">🔎</div>
+      <div class="role">pesquisador</div>
+      <div class="sid">engenharia-reversa</div>
+      <div class="badge">concluido · ⏸</div>
+    </div><div class="desk" data-stage="lapidacao-mc" style="--c:#37d67a">
+      <div class="emoji">🧭</div>
+      <div class="role">estrategista</div>
+      <div class="sid">lapidacao-mc</div>
+      <div class="badge">concluido</div>
+    </div><div class="desk" data-stage="blueprint-lab" style="--c:#37d67a">
+      <div class="emoji">✍️</div>
+      <div class="role">redator</div>
+      <div class="sid">blueprint-lab</div>
+      <div class="badge">concluido · ⏸</div>
+    </div><div class="desk" data-stage="revisao" style="--c:#37d67a">
+      <div class="emoji">✅</div>
+      <div class="role">revisor</div>
+      <div class="sid">revisao</div>
+      <div class="badge">concluido · ⏸</div>
+    </div></div>
+
+  <h2>Pipeline · Router-Ethics 11.0 (tripartite)</h2>
+  <div class="stage" data-stage="ingestao">
+      <div class="stage-head">🔎 <b>ingestao</b> <span class="tag">pesquisador</span></div>
+      <div class="bar"><span>conf</span><i class="ok" style="width:92%"></i><b>92</b></div><div class="bar"><span>compl</span><i class="ok" style="width:15%"></i><b>15</b></div><div class="bar"><span>fraud</span><i class="ok" style="width:1%"></i><b>1</b></div>
+      <small>faixa: Verde · motivos: —</small>
+    </div><div class="stage" data-stage="engenharia-reversa">
+      <div class="stage-head">🔎 <b>engenharia-reversa</b> <span class="tag">pesquisador</span><span class="tag">⏸ checkpoint</span></div>
+      <div class="bar"><span>conf</span><i class="ok" style="width:80%"></i><b>80</b></div><div class="bar"><span>compl</span><i class="ok" style="width:55.00000000000001%"></i><b>55</b></div><div class="bar"><span>fraud</span><i class="ok" style="width:4%"></i><b>4</b></div>
+      <small>faixa: Verde · motivos: —</small>
+    </div><div class="stage" data-stage="lapidacao-mc">
+      <div class="stage-head">🧭 <b>lapidacao-mc</b> <span class="tag">estrategista</span></div>
+      <div class="bar"><span>conf</span><i class="ok" style="width:82%"></i><b>82</b></div><div class="bar"><span>compl</span><i class="ok" style="width:50%"></i><b>50</b></div><div class="bar"><span>fraud</span><i class="ok" style="width:3%"></i><b>3</b></div>
+      <small>faixa: Verde · motivos: —</small>
+    </div><div class="stage" data-stage="blueprint-lab">
+      <div class="stage-head">✍️ <b>blueprint-lab</b> <span class="tag">redator</span><span class="tag">⏸ checkpoint</span></div>
+      <div class="bar"><span>conf</span><i class="ok" style="width:84%"></i><b>84</b></div><div class="bar"><span>compl</span><i class="ok" style="width:45%"></i><b>45</b></div><div class="bar"><span>fraud</span><i class="ok" style="width:3%"></i><b>3</b></div>
+      <small>faixa: Verde · motivos: —</small>
+    </div><div class="stage" data-stage="revisao">
+      <div class="stage-head">✅ <b>revisao</b> <span class="tag">revisor</span><span class="tag">⏸ checkpoint</span></div>
+      <div class="bar"><span>conf</span><i class="ok" style="width:90%"></i><b>90</b></div><div class="bar"><span>compl</span><i class="ok" style="width:20%"></i><b>20</b></div><div class="bar"><span>fraud</span><i class="ok" style="width:2%"></i><b>2</b></div>
+      <small>faixa: Verde · motivos: —</small>
+    </div>
+
+  <details><summary>Trilha de auditoria (JSONL · 23 eventos)</summary>
+    <pre>{&quot;ts&quot;:&quot;2026-06-01T16:30:13.483Z&quot;,&quot;ev&quot;:&quot;zone_ok&quot;,&quot;zona&quot;:&quot;segura&quot;,&quot;provider&quot;:&quot;gemini-2.5-flash&quot;,&quot;tier&quot;:&quot;cloud&quot;}
+{&quot;ts&quot;:&quot;2026-06-01T16:30:13.483Z&quot;,&quot;ev&quot;:&quot;dcv&quot;,&quot;ordem&quot;:&quot;D&gt;C&gt;V&quot;,&quot;decisao&quot;:&quot;PROSSEGUIR&quot;}
+{&quot;ts&quot;:&quot;2026-06-01T16:30:13.483Z&quot;,&quot;ev&quot;:&quot;stage_start&quot;,&quot;stage&quot;:&quot;ingestao&quot;,&quot;role&quot;:&quot;pesquisador&quot;}
+{&quot;ts&quot;:&quot;2026-06-01T16:30:13.483Z&quot;,&quot;ev&quot;:&quot;router_ethics&quot;,&quot;stage&quot;:&quot;ingestao&quot;,&quot;confidence&quot;:92,&quot;complexity&quot;:15,&quot;fraudscore&quot;:1,&quot;faixaConfidence&quot;:&quot;Verde&quot;,&quot;handoff&quot;:false,&quot;autonomia&quot;:true,&quot;motivos&quot;:[]}
+{&quot;ts&quot;:&quot;2026-06-01T16:30:13.484Z&quot;,&quot;ev&quot;:&quot;source_load&quot;,&quot;stage&quot;:&quot;ingestao&quot;,&quot;file&quot;:&quot;sources/claude-design-notebooklm.md&quot;,&quot;bytes&quot;:1586}
+{&quot;ts&quot;:&quot;2026-06-01T16:30:13.485Z&quot;,&quot;ev&quot;:&quot;stage_done&quot;,&quot;stage&quot;:&quot;ingestao&quot;,&quot;bytes&quot;:1645}
+{&quot;ts&quot;:&quot;2026-06-01T16:30:13.485Z&quot;,&quot;ev&quot;:&quot;stage_start&quot;,&quot;stage&quot;:&quot;engenharia-reversa&quot;,&quot;role&quot;:&quot;pesquisador&quot;}
+{&quot;ts&quot;:&quot;2026-06-01T16:30:13.485Z&quot;,&quot;ev&quot;:&quot;router_ethics&quot;,&quot;stage&quot;:&quot;engenharia-reversa&quot;,&quot;confidence&quot;:80,&quot;complexity&quot;:55,&quot;fraudscore&quot;:4,&quot;faixaConfidence&quot;:&quot;Verde&quot;,&quot;handoff&quot;:false,&quot;autonomia&quot;:true,&quot;motivos&quot;:[]}
+{&quot;ts&quot;:&quot;2026-06-01T16:30:13.485Z&quot;,&quot;ev&quot;:&quot;checkpoint_auto_approve&quot;,&quot;stage&quot;:&quot;engenharia-reversa&quot;,&quot;handoff&quot;:false,&quot;motivos&quot;:[],&quot;nota&quot;:&quot;modo --auto: aprovação humana SIMULADA (em produção, pausa real)&quot;}
+{&quot;ts&quot;:&quot;2026-06-01T16:30:14.554Z&quot;,&quot;ev&quot;:&quot;stage_done&quot;,&quot;stage&quot;:&quot;engenharia-reversa&quot;,&quot;bytes&quot;:281}
+{&quot;ts&quot;:&quot;2026-06-01T16:30:14.554Z&quot;,&quot;ev&quot;:&quot;stage_start&quot;,&quot;stage&quot;:&quot;lapidacao-mc&quot;,&quot;role&quot;:&quot;estrategista&quot;}
+{&quot;ts&quot;:&quot;2026-06-01T16:30:14.554Z&quot;,&quot;ev&quot;:&quot;router_ethics&quot;,&quot;stage&quot;:&quot;lapidacao-mc&quot;,&quot;confidence&quot;:82,&quot;complexity&quot;:50,&quot;fraudscore&quot;:3,&quot;faixaConfidence&quot;:&quot;Verde&quot;,&quot;handoff&quot;:false,&quot;autonomia&quot;:true,&quot;motivos&quot;:[]}
+{&quot;ts&quot;:&quot;2026-06-01T16:30:28.699Z&quot;,&quot;ev&quot;:&quot;stage_done&quot;,&quot;stage&quot;:&quot;lapidacao-mc&quot;,&quot;bytes&quot;:9467}
+{&quot;ts&quot;:&quot;2026-06-01T16:30:28.699Z&quot;,&quot;ev&quot;:&quot;stage_start&quot;,&quot;stage&quot;:&quot;blueprint-lab&quot;,&quot;role&quot;:&quot;redator&quot;}
+{&quot;ts&quot;:&quot;2026-06-01T16:30:28.699Z&quot;,&quot;ev&quot;:&quot;router_ethics&quot;,&quot;stage&quot;:&quot;blueprint-lab&quot;,&quot;confidence&quot;:84,&quot;complexity&quot;:45,&quot;fraudscore&quot;:3,&quot;faixaConfidence&quot;:&quot;Verde&quot;,&quot;handoff&quot;:false,&quot;autonomia&quot;:true,&quot;motivos&quot;:[]}
+{&quot;ts&quot;:&quot;2026-06-01T16:30:28.700Z&quot;,&quot;ev&quot;:&quot;checkpoint_auto_approve&quot;,&quot;stage&quot;:&quot;blueprint-lab&quot;,&quot;handoff&quot;:false,&quot;motivos&quot;:[],&quot;nota&quot;:&quot;modo --auto: aprovação humana SIMULADA (em produção, pausa real)&quot;}
+{&quot;ts&quot;:&quot;2026-06-01T16:30:45.622Z&quot;,&quot;ev&quot;:&quot;stage_done&quot;,&quot;stage&quot;:&quot;blueprint-lab&quot;,&quot;bytes&quot;:12175}
+{&quot;ts&quot;:&quot;2026-06-01T16:30:45.622Z&quot;,&quot;ev&quot;:&quot;stage_start&quot;,&quot;stage&quot;:&quot;revisao&quot;,&quot;role&quot;:&quot;revisor&quot;}
+{&quot;ts&quot;:&quot;2026-06-01T16:30:45.623Z&quot;,&quot;ev&quot;:&quot;router_ethics&quot;,&quot;stage&quot;:&quot;revisao&quot;,&quot;confidence&quot;:90,&quot;complexity&quot;:20,&quot;fraudscore&quot;:2,&quot;faixaConfidence&quot;:&quot;Verde&quot;,&quot;handoff&quot;:false,&quot;autonomia&quot;:true,&quot;motivos&quot;:[]}
+{&quot;ts&quot;:&quot;2026-06-01T16:30:45.623Z&quot;,&quot;ev&quot;:&quot;checkpoint_auto_approve&quot;,&quot;stage&quot;:&quot;revisao&quot;,&quot;handoff&quot;:false,&quot;motivos&quot;:[],&quot;nota&quot;:&quot;modo --auto: aprovação humana SIMULADA (em produção, pausa real)&quot;}
+{&quot;ts&quot;:&quot;2026-06-01T16:30:56.263Z&quot;,&quot;ev&quot;:&quot;stage_done&quot;,&quot;stage&quot;:&quot;revisao&quot;,&quot;bytes&quot;:6358}
+{&quot;ts&quot;:&quot;2026-06-01T16:30:56.267Z&quot;,&quot;ev&quot;:&quot;compliance_audit&quot;,&quot;veredito&quot;:&quot;REPROVADO&quot;,&quot;criticos&quot;:3,&quot;altos&quot;:0,&quot;avisos&quot;:5,&quot;achados&quot;:[&quot;POS-01/AVISO&quot;,&quot;POS-02/CRITICO&quot;,&quot;POS-03/CRITICO&quot;,&quot;OAB-01/CRITICO&quot;,&quot;PROOF-01/AVISO&quot;,&quot;PROOF-01/AVISO&quot;,&quot;PROOF-01/AVISO&quot;,&quot;PROOF-01/AVISO&quot;]}
+{&quot;ts&quot;:&quot;2026-06-01T16:30:56.267Z&quot;,&quot;ev&quot;:&quot;compliance_advisory&quot;,&quot;veredito&quot;:&quot;REPROVADO&quot;,&quot;criticos&quot;:[&quot;POS-02&quot;,&quot;POS-03&quot;,&quot;OAB-01&quot;],&quot;nota&quot;:&quot;modo advisory (documento interno): não bloqueia, requer revisão humana&quot;}</pre>
+  </details>
+  <div class="foot">Snapshot pós-execução. Scores Router-Ethics = heurística de demonstração do PoC. D &gt; C &gt; V.</div>
+</div>
+<script>
+const EVENTS = [{"ts":"2026-06-01T16:30:13.483Z","ev":"zone_ok","zona":"segura","provider":"gemini-2.5-flash","tier":"cloud"},{"ts":"2026-06-01T16:30:13.483Z","ev":"dcv","ordem":"D>C>V","decisao":"PROSSEGUIR"},{"ts":"2026-06-01T16:30:13.483Z","ev":"stage_start","stage":"ingestao","role":"pesquisador"},{"ts":"2026-06-01T16:30:13.483Z","ev":"router_ethics","stage":"ingestao","confidence":92,"complexity":15,"fraudscore":1,"faixaConfidence":"Verde","handoff":false,"autonomia":true,"motivos":[]},{"ts":"2026-06-01T16:30:13.484Z","ev":"source_load","stage":"ingestao","file":"sources/claude-design-notebooklm.md","bytes":1586},{"ts":"2026-06-01T16:30:13.485Z","ev":"stage_done","stage":"ingestao","bytes":1645},{"ts":"2026-06-01T16:30:13.485Z","ev":"stage_start","stage":"engenharia-reversa","role":"pesquisador"},{"ts":"2026-06-01T16:30:13.485Z","ev":"router_ethics","stage":"engenharia-reversa","confidence":80,"complexity":55,"fraudscore":4,"faixaConfidence":"Verde","handoff":false,"autonomia":true,"motivos":[]},{"ts":"2026-06-01T16:30:13.485Z","ev":"checkpoint_auto_approve","stage":"engenharia-reversa","handoff":false,"motivos":[],"nota":"modo --auto: aprovação humana SIMULADA (em produção, pausa real)"},{"ts":"2026-06-01T16:30:14.554Z","ev":"stage_done","stage":"engenharia-reversa","bytes":281},{"ts":"2026-06-01T16:30:14.554Z","ev":"stage_start","stage":"lapidacao-mc","role":"estrategista"},{"ts":"2026-06-01T16:30:14.554Z","ev":"router_ethics","stage":"lapidacao-mc","confidence":82,"complexity":50,"fraudscore":3,"faixaConfidence":"Verde","handoff":false,"autonomia":true,"motivos":[]},{"ts":"2026-06-01T16:30:28.699Z","ev":"stage_done","stage":"lapidacao-mc","bytes":9467},{"ts":"2026-06-01T16:30:28.699Z","ev":"stage_start","stage":"blueprint-lab","role":"redator"},{"ts":"2026-06-01T16:30:28.699Z","ev":"router_ethics","stage":"blueprint-lab","confidence":84,"complexity":45,"fraudscore":3,"faixaConfidence":"Verde","handoff":false,"autonomia":true,"motivos":[]},{"ts":"2026-06-01T16:30:28.700Z","ev":"checkpoint_auto_approve","stage":"blueprint-lab","handoff":false,"motivos":[],"nota":"modo --auto: aprovação humana SIMULADA (em produção, pausa real)"},{"ts":"2026-06-01T16:30:45.622Z","ev":"stage_done","stage":"blueprint-lab","bytes":12175},{"ts":"2026-06-01T16:30:45.622Z","ev":"stage_start","stage":"revisao","role":"revisor"},{"ts":"2026-06-01T16:30:45.623Z","ev":"router_ethics","stage":"revisao","confidence":90,"complexity":20,"fraudscore":2,"faixaConfidence":"Verde","handoff":false,"autonomia":true,"motivos":[]},{"ts":"2026-06-01T16:30:45.623Z","ev":"checkpoint_auto_approve","stage":"revisao","handoff":false,"motivos":[],"nota":"modo --auto: aprovação humana SIMULADA (em produção, pausa real)"},{"ts":"2026-06-01T16:30:56.263Z","ev":"stage_done","stage":"revisao","bytes":6358},{"ts":"2026-06-01T16:30:56.267Z","ev":"compliance_audit","veredito":"REPROVADO","criticos":3,"altos":0,"avisos":5,"achados":["POS-01/AVISO","POS-02/CRITICO","POS-03/CRITICO","OAB-01/CRITICO","PROOF-01/AVISO","PROOF-01/AVISO","PROOF-01/AVISO","PROOF-01/AVISO"]},{"ts":"2026-06-01T16:30:56.267Z","ev":"compliance_advisory","veredito":"REPROVADO","criticos":["POS-02","POS-03","OAB-01"],"nota":"modo advisory (documento interno): não bloqueia, requer revisão humana"}];
+const replay = () => {
+  const order = EVENTS.filter(e => e.ev === "stage_start").map(e => e.stage);
+  document.querySelectorAll(".desk,.stage").forEach(n => n.classList.remove("active"));
+  let i = 0;
+  const step = () => {
+    if (i > 0) document.querySelectorAll('[data-stage="'+order[i-1]+'"]').forEach(n => n.classList.remove("active"));
+    if (i >= order.length) return;
+    document.querySelectorAll('[data-stage="'+order[i]+'"]').forEach(n => n.classList.add("active"));
+    i++; setTimeout(step, 700);
+  };
+  step();
+};
+document.getElementById("replay").onclick = replay;
+replay();
+</script>
+</body></html>

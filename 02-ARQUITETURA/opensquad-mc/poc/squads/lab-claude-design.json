@@ -1,0 +1,44 @@
+{
+  "nome": "Laboratório Institucional MC — Claude Design (Engenharia Reversa)",
+  "zona": "segura",
+  "tema": "Capacidades do Claude Design aplicadas ao laboratório institucional do Meu Cumpadre",
+  "providerSugerido": "gemini-2.5-flash",
+  "complianceMode": "advisory",
+  "descricao": "Princípio #46 em ação. Ingere a síntese do NotebookLM (Motor Externo), faz engenharia reversa das capacidades do Claude Design, traduz para o contexto MC (Lapidação Interna) e produz o blueprint do laboratório institucional MC-Claude Design. Zona segura, sem dado pessoal. complianceMode=advisory: documento INTERNO de P&D (discute os guardrails), então achados de compliance avisam mas não bloqueiam — revisão humana decide.",
+  "flags": { "dignidadeEmRisco": false, "complianceEmRisco": false },
+  "pipeline": [
+    {
+      "id": "ingestao",
+      "role": "pesquisador",
+      "sourceFile": "sources/claude-design-notebooklm.md",
+      "sinais": { "confidence": 92, "complexity": 15, "fraudscore": 1 }
+    },
+    {
+      "id": "engenharia-reversa",
+      "role": "pesquisador",
+      "prompt": "Com base na fonte ingerida, faça ENGENHARIA REVERSA das capacidades do Claude Design: liste cada capacidade observada (ex.: conceito→site funcional, sistemas de design, limites de token ampliados, contexto longo, entregas prontas para produção). Para cada uma: o que é, como aparenta funcionar, e qual evidência a sustenta. Onde faltar evidência, escreva [FONTE PENDENTE].",
+      "checkpoint": true,
+      "sinais": { "confidence": 80, "complexity": 55, "fraudscore": 4 }
+    },
+    {
+      "id": "lapidacao-mc",
+      "role": "estrategista",
+      "prompt": "LAPIDAÇÃO INTERNA: traduza cada capacidade do Claude Design para o contexto do Meu Cumpadre. Considere: identidade visual MC, Visual Law (Camada 3b), Teste Zilda-STF (Dona Zilda 68 + ministro STF), anti-injection (ADR-016), e a instância Sister 3.2 Design. Diga onde cada capacidade ajuda a equipar o hipervulnerável e onde precisa de guardrail (firewall OAB, LGPD).",
+      "sinais": { "confidence": 82, "complexity": 50, "fraudscore": 3 }
+    },
+    {
+      "id": "blueprint-lab",
+      "role": "redator",
+      "prompt": "Produza o BLUEPRINT do 'Laboratório Institucional MC — Claude Design': objetivo, fluxos de trabalho (do conceito à entrega), papéis/instâncias envolvidas, guardrails de governança e critérios de qualidade (acessibilidade Zilda-STF). Formato claro, pronto para virar documento institucional.",
+      "checkpoint": true,
+      "sinais": { "confidence": 84, "complexity": 45, "fraudscore": 3 }
+    },
+    {
+      "id": "revisao",
+      "role": "revisor",
+      "prompt": "Revisão de compliance (firewall OAB, Proof-First, ADR-007, posicionamento).",
+      "checkpoint": true,
+      "sinais": { "confidence": 90, "complexity": 20, "fraudscore": 2 }
+    }
+  ]
+}

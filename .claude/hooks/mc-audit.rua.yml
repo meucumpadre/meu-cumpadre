@@ -1,0 +1,30 @@
+# Sidecar RUA do hook mc-audit (hooks .py não têm frontmatter · o gerador lê este .rua.yml)
+rua:
+  id: mc-audit
+  nome: mc-audit (emissor de telemetria · audit JSONL)
+  tipo: hook
+  versao: v0.1
+  status: PROVISIONAL
+  papel: Hook emissor que apensa UMA linha JSONL Zona-Verde por invocação de UA (só metadado de governança do Registro · nunca payload) — o hook-in do campo emite_audit, fonte da alça de otimização L5
+  gatilhos: ["PreToolUse/PostToolUse sobre Skill/Task/Agent (quando fiado em settings.json · ato R2)", "echo '{...}' | python3 .claude/hooks/mc-audit.py (teste)"]
+  entrega: 1 linha apensa em .claude/registro/audit/audit.jsonl (conjunto fechado de chaves · zero payload)
+  metodo_fonte: "MC-SPEC-RegistroAgentes-ASE-v0_1:112 (Bloco E · emite_audit) · §6 Fase 4"
+  instancia_aci: transversal
+  camada_ase: L5
+  compoe_com: [mc-compasso-sweep, mc-dossie-proof-first, mc-pre-selagem, squad-r3]
+  nao_confundir_com:
+    - id: mc-lint
+      motivo: mc-lint é Stop hook block-mode que ENFORÇA proibições (gate mecânico); mc-audit é observação passiva fail-safe que NUNCA bloqueia
+    - id: gerar-registro
+      motivo: o gerador faz o SNAPSHOT byte-idêntico do .claude/ (L1); mc-audit grava a SÉRIE TEMPORAL de eventos de execução (L5)
+  gate: R2
+  zona: Verde
+  lgpd_nota: "FIREWALL: lê só o id da UA (chave whitelisted) · descarta args/prompt/paths · grava só conjunto fechado de metadado de governança · session_id hasheado sha256[:8] · zero PII por construção"
+  vedacoes_honradas: [Proof-First, "D>C>V", Firewall-OAB, LGPD, "Zona-Verde", "#50.2"]
+  para_no_gate: "true — DEFAULT OFF (não fiado em settings.json). Ligar a captura ao vivo é o ato R2 do Founder; o hook não se autoinstala, não sela, não escreve no Vault"
+  custo:
+    gasta_agente: false
+    opt_in: true
+    fan_out: null
+  emite_audit: false
+  depende_de: [registro-unidades-agenticas.json]

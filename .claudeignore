@@ -1,0 +1,17 @@
+# Notas pessoais do Founder — privacidade total
+_PESSOAL/
+
+# Configurações internas do Obsidian
+.obsidian/
+
+# Arquivos de sincronização
+.clickup-sync/
+.trash/
+.sync-conflict*
+
+# Arquivos grandes que não precisam de indexação
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.gif

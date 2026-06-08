@@ -1,0 +1,83 @@
+/* ============================================================
+   MEU CUMPADRE · DESIGN TOKENS
+   mc-design-tokens.css — extraido da Convencao MC (Claude Design, "Meu Sistema de Design Cumpadre")
+   Provenancia cromatica: MC-ERRATA-Foundation-v0_3-Cromatica-001-v1_0-2026-0518 (#D4AF37 substitui #C9A961).
+   Sela: MC-CANONICO-ConvencaoDesign-MC-v1_0-SELADA-2026-0602 (camada institucional).
+   Hierarquia: Dignidade > Compliance > Viabilidade · "TECNOLOGIA INVISIVEL. DIGNIDADE ACESSIVEL."
+   ============================================================ */
+
+:root {
+  /* ---- PRIMITIVAS · COR ------------------------------------ */
+  --mc-diamante-50:  #E8ECF3;  --mc-diamante-100: #C9D2E0;
+  --mc-diamante-300: #5F76A0;  --mc-diamante-400: #2C447A;
+  --mc-diamante-500: #0F1E3D;  --mc-diamante-600: #0B1730;
+  --mc-diamante-700: #07101F;  --mc-diamante-800: #050A14;
+  --mc-ouro-50:  #F8F2E2; --mc-ouro-100: #EFE2BC; --mc-ouro-300: #DCC288;
+  --mc-ouro-400: #D3B575; --mc-ouro-500: #D4AF37; --mc-ouro-700: #8C7239;
+  --mc-dourado-texturizado: #D4AF37;
+  --mc-azul-50: #E7ECF4; --mc-azul-100: #C5D0E2; --mc-azul-300: #7A91B6;
+  --mc-azul-400: #5E7CAB; --mc-azul-500: #3E5C8C; --mc-azul-700: #243D63;
+  --mc-verde-50: #E4EFEA; --mc-verde-100: #BFD8CB; --mc-verde-300: #7AAE91;
+  --mc-verde-400: #5C9C7C; --mc-verde-500: #3B7B5E; --mc-verde-700: #1F4E3A;
+  --mc-vermelho-50: #F8E5E5; --mc-vermelho-100: #EBC0C0; --mc-vermelho-300: #D27575;
+  --mc-vermelho-400: #C25555; --mc-vermelho-500: #B33A3A; --mc-vermelho-700: #7A1F1F;
+  --mc-cinza-100: #E5E2D7; --mc-cinza-300: #B8B8C2; --mc-cinza-500: #5C5C66;
+  --mc-papel: #FAFAF7; --mc-noite: #0A0E1A; --mc-preto-cosmico: #1A120B; /* NUNCA #000 */
+  --mc-rule: #CFC9BD; --mc-rule-strong: #1A1F2C;
+  --mc-tinta-muted: #5C5C66; /* [VERIFICAR] provavel = cinza-500 */
+
+  /* ---- PRIMITIVAS · TIPOGRAFIA ----------------------------- */
+  --mc-font-serif: "Fraunces", "Source Serif Pro", Georgia, serif;   /* [LACUNA: webfont oficial a confirmar] */
+  --mc-font-sans:  "Inter", system-ui, -apple-system, sans-serif;
+  --mc-font-mono:  "JetBrains Mono", "SF Mono", Consolas, monospace;
+  --mc-text-h1-family: var(--mc-font-serif); --mc-text-h1-size: 56px; --mc-text-h1-lh: 1.05; --mc-text-h1-weight: 500;
+  --mc-text-h2-family: var(--mc-font-serif); --mc-text-h2-size: 40px; --mc-text-h2-lh: 1.10; --mc-text-h2-weight: 500;
+  --mc-text-h3-family: var(--mc-font-serif); --mc-text-h3-size: 28px; --mc-text-h3-lh: 1.15; --mc-text-h3-weight: 500;
+  --mc-text-h4-family: var(--mc-font-sans);  --mc-text-h4-size: 22px; --mc-text-h4-lh: 1.25; --mc-text-h4-weight: 600;
+  --mc-text-h5-family: var(--mc-font-sans);  --mc-text-h5-size: 18px; --mc-text-h5-lh: 1.30; --mc-text-h5-weight: 600;
+  --mc-text-h6-family: var(--mc-font-sans);  --mc-text-h6-size: 14px; --mc-text-h6-lh: 1.40; --mc-text-h6-weight: 600;
+  --mc-text-body-family: var(--mc-font-sans); --mc-text-body-size: 16px; --mc-text-body-lh: 1.55; --mc-text-body-weight: 400;
+  --mc-text-caption-size: 12px; --mc-text-caption-lh: 1.40;
+  --mc-text-label-size: 13px; --mc-text-label-tracking: 0.04em;
+  --mc-text-code-family: var(--mc-font-mono); --mc-text-code-size: 13px;
+
+  /* ---- PRIMITIVAS · ESPACO / RAIO / BORDA / MOTION --------- */
+  --mc-sp-1: 4px; --mc-sp-2: 8px; --mc-sp-3: 16px; --mc-sp-4: 24px;
+  --mc-sp-5: 32px; --mc-sp-6: 48px; --mc-sp-7: 64px; --mc-sp-8: 96px; /* baseline 8pt */
+  --mc-radius-0: 0; --mc-radius-1: 4px; --mc-radius-2: 8px; --mc-radius-3: 16px;
+  --mc-border-0: 0; --mc-border-1: 1px; --mc-border-2: 2px;
+  --mc-motion-instant: 0ms; --mc-motion-fast: 100ms; --mc-motion-standard: 200ms; --mc-motion-slow: 300ms;
+  --mc-motion-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --mc-motion-ease-in:  cubic-bezier(0.7, 0, 0.84, 0);
+  --mc-motion-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ---- SEMANTICOS · TEMA CLARO (default) ------------------- */
+  --mc-bg-primary: var(--mc-papel); --mc-bg-secondary: #FFFFFF; --mc-bg-elevated: #FFFFFF;
+  --mc-bg-inverse: var(--mc-diamante-500);
+  --mc-text-primary: var(--mc-diamante-700); --mc-text-secondary: var(--mc-tinta-muted);
+  --mc-text-inverse: var(--mc-papel); --mc-text-disabled: var(--mc-cinza-500);
+  --mc-border-default: var(--mc-rule); --mc-border-strong: var(--mc-rule-strong);
+  --mc-accent-ouro: var(--mc-ouro-500);
+  --mc-diamante-corpo: var(--mc-diamante-700); --mc-azul-acesso-corpo: var(--mc-azul-700);
+  --mc-fluxo-azul: var(--mc-azul-700); --mc-risco-vermelho: var(--mc-vermelho-700);
+  --mc-vermelho-corpo: var(--mc-vermelho-700); --mc-protecao-verde: var(--mc-verde-700);
+  --mc-verde-protecao-corpo: var(--mc-verde-700);
+  --mc-elev-0: none;
+  --mc-elev-1: 0 1px 2px rgba(10,14,26,.06), 0 0 0 1px rgba(10,14,26,.04);
+  --mc-elev-2: 0 4px 12px rgba(10,14,26,.08), 0 0 0 1px rgba(10,14,26,.05);
+}
+
+/* ---- SEMANTICOS · TEMA ESCURO -------------------------------- */
+:root[data-theme="dark"], .mc-dark {
+  --mc-bg-primary: var(--mc-diamante-800); --mc-bg-secondary: var(--mc-diamante-700);
+  --mc-bg-elevated: var(--mc-diamante-600); --mc-bg-inverse: var(--mc-papel);
+  --mc-text-primary: var(--mc-papel); --mc-text-secondary: var(--mc-cinza-300);
+  --mc-text-inverse: var(--mc-diamante-700); --mc-text-disabled: var(--mc-cinza-300);
+  --mc-border-default: var(--mc-diamante-600); --mc-border-strong: var(--mc-cinza-300);
+  --mc-diamante-corpo: var(--mc-papel); --mc-azul-acesso-corpo: var(--mc-azul-400);
+  --mc-fluxo-azul: var(--mc-azul-400); --mc-risco-vermelho: var(--mc-vermelho-400);
+  --mc-vermelho-corpo: var(--mc-vermelho-400); --mc-protecao-verde: var(--mc-verde-400);
+  --mc-verde-protecao-corpo: var(--mc-verde-400);
+  --mc-elev-1: 0 1px 2px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.04);
+  --mc-elev-2: 0 4px 12px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.05);
+}

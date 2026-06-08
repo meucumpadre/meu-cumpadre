@@ -1,0 +1,68 @@
+# hot.md — Contexto Ativo MC
+> Atualizar a cada sessão. Máx 500 palavras. É o "me atualiza" eliminado.
+> Última atualização: 2026-05-13 ~23:45 UTC (pós-MB-030 Vault Organização — Camada 0 Cascata #28)
+
+---
+
+## Sessão atual · 13/05/2026 ~23:45 UTC
+
+**Princípios MC totais: 28** (era 22 em início de sessão).
+**Novos cunhados nesta sessão:** #25 (Caminho Operacional Adequado) · #26 (Anti-Colisão Pré-Cunhagem) · #27 v0.2 (Matriz Visual Multi-Camada) · #28 (Texto Canônico Precede Imagem — Verbo Primeiro).
+
+**Cascata #28 ATIVA:** produção visual em massa **SUSPENSA** até Camadas 0+1+2 cumpridas:
+- Camada 0: Vault canônico organizado (MB-030 — este turno)
+- Camada 1: Documentação canônica (Cowork — turno paralelo F2)
+- Camada 2: Texto-fonte de marca (C1 — manifesto/voice/copy)
+- Camada 3: Brand Foundation imagética (C5 — claude.ai/design manual founder)
+- Camada 4: Aplicação visual em massa (C2-Visual — Cowork via Canva/Figma/Adobe MCPs)
+
+**Âncora #28:** João 1:1 — Verbo precede Imagem. Cascata inviolável.
+
+---
+
+## Atividades recentes
+
+- **13/05 ~23:45 · MB-030** (Vault Organização 100%) — _INDEX.md + INDEX-PATCHES.md + CLAUDE.md atualizados; banner SUPERSEDED em #27 v0.1; 28 princípios refletidos
+- **13/05 ~23:30 · #27 v0.2 cunhado** — refinamento (v0.1 SUPERSEDED por restrição excessiva)
+- **13/05 ~22:30 · #25/#26 cunhados** — pós-colisão tripla detectada; #26 previne recorrência
+- **13/05 · MB-025A** — 22 princípios MC migrados pra arquivos canônicos individuais em `03-GOVERNANCA/principios/`
+- **13/05 · MB-024** — Princípios #21 (Cronometria do Humano) e #22 (5 Pontos Humanos H1-H5) cunhados
+- **10/05 · ADR-014 APROVADO** — ZapSign substitui Autentique
+
+---
+
+## Decisões ativas (últimas 72h)
+
+| Decisão | Status | Doc canônico |
+|---|---|---|
+| Princípios #25-#28 PROVISIONAL | ⚠️ aguarda Bloco O Juliana 19/05 | `03-GOVERNANCA/patches/` |
+| Visual em massa SUSPENSO até Camadas 0+1+2 | ⛔ trava cascata #28 | hot.md (este) |
+| ADR-014 plataforma assinatura — ZapSign | ✅ aprovado 10/05 | ADR-014 |
+| Sprint 2 RIPDs | 🔁 realocado para depois da cascata | — |
+| Pauta Juliana v2.0 — Bloco O ampliado com O8/O9/O10 | 🔴 19/05 | Sprint 3 |
+
+---
+
+## Próximas ações (por prioridade)
+
+1. ⛔ **Camada 1 (F2 paralelo)** — Cowork organizar `Documentação/` canônica
+2. ⛔ **Camada 2** — texto-fonte de marca (C1 manifesto/voice/copy)
+3. 🔴 **15/05** — pacote 20 docs entregue a Juliana
+4. 🔴 **19/05** — parecer Juliana (66Q · 14 blocos) incluindo Bloco O ampliado (O8/O9/O10)
+5. 🟡 Pós-19/05 — selar ADR-017 (#25/#26) + ADR-018 (#27v02/#28) + ADR-007 v4.0 + ADR-012 v1.1 + ADR-013 v1.1
+6. ⚪ Camada 3 (C5 fundacional) só após Camadas 0+1+2
+
+---
+
+## Contexto corrente
+
+- **Fase:** Crisálida Z3 · pré-revenue · piloto N=150
+- **Gate crítico:** Reunião Dra. Juliana 19/05/2026 — 66+ perguntas (ampliada com Bloco O)
+- **Caso âncora:** Hib001 (JER001) E2-Deliberação · CAD001 (CAD001) BF liberado
+- **RouterEthics:** 11.0 · 140 nós · 7 hooks
+- **ADR-007:** v3.8 PROVISIONAL — selagem pós-Juliana
+
+---
+
+*hot.md é lido pelo Claude Code no início de cada sessão.*
+*Nunca versionar. Nunca commitar. Sempre sobrescrever.*

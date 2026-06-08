@@ -1,0 +1,54 @@
+---
+tipo: INDEX
+escopo: 03-GOVERNANCA/patches/
+data-atualizacao: 2026-05-13
+---
+
+# Indice de Patches - Meu Cumpadre
+
+Patches sao instrumentos temporarios que adicionam, modificam ou suplementam ADRs canonicas. Quando aplicados (ou quando o conteudo cunhado opera plenamente), sao arquivados em `_HISTORICO_PATCHES_APLICADOS/`.
+
+> **Principio #19 (cunhado 12/05/2026):** Patches sao instrumentos temporarios, nao canonicos.
+
+---
+
+## Patches Pendentes
+
+(nenhum patch pendente no momento)
+
+---
+
+## Patches Aplicados (Historico)
+
+### MC-ADR-012-PATCH-v1_0-para-v1_1-2026-0512
+- Arquivo: [[_HISTORICO_PATCHES_APLICADOS/MC-ADR-012-PATCH-v1_0-para-v1_1-2026-0512]]
+- ADR resultante: [[MC-ADR-012-StackLLM-MultiModelo-v1_1-2026-0513]]
+- Principio cunhado: #18 - Risco Provisional Documentado
+- Status: APLICADO
+
+### MC-PATCH-MEMO-v3_0-1-IdentidadeExecutor
+- Arquivo: [[_HISTORICO_PATCHES_APLICADOS/MC-PATCH-MEMO-v3_0-1-IdentidadeExecutor]]
+- Principio cunhado: #15 - Entrega cofounder cross-vertical obrigatoria
+- Status: APLICADO
+
+### MC-PATCH-MEMO-v3_0-2-DuploPapelMelo
+- Arquivo: [[_HISTORICO_PATCHES_APLICADOS/MC-PATCH-MEMO-v3_0-2-DuploPapelMelo]]
+- Principio cunhado: #15.1 - Descoberta de orfao dispara MB de reconstituicao
+- Status: APLICADO
+
+### MC-PATCH-MEMO-v3_0-3-MissionBriefCodificacao
+- Arquivo: [[_HISTORICO_PATCHES_APLICADOS/MC-PATCH-MEMO-v3_0-3-MissionBriefCodificacao]]
+- Principio cunhado: #16 - Iniciativa estrategica cofounder 20x
+- Status: APLICADO
+
+### MC-PATCH-MEMO-v3_0-4-ErrataLorrane-v2_0-DEFINITIVA
+- Arquivo: [[_HISTORICO_PATCHES_APLICADOS/MC-PATCH-MEMO-v3_0-4-ErrataLorrane-v2_0-DEFINITIVA]]
+- Principio cunhado: #17 - gov.br como infraestrutura nacional de identidade digital
+- Status: APLICADO
+
+---
+
+Hierarquia: Dignidade > Compliance > Viabilidade
+Selo: "O diamante e carbono que nao desistiu da pressao."
+
+∞

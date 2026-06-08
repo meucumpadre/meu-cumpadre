@@ -1,0 +1,40 @@
+---
+tipo: INDEX
+escopo: 03-GOVERNANCA/patches/
+data-atualizacao: 2026-05-13
+---
+
+# Indice de Patches - Meu Cumpadre
+
+Patches sao instrumentos temporarios que adicionam, modificam ou suplementam ADRs canonicas. Quando aplicados, geram nova versao da ADR e o patch e arquivado em `_HISTORICO_PATCHES_APLICADOS/`.
+
+> **Principio #19 (cunhado 12/05/2026):** Patches sao instrumentos temporarios, nao canonicos.
+
+---
+
+## Patches Pendentes
+
+(nenhum patch pendente no momento)
+
+---
+
+## Patches Aplicados (Historico)
+
+### MC-ADR-012-PATCH-v1_0-para-v1_1 - APLICADO em 2026-05-13
+
+- Arquivo: [[_HISTORICO_PATCHES_APLICADOS/MC-ADR-012-PATCH-v1_0-para-v1_1-2026-0512]]
+- ADR resultante: [[MC-ADR-012-StackLLM-MultiModelo-v1_1-2026-0513]]
+- Data producao patch: 2026-05-12
+- Data aplicacao: 2026-05-13 (via MB-019b)
+- Conteudo aplicado:
+  - §2.5 NOVA - Status DPA Anthropic durante Crisalida
+  - §3.4 NOVA - Decisao Founder Risco Provisional Documentado
+  - Principio #18 cunhado - Risco Provisional Documentado
+- ADR anterior: [[MC-ADR-012-StackLLM-MultiModelo-v1_0-2026-0512]] SUPERSEDED
+
+---
+
+Hierarquia: Dignidade > Compliance > Viabilidade
+Selo: "O diamante e carbono que nao desistiu da pressao."
+
+∞

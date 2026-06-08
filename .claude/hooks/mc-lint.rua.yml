@@ -1,0 +1,28 @@
+# Sidecar RUA do hook mc-lint (hooks .py não têm frontmatter · o gerador lê este .rua.yml)
+rua:
+  id: mc-lint
+  nome: mc-lint (Stop hook · Proibições Absolutas)
+  tipo: hook
+  versao: v0.1
+  status: INSTALADO
+  papel: Stop hook block-mode que enforça as Proibições Absolutas do CLAUDE.md de forma determinística (advisory → verificação)
+  gatilhos: ["Stop hook (automático ao fim do turno)", "python3 .claude/hooks/mc-lint.py --all"]
+  entrega: bloqueia o Stop + lista de violações (label · arquivo:linha · correção) se houver hit
+  metodo_fonte: "CLAUDE.md · Proibições Absolutas · ADR-007/009a/014"
+  instancia_aci: transversal
+  camada_ase: L4
+  compoe_com: [mc-pre-selagem]
+  nao_confundir_com:
+    - id: sister-ancia
+      motivo: mc-lint é determinístico (regex de tokens vedados); a sister-ancia é revisão adversarial semântica
+  gate: R1
+  zona: Verde
+  lgpd_nota: "varre só linhas adicionadas em .md/.txt/.json · sem PII"
+  vedacoes_honradas: [Proof-First, "D>C>V", Firewall-OAB, LGPD]
+  para_no_gate: "É um gate mecânico (block-mode) · bloqueia o turno até corrigir; não sela nem conserta"
+  custo:
+    gasta_agente: false
+    opt_in: false
+    fan_out: null
+  emite_audit: false
+  depende_de: [git]

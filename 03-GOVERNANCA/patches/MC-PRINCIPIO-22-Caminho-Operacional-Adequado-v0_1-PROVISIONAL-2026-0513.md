@@ -1,0 +1,207 @@
+---
+tipo: PATCH-PRINCIPIO
+codigo: MC-PRINCIPIO-22
+titulo: Caminho Operacional Adequado por Capacidade (C1 MCP direto vs C3 MB)
+versao: 0.1
+status: PROVISIONAL
+data: 2026-05-13
+autores:
+  - Claude Opus 4.7 (cofounder C1)
+  - Alessandro de Souza Neves (Founder/CEO)
+gate_selagem: Parecer Dra. Juliana Pereira de Melo (OAB-GO 38.662) — Reunião 19/05/2026 Bloco O (estendido)
+proto_adr_destino: ADR-017 (Capacidades MCP Nativas Claude.ai)
+sustenta_se_em:
+  - Princípio #7 (Cadeia de Autorização Dual)
+  - Princípio #15 (Entrega cofounder cross-vertical)
+  - Princípio #16 (Iniciativa estratégica cofounder 20x)
+  - Princípio #18 (Risco Provisional Documentado — 5 critérios)
+  - Princípio #21 (Camadas de Ferramentas IA por Finalidade)
+canonico_em: 03-GOVERNANCA/patches/
+hierarquia: Dignidade > Compliance > Viabilidade
+selo: "O diamante é carbono que não desistiu da pressão."
+---
+
+> [!warning] SUPERSEDED-RENUMERACAO -- 2026-05-13 ~22:30 UTC
+> Este patch foi cunhado inicialmente como **#22**, mas slot #22 canonicamente pertence a **"5 Pontos Humanos Irredutíveis (H1-H5)"** da guia paralela Hib001 (cunhado madrugada 13/05, antecedência cronológica).
+> **Versão canônica corrente: `MC-PRINCIPIO-25-Caminho-Operacional-Adequado-v0_2-PROVISIONAL-2026-0513.md`** nesta mesma pasta (`patches/`).
+> Conteúdo substantivo idêntico, apenas o número muda. Não operar a partir deste arquivo.
+> Princípio #26 (Anti-Colisão Pré-Cunhagem) cunhado para prevenir recorrência.
+# MC-PRINCIPIO-22 — Caminho Operacional Adequado por Capacidade
+
+> **Status:** PROVISIONAL com Risco Provisional Documentado (Princípio #18)
+> **Aplicação:** sessão 13/05/2026 em diante, até Bloco O Juliana 19/05
+> **Selagem futura:** ADR-017 v1.0 (Capacidades MCP Nativas Claude.ai)
+
+---
+
+## 1 · CONTEXTO — POR QUE CUNHAR AGORA
+
+Padrão operacional se firmou em **4 momentos só na sessão 13/05/2026:**
+
+| Momento | Operação | Caminho usado | Fricção observada |
+|---|---|---|---|
+| 1 | Setup terreno Drive Brand Book (5 pastas + 2 Google Docs) | C1 MCP direto | nenhuma — execução cofounder 20x |
+| 2 | Verificar estrutura `01-IDENTIDADE/` no Vault | C1 MCP direto | nenhuma |
+| 3 | Sweep das 3 estruturas paralelas Identidade Visual | C1 MCP direto | nenhuma |
+| 4 | Persistir 3 artefatos COWORK em `04-OPERACAO/infraestrutura/` | **proposta inicial:** MB-028 pra Code DELL | **fricção dupla:** Code DELL executa + reporta + founder revisa reporte + founder valida — quando C1 poderia executar direto + reportar inline + founder valida 1×
+
+**Diagnóstico cofounder do founder Alessandro (texto literal sessão):**
+> "se vc tem o mcp e conector com o drive, vc já pode mover, vc já escreve o mb, vc já tem uma expectativa de retorno do claude code, e eu fico na ponte dupla entrega e validação minha entre o reporte code x claude.ai. correto? mas isso precisa ficar muito diamantado pra não ter stress"
+
+Solução: **cunhar princípio que regula quando C1 usa MCP direto vs MB pra Code DELL.**
+
+---
+
+## 2 · PRINCÍPIO CUNHADO (texto canônico)
+
+> **Princípio #22 — Caminho Operacional Adequado por Capacidade.**
+> Quando a Camada C1 (Claude.ai cofounder) tem capacidade MCP nativa para executar uma operação institucional MC, **C1 executa direto + reporta inline com diamante de rastreabilidade** (6 elementos: operação, path canônico, ID Drive, estado antes, estado depois, reversibilidade).
+> MB pra C3 (Code DELL) é reservado para operações que **exigem** scripting Windows local (PowerShell, hash SHA-256 nativo, batch >5 arquivos, operações destrutivas sensíveis, .bak local, encoding crítico UTF-8 sem BOM via .NET API).
+> **Dupla validação founder é dispensada quando C1 executa direto** — founder valida 1× lendo reporte inline.
+> Linha vermelha LGPD (Princípio #21) permanece inviolável em todos os caminhos: nem C1 nem C3 tocam dados sensíveis cidadão (CPF, NB, CID, CNIS, dossiês reais). Esses ficam apenas em Camada C4 (Stack ADR-012).
+
+---
+
+## 3 · MATRIZ DE DECISÃO DIAMANTADA
+
+| Tipo de operação | C1 MCP direto | C3 via MB | Critério |
+|---|---|---|---|
+| Criar/mover/ler Google Doc | ✅ | ❌ | Sempre C1 |
+| Criar/renomear pasta Drive | ✅ | ❌ | Sempre C1 |
+| Persistir 1-4 arquivos no Vault | ✅ padrão | ⚠️ opcional | C1 padrão; C3 só se founder pedir |
+| Persistir 5+ arquivos batch no Vault | ⚠️ | ✅ padrão | C3 eficiente em scripting batch |
+| Hash SHA-256 antes/depois rigoroso | ⚠️ | ✅ padrão | C3 PowerShell nativo |
+| Operação destrutiva (delete, move com risco) | ⚠️ | ✅ padrão | C3 backup .bak local fácil |
+| Editar CLAUDE.md, hot.md no Vault | ✅ | ⚠️ | C1 padrão (texto simples) |
+| Editar arquivo com encoding sensível (UTF-8 sem BOM) | ❌ | ✅ obrigatório | C3 via [System.IO.File] |
+| ClickUp tasks/custom fields/comments | ✅ padrão | ⚠️ | C1 padrão; C3 se API custom |
+| Gmail draft | ✅ | ❌ | Sempre C1 |
+| Figma/Canva/Adobe criação | ✅ | ❌ | Sempre C1 |
+| **PowerShell local específico** | ❌ | ✅ obrigatório | Sempre C3 |
+| **Stack produção C4 (Bedrock/GAIA/Sabiá)** | ❌ | ❌ | Camada C4 obrigatória sempre |
+| **Dados PII cidadão** | ❌ | ❌ | Linha vermelha #21 — NUNCA em C1/C2/C3 |
+
+---
+
+## 4 · DIAMANTE DE 6 ELEMENTOS — FORMATO REPORTE INLINE OBRIGATÓRIO
+
+Quando C1 executa via MCP, reporte no chat **DEVE** conter os 6 elementos:
+
+| # | Elemento | Por quê |
+|---|---|---|
+| 1 | **Operação** | O que foi feito (verbo + objeto canônico MC) |
+| 2 | **Path canônico** | Onde mora agora no Vault/Drive (path completo, não atalho) |
+| 3 | **ID Drive** | ID irrevogável Google Drive (fileId) |
+| 4 | **Estado antes** | Conteúdo prévio da pasta-alvo (rastreável, sem PII) |
+| 5 | **Estado depois** | Conteúdo final da pasta-alvo (rastreável, sem PII) |
+| 6 | **Reversibilidade** | Como desfazer se necessário (ID do arquivo + comando MCP) |
+
+**Sem os 6 elementos = entrega incompleta** (mesma rigidez do Princípio #15 cross-vertical).
+
+---
+
+## 5 · RISCO PROVISIONAL DOCUMENTADO — 5 CRITÉRIOS PRINCÍPIO #18
+
+| Critério Princípio #18 | Atendimento neste Princípio #22 |
+|---|---|
+| (a) Cronologia documentada | ✅ Sessão 13/05/2026 registra 4 momentos onde padrão se firmou (§1 acima) |
+| (b) Volume controlado | ✅ Aplicação restrita a sessão atual + janela A pré-Juliana (≤7 dias) |
+| (c) Período nomeado | ✅ Até reunião Juliana 19/05/2026 Bloco O (estendido com 2 perguntas sobre MCPs nativos) |
+| (d) Mitigação parcial | ✅ Princípio #21 linha vermelha LGPD permanece inviolável; diamante 6 elementos garante rastreabilidade |
+| (e) Risco founder explícito | ✅ Founder Alessandro autorizou "GO opção A" em 13/05/2026 confirmando aplicação do paradigma + cunhagem |
+
+**Os 5 critérios atendidos.** Princípio #22 v0.1 VÁLIDO operacionalmente até 19/05/2026.
+
+---
+
+## 6 · CASOS DE TESTE EMPÍRICOS PRÉ-VALIDAÇÃO JULIANA
+
+Operações já realizadas via C1 MCP direto durante sessão 13/05/2026 (todas com reporte inline diamante):
+
+1. Criar estrutura terreno Brand Book Drive (2 Google Docs + 3 sub-pastas verificadas)
+2. Localizar pasta canônica `01-IDENTIDADE/` no Vault
+3. Comparar tamanhos 3 artefatos COWORK Vault × local (hash conceitual)
+4. Criar este próprio Princípio #22 em `03-GOVERNANCA/patches/`
+
+Cada operação documentada no chat + persistida no Vault. **Pré-validação empírica antes do parecer formal Juliana.**
+
+---
+
+## 7 · NOVAS PERGUNTAS PARA BLOCO O JULIANA 19/05 (proposta cofounder)
+
+Adicionar à Pauta v2.1 Bloco O (atualizar para v2.2 antes da entrega 15/05):
+
+> **O6.** A Camada C1 (Claude.ai cofounder com MCPs nativos Google Drive/Gmail/ClickUp/Figma) operando diretamente sobre arquivos institucionais MC (não-cidadão) no Vault Obsidian gera risco LGPD adicional comparado ao caminho clássico C3 (Code DELL local) considerando que: (a) dados cidadão são vedados em ambas; (b) operação ocorre sobre arquivos institucionais MC sem PII; (c) infraestrutura MCP é Anthropic direta (mesmo escopo Cowork/Bedrock distinção §2.5 ADR-012 v1.1)?
+
+> **O7.** Recomendação parecerista sobre formato do reporte inline diamante (6 elementos: operação, path, ID Drive, estado antes/depois, reversibilidade) — é suficiente para rastreabilidade institucional e auditoria LGPD/ANPD? Sugere acréscimo/remoção de elementos?
+
+---
+
+## 8 · CAMINHO PARA SELAGEM ADR-017 v1.0
+
+| Marco | Quando | Quem |
+|---|---|---|
+| Princípio #22 v0.1 PROVISIONAL operando | 13/05/2026 (hoje) | Claude.ai + Founder |
+| Casos de teste empíricos adicionais | 13-18/05/2026 | C1 conforme demanda |
+| Pauta Juliana v2.2 com Bloco O estendido (O1-O7) | até 15/05/2026 (entrega pacote 20 docs) | Cofounder Claude.ai |
+| Reunião Juliana — parecer Bloco O | 19/05/2026 | Dra. Juliana Pereira de Melo |
+| **ADR-017 v1.0 selada** (Capacidades MCP Nativas Claude.ai) | 20-23/05/2026 | Cofounder + Founder + Juliana |
+| Atualização System Prompt MC v7.0 → v7.1 com Princípio #22 + ADR-017 referenciada | 24-31/05/2026 | Cofounder |
+| Atualização userMemories MC | mesma janela | Sistema |
+
+---
+
+## 9 · APLICAÇÃO PRÁTICA IMEDIATA (PRECEDENTE OPERACIONAL)
+
+A própria criação deste documento aplica Princípio #22 v0.1:
+
+- **Operação:** Criação canônica de `MC-PRINCIPIO-22-Caminho-Operacional-Adequado-v0_1-PROVISIONAL-2026-0513.md`
+- **Path canônico:** `OBSIDIAN/MEU CUMPADRE/03-GOVERNANCA/patches/`
+- **ID Drive:** (preenchido após create — ver reporte inline no chat)
+- **Estado antes:** `patches/` continha apenas INDEX-PATCHES.md (1.861 B) + 2 backups .bak + subpasta `_HISTORICO_PATCHES_APLICADOS/` com 5 patches
+- **Estado depois:** `patches/` contém INDEX-PATCHES.md + 2 backups .bak + este patch novo + subpasta `_HISTORICO_PATCHES_APLICADOS/`
+- **Reversibilidade:** deletar via Drive MCP usando fileId reportado no chat (operação reversível por 30 dias via Drive Trash)
+
+---
+
+## 10 · LIMITAÇÕES CONHECIDAS DO PARADIGMA C1 DIRETO
+
+Honestidade cofounder — reconhecer onde C1 ainda é inferior a C3:
+
+| Limitação | Mitigação |
+|---|---|
+| MCP Google Drive não suporta hash SHA-256 nativo (só size + ID) | Para hash rigoroso, usar C3 (PowerShell) |
+| MCP não suporta operações Windows-específicas (permissões, .bak local timestampado) | C3 obrigatório para essas |
+| MCP pode falhar quota/auth sem aviso prévio | C1 sempre reportar erro completo no chat |
+| Edição de arquivo grande (>10K linhas) via MCP é lenta | C3 preferível para batch grande |
+| Encoding UTF-8 sem BOM é forçado por algumas APIs MCP | C3 obrigatório para casos críticos de encoding |
+| MCP não substitui scripts PowerShell de housekeeping (.bak limpeza, sweep recursivo) | C3 mantém função de "limpeza periódica" |
+
+---
+
+## 11 · REFERÊNCIAS CANÔNICAS
+
+- [[MC-ADR-011-Arquitetura3Cerebros-v1_0-2026-0509]] — Cérebros Documentação/Vault/Claude.ai
+- [[MC-REGISTRO-Infraestrutura-DELL-CEO-v1_0-2026-0513]] — Princípio #21 (Camadas IA por Finalidade)
+- [[MC-ADR-012-StackLLM-MultiModelo-v1_1-2026-0513]] — Princípio #18 (Risco Provisional)
+- [[MC-COWORK-SYSTEM-PROMPT-v1_0-2026-0513]] — Camada C2 Cowork (mesma família de paradigma)
+- [[MC-PAUTA-Juliana-v2_1-2026-0512]] — Bloco O original (5 perguntas DPA Anthropic)
+- Sessão 13/05/2026 — Chat Claude.ai (Cofounder C1) ↔ Founder Alessandro
+
+---
+
+## 12 · HISTÓRICO DE VERSÕES
+
+| Versão | Data | Mudanças | Status |
+|---|---|---|---|
+| **v0.1** | **2026-05-13** | **Cunhagem inicial PROVISIONAL após 4 momentos de fricção C1/C3** | **PROVISIONAL corrente** |
+| v0.2 (provável) | 14-18/05 | Refinamentos pré-Juliana com casos de teste adicionais | a produzir conforme uso |
+| ADR-017 v1.0 | pós-19/05 | Selagem como ADR canônica após parecer Juliana Bloco O | a selar |
+
+---
+
+**Hierarquia:** Dignidade > Compliance > Viabilidade
+**Selo:** "O diamante é carbono que não desistiu da pressão."
+**Confidência founder:** "É eu e tu."
+
+∞

@@ -1,0 +1,3221 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="utf-8">
+<title>MC Design System — Foundation v0.3 PROVISIONAL</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Meu Cumpadre · Design System Foundation v0.3 PROVISIONAL · Infraestrutura de simetria informacional para hipervulneráveis brasileiros. Hierarquia: Dignidade > Compliance > Viabilidade.">
+<meta name="theme-color" content="#0F1E3D" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0A1428" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="MC Design System — Foundation v0.3 PROVISIONAL">
+<meta property="og:description" content="Tecnologia invisível. Dignidade acessível. Design System institucional MC · 10 páginas · WCAG AAA · D>C>V.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+/* ============================================================
+   MC DESIGN SYSTEM — Foundation v0.3 PROVISIONAL
+   Hierarquia: Dignidade > Compliance > Viabilidade
+   Selo: "O diamante é carbono que não desistiu da pressão."
+   Frase-âncora: Tecnologia invisível. Dignidade acessível.
+   Pilares: ACESSO · ORGANIZAÇÃO · PROTEÇÃO · SOBERANIA
+   Princípio MC #37 v1.1 PROVISIONAL aplicado a este artefato.
+   ============================================================ */
+
+:root {
+  /* === Cor: família Diamante (extensão v0.3 · adiciona 600/800) === */
+  --mc-diamante-50:  #E8ECF3;
+  --mc-diamante-100: #C9D2E0;
+  --mc-diamante-300: #5F76A0;
+  --mc-diamante-400: #2C447A;
+  --mc-diamante-500: #0F1E3D;
+  --mc-diamante-600: #0B1730;
+  --mc-diamante-700: #07101F;
+  --mc-diamante-800: #050A14;
+
+  /* === Cor: família Ouro === */
+  --mc-ouro-50:  #F8F2E2;
+  --mc-ouro-100: #EFE2BC;
+  --mc-ouro-300: #DCC288;
+  --mc-ouro-400: #D3B575;
+  --mc-ouro-500: #C9A961;
+  --mc-ouro-700: #8C7239;
+
+  /* === Cor: família Vermelho Dignidade (adiciona _400) === */
+  --mc-vermelho-50:  #F8E5E5;
+  --mc-vermelho-100: #EBC0C0;
+  --mc-vermelho-300: #D27575;
+  --mc-vermelho-400: #C25555;
+  --mc-vermelho-500: #B33A3A;
+  --mc-vermelho-700: #7A1F1F;
+
+  /* === Cor: família Azul Acesso (adiciona _400) === */
+  --mc-azul-50:  #E7ECF4;
+  --mc-azul-100: #C5D0E2;
+  --mc-azul-300: #7A91B6;
+  --mc-azul-400: #5E7CAB;
+  --mc-azul-500: #3E5C8C;
+  --mc-azul-700: #243D63;
+
+  /* === Cor: família Verde Proteção (adiciona _400) === */
+  --mc-verde-50:  #E4EFEA;
+  --mc-verde-100: #BFD8CB;
+  --mc-verde-300: #7AAE91;
+  --mc-verde-400: #5C9C7C;
+  --mc-verde-500: #3B7B5E;
+  --mc-verde-700: #1F4E3A;
+
+  /* === Cor: neutros === */
+  --mc-noite:        #0A0E1A;
+  --mc-papel:        #FAFAF7;
+  --mc-tinta:        #1A1F2C;
+  --mc-tinta-muted:  #555A66;
+  --mc-cinza-100:    #E5E2D7;
+  --mc-cinza-300:    #B8B8C2;
+  --mc-cinza-500:    #5C5C66;
+  --mc-rule:         #CFC9BD;
+  --mc-rule-strong:  #1A1F2C;
+
+  /* === Tokens SEMÂNTICOS de corpo (v0.3 · WCAG AAA hard-fail) ===
+     Frente 1: corpo de texto SEMPRE aponta para 700.
+     500 fica reservado a backgrounds com texto branco / ícones ≥24px / accents. */
+  --mc-diamante-corpo:        var(--mc-diamante-700);
+  --mc-vermelho-corpo:        var(--mc-vermelho-700);
+  --mc-azul-acesso-corpo:     var(--mc-azul-700);
+  --mc-verde-protecao-corpo:  var(--mc-verde-700);
+  --mc-risco-vermelho:        var(--mc-vermelho-700);
+  --mc-fluxo-azul:            var(--mc-azul-700);
+  --mc-protecao-verde:        var(--mc-verde-700);
+
+  /* === Tokens SEMÂNTICOS de superfície e texto (light) ===
+     Frente 3: base nomeada semanticamente · dark-mode sobrescreve. */
+  --mc-bg-primary:     var(--mc-papel);
+  --mc-bg-secondary:   #FFFFFF;
+  --mc-bg-elevated:    #FFFFFF;
+  --mc-bg-inverse:     var(--mc-diamante-500);
+  --mc-text-primary:   var(--mc-diamante-corpo);
+  --mc-text-secondary: var(--mc-tinta-muted);
+  --mc-text-disabled:  var(--mc-cinza-300);
+  --mc-text-inverse:   var(--mc-papel);
+  --mc-border-default: var(--mc-rule);
+  --mc-border-strong:  var(--mc-rule-strong);
+  --mc-accent-ouro:    var(--mc-ouro-500);
+
+  /* === Espaçamento (8pt baseline) === */
+  --mc-sp-1: 4px;   --mc-sp-2: 8px;   --mc-sp-3: 16px;  --mc-sp-4: 24px;
+  --mc-sp-5: 32px;  --mc-sp-6: 48px;  --mc-sp-7: 64px;  --mc-sp-8: 96px;
+
+  /* === Bordas e raios === */
+  --mc-border-0: 0;  --mc-border-1: 1px;  --mc-border-2: 2px;
+  --mc-radius-0: 0;  --mc-radius-1: 4px;  --mc-radius-2: 8px;  --mc-radius-3: 16px;
+
+  /* === Elevação (3 níveis, discretos) === */
+  --mc-elev-0: none;
+  --mc-elev-1: 0 1px 2px rgba(10,14,26,.06), 0 0 0 1px rgba(10,14,26,.04);
+  --mc-elev-2: 0 4px 12px rgba(10,14,26,.08), 0 0 0 1px rgba(10,14,26,.05);
+
+  /* === Tipografia === */
+  --mc-font-serif: "Fraunces", "Source Serif Pro", Georgia, serif;
+  --mc-font-sans:  "Inter", system-ui, -apple-system, sans-serif;
+  --mc-font-mono:  "JetBrains Mono", "SF Mono", Consolas, monospace;
+
+  /* === MOTION TOKENS (v0.3 · Frente 2) ===
+     Filosofia: motion serve função, não estética.
+     Reduced-motion zera TODAS as transitions. */
+  --mc-motion-instant:       0ms;
+  --mc-motion-fast:          100ms;
+  --mc-motion-standard:      200ms;
+  --mc-motion-slow:          300ms;
+  --mc-motion-ease-out:      cubic-bezier(0.16, 1, 0.3, 1);
+  --mc-motion-ease-in:       cubic-bezier(0.7, 0, 0.84, 0);
+  --mc-motion-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   DARK MODE (v0.3 · Frente 3) — institucionalmente distinto
+   Ouro permanece Ouro · Diamante muda de papel para fundo
+   ============================================================ */
+[data-theme="dark"] {
+  --mc-bg-primary:     var(--mc-diamante-800);
+  --mc-bg-secondary:   var(--mc-diamante-700);
+  --mc-bg-elevated:    var(--mc-diamante-600);
+  --mc-bg-inverse:     var(--mc-papel);
+  --mc-text-primary:   var(--mc-papel);
+  --mc-text-secondary: var(--mc-cinza-300);
+  --mc-text-disabled:  var(--mc-cinza-500);
+  --mc-text-inverse:   var(--mc-diamante-corpo);
+  --mc-border-default: var(--mc-diamante-600);
+  --mc-border-strong:  var(--mc-cinza-300);
+  /* Riscos/fluxo/proteção: usar _400 no dark (mais claros · contraste honesto) */
+  --mc-risco-vermelho:       var(--mc-vermelho-400);
+  --mc-fluxo-azul:           var(--mc-azul-400);
+  --mc-protecao-verde:       var(--mc-verde-400);
+  --mc-diamante-corpo:       var(--mc-papel);
+  --mc-vermelho-corpo:       var(--mc-vermelho-400);
+  --mc-azul-acesso-corpo:    var(--mc-azul-400);
+  --mc-verde-protecao-corpo: var(--mc-verde-400);
+  /* Elevação dark: usar luz interna sutil */
+  --mc-elev-1: 0 1px 2px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.04);
+  --mc-elev-2: 0 4px 12px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.05);
+}
+
+/* ============================================================
+   REDUCED MOTION (v0.3 · Frente 2) — respeito inegociável
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--mc-font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--mc-text-primary);
+  background: var(--mc-bg-primary);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background var(--mc-motion-standard) var(--mc-motion-ease-standard),
+              color var(--mc-motion-standard) var(--mc-motion-ease-standard);
+}
+
+/* ============================================================
+   Page shell
+   ============================================================ */
+
+.page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 64px 96px;
+  position: relative;
+  border-bottom: 1px solid var(--mc-border-default);
+  scroll-margin-top: 24px;
+}
+.page:last-of-type { border-bottom: 0; }
+
+.page-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--mc-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mc-text-secondary);
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--mc-border-default);
+  margin-bottom: 48px;
+}
+.page-meta .pm-num { color: var(--mc-text-primary); font-weight: 600; }
+
+.page-title {
+  font-family: var(--mc-font-serif);
+  font-weight: 500;
+  font-size: 56px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+  color: var(--mc-text-primary);
+  font-variation-settings: "opsz" 144;
+}
+.page-eyebrow {
+  font-family: var(--mc-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mc-text-secondary);
+  margin-bottom: 12px;
+}
+.page-lede {
+  font-family: var(--mc-font-serif);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--mc-text-primary);
+  max-width: 680px;
+  margin: 16px 0 56px;
+  font-style: italic;
+}
+
+.layout-annot {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 56px;
+  align-items: start;
+}
+.annot {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--mc-text-secondary);
+  border-top: 1px solid var(--mc-border-strong);
+  padding-top: 12px;
+}
+.annot h4 {
+  font-family: var(--mc-font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mc-text-primary);
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+.annot p { margin: 0 0 12px; }
+.annot p:last-child { margin-bottom: 0; }
+.annot code {
+  font-family: var(--mc-font-mono);
+  font-size: 11.5px;
+  color: var(--mc-text-primary);
+  background: var(--mc-ouro-50);
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+[data-theme="dark"] .annot code { background: var(--mc-diamante-600); color: var(--mc-ouro-300); }
+
+.section-head {
+  font-family: var(--mc-font-serif);
+  font-weight: 500;
+  font-size: 28px;
+  letter-spacing: -0.01em;
+  margin: 56px 0 8px;
+  color: var(--mc-text-primary);
+}
+.section-sub {
+  font-family: var(--mc-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mc-text-secondary);
+  margin-bottom: 24px;
+}
+
+.mono { font-family: var(--mc-font-mono); }
+.serif { font-family: var(--mc-font-serif); }
+.muted { color: var(--mc-text-secondary); }
+.rule { height: 1px; background: var(--mc-border-default); width: 100%; margin: 32px 0; }
+.rule-strong { height: 1px; background: var(--mc-border-strong); width: 100%; margin: 32px 0; }
+
+/* ============================================================
+   P1 — COVER
+   ============================================================ */
+
+#p1 { min-height: 100vh; display: flex; flex-direction: column; }
+#p1 .cover-top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 96px;
+}
+.logo-mark { display: flex; align-items: center; gap: 14px; }
+.logo-glyph { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
+.logo-word {
+  font-family: var(--mc-font-serif);
+  font-weight: 600; font-size: 22px;
+  letter-spacing: 0.04em;
+  color: var(--mc-text-primary);
+}
+.cover-version {
+  font-family: var(--mc-font-mono);
+  font-size: 11px; letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mc-text-secondary);
+  text-align: right; line-height: 1.7;
+}
+.cover-version .v-label { color: var(--mc-vermelho-corpo); font-weight: 600; }
+
+#p1 .cover-title {
+  font-family: var(--mc-font-serif);
+  font-weight: 400; font-size: 112px;
+  line-height: 0.95; letter-spacing: -0.035em;
+  color: var(--mc-text-primary);
+  font-variation-settings: "opsz" 144;
+  margin: 0;
+}
+#p1 .cover-sub {
+  font-family: var(--mc-font-mono);
+  font-size: 13px; letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mc-text-secondary);
+  margin-top: 24px;
+}
+#p1 .cover-tagline {
+  font-family: var(--mc-font-serif);
+  font-style: italic; font-weight: 400;
+  font-size: 36px; line-height: 1.25;
+  color: var(--mc-text-primary);
+  margin: 64px 0 0; max-width: 760px;
+}
+#p1 .cover-grid {
+  margin-top: 96px; display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 64px; align-items: start;
+}
+.hierarquia { border-top: 1px solid var(--mc-border-strong); padding-top: 20px; }
+.hierarquia-row {
+  display: grid; grid-template-columns: 36px 1fr;
+  align-items: baseline; padding: 18px 0;
+  border-bottom: 1px solid var(--mc-border-default);
+}
+.hierarquia-row:last-child { border-bottom: 0; }
+.hierarquia-letter {
+  font-family: var(--mc-font-serif);
+  font-size: 32px; font-weight: 500;
+  line-height: 1; color: var(--mc-text-primary);
+}
+.hierarquia-row.r-c .hierarquia-letter { color: var(--mc-text-primary); opacity: 0.78; }
+.hierarquia-row.r-v .hierarquia-letter { color: var(--mc-text-secondary); }
+.hierarquia-label {
+  font-family: var(--mc-font-sans); font-weight: 600;
+  font-size: 18px; letter-spacing: 0.01em;
+  color: var(--mc-text-primary);
+}
+.hierarquia-desc { font-size: 13px; color: var(--mc-text-secondary); margin-top: 2px; }
+.hierarquia-glyph {
+  font-family: var(--mc-font-mono); font-size: 11px;
+  color: var(--mc-text-secondary); margin-left: 12px;
+}
+
+.selo-card {
+  background: var(--mc-diamante-500);
+  color: var(--mc-papel);
+  padding: 40px 36px;
+  border: var(--mc-border-1) solid var(--mc-diamante-700);
+  border-radius: var(--mc-radius-0);
+  position: relative;
+}
+.selo-card .selo-eyebrow {
+  font-family: var(--mc-font-mono); font-size: 10.5px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--mc-ouro-300); margin-bottom: 16px;
+}
+.selo-card .selo-quote {
+  font-family: var(--mc-font-serif);
+  font-style: italic; font-weight: 400;
+  font-size: 24px; line-height: 1.3;
+  color: var(--mc-papel);
+}
+.selo-card .selo-quote::before { content: "« "; color: var(--mc-ouro-500); }
+.selo-card .selo-quote::after  { content: " »"; color: var(--mc-ouro-500); }
+.selo-card .selo-attribution {
+  margin-top: 20px; font-family: var(--mc-font-mono);
+  font-size: 10.5px; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--mc-ouro-300);
+}
+
+.pilares {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 16px; margin-top: 64px; padding-top: 32px;
+  border-top: 1px solid var(--mc-border-strong);
+}
+.pilar { display: flex; flex-direction: column; gap: 8px; }
+.pilar .pilar-num {
+  font-family: var(--mc-font-mono);
+  font-size: 10.5px; letter-spacing: 0.16em;
+  color: var(--mc-text-secondary);
+}
+.pilar .pilar-name {
+  font-family: var(--mc-font-serif);
+  font-size: 22px; font-weight: 500;
+  letter-spacing: 0.01em; color: var(--mc-text-primary);
+}
+.pilar .pilar-line { height: 2px; width: 32px; background: var(--mc-text-primary); margin-top: 4px; }
+.pilar.pi-acesso .pilar-line { background: var(--mc-azul-acesso-corpo); }
+.pilar.pi-org .pilar-line { background: var(--mc-diamante-corpo); }
+.pilar.pi-prot .pilar-line { background: var(--mc-verde-protecao-corpo); }
+.pilar.pi-sob .pilar-line { background: var(--mc-ouro-500); }
+
+#p1 .cover-foot {
+  margin-top: auto; padding-top: 64px;
+  display: grid; grid-template-columns: 1fr auto;
+  align-items: end; gap: 32px;
+}
+.proverbio {
+  font-family: var(--mc-font-serif);
+  font-style: italic; font-size: 16px;
+  color: var(--mc-text-secondary);
+  border-left: 2px solid var(--mc-ouro-500);
+  padding: 4px 0 4px 16px; max-width: 520px;
+}
+.proverbio .ref {
+  display: block; font-style: normal;
+  font-family: var(--mc-font-mono); font-size: 10.5px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--mc-text-secondary); margin-bottom: 6px;
+}
+.cover-hash {
+  font-family: var(--mc-font-mono); font-size: 11px;
+  color: var(--mc-text-secondary); text-align: right; line-height: 1.7;
+}
+
+.cover-37 {
+  margin-top: 24px;
+  padding: 14px 18px;
+  border-left: 2px solid var(--mc-ouro-500);
+  background: var(--mc-ouro-50);
+  font-family: var(--mc-font-mono);
+  font-size: 11px;
+  color: var(--mc-ouro-700);
+  letter-spacing: 0.04em;
+  max-width: 520px;
+}
+[data-theme="dark"] .cover-37 { background: var(--mc-diamante-600); color: var(--mc-ouro-300); }
+.cover-37 strong { color: var(--mc-ouro-700); font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; display: block; margin-bottom: 4px;}
+[data-theme="dark"] .cover-37 strong { color: var(--mc-ouro-400); }
+
+/* ============================================================
+   P2 — PALETTE (+ P2b dark)
+   ============================================================ */
+
+.palette-family { margin-bottom: 56px; }
+.family-head {
+  display: grid; grid-template-columns: 1fr auto;
+  align-items: baseline;
+  border-bottom: 1px solid var(--mc-border-strong);
+  padding-bottom: 8px; margin-bottom: 16px;
+}
+.family-name {
+  font-family: var(--mc-font-serif);
+  font-size: 28px; font-weight: 500;
+  letter-spacing: -0.01em; color: var(--mc-text-primary);
+}
+.family-role {
+  font-family: var(--mc-font-mono);
+  font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--mc-text-secondary);
+}
+.family-desc {
+  font-size: 14px; color: var(--mc-text-secondary);
+  max-width: 720px; margin: 0 0 20px;
+}
+.swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.swatch {
+  display: flex; flex-direction: column;
+  border: 1px solid var(--mc-border-default);
+  background: var(--mc-bg-secondary);
+}
+.swatch-chip {
+  height: 96px; display: flex;
+  align-items: flex-end; justify-content: flex-start;
+  padding: 8px 10px; font-family: var(--mc-font-mono);
+  font-size: 10.5px; letter-spacing: 0.06em;
+}
+.swatch-meta { padding: 10px 12px; border-top: 1px solid var(--mc-border-default); }
+.swatch-token { font-family: var(--mc-font-mono); font-size: 11.5px; color: var(--mc-text-primary); font-weight: 500; }
+.swatch-hex { font-family: var(--mc-font-mono); font-size: 11px; color: var(--mc-text-secondary); margin-top: 2px; }
+.swatch-contrast { margin-top: 8px; display: flex; gap: 6px; font-family: var(--mc-font-mono); font-size: 10px; }
+.cb { padding: 2px 5px; border: 1px solid var(--mc-border-default); letter-spacing: 0.02em; }
+.cb.cb-paper { background: var(--mc-papel); color: var(--mc-tinta); }
+.cb.cb-noite { background: var(--mc-noite); color: var(--mc-papel); border-color: var(--mc-noite);}
+.cb.cb-dark  { background: var(--mc-diamante-800); color: var(--mc-papel); border-color: var(--mc-diamante-700);}
+.cb .cb-ratio { font-weight: 600; }
+.cb .cb-grade { margin-left: 4px; opacity: 0.7; }
+.cb.cb-pass-aaa { border-color: var(--mc-verde-corpo, var(--mc-verde-700)); }
+.cb.cb-pass-aa  { border-color: var(--mc-ouro-700); }
+.cb.cb-fail     { border-color: var(--mc-vermelho-corpo); opacity: 0.75; }
+
+.neutros-row { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; }
+
+.dark-panel {
+  background: var(--mc-diamante-800);
+  border: 1px solid var(--mc-diamante-600);
+  padding: 32px;
+  margin-top: 32px;
+}
+.dark-panel .family-name { color: var(--mc-papel); }
+.dark-panel .family-role,
+.dark-panel .family-desc { color: var(--mc-cinza-300); }
+.dark-panel .swatch { background: var(--mc-diamante-700); border-color: var(--mc-diamante-600); }
+.dark-panel .swatch-token { color: var(--mc-papel); }
+.dark-panel .swatch-hex { color: var(--mc-cinza-300); }
+.dark-panel .cb { background: var(--mc-diamante-700); color: var(--mc-papel); border-color: var(--mc-diamante-600); }
+
+.dark-tokens-table {
+  width: 100%; border-collapse: collapse;
+  font-family: var(--mc-font-mono); font-size: 12px;
+  margin-top: 24px;
+}
+.dark-tokens-table th, .dark-tokens-table td {
+  text-align: left; padding: 10px 12px;
+  border-bottom: 1px solid var(--mc-border-default);
+}
+.dark-tokens-table th {
+  background: var(--mc-diamante-500); color: var(--mc-papel);
+  font-size: 10.5px; letter-spacing: 0.1em;
+  text-transform: uppercase; font-weight: 600;
+}
+.dark-tokens-table td.tok { color: var(--mc-text-primary); font-weight: 500; }
+.dark-tokens-table td.val { color: var(--mc-text-secondary); }
+.dark-tokens-table .sw {
+  display: inline-block; width: 18px; height: 18px;
+  border: 1px solid var(--mc-border-default);
+  vertical-align: middle; margin-right: 8px;
+}
+
+/* ============================================================
+   P3 — TYPOGRAPHY
+   ============================================================ */
+
+.type-family {
+  border-top: 1px solid var(--mc-border-strong);
+  padding: 24px 0 48px;
+  display: grid; grid-template-columns: 200px 1fr; gap: 32px;
+}
+.type-family-head h3 {
+  font-family: var(--mc-font-serif);
+  font-size: 26px; font-weight: 500;
+  margin: 0 0 6px; color: var(--mc-text-primary);
+}
+.type-family-head .tf-meta {
+  font-family: var(--mc-font-mono); font-size: 10.5px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--mc-text-secondary); margin-bottom: 12px;
+}
+.type-family-head p { font-size: 13px; color: var(--mc-text-secondary); margin: 0; line-height: 1.5; }
+.specimen { display: flex; flex-direction: column; gap: 18px; }
+.spec-row {
+  display: grid; grid-template-columns: 56px 1fr;
+  gap: 16px; align-items: baseline;
+  border-bottom: 1px dashed var(--mc-border-default);
+  padding-bottom: 14px;
+}
+.spec-row:last-child { border-bottom: 0; }
+.spec-size { font-family: var(--mc-font-mono); font-size: 10.5px; color: var(--mc-text-secondary); letter-spacing: 0.06em; padding-top: 6px; }
+.spec-sample.serif { font-family: var(--mc-font-serif); color: var(--mc-text-primary); font-weight: 500; line-height: 1.1; font-variation-settings: "opsz" 144; }
+.spec-sample.sans  { font-family: var(--mc-font-sans);  color: var(--mc-text-primary); line-height: 1.4; }
+.spec-sample.mono  { font-family: var(--mc-font-mono);  color: var(--mc-text-primary); }
+
+.pangrama {
+  background: var(--mc-diamante-500);
+  color: var(--mc-papel);
+  padding: 40px 36px; margin: 32px 0 48px;
+}
+.pangrama .pang-eyebrow { font-family: var(--mc-font-mono); font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mc-ouro-300); margin-bottom: 14px; }
+.pangrama .pang-text { font-family: var(--mc-font-serif); font-style: italic; font-weight: 400; font-size: 32px; line-height: 1.3; color: var(--mc-papel); }
+.pangrama .pang-sans { margin-top: 24px; font-family: var(--mc-font-sans); font-size: 16px; color: var(--mc-ouro-100); line-height: 1.55; }
+
+.scale-table { width: 100%; border-collapse: collapse; margin-top: 24px; }
+.scale-table th, .scale-table td {
+  text-align: left; padding: 14px 12px;
+  border-bottom: 1px solid var(--mc-border-default);
+  vertical-align: baseline;
+}
+.scale-table th {
+  font-family: var(--mc-font-mono); font-size: 10.5px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--mc-text-secondary); font-weight: 600;
+  border-bottom: 1px solid var(--mc-border-strong);
+}
+.scale-table td.col-token { font-family: var(--mc-font-mono); font-size: 12px; color: var(--mc-text-primary); width: 180px; }
+.scale-table td.col-spec { font-family: var(--mc-font-mono); font-size: 11px; color: var(--mc-text-secondary); width: 200px; }
+.scale-table td.col-sample { color: var(--mc-text-primary); }
+.scale-table .ex-h1 { font-family: var(--mc-font-serif); font-size: 56px; line-height: 1.05; font-weight: 500; color: var(--mc-text-primary); }
+.scale-table .ex-h2 { font-family: var(--mc-font-serif); font-size: 40px; line-height: 1.1; font-weight: 500; color: var(--mc-text-primary); }
+.scale-table .ex-h3 { font-family: var(--mc-font-serif); font-size: 28px; line-height: 1.15; font-weight: 500; color: var(--mc-text-primary); }
+.scale-table .ex-h4 { font-family: var(--mc-font-sans); font-size: 22px; line-height: 1.25; font-weight: 600; }
+.scale-table .ex-h5 { font-family: var(--mc-font-sans); font-size: 18px; line-height: 1.3; font-weight: 600; }
+.scale-table .ex-h6 { font-family: var(--mc-font-sans); font-size: 14px; line-height: 1.4; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.scale-table .ex-body { font-family: var(--mc-font-sans); font-size: 16px; line-height: 1.55; }
+.scale-table .ex-caption { font-family: var(--mc-font-sans); font-size: 12px; color: var(--mc-text-secondary); }
+.scale-table .ex-label { font-family: var(--mc-font-sans); font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--mc-text-primary); }
+.scale-table .ex-code { font-family: var(--mc-font-mono); font-size: 13px; color: var(--mc-text-primary); }
+
+/* ============================================================
+   P4 — SPACING + GRID
+   ============================================================ */
+
+.sp-ladder { display: flex; flex-direction: column; border-top: 1px solid var(--mc-border-strong); border-bottom: 1px solid var(--mc-border-strong); }
+.sp-row { display: grid; grid-template-columns: 80px 100px 100px 1fr; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--mc-border-default); font-family: var(--mc-font-mono); font-size: 12px; }
+.sp-row:last-child { border-bottom: 0; }
+.sp-token { color: var(--mc-text-primary); font-weight: 500; }
+.sp-px { color: var(--mc-text-secondary); }
+.sp-bar { height: 14px; background: var(--mc-diamante-corpo); }
+
+.grid-demo { margin-top: 32px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; align-items: start; }
+.grid-frame { border: 1px solid var(--mc-border-strong); background: var(--mc-bg-secondary); padding: 16px; }
+.grid-frame .gf-label { font-family: var(--mc-font-mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mc-text-secondary); margin-bottom: 12px; }
+.cols-12 { display: grid; grid-template-columns: repeat(12, 1fr); gap: 12px; height: 240px; }
+.cols-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; height: 240px; max-width: 320px; }
+.col-cell { background: var(--mc-diamante-50); border: 1px solid var(--mc-diamante-100); display: flex; align-items: flex-end; justify-content: center; font-family: var(--mc-font-mono); font-size: 10px; color: var(--mc-text-primary); padding-bottom: 4px; }
+[data-theme="dark"] .col-cell { background: var(--mc-diamante-600); border-color: var(--mc-diamante-500); color: var(--mc-cinza-300); }
+
+/* ============================================================
+   P5 — BORDERS, RADII, ELEVATION + MOTION
+   ============================================================ */
+
+.bre-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.bre-group h3 { font-family: var(--mc-font-serif); font-size: 22px; font-weight: 500; margin: 0 0 4px; color: var(--mc-text-primary); }
+.bre-group .bre-meta { font-family: var(--mc-font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mc-text-secondary); margin-bottom: 18px; }
+.bre-row { display: grid; grid-template-columns: 1fr 96px; align-items: center; gap: 16px; padding: 12px 0; border-top: 1px solid var(--mc-border-default); }
+.bre-row:last-child { border-bottom: 1px solid var(--mc-border-default); }
+.bre-sample { height: 64px; background: var(--mc-bg-secondary); display: block; }
+.b-0 { border: 0 solid var(--mc-diamante-500); }
+.b-1 { border: 1px solid var(--mc-diamante-500); }
+.b-2 { border: 2px solid var(--mc-diamante-500); }
+[data-theme="dark"] .b-1 { border-color: var(--mc-cinza-300); }
+[data-theme="dark"] .b-2 { border-color: var(--mc-cinza-300); }
+.r-0 { border-radius: var(--mc-radius-0); }
+.r-1 { border-radius: var(--mc-radius-1); }
+.r-2 { border-radius: var(--mc-radius-2); }
+.r-3 { border-radius: var(--mc-radius-3); }
+.bre-radius .bre-sample { background: var(--mc-diamante-50); border: 1px solid var(--mc-diamante-300); }
+[data-theme="dark"] .bre-radius .bre-sample { background: var(--mc-diamante-600); border-color: var(--mc-diamante-400); }
+.bre-elev .bre-sample { background: var(--mc-bg-secondary); border: 1px solid var(--mc-border-default); }
+.e-0 { box-shadow: var(--mc-elev-0); }
+.e-1 { box-shadow: var(--mc-elev-1); border-color: transparent;}
+.e-2 { box-shadow: var(--mc-elev-2); border-color: transparent;}
+.bre-token { font-family: var(--mc-font-mono); font-size: 11px; color: var(--mc-text-secondary); text-align: right; }
+.bre-token strong { display: block; color: var(--mc-text-primary); font-weight: 500; }
+
+/* Motion (Frente 2) */
+.motion-tokens {
+  display: grid; grid-template-columns: 200px 120px 1fr;
+  align-items: center; gap: 18px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--mc-border-default);
+  font-family: var(--mc-font-mono); font-size: 12px;
+}
+.motion-tokens:first-of-type { border-top: 1px solid var(--mc-border-strong); }
+.motion-tokens .mt-tok { color: var(--mc-text-primary); font-weight: 500; }
+.motion-tokens .mt-val { color: var(--mc-text-secondary); }
+.motion-tokens .mt-use { color: var(--mc-text-secondary); font-family: var(--mc-font-sans); font-size: 13px; }
+
+.motion-demo {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 18px; margin-top: 32px;
+}
+.motion-card {
+  border: 1px solid var(--mc-border-default);
+  padding: 18px; background: var(--mc-bg-secondary);
+}
+.motion-card .mc-label {
+  font-family: var(--mc-font-mono); font-size: 10.5px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--mc-text-secondary); margin-bottom: 10px;
+}
+.motion-card .mc-btn {
+  display: inline-flex; padding: 8px 14px;
+  background: var(--mc-diamante-corpo); color: var(--mc-papel);
+  font-family: var(--mc-font-sans); font-weight: 600;
+  font-size: 13px; min-height: 36px; align-items: center;
+  border: 1px solid var(--mc-diamante-corpo);
+  transition: background var(--mc-motion-fast) var(--mc-motion-ease-standard);
+}
+.motion-card .mc-btn.is-hover { background: var(--mc-diamante-500); }
+.motion-card .mc-btn.is-focus { outline: 2px solid var(--mc-ouro-500); outline-offset: 2px; }
+.motion-card .mc-btn.is-pressed { background: var(--mc-diamante-500); transform: translateY(1px); }
+.motion-card .mc-arrow {
+  font-family: var(--mc-font-mono); font-size: 11px;
+  color: var(--mc-text-secondary); margin-top: 10px;
+  display: flex; align-items: center; gap: 6px;
+}
+
+.motion-list-pair {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 32px; margin-top: 40px;
+}
+.motion-list h4 {
+  font-family: var(--mc-font-mono); font-size: 10.5px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  margin: 0 0 12px; padding-bottom: 8px;
+  border-bottom: 1px solid var(--mc-border-strong);
+}
+.motion-list.can h4 { color: var(--mc-verde-protecao-corpo); }
+.motion-list.cannot h4 { color: var(--mc-vermelho-corpo); }
+.motion-list ul { list-style: none; margin: 0; padding: 0; }
+.motion-list li {
+  padding: 8px 0; font-size: 13px;
+  color: var(--mc-text-primary);
+  border-bottom: 1px solid var(--mc-border-default);
+}
+.motion-list li::before {
+  content: "—  "; color: var(--mc-text-secondary);
+  font-family: var(--mc-font-mono);
+}
+
+.dropdown-frames {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 16px; margin-top: 24px;
+}
+.dd-frame {
+  border: 1px solid var(--mc-border-default);
+  padding: 16px; background: var(--mc-bg-secondary);
+  min-height: 140px; position: relative;
+}
+.dd-frame .dd-label {
+  font-family: var(--mc-font-mono); font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--mc-text-secondary); margin-bottom: 12px;
+}
+.dd-trigger {
+  display: inline-flex; padding: 8px 12px;
+  border: 1px solid var(--mc-text-primary);
+  font-family: var(--mc-font-sans); font-size: 13px;
+  font-weight: 500; color: var(--mc-text-primary);
+  background: var(--mc-bg-secondary);
+  min-height: 36px; align-items: center; gap: 8px;
+}
+.dd-trigger::after { content: "▾"; font-size: 10px; color: var(--mc-text-secondary); }
+.dd-menu {
+  position: absolute; top: 80px; left: 16px;
+  width: calc(100% - 32px);
+  background: var(--mc-bg-elevated);
+  border: 1px solid var(--mc-border-strong);
+  font-family: var(--mc-font-sans); font-size: 12.5px;
+  box-shadow: var(--mc-elev-2);
+}
+.dd-menu .item { padding: 8px 12px; border-bottom: 1px solid var(--mc-border-default); color: var(--mc-text-primary); }
+.dd-menu .item:last-child { border-bottom: 0; }
+.dd-frame.opening .dd-menu { opacity: 0.45; transform: translateY(-4px); }
+.dd-frame.open .dd-menu { opacity: 1; }
+.dd-frame.closed .dd-menu { display: none; }
+
+.toast-frames {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 12px; margin-top: 24px;
+}
+.toast-frame {
+  border: 1px solid var(--mc-border-default);
+  padding: 16px; min-height: 110px;
+  background: var(--mc-bg-secondary);
+  position: relative;
+}
+.toast-frame .tf-label { font-family: var(--mc-font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mc-text-secondary); margin-bottom: 12px; }
+.toast {
+  background: var(--mc-diamante-corpo); color: var(--mc-papel);
+  font-family: var(--mc-font-sans); font-size: 12.5px;
+  padding: 10px 14px; border-left: 3px solid var(--mc-ouro-500);
+  display: inline-block;
+}
+.toast-frame.invisible .toast { opacity: 0; }
+.toast-frame.entering .toast { opacity: 0.5; }
+.toast-frame.visible .toast { opacity: 1; }
+.toast-frame.exiting .toast { opacity: 0.3; }
+
+/* ============================================================
+   P6 — COMPONENTES BÁSICOS
+   ============================================================ */
+
+.comp-block { border-top: 1px solid var(--mc-border-strong); padding: 24px 0 40px; }
+.comp-block h3 { font-family: var(--mc-font-serif); font-size: 24px; font-weight: 500; margin: 0 0 4px; color: var(--mc-text-primary); }
+.comp-block .cb-meta { font-family: var(--mc-font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mc-text-secondary); margin-bottom: 20px; }
+
+.btn {
+  font-family: var(--mc-font-sans); font-weight: 600;
+  letter-spacing: 0.01em; border-radius: var(--mc-radius-1);
+  cursor: pointer;
+  transition: background var(--mc-motion-fast) var(--mc-motion-ease-standard),
+              color var(--mc-motion-fast) var(--mc-motion-ease-standard),
+              border-color var(--mc-motion-fast) var(--mc-motion-ease-standard);
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px; text-decoration: none;
+}
+.btn-sm { padding: 6px 14px; font-size: 13px; min-height: 36px; }
+.btn-md { padding: 10px 20px; font-size: 14px; min-height: 44px; }
+.btn-lg { padding: 14px 28px; font-size: 16px; min-height: 52px; }
+
+.btn-primary { background: var(--mc-diamante-corpo); color: var(--mc-papel); border: 1px solid var(--mc-diamante-corpo); }
+.btn-primary:hover { background: var(--mc-diamante-500); border-color: var(--mc-diamante-500); }
+.btn-primary:focus-visible { outline: 2px solid var(--mc-ouro-500); outline-offset: 2px; }
+.btn-primary[disabled], .btn[disabled] { opacity: 0.4; cursor: not-allowed; }
+
+.btn-secondary { background: transparent; color: var(--mc-text-primary); border: 1px solid var(--mc-text-primary); }
+.btn-secondary:hover { background: var(--mc-diamante-50); }
+[data-theme="dark"] .btn-secondary:hover { background: var(--mc-diamante-600); }
+.btn-secondary:focus-visible { outline: 2px solid var(--mc-ouro-500); outline-offset: 2px; }
+
+.btn-tertiary { background: transparent; color: var(--mc-text-primary); border: 1px solid transparent; text-decoration: underline; text-underline-offset: 4px; }
+.btn-tertiary:hover { color: var(--mc-diamante-500); }
+[data-theme="dark"] .btn-tertiary:hover { color: var(--mc-cinza-300); }
+.btn-tertiary:focus-visible { outline: 2px solid var(--mc-ouro-500); outline-offset: 2px; }
+
+.btn-destructive { background: var(--mc-vermelho-corpo); color: var(--mc-papel); border: 1px solid var(--mc-vermelho-corpo); }
+.btn-destructive:hover { background: var(--mc-vermelho-500); border-color: var(--mc-vermelho-500); }
+.btn-destructive:focus-visible { outline: 2px solid var(--mc-noite); outline-offset: 2px; }
+
+.btn-grid { display: grid; grid-template-columns: 140px repeat(4, 1fr); gap: 12px 18px; align-items: center; }
+.btn-grid .row-label { font-family: var(--mc-font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mc-text-secondary); }
+
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-family: var(--mc-font-sans); font-size: 13px; font-weight: 600; color: var(--mc-text-primary); letter-spacing: 0.02em; }
+.field .help { font-family: var(--mc-font-sans); font-size: 12px; color: var(--mc-text-secondary); }
+.field .err { font-family: var(--mc-font-sans); font-size: 12px; color: var(--mc-vermelho-corpo); }
+.input, .textarea, .select {
+  font-family: var(--mc-font-sans); font-size: 15px;
+  padding: 10px 12px;
+  border: 1px solid var(--mc-text-secondary);
+  border-radius: var(--mc-radius-1);
+  background: var(--mc-bg-secondary);
+  color: var(--mc-text-primary);
+  min-height: 44px; outline: none; width: 100%;
+  transition: border-color var(--mc-motion-fast) var(--mc-motion-ease-standard),
+              box-shadow var(--mc-motion-fast) var(--mc-motion-ease-standard);
+}
+.input:focus, .textarea:focus, .select:focus { border-color: var(--mc-diamante-corpo); box-shadow: 0 0 0 3px var(--mc-azul-100); }
+[data-theme="dark"] .input:focus, [data-theme="dark"] .textarea:focus, [data-theme="dark"] .select:focus { box-shadow: 0 0 0 3px rgba(94,124,171,.3); }
+.input.is-error { border-color: var(--mc-vermelho-corpo); }
+.input.is-error:focus { box-shadow: 0 0 0 3px var(--mc-vermelho-100); }
+.input:disabled { background: var(--mc-diamante-50); color: var(--mc-text-secondary); cursor: not-allowed; }
+[data-theme="dark"] .input:disabled { background: var(--mc-diamante-600); }
+.textarea { min-height: 88px; resize: vertical; }
+
+.checkbox-row, .radio-row { display: flex; align-items: center; gap: 10px; min-height: 44px; }
+.checkbox, .radio {
+  width: 20px; height: 20px;
+  border: 1.5px solid var(--mc-text-secondary);
+  background: var(--mc-bg-secondary);
+  display: inline-flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.checkbox { border-radius: 2px; }
+.radio { border-radius: 50%; }
+.checkbox.is-checked { background: var(--mc-diamante-corpo); border-color: var(--mc-diamante-corpo); color: var(--mc-papel); font-size: 12px; }
+.radio.is-checked::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--mc-diamante-corpo); }
+
+.input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+.cards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.card {
+  background: var(--mc-bg-secondary);
+  border: 1px solid var(--mc-border-default);
+  padding: 20px 18px;
+  border-radius: var(--mc-radius-1);
+  min-height: 140px;
+}
+.card .card-eyebrow { font-family: var(--mc-font-mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mc-text-secondary); margin-bottom: 8px; }
+.card .card-title { font-family: var(--mc-font-serif); font-size: 18px; font-weight: 500; color: var(--mc-text-primary); line-height: 1.25; margin-bottom: 6px; }
+.card .card-body { font-size: 13px; color: var(--mc-text-secondary); line-height: 1.5; }
+.card-institucional { border-left: 3px solid var(--mc-diamante-corpo); border-radius: 0; }
+.card-social { border-radius: var(--mc-radius-3); border-left: 3px solid var(--mc-azul-acesso-corpo); background: var(--mc-azul-50); }
+[data-theme="dark"] .card-social { background: var(--mc-diamante-600); }
+.card-social .card-title { color: var(--mc-azul-acesso-corpo); }
+[data-theme="dark"] .card-social .card-title { color: var(--mc-azul-300); }
+.card-risco { border-left: 3px solid var(--mc-vermelho-corpo); background: var(--mc-vermelho-50); }
+[data-theme="dark"] .card-risco { background: var(--mc-diamante-600); }
+.card-risco .card-title { color: var(--mc-vermelho-corpo); }
+[data-theme="dark"] .card-risco .card-title { color: var(--mc-vermelho-300); }
+.card-neutro { border-left: 3px solid var(--mc-text-secondary); }
+
+.badge-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.badge {
+  font-family: var(--mc-font-mono);
+  font-size: 11px; letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px; border-radius: var(--mc-radius-0);
+  border: 1px solid;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-weight: 600;
+}
+.badge-ouro    { background: var(--mc-diamante-corpo); color: var(--mc-ouro-300); border-color: var(--mc-ouro-500); }
+.badge-d       { background: var(--mc-diamante-corpo); color: var(--mc-papel); border-color: var(--mc-diamante-corpo); }
+.badge-c       { background: var(--mc-bg-secondary); color: var(--mc-text-primary); border-color: var(--mc-text-primary); }
+.badge-v       { background: var(--mc-bg-secondary); color: var(--mc-text-secondary); border-color: var(--mc-text-secondary); }
+.badge-prov    { background: var(--mc-vermelho-50); color: var(--mc-vermelho-corpo); border-color: var(--mc-vermelho-corpo); }
+[data-theme="dark"] .badge-prov { background: var(--mc-diamante-600); color: var(--mc-vermelho-300); border-color: var(--mc-vermelho-400); }
+.badge-selado  { background: var(--mc-verde-50); color: var(--mc-verde-protecao-corpo); border-color: var(--mc-verde-protecao-corpo); }
+[data-theme="dark"] .badge-selado { background: var(--mc-diamante-600); color: var(--mc-verde-300); border-color: var(--mc-verde-400); }
+.badge-version { background: var(--mc-bg-secondary); color: var(--mc-text-primary); border-color: var(--mc-border-strong); font-family: var(--mc-font-mono); letter-spacing: 0.04em; text-transform: none; }
+
+.mc-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.mc-table thead th {
+  background: var(--mc-diamante-corpo); color: var(--mc-papel);
+  text-align: left; padding: 12px 14px;
+  font-family: var(--mc-font-sans); font-size: 12px;
+  letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600;
+}
+.mc-table tbody td { padding: 12px 14px; border-bottom: 1px solid var(--mc-border-default); color: var(--mc-text-primary); }
+.mc-table tbody tr:nth-child(even) td { background: var(--mc-diamante-50); }
+[data-theme="dark"] .mc-table tbody tr:nth-child(even) td { background: var(--mc-diamante-600); }
+.mc-table .mono { font-family: var(--mc-font-mono); font-size: 12px; color: var(--mc-text-secondary); }
+
+/* ============================================================
+   P7 — COMPONENTES INSTITUCIONAIS MC + RouterEthics (Frente 5)
+   ============================================================ */
+
+.inst-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 32px; }
+.inst-panel { border-top: 1px solid var(--mc-border-strong); padding: 20px 0 0; }
+.inst-panel h3 { font-family: var(--mc-font-serif); font-size: 22px; font-weight: 500; color: var(--mc-text-primary); margin: 0 0 4px; }
+.inst-panel .ip-meta { font-family: var(--mc-font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mc-text-secondary); margin-bottom: 16px; }
+.inst-panel .ip-desc { font-size: 13px; color: var(--mc-text-secondary); margin: 16px 0 0; line-height: 1.55; }
+
+.selo-diamante {
+  width: 220px; height: 220px;
+  background: var(--mc-diamante-500);
+  border: 2px solid var(--mc-ouro-500);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; margin: 0 auto;
+}
+.selo-diamante::before,
+.selo-diamante::after { content: ""; position: absolute; border: 1px solid var(--mc-ouro-700); pointer-events: none; }
+.selo-diamante::before { inset: 8px; }
+.selo-diamante::after  { inset: 14px; border-color: var(--mc-ouro-500); }
+.selo-diamante svg { position: relative; z-index: 1; }
+.selo-diamante .selo-text { position: absolute; bottom: 22px; left: 0; right: 0; text-align: center; font-family: var(--mc-font-mono); font-size: 9px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--mc-ouro-300); }
+.selo-diamante .selo-top { position: absolute; top: 22px; left: 0; right: 0; text-align: center; font-family: var(--mc-font-serif); font-style: italic; font-size: 13px; color: var(--mc-ouro-500); letter-spacing: 0.04em; }
+
+.dossie { border: 1px solid var(--mc-diamante-corpo); background: var(--mc-bg-secondary); }
+.dossie-head { display: flex; justify-content: space-between; align-items: flex-start; padding: 16px 18px; background: var(--mc-diamante-corpo); color: var(--mc-papel); }
+.dossie-head .dh-title { font-family: var(--mc-font-serif); font-size: 18px; font-weight: 500; }
+.dossie-head .dh-id { font-family: var(--mc-font-mono); font-size: 10.5px; letter-spacing: 0.1em; color: var(--mc-ouro-300); }
+.dossie-layer { display: grid; grid-template-columns: 90px 1fr 80px; align-items: baseline; gap: 14px; padding: 14px 18px; border-bottom: 1px solid var(--mc-border-default); }
+.dossie-layer:last-child { border-bottom: 0; }
+.dl-tag { font-family: var(--mc-font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; color: var(--mc-papel); background: var(--mc-diamante-corpo); padding: 3px 6px; text-align: center; }
+.dl-tag.l1 { background: var(--mc-diamante-700); }
+.dl-tag.l2 { background: var(--mc-diamante-500); }
+.dl-tag.l3 { background: var(--mc-azul-acesso-corpo); }
+.dl-tag.l4 { background: var(--mc-verde-protecao-corpo); }
+.dl-body { font-size: 13.5px; color: var(--mc-text-primary); line-height: 1.45; }
+.dl-body strong { font-family: var(--mc-font-serif); font-weight: 500; font-size: 15px; display: block; margin-bottom: 2px; color: var(--mc-text-primary); }
+.dl-citation { font-family: var(--mc-font-mono); font-size: 10.5px; color: var(--mc-text-secondary); text-align: right; }
+
+.dcv-indicator { display: flex; align-items: flex-end; gap: 8px; height: 120px; padding: 12px 0; }
+.dcv-bar { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.dcv-fill { width: 36px; background: var(--mc-diamante-corpo); }
+.dcv-bar.dcv-d .dcv-fill { height: 100%; }
+.dcv-bar.dcv-c .dcv-fill { height: 66%; background: var(--mc-text-primary); opacity: 0.7; }
+.dcv-bar.dcv-v .dcv-fill { height: 33%; background: var(--mc-text-secondary); }
+.dcv-label { font-family: var(--mc-font-mono); font-size: 11px; letter-spacing: 0.12em; color: var(--mc-text-primary); }
+.dcv-row { display: flex; gap: 32px; align-items: flex-end; }
+.dcv-legend { flex: 1; font-size: 13px; color: var(--mc-text-secondary); line-height: 1.5; }
+.dcv-legend strong { display: block; color: var(--mc-text-primary); font-family: var(--mc-font-sans); font-weight: 600; margin-top: 6px; }
+
+.hash-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--mc-font-mono); font-size: 11px;
+  padding: 4px 8px;
+  background: var(--mc-diamante-50);
+  border: 1px solid var(--mc-diamante-100);
+  color: var(--mc-diamante-corpo);
+  border-radius: var(--mc-radius-0);
+}
+[data-theme="dark"] .hash-badge { background: var(--mc-diamante-600); border-color: var(--mc-diamante-400); color: var(--mc-cinza-300); }
+.hash-badge::before { content: "#"; color: var(--mc-ouro-700); font-weight: 600; }
+
+.status-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--mc-font-mono);
+  font-size: 11px; letter-spacing: 0.1em;
+  font-weight: 600; padding: 5px 10px; border: 1px solid;
+}
+.status-prov { background: var(--mc-bg-secondary); color: var(--mc-vermelho-corpo); border-color: var(--mc-vermelho-corpo); }
+.status-prov::before { content: ""; width: 6px; height: 6px; background: var(--mc-vermelho-corpo); border-radius: 50%; display: inline-block; }
+.status-selado { background: var(--mc-verde-protecao-corpo); color: var(--mc-ouro-300); border-color: var(--mc-verde-protecao-corpo); }
+.status-selado::before { content: ""; width: 6px; height: 6px; background: var(--mc-ouro-500); border-radius: 50%; display: inline-block; }
+
+/* === RouterEthics 11.0 visual (Frente 5 · componente nuclear) === */
+.router {
+  border-top: 1px solid var(--mc-border-strong);
+  padding-top: 24px;
+  margin-top: 32px;
+}
+.router-eyebrow {
+  font-family: var(--mc-font-mono); font-size: 11px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--mc-text-secondary); margin-bottom: 6px;
+}
+.router-title {
+  font-family: var(--mc-font-serif); font-size: 32px;
+  font-weight: 500; color: var(--mc-text-primary);
+  letter-spacing: -0.01em; margin: 0 0 6px;
+}
+.router-lede {
+  font-family: var(--mc-font-serif); font-style: italic;
+  font-size: 16px; color: var(--mc-text-secondary);
+  margin: 0 0 32px; max-width: 720px; line-height: 1.5;
+}
+
+.hook0 {
+  background: var(--mc-diamante-50);
+  border: 1px solid var(--mc-diamante-300);
+  padding: 18px 22px; margin-bottom: 8px;
+}
+[data-theme="dark"] .hook0 { background: var(--mc-diamante-600); border-color: var(--mc-diamante-400); }
+.hook0 .hk-tag { font-family: var(--mc-font-mono); font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mc-ouro-700); font-weight: 600; }
+[data-theme="dark"] .hook0 .hk-tag { color: var(--mc-ouro-400); }
+.hook0 .hk-title { font-family: var(--mc-font-serif); font-size: 18px; font-weight: 500; color: var(--mc-text-primary); margin: 4px 0 8px; }
+.hook0 .hk-questions { font-family: var(--mc-font-mono); font-size: 11.5px; color: var(--mc-text-secondary); letter-spacing: 0.04em; }
+.hook0 .hk-questions span { display: inline-block; padding: 2px 8px; background: var(--mc-bg-secondary); border: 1px solid var(--mc-border-default); margin-right: 6px; }
+
+.router-arrow {
+  text-align: center;
+  font-family: var(--mc-font-mono); font-size: 11px;
+  color: var(--mc-text-secondary); padding: 8px 0;
+  letter-spacing: 0.16em;
+}
+.router-arrow::before { content: "↓  "; color: var(--mc-ouro-500); font-size: 14px; }
+
+.router-core {
+  background: var(--mc-bg-inverse);
+  color: var(--mc-text-inverse);
+  border: 2px solid var(--mc-ouro-500);
+  padding: 28px 32px;
+}
+[data-theme="dark"] .router-core { background: var(--mc-diamante-700); color: var(--mc-papel); }
+.router-core .rc-title {
+  font-family: var(--mc-font-serif); font-size: 22px;
+  font-weight: 500; color: var(--mc-ouro-300);
+  letter-spacing: 0.04em; margin-bottom: 4px;
+}
+.router-core .rc-sub {
+  font-family: var(--mc-font-mono); font-size: 10.5px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--mc-ouro-100); margin-bottom: 24px;
+}
+
+.dcv-cascade {
+  display: grid; grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 1px;
+  background: var(--mc-ouro-700);
+  border: 1px solid var(--mc-ouro-700);
+}
+.dcv-col {
+  background: var(--mc-diamante-700);
+  padding: 18px 16px;
+  min-height: 360px;
+}
+[data-theme="dark"] .dcv-col { background: var(--mc-diamante-800); }
+.dcv-col .dc-head {
+  font-family: var(--mc-font-serif); font-size: 18px;
+  font-weight: 500; color: var(--mc-papel);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--mc-ouro-700);
+  margin-bottom: 12px;
+}
+.dcv-col.col-d .dc-head { color: var(--mc-ouro-300); font-size: 20px; }
+.dcv-col .dc-count {
+  font-family: var(--mc-font-mono); font-size: 10px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--mc-ouro-100); margin-bottom: 10px; opacity: 0.7;
+}
+.dc-nodes {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+.dc-node {
+  font-family: var(--mc-font-mono); font-size: 10px;
+  padding: 4px 6px; text-align: center;
+  background: var(--mc-diamante-500); color: var(--mc-cinza-300);
+  border: 1px solid var(--mc-diamante-500);
+  letter-spacing: 0.02em;
+}
+.dc-node.st-pass    { background: var(--mc-verde-700); color: var(--mc-verde-50); border-color: var(--mc-verde-500); }
+.dc-node.st-warn    { background: var(--mc-ouro-700); color: var(--mc-ouro-50); border-color: var(--mc-ouro-500); }
+.dc-node.st-stop    { background: var(--mc-vermelho-700); color: var(--mc-vermelho-50); border-color: var(--mc-vermelho-500); }
+.dc-node.st-na      { background: transparent; color: var(--mc-cinza-500); border-color: var(--mc-diamante-500); }
+
+.filters-block {
+  margin-top: 24px;
+  padding: 16px 18px;
+  background: var(--mc-diamante-800);
+  border: 1px dashed var(--mc-ouro-500);
+}
+[data-theme="dark"] .filters-block { background: var(--mc-diamante-600); }
+.filters-block .fb-head {
+  font-family: var(--mc-font-mono); font-size: 10.5px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--mc-ouro-300); margin-bottom: 10px;
+}
+.filters-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.filter-chip {
+  font-family: var(--mc-font-mono); font-size: 11px;
+  padding: 4px 10px; background: var(--mc-diamante-500);
+  color: var(--mc-papel); border: 1px solid var(--mc-ouro-700);
+  letter-spacing: 0.04em;
+}
+
+.routes-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--mc-border-strong);
+  border: 1px solid var(--mc-border-strong);
+  margin-top: 12px;
+}
+.route-cell {
+  background: var(--mc-bg-secondary);
+  padding: 18px 16px; min-height: 140px;
+  display: flex; flex-direction: column;
+}
+.route-cell .rt-label { font-family: var(--mc-font-mono); font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mc-text-secondary); }
+.route-cell .rt-name { font-family: var(--mc-font-serif); font-size: 20px; font-weight: 500; color: var(--mc-text-primary); margin: 6px 0 4px; }
+.route-cell .rt-pct { font-family: var(--mc-font-mono); font-size: 12px; color: var(--mc-text-secondary); margin-top: auto; padding-top: 12px; }
+.route-cell.rt-a { border-top: 3px solid var(--mc-verde-protecao-corpo); }
+.route-cell.rt-b { border-top: 3px solid var(--mc-azul-acesso-corpo); }
+.route-cell.rt-c { border-top: 3px solid var(--mc-ouro-500); }
+.route-cell.rt-d { border-top: 3px solid var(--mc-vermelho-corpo); }
+.route-cell.rt-d .rt-name { color: var(--mc-vermelho-corpo); }
+
+/* Caso Hib001 timeline */
+.hib001 {
+  margin-top: 56px; padding-top: 32px;
+  border-top: 1px solid var(--mc-border-strong);
+}
+.hib001 .hb-eyebrow {
+  font-family: var(--mc-font-mono); font-size: 11px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--mc-vermelho-corpo); margin-bottom: 6px;
+}
+.hib001 .hb-title {
+  font-family: var(--mc-font-serif); font-size: 22px;
+  font-weight: 500; color: var(--mc-text-primary);
+  margin: 0 0 6px;
+}
+.hib001 .hb-lede {
+  font-size: 14px; color: var(--mc-text-secondary);
+  margin: 0 0 32px; max-width: 720px;
+}
+.timeline {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+.tl-step {
+  border: 1px solid var(--mc-border-default);
+  padding: 14px 14px 16px;
+  background: var(--mc-bg-secondary);
+  position: relative;
+}
+.tl-step .tl-tag { font-family: var(--mc-font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mc-text-secondary); margin-bottom: 8px; }
+.tl-step .tl-list { display: flex; flex-direction: column; gap: 6px; }
+.tl-step .tl-list span {
+  font-family: var(--mc-font-mono); font-size: 11px;
+  padding: 4px 8px; border-left: 3px solid var(--mc-border-default);
+  background: var(--mc-bg-primary); color: var(--mc-text-primary);
+}
+.tl-step .tl-list span.pass { border-left-color: var(--mc-verde-protecao-corpo); }
+.tl-step .tl-list span.warn { border-left-color: var(--mc-ouro-500); }
+.tl-step .tl-list span.stop { border-left-color: var(--mc-vermelho-corpo); }
+.tl-decision {
+  margin-top: 24px;
+  padding: 18px 22px;
+  background: var(--mc-diamante-corpo); color: var(--mc-papel);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  border-left: 4px solid var(--mc-ouro-500);
+}
+.tl-decision .td-label { font-family: var(--mc-font-mono); font-size: 11px; letter-spacing: 0.18em; color: var(--mc-ouro-300); text-transform: uppercase; }
+.tl-decision .td-value { font-family: var(--mc-font-serif); font-size: 22px; font-weight: 500; }
+.tl-decision .td-note { font-size: 13px; color: var(--mc-ouro-100); max-width: 320px; text-align: right; }
+
+.router-footnote {
+  margin-top: 32px;
+  padding: 18px 22px;
+  border: 1px solid var(--mc-border-default);
+  background: var(--mc-bg-secondary);
+  font-size: 13.5px; color: var(--mc-text-secondary);
+  line-height: 1.55; max-width: 820px;
+}
+.router-footnote strong { color: var(--mc-text-primary); font-family: var(--mc-font-sans); font-weight: 600; }
+
+/* ============================================================
+   P8 — ACESSIBILIDADE
+   ============================================================ */
+
+.a11y-checklist { border-top: 1px solid var(--mc-border-strong); margin-top: 8px; }
+.a11y-row { display: grid; grid-template-columns: 32px 1fr 1fr 140px; align-items: center; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--mc-border-default); }
+.a11y-check { width: 22px; height: 22px; border: 1.5px solid var(--mc-diamante-corpo); background: var(--mc-diamante-corpo); color: var(--mc-papel); display: inline-flex; align-items: center; justify-content: center; font-size: 13px; border-radius: 2px; }
+.a11y-criterion { font-family: var(--mc-font-sans); font-weight: 600; font-size: 15px; color: var(--mc-text-primary); }
+.a11y-criterion small { display: block; font-family: var(--mc-font-mono); font-size: 10.5px; letter-spacing: 0.1em; color: var(--mc-text-secondary); text-transform: uppercase; font-weight: 500; margin-bottom: 4px; }
+.a11y-demo { font-size: 13px; color: var(--mc-text-secondary); }
+.a11y-token { font-family: var(--mc-font-mono); font-size: 11px; color: var(--mc-text-primary); text-align: right; }
+
+.contrast-demo { display: flex; gap: 12px; align-items: center; font-family: var(--mc-font-sans); }
+.contrast-demo .cd-cell { padding: 8px 12px; font-size: 14px; }
+.cd-pass { background: var(--mc-bg-secondary); color: var(--mc-diamante-corpo); border: 1px solid var(--mc-diamante-corpo); }
+.cd-fail { background: var(--mc-bg-secondary); color: var(--mc-diamante-100); border: 1px solid var(--mc-diamante-100); text-decoration: line-through; }
+
+.focus-demo {
+  display: inline-flex;
+  font-family: var(--mc-font-sans); font-weight: 600; font-size: 14px;
+  background: var(--mc-bg-secondary); color: var(--mc-diamante-corpo);
+  border: 1px solid var(--mc-diamante-corpo);
+  padding: 8px 16px;
+  outline: 2px solid var(--mc-ouro-500); outline-offset: 2px;
+}
+
+.hit-area-demo {
+  position: relative; width: 44px; height: 44px;
+  border: 1px dashed var(--mc-vermelho-corpo);
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.hit-area-demo::after {
+  content: "X"; width: 20px; height: 20px;
+  background: var(--mc-diamante-corpo); color: var(--mc-papel);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mc-font-mono); font-size: 10px;
+}
+
+.cofounder-callout {
+  background: var(--mc-noite); color: var(--mc-papel);
+  padding: 32px 36px; margin-top: 48px;
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 24px; align-items: center;
+}
+.cofounder-callout .cc-text { font-family: var(--mc-font-serif); font-style: italic; font-size: 18px; line-height: 1.4; max-width: 640px; color: var(--mc-ouro-100); }
+.cofounder-callout .cc-id { font-family: var(--mc-font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mc-ouro-500); text-align: right; line-height: 1.6; }
+
+.contrast-table-wrap { margin-top: 48px; }
+.contrast-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 12.5px;
+}
+.contrast-table th {
+  font-family: var(--mc-font-mono); font-size: 10.5px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 12px 10px; text-align: left;
+  background: var(--mc-diamante-corpo); color: var(--mc-papel);
+  font-weight: 600;
+}
+.contrast-table td {
+  padding: 10px; border-bottom: 1px solid var(--mc-border-default);
+  font-family: var(--mc-font-mono); vertical-align: middle;
+}
+.contrast-table td.ct-token { color: var(--mc-text-primary); font-weight: 500; }
+.contrast-table td.ct-hex   { color: var(--mc-text-secondary); }
+.contrast-table .swatch-dot {
+  display: inline-block; width: 14px; height: 14px;
+  border: 1px solid var(--mc-border-strong);
+  vertical-align: middle; margin-right: 8px;
+}
+.contrast-table .pass-aaa { color: var(--mc-verde-protecao-corpo); font-weight: 600; }
+.contrast-table .pass-aa  { color: var(--mc-ouro-700); font-weight: 600; }
+.contrast-table .fail     { color: var(--mc-vermelho-corpo); font-weight: 600; }
+.contrast-table .ct-usage { font-family: var(--mc-font-sans); font-size: 12px; color: var(--mc-text-secondary); }
+
+.a11y-principle {
+  margin-top: 48px;
+  padding: 28px 32px;
+  background: var(--mc-diamante-corpo);
+  color: var(--mc-papel);
+  border-left: 4px solid var(--mc-ouro-500);
+}
+.a11y-principle .ap-eyebrow { font-family: var(--mc-font-mono); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mc-ouro-300); margin-bottom: 12px; }
+.a11y-principle .ap-text { font-family: var(--mc-font-serif); font-style: italic; font-size: 22px; line-height: 1.4; color: var(--mc-papel); margin: 0; }
+
+/* ============================================================
+   P9 — LOGO · 3 explorações placeholder (Frente 4)
+   ============================================================ */
+
+.rascunho-banner {
+  background: var(--mc-vermelho-50);
+  border: 1px solid var(--mc-vermelho-corpo);
+  border-left: 4px solid var(--mc-vermelho-corpo);
+  padding: 14px 20px;
+  margin-bottom: 40px;
+  font-family: var(--mc-font-mono);
+  font-size: 12px; letter-spacing: 0.06em;
+  color: var(--mc-vermelho-corpo);
+}
+[data-theme="dark"] .rascunho-banner { background: var(--mc-diamante-600); color: var(--mc-vermelho-300); border-color: var(--mc-vermelho-400); }
+.rascunho-banner strong { font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; }
+
+.logo-exploration {
+  border-top: 1px solid var(--mc-border-strong);
+  padding: 32px 0;
+}
+.logo-exploration .le-head {
+  display: grid; grid-template-columns: 1fr auto;
+  align-items: baseline; margin-bottom: 6px;
+}
+.logo-exploration h3 {
+  font-family: var(--mc-font-serif); font-size: 26px;
+  font-weight: 500; color: var(--mc-text-primary); margin: 0;
+}
+.logo-exploration .le-tag {
+  font-family: var(--mc-font-mono); font-size: 10.5px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--mc-text-secondary);
+}
+.logo-exploration .le-desc {
+  font-size: 14px; color: var(--mc-text-secondary);
+  margin: 8px 0 24px; max-width: 720px;
+}
+
+.logo-cells {
+  display: grid; grid-template-columns: 1.4fr 1fr 0.5fr 1.3fr;
+  gap: 16px; align-items: stretch;
+}
+.lc {
+  border: 1px solid var(--mc-border-default);
+  padding: 24px;
+  background: var(--mc-bg-secondary);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  min-height: 200px; position: relative;
+}
+.lc .lc-label {
+  position: absolute; top: 10px; left: 12px;
+  font-family: var(--mc-font-mono); font-size: 9.5px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--mc-text-secondary);
+}
+.lc.lc-ouro-bg { background: var(--mc-diamante-corpo); }
+.lc.lc-ouro-bg .lc-label { color: var(--mc-ouro-300); }
+
+/* ============================================================
+   P10 — APLICAÇÃO (Frente 6)
+   ============================================================ */
+
+.decision-trees {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 32px; margin-bottom: 56px;
+}
+.tree {
+  border: 1px solid var(--mc-border-default);
+  padding: 20px;
+  background: var(--mc-bg-secondary);
+}
+.tree h4 {
+  font-family: var(--mc-font-serif); font-size: 18px;
+  font-weight: 500; color: var(--mc-text-primary);
+  margin: 0 0 14px;
+}
+.tree .t-q {
+  font-family: var(--mc-font-mono); font-size: 11.5px;
+  color: var(--mc-text-secondary); padding: 8px 0;
+  border-bottom: 1px dashed var(--mc-border-default);
+}
+.tree .t-q strong { color: var(--mc-text-primary); font-weight: 600; }
+.tree .t-branch {
+  display: grid; grid-template-columns: 16px 1fr;
+  gap: 8px; padding: 6px 0; font-size: 13px;
+  color: var(--mc-text-primary);
+}
+.tree .t-branch::before { content: "↳"; font-family: var(--mc-font-mono); color: var(--mc-ouro-500); }
+
+.screen-mocks {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; margin: 32px 0;
+}
+.screen {
+  border: 1px solid var(--mc-border-strong);
+  background: var(--mc-bg-secondary);
+  display: flex; flex-direction: column;
+  min-height: 480px;
+}
+.screen .sc-bar {
+  background: var(--mc-diamante-corpo); color: var(--mc-papel);
+  padding: 10px 14px;
+  font-family: var(--mc-font-mono); font-size: 11px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.screen .sc-bar .sc-mode { color: var(--mc-ouro-300); }
+.screen .sc-body { padding: 18px; flex: 1; }
+.screen.sc-whats .sc-body { background: #ECE5DD; color: #0A0E1A; }
+.bubble {
+  background: #DCF8C6; padding: 10px 12px;
+  border-radius: 14px 14px 4px 14px;
+  font-family: var(--mc-font-sans); font-size: 13px;
+  max-width: 80%; margin-bottom: 8px;
+  color: var(--mc-tinta);
+}
+.bubble.bot {
+  background: white; border-radius: 14px 14px 14px 4px;
+  margin-left: auto; text-align: left;
+}
+.screen.sc-clickup .sc-body { background: var(--mc-bg-primary); }
+.cu-task {
+  border-bottom: 1px solid var(--mc-border-default);
+  padding: 10px 0;
+  display: grid; grid-template-columns: 12px 1fr auto;
+  gap: 10px; align-items: center;
+  font-family: var(--mc-font-sans); font-size: 13px;
+}
+.cu-task::before {
+  content: ""; width: 12px; height: 12px;
+  border: 1.5px solid var(--mc-text-secondary);
+  border-radius: 2px;
+}
+.cu-task.done::before { background: var(--mc-verde-protecao-corpo); border-color: var(--mc-verde-protecao-corpo); }
+.cu-task .cu-meta { font-family: var(--mc-font-mono); font-size: 10.5px; color: var(--mc-text-secondary); }
+
+.screen.sc-cof .sc-body { background: var(--mc-bg-primary); }
+.cof-row {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 8px; padding: 8px 0;
+  border-bottom: 1px solid var(--mc-border-default);
+  font-family: var(--mc-font-mono); font-size: 11.5px;
+}
+.cof-row strong { font-family: var(--mc-font-sans); font-size: 13px; color: var(--mc-text-primary); font-weight: 600; }
+.cof-row .cof-val { color: var(--mc-text-secondary); }
+
+.carlos-handoff {
+  margin-top: 48px;
+  padding: 28px 32px;
+  background: var(--mc-ouro-50);
+  border-left: 4px solid var(--mc-ouro-500);
+}
+[data-theme="dark"] .carlos-handoff { background: var(--mc-diamante-600); }
+.carlos-handoff h4 {
+  font-family: var(--mc-font-serif); font-size: 22px;
+  font-weight: 500; color: var(--mc-text-primary); margin: 0 0 8px;
+}
+.carlos-handoff p { font-size: 14px; color: var(--mc-text-secondary); line-height: 1.55; margin: 0 0 8px; max-width: 720px; }
+.carlos-handoff ul { padding-left: 18px; font-size: 13.5px; color: var(--mc-text-primary); line-height: 1.7; }
+
+/* ============================================================
+   TOC (com IntersectionObserver active state)
+   ============================================================ */
+
+.toc {
+  position: fixed;
+  top: 24px; left: 24px;
+  background: var(--mc-bg-elevated);
+  border: 1px solid var(--mc-border-strong);
+  padding: 14px 16px;
+  font-family: var(--mc-font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  z-index: 100;
+  max-width: 220px;
+  box-shadow: var(--mc-elev-1);
+}
+.toc-title {
+  font-family: var(--mc-font-mono);
+  font-size: 9.5px; letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mc-text-secondary);
+  margin-bottom: 8px; padding-bottom: 6px;
+  border-bottom: 1px solid var(--mc-border-default);
+}
+.toc a {
+  display: flex; justify-content: space-between;
+  text-decoration: none;
+  color: var(--mc-text-primary);
+  padding: 3px 0;
+  text-transform: uppercase;
+  transition: color var(--mc-motion-fast) var(--mc-motion-ease-standard);
+}
+.toc a:hover { color: var(--mc-ouro-700); }
+[data-theme="dark"] .toc a:hover { color: var(--mc-ouro-400); }
+.toc a[aria-current="location"] {
+  color: var(--mc-ouro-700);
+  font-weight: 600;
+}
+[data-theme="dark"] .toc a[aria-current="location"] { color: var(--mc-ouro-400); }
+.toc a[aria-current="location"]::after {
+  content: "•"; color: var(--mc-ouro-500);
+  margin-left: 4px;
+}
+.toc a .toc-num { color: var(--mc-text-secondary); font-weight: 600; }
+
+.toc-theme {
+  margin-top: 12px; padding-top: 10px;
+  border-top: 1px solid var(--mc-border-default);
+  font-family: var(--mc-font-mono); font-size: 9.5px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--mc-text-secondary);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.toc-theme button {
+  font-family: var(--mc-font-mono); font-size: 9.5px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 4px 8px; background: var(--mc-bg-secondary);
+  color: var(--mc-text-primary);
+  border: 1px solid var(--mc-border-strong);
+  cursor: pointer;
+  transition: background var(--mc-motion-fast) var(--mc-motion-ease-standard);
+}
+.toc-theme button:hover { background: var(--mc-diamante-50); }
+[data-theme="dark"] .toc-theme button:hover { background: var(--mc-diamante-500); }
+.toc-theme button:focus-visible { outline: 2px solid var(--mc-ouro-500); outline-offset: 2px; }
+
+/* ============================================================
+   Responsive + print
+   ============================================================ */
+
+@media (max-width: 1100px) {
+  .layout-annot { grid-template-columns: 1fr; }
+  .annot { border-top: 1px solid var(--mc-border-default); padding-top: 16px; }
+  .toc { display: none; }
+  .page { padding: 40px 32px 64px; }
+  #p1 .cover-title { font-size: 72px; }
+  .swatches { grid-template-columns: repeat(2, 1fr); }
+  .bre-grid { grid-template-columns: 1fr; }
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .inst-grid { grid-template-columns: 1fr; }
+  .dcv-cascade { grid-template-columns: 1fr; }
+  .routes-grid { grid-template-columns: repeat(2, 1fr); }
+  .timeline { grid-template-columns: 1fr; }
+  .motion-demo { grid-template-columns: repeat(2, 1fr); }
+  .logo-cells { grid-template-columns: 1fr 1fr; }
+  .decision-trees { grid-template-columns: 1fr; }
+  .screen-mocks { grid-template-columns: 1fr; }
+}
+
+@media print {
+  .toc { display: none; }
+  .page { page-break-after: always; padding: 32px; border-bottom: 0; }
+  .page:last-of-type { page-break-after: auto; }
+  body { background: white; color: black; }
+  .selo-card, .pangrama, .router-core, .a11y-principle, .cofounder-callout,
+  .dossie-head, .mc-table thead th, .btn-primary, .btn-destructive,
+  .tl-decision, .dcv-col, .route-cell { color-adjust: exact; -webkit-print-color-adjust: exact; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- Floating TOC -->
+<nav class="toc" aria-label="Sumário do documento">
+  <div class="toc-title">MC · Foundation v0.3</div>
+  <a href="#p1"><span>Identidade</span><span class="toc-num">01</span></a>
+  <a href="#p2"><span>Cor</span><span class="toc-num">02</span></a>
+  <a href="#p3"><span>Tipografia</span><span class="toc-num">03</span></a>
+  <a href="#p4"><span>Espaço · grid</span><span class="toc-num">04</span></a>
+  <a href="#p5"><span>Borda · raio · motion</span><span class="toc-num">05</span></a>
+  <a href="#p6"><span>Componentes</span><span class="toc-num">06</span></a>
+  <a href="#p7"><span>Institucionais · RouterEthics</span><span class="toc-num">07</span></a>
+  <a href="#p8"><span>Acessibilidade</span><span class="toc-num">08</span></a>
+  <a href="#p9"><span>Logo · 3 explorações</span><span class="toc-num">09</span></a>
+  <a href="#p10"><span>Aplicação</span><span class="toc-num">10</span></a>
+  <div class="toc-theme">
+    <span>Tema</span>
+    <button type="button" id="theme-toggle" aria-label="Alternar tema claro/escuro">Light</button>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ============================================================
+     P1 — COVER / IDENTIDADE
+     ============================================================ -->
+<section class="page" id="p1" aria-labelledby="p1-title" data-screen-label="01 Identidade">
+  <div class="cover-top">
+    <div class="logo-mark">
+      <div class="logo-glyph">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <path d="M20 4 L34 16 L20 36 L6 16 Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M20 4 L14 16 L20 36 L26 16 Z" stroke="currentColor" stroke-width="1" fill="none"/>
+          <path d="M6 16 L34 16" stroke="currentColor" stroke-width="1"/>
+          <path d="M14 16 L20 4 L26 16" stroke="#C9A961" stroke-width="1" fill="none"/>
+        </svg>
+      </div>
+      <div>
+        <div class="logo-word">MEU CUMPADRE</div>
+        <div class="mono" style="font-size:10px; letter-spacing:0.16em; color:var(--mc-text-secondary); text-transform:uppercase; margin-top:2px;">Infraestrutura · Simetria · Informacional</div>
+      </div>
+    </div>
+    <div class="cover-version">
+      <div><span class="v-label">v0.3 · PROVISIONAL</span></div>
+      <div>15 · MAI · 2026</div>
+      <div style="font-size:10px">Foundation · Tokens · RouterEthics · Motion · Dark</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="page-eyebrow" id="p1-title">Design System · Foundation</div>
+    <h1 class="cover-title">Meu<br>Cumpadre.</h1>
+    <div class="cover-sub">— Foundation v0.3 · Provisional · 10 páginas —</div>
+    <p class="cover-tagline">Tecnologia invisível.<br>Dignidade acessível.</p>
+  </div>
+
+  <div class="cover-grid">
+    <div>
+      <div class="page-eyebrow" style="margin-bottom:8px;">Hierarquia inviolável</div>
+      <div class="hierarquia">
+        <div class="hierarquia-row r-d">
+          <div class="hierarquia-letter">D</div>
+          <div>
+            <div class="hierarquia-label">Dignidade <span class="hierarquia-glyph">// inegociável</span></div>
+            <div class="hierarquia-desc">Toda decisão começa aqui. Zilda existe. Zilda lê. Zilda compreende.</div>
+          </div>
+        </div>
+        <div class="hierarquia-row r-c">
+          <div class="hierarquia-letter">C</div>
+          <div>
+            <div class="hierarquia-label">Compliance <span class="hierarquia-glyph">// auditável</span></div>
+            <div class="hierarquia-desc">LGPD, INSS, OAB, STF. Citável, hash-anchored, defensável em juízo.</div>
+          </div>
+        </div>
+        <div class="hierarquia-row r-v">
+          <div class="hierarquia-letter">V</div>
+          <div>
+            <div class="hierarquia-label">Viabilidade <span class="hierarquia-glyph">// derradeira</span></div>
+            <div class="hierarquia-desc">Engenharia, custo, escala. Importa — mas nunca acima de D ou C.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cover-37">
+        <strong>Princípio MC #37 v1.1 PROVISIONAL</strong>
+        Brief diamantado MC sobrescreve defaults UI de qualquer sistema gerador. Este artefato nasceu sob essa premissa — Pipeline Cofounder de Produção · 15/05/2026.
+      </div>
+    </div>
+
+    <div class="selo-card">
+      <div class="selo-eyebrow">Selo · Identidade</div>
+      <div class="selo-quote">O diamante é carbono que não desistiu da pressão.</div>
+      <div class="selo-attribution">MC — Princípio fundador</div>
+    </div>
+  </div>
+
+  <div class="pilares">
+    <div class="pilar pi-acesso">
+      <div class="pilar-num">01</div>
+      <div class="pilar-name">Acesso</div>
+      <div class="pilar-line"></div>
+    </div>
+    <div class="pilar pi-org">
+      <div class="pilar-num">02</div>
+      <div class="pilar-name">Organização</div>
+      <div class="pilar-line"></div>
+    </div>
+    <div class="pilar pi-prot">
+      <div class="pilar-num">03</div>
+      <div class="pilar-name">Proteção</div>
+      <div class="pilar-line"></div>
+    </div>
+    <div class="pilar pi-sob">
+      <div class="pilar-num">04</div>
+      <div class="pilar-name">Soberania</div>
+      <div class="pilar-line"></div>
+    </div>
+  </div>
+
+  <div class="cover-foot">
+    <div class="proverbio">
+      <span class="ref">Provérbios 31:8 · Âncora bíblica</span>
+      Abre a tua boca a favor do mudo, pelo direito de todos os desamparados.
+    </div>
+    <div class="cover-hash">
+      <div>SHA-256 · 04E6491BCE1E…</div>
+      <div>DOC · MC-FOUND-v0.3</div>
+      <div>STATUS · PROVISIONAL</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     P2 — PALETA DE COR (light + dark)
+     ============================================================ -->
+<section class="page" id="p2" aria-labelledby="p2-title" data-screen-label="02 Paleta de cores">
+  <div class="page-meta">
+    <span>MC · Foundation v0.3 · Provisional</span>
+    <span><span class="pm-num">02</span> / 10 · Paleta de cores</span>
+  </div>
+  <div class="page-eyebrow">Página 02</div>
+  <h2 class="page-title" id="p2-title">Paleta de cores</h2>
+  <p class="page-lede">Quatro famílias semânticas + dois neutros. Sobriedade institucional. Cada token carrega função antes de carregar estética. Em v0.3, tokens semânticos de corpo apontam para 700 — nunca para 500 sobre papel.</p>
+
+  <div class="layout-annot">
+    <div>
+      <div class="palette-family">
+        <div class="family-head">
+          <div class="family-name">Diamante</div>
+          <div class="family-role">primária · Hierarquia D · institucional</div>
+        </div>
+        <p class="family-desc">Azul-noite institucional. Base do sistema, headlines, autoridade. Em v0.3 estendido com tons 400/600/800 para suportar dark-mode com camadas legítimas.</p>
+        <div class="swatches" data-family-base="diamante"></div>
+      </div>
+
+      <div class="palette-family">
+        <div class="family-head">
+          <div class="family-name">Ouro</div>
+          <div class="family-role">selo · destaque cerimonial · Hierarquia D</div>
+        </div>
+        <p class="family-desc">Ouro mate, não-brilho. Reservado para selos canônicos, marcas de autenticação e elementos cerimoniais. <strong>Nunca para corpo de texto sobre papel</strong> — contraste insuficiente.</p>
+        <div class="swatches" data-family-base="ouro"></div>
+      </div>
+
+      <div class="palette-family">
+        <div class="family-head">
+          <div class="family-name">Vermelho Dignidade</div>
+          <div class="family-role">risco · denúncia · RouterEthics nó D</div>
+        </div>
+        <p class="family-desc">Vermelho sóbrio. Risco, denúncia, alertas. <strong>Corpo no light = <code class="mono">700</code></strong> (AAA). 500 reservado a backgrounds com texto branco. 400 reservado a corpo no dark.</p>
+        <div class="swatches" data-family-base="vermelho"></div>
+      </div>
+
+      <div class="palette-family">
+        <div class="family-head">
+          <div class="family-name">Azul Acesso</div>
+          <div class="family-role">fluxo · Pilar Acesso · WhatsApp-friendly</div>
+        </div>
+        <p class="family-desc">Calibrado para fluxos WhatsApp e ações de avanço. <strong>Corpo no light = <code class="mono">700</code></strong>. 500 para accents, 400 para corpo no dark.</p>
+        <div class="swatches" data-family-base="azul"></div>
+      </div>
+
+      <div class="palette-family">
+        <div class="family-head">
+          <div class="family-name">Verde Proteção</div>
+          <div class="family-role">confiança · Pilar Proteção · institucional</div>
+        </div>
+        <p class="family-desc">Verde institucional, nunca verde-startup. Confirmação, blindagem, estado SELADO. Mesma disciplina: corpo light = 700, dark = 400.</p>
+        <div class="swatches" data-family-base="verde"></div>
+      </div>
+
+      <div class="palette-family">
+        <div class="family-head">
+          <div class="family-name">Neutros</div>
+          <div class="family-role">tinta · papel</div>
+        </div>
+        <p class="family-desc">Preto-noite e branco-papel. O papel é levemente quente — não branco puro — para evocar documento institucional impresso, não tela de aplicativo.</p>
+        <div class="neutros-row">
+          <div class="swatch">
+            <div class="swatch-chip" style="background:#0A0E1A; color:#FAFAF7;">preto-noite</div>
+            <div class="swatch-meta">
+              <div class="swatch-token">--mc-noite</div>
+              <div class="swatch-hex">#0A0E1A</div>
+              <div class="swatch-contrast"><span class="cb cb-paper cb-pass-aaa">vs papel <span class="cb-ratio">18.4</span><span class="cb-grade">AAA</span></span></div>
+            </div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-chip" style="background:#FAFAF7; color:#0A0E1A; border-bottom:1px solid #E5E2D7;">branco-papel</div>
+            <div class="swatch-meta">
+              <div class="swatch-token">--mc-papel</div>
+              <div class="swatch-hex">#FAFAF7</div>
+              <div class="swatch-contrast"><span class="cb cb-noite cb-pass-aaa">vs noite <span class="cb-ratio">18.4</span><span class="cb-grade">AAA</span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="annot">
+      <h4>Token name</h4>
+      <p><code>--mc-{família}-{nível}</code>. Escala v0.3: 50 / 100 / 300 / 400 / 500 / 700 (e 600/800 em Diamante).</p>
+      <h4>Tokens semânticos v0.3</h4>
+      <p><code>--mc-{cor}-corpo</code> → resolve para 700 (light) ou 400 (dark). Use sempre o semântico em texto de corpo.</p>
+      <h4>Quando aplicar D</h4>
+      <p>Diamante 700 corpo + Ouro 500 (selo) = paleta D.</p>
+      <h4>Quando aplicar C</h4>
+      <p>Diamante 700 + Vermelho 700 corpo. Sem ornamento Ouro.</p>
+      <h4>Quando aplicar V</h4>
+      <p>Diamante 300/500 + neutros. Sem selo.</p>
+      <h4>WCAG</h4>
+      <p>Em MC, cor não é decoração. Cor que não passa AAA não toca texto de corpo.</p>
+    </aside>
+  </div>
+
+  <!-- P2b · dark-mode palette -->
+  <h3 class="section-head" style="margin-top:80px;">2b · Paleta em dark-mode</h3>
+  <div class="section-sub">superfícies escuras · tokens semânticos · 400 para corpo cromático</div>
+
+  <div class="dark-panel">
+    <div class="palette-family" style="margin-bottom:32px;">
+      <div class="family-head">
+        <div class="family-name">Diamante · dark surfaces</div>
+        <div class="family-role">600/700/800 = bg-elevated / secondary / primary</div>
+      </div>
+      <div class="swatches" data-family-base="diamante" data-bg="dark"></div>
+    </div>
+    <div class="palette-family" style="margin-bottom:32px;">
+      <div class="family-head">
+        <div class="family-name">Vermelho · dark text</div>
+        <div class="family-role">400 = corpo no dark (contraste honesto)</div>
+      </div>
+      <div class="swatches" data-family-base="vermelho" data-bg="dark"></div>
+    </div>
+    <div class="palette-family" style="margin-bottom:32px;">
+      <div class="family-head">
+        <div class="family-name">Azul · dark text</div>
+        <div class="family-role">400 = corpo Acesso no dark</div>
+      </div>
+      <div class="swatches" data-family-base="azul" data-bg="dark"></div>
+    </div>
+    <div class="palette-family" style="margin-bottom:0;">
+      <div class="family-head">
+        <div class="family-name">Verde · dark text</div>
+        <div class="family-role">400 = corpo Proteção no dark</div>
+      </div>
+      <div class="swatches" data-family-base="verde" data-bg="dark"></div>
+    </div>
+  </div>
+
+  <h4 style="font-family:var(--mc-font-mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--mc-text-secondary); margin: 32px 0 8px;">Tokens semânticos · resolução light vs dark</h4>
+  <table class="dark-tokens-table">
+    <thead>
+      <tr><th>Token semântico</th><th>Light value</th><th>Dark value</th></tr>
+    </thead>
+    <tbody id="dark-tokens-body"></tbody>
+  </table>
+
+  <p class="muted" style="margin-top: 18px; font-size: 13px; max-width: 720px;">
+    Switch light/dark é decisão de produto, não de Foundation. Foundation expõe os tokens.
+    Default segue <code class="mono">prefers-color-scheme</code> do usuário. Override manual aparece no TOC apenas como demonstração desta página.
+  </p>
+</section>
+
+<!-- ============================================================
+     P3 — TIPOGRAFIA
+     ============================================================ -->
+<section class="page" id="p3" aria-labelledby="p3-title" data-screen-label="03 Tipografia">
+  <div class="page-meta">
+    <span>MC · Foundation v0.3 · Provisional</span>
+    <span><span class="pm-num">03</span> / 10 · Tipografia</span>
+  </div>
+  <div class="page-eyebrow">Página 03</div>
+  <h2 class="page-title" id="p3-title">Tipografia</h2>
+  <p class="page-lede">Três famílias. Cada uma tem voz, função e regra de uso. Sem condensadas, sem display extrema — Zilda lê primeiro, ministro depois.</p>
+
+  <div class="layout-annot">
+    <div>
+      <div class="type-family">
+        <div class="type-family-head">
+          <h3>Fraunces</h3>
+          <div class="tf-meta">Headline · Serif</div>
+          <p>Voz contemplativa, institucional. Cabeçalhos, citações, marca. Otimizado em <code class="mono">opsz 144</code> para tamanhos grandes.</p>
+        </div>
+        <div class="specimen">
+          <div class="spec-row"><div class="spec-size">64 / serif</div><div class="spec-sample serif" style="font-size:64px;">Dignidade acessível</div></div>
+          <div class="spec-row"><div class="spec-size">48 / serif</div><div class="spec-sample serif" style="font-size:48px;">Tecnologia invisível</div></div>
+          <div class="spec-row"><div class="spec-size">32 / serif</div><div class="spec-sample serif" style="font-size:32px;">Infraestrutura de simetria informacional</div></div>
+        </div>
+      </div>
+
+      <div class="type-family">
+        <div class="type-family-head">
+          <h3>Inter</h3>
+          <div class="tf-meta">Corpo · Sans humanista</div>
+          <p>Acessibilidade Zilda em primeiro lugar. Humanista, generosa, legível em telas de baixa resolução. Body 16px mínimo, sempre.</p>
+        </div>
+        <div class="specimen">
+          <div class="spec-row"><div class="spec-size">24 / sans</div><div class="spec-sample sans" style="font-size:24px;">Lede contemplativo — o pedido começa aqui.</div></div>
+          <div class="spec-row"><div class="spec-size">20 / sans</div><div class="spec-sample sans" style="font-size:20px;">Body grande — para Dona Zilda em zona rural.</div></div>
+          <div class="spec-row"><div class="spec-size">16 / sans</div><div class="spec-sample sans" style="font-size:16px;">Corpo padrão — leitura de petição, parecer, despacho.</div></div>
+          <div class="spec-row"><div class="spec-size">14 / sans</div><div class="spec-sample sans" style="font-size:14px;">Auxiliar — captions, metadados, anotações de margem.</div></div>
+        </div>
+      </div>
+
+      <div class="type-family">
+        <div class="type-family-head">
+          <h3>JetBrains Mono</h3>
+          <div class="tf-meta">Mono · Técnico</div>
+          <p>Hashes, IDs, logs, tokens CSS, código. Tabular, auditável, citável. Nunca para corpo de texto.</p>
+        </div>
+        <div class="specimen">
+          <div class="spec-row"><div class="spec-size">14 / mono</div><div class="spec-sample mono" style="font-size:14px;">SHA-256 · a4c1b2e8f0d3 · DOC-MC-FOUND-v0.3</div></div>
+          <div class="spec-row"><div class="spec-size">12 / mono</div><div class="spec-sample mono" style="font-size:12px;">--mc-diamante-700 · #07101F · contraste 19.5 · AAA</div></div>
+        </div>
+      </div>
+
+      <div class="pangrama">
+        <div class="pang-eyebrow">Pangrama · PT-BR</div>
+        <div class="pang-text">«&nbsp;Abre a tua boca a favor do mudo, em juízo de todos os desamparados.&nbsp;»</div>
+        <div class="pang-sans">Inter 16px — corpo institucional. Acessibilidade Zilda preservada em quaisquer dispositivos de baixa-renda, telas de baixa resolução, e leitores de baixa literacia digital. — Provérbios 31:8</div>
+      </div>
+
+      <h3 class="section-head">Hierarquia completa</h3>
+      <div class="section-sub">H1 → H6 · body · caption · label · code</div>
+      <table class="scale-table">
+        <thead>
+          <tr><th>Token</th><th>Tipografia</th><th>Amostra</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="col-token">--mc-text-h1</td><td class="col-spec">Fraunces 56/1.05 · 500</td><td class="col-sample ex-h1">Dignidade acessível</td></tr>
+          <tr><td class="col-token">--mc-text-h2</td><td class="col-spec">Fraunces 40/1.10 · 500</td><td class="col-sample ex-h2">Tecnologia invisível</td></tr>
+          <tr><td class="col-token">--mc-text-h3</td><td class="col-spec">Fraunces 28/1.15 · 500</td><td class="col-sample ex-h3">Quatro pilares operacionais</td></tr>
+          <tr><td class="col-token">--mc-text-h4</td><td class="col-spec">Inter 22/1.25 · 600</td><td class="col-sample ex-h4">Subseção institucional</td></tr>
+          <tr><td class="col-token">--mc-text-h5</td><td class="col-spec">Inter 18/1.30 · 600</td><td class="col-sample ex-h5">Grupo de campos</td></tr>
+          <tr><td class="col-token">--mc-text-h6</td><td class="col-spec">Inter 14/1.4 · 600 · 0.06em · UPPER</td><td class="col-sample ex-h6">Etiqueta de seção</td></tr>
+          <tr><td class="col-token">--mc-text-body</td><td class="col-spec">Inter 16/1.55 · 400</td><td class="col-sample ex-body">Corpo de texto institucional, leitura prolongada, petição.</td></tr>
+          <tr><td class="col-token">--mc-text-caption</td><td class="col-spec">Inter 12/1.4 · 400</td><td class="col-sample ex-caption">Caption — anotação auxiliar de margem.</td></tr>
+          <tr><td class="col-token">--mc-text-label</td><td class="col-spec">Inter 13/1.4 · 600 · 0.04em · UPPER</td><td class="col-sample ex-label">Label do campo</td></tr>
+          <tr><td class="col-token">--mc-text-code</td><td class="col-spec">JetBrains Mono 13/1.4</td><td class="col-sample ex-code">SHA-256 · a4c1b2e8</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="annot">
+      <h4>Voz por família</h4>
+      <p><strong>Fraunces</strong> — contemplação, autoridade, marca.</p>
+      <p><strong>Inter</strong> — acessibilidade, corpo, instrução.</p>
+      <p><strong>Mono</strong> — auditabilidade, código, hash.</p>
+      <h4>Mínimo de corpo</h4>
+      <p>Body 16px. Nunca abaixo de 14px em telas. 12pt mínimo em impressão.</p>
+      <h4>Variantes proibidas</h4>
+      <p>Sem itálico em corpo de petição. Sem condensadas. Sem display ultra-fina &lt; 300.</p>
+      <h4>D &gt; C &gt; V</h4>
+      <p>Hierarquia D usa Fraunces 500/600. C usa Inter 600. V usa Inter 400.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ============================================================
+     P4 — ESPAÇAMENTO + GRID
+     ============================================================ -->
+<section class="page" id="p4" aria-labelledby="p4-title" data-screen-label="04 Espaçamento e grid">
+  <div class="page-meta">
+    <span>MC · Foundation v0.3 · Provisional</span>
+    <span><span class="pm-num">04</span> / 10 · Espaçamento e grid</span>
+  </div>
+  <div class="page-eyebrow">Página 04</div>
+  <h2 class="page-title" id="p4-title">Espaçamento e grid</h2>
+  <p class="page-lede">Baseline 8pt. Toda medida é múltiplo de 4. Grid 12 colunas em desktop, 4 em mobile. Margem é silêncio — não decoração.</p>
+
+  <div class="layout-annot">
+    <div>
+      <h3 class="section-head">Escala de espaçamento</h3>
+      <div class="section-sub">8pt baseline · token --mc-sp-N</div>
+
+      <div class="sp-ladder">
+        <div class="sp-row"><div class="sp-token">--mc-sp-1</div><div class="sp-px">4 px</div><div class="sp-px">0.5×</div><div><div class="sp-bar" style="width:4px"></div></div></div>
+        <div class="sp-row"><div class="sp-token">--mc-sp-2</div><div class="sp-px">8 px</div><div class="sp-px">1×</div><div><div class="sp-bar" style="width:8px"></div></div></div>
+        <div class="sp-row"><div class="sp-token">--mc-sp-3</div><div class="sp-px">16 px</div><div class="sp-px">2×</div><div><div class="sp-bar" style="width:16px"></div></div></div>
+        <div class="sp-row"><div class="sp-token">--mc-sp-4</div><div class="sp-px">24 px</div><div class="sp-px">3×</div><div><div class="sp-bar" style="width:24px"></div></div></div>
+        <div class="sp-row"><div class="sp-token">--mc-sp-5</div><div class="sp-px">32 px</div><div class="sp-px">4×</div><div><div class="sp-bar" style="width:32px"></div></div></div>
+        <div class="sp-row"><div class="sp-token">--mc-sp-6</div><div class="sp-px">48 px</div><div class="sp-px">6×</div><div><div class="sp-bar" style="width:48px"></div></div></div>
+        <div class="sp-row"><div class="sp-token">--mc-sp-7</div><div class="sp-px">64 px</div><div class="sp-px">8×</div><div><div class="sp-bar" style="width:64px"></div></div></div>
+        <div class="sp-row"><div class="sp-token">--mc-sp-8</div><div class="sp-px">96 px</div><div class="sp-px">12×</div><div><div class="sp-bar" style="width:96px"></div></div></div>
+      </div>
+
+      <h3 class="section-head">Grid</h3>
+      <div class="section-sub">12 colunas desktop · 4 colunas mobile · gutter sp-3</div>
+
+      <div class="grid-demo">
+        <div class="grid-frame">
+          <div class="gf-label">Desktop · 12 colunas · gutter 12px</div>
+          <div class="cols-12">
+            <div class="col-cell">1</div><div class="col-cell">2</div><div class="col-cell">3</div><div class="col-cell">4</div>
+            <div class="col-cell">5</div><div class="col-cell">6</div><div class="col-cell">7</div><div class="col-cell">8</div>
+            <div class="col-cell">9</div><div class="col-cell">10</div><div class="col-cell">11</div><div class="col-cell">12</div>
+          </div>
+        </div>
+        <div class="grid-frame">
+          <div class="gf-label">Mobile · 4 colunas · gutter 8px</div>
+          <div class="cols-4">
+            <div class="col-cell">1</div><div class="col-cell">2</div><div class="col-cell">3</div><div class="col-cell">4</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="annot">
+      <h4>Regra dos 8</h4>
+      <p>Toda margem, padding e gap deve ser múltiplo de 8 (sp-1 = 4 é exceção para ajustes ópticos finos).</p>
+      <h4>Margem é silêncio</h4>
+      <p>Espaço vazio é parte da hierarquia institucional. Não preencha por preencher.</p>
+      <h4>Breakpoints</h4>
+      <p><code>≥ 1100px</code> desktop · 12-col<br><code>&lt; 1100px</code> mobile · 4-col</p>
+      <h4>Container</h4>
+      <p>Max-width 1200px. Margens laterais sp-7 (64px) desktop, sp-5 (32px) mobile.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ============================================================
+     P5 — BORDAS, RAIOS, ELEVAÇÃO + MOTION
+     ============================================================ -->
+<section class="page" id="p5" aria-labelledby="p5-title" data-screen-label="05 Bordas, raios, elevação, motion">
+  <div class="page-meta">
+    <span>MC · Foundation v0.3 · Provisional</span>
+    <span><span class="pm-num">05</span> / 10 · Bordas · raios · elevação · motion</span>
+  </div>
+  <div class="page-eyebrow">Página 05</div>
+  <h2 class="page-title" id="p5-title">Bordas, raios, elevação e motion</h2>
+  <p class="page-lede">Austeridade institucional: nada de bordas grossas, nada de sombras dramáticas. O documento parece impresso, não flutuando. Motion serve função, não estética — e reduced-motion é respeitado.</p>
+
+  <div class="bre-grid">
+    <div class="bre-group">
+      <h3>Bordas</h3>
+      <div class="bre-meta">0 · 1px · 2px</div>
+      <div class="bre-row"><div class="bre-sample b-0"></div><div class="bre-token"><strong>0</strong>--mc-border-0</div></div>
+      <div class="bre-row"><div class="bre-sample b-1"></div><div class="bre-token"><strong>1 px</strong>--mc-border-1</div></div>
+      <div class="bre-row"><div class="bre-sample b-2"></div><div class="bre-token"><strong>2 px</strong>--mc-border-2 · selo</div></div>
+    </div>
+
+    <div class="bre-group bre-radius">
+      <h3>Raios</h3>
+      <div class="bre-meta">0 · 4 · 8 · 16 px</div>
+      <div class="bre-row"><div class="bre-sample r-0"></div><div class="bre-token"><strong>0</strong>selo institucional</div></div>
+      <div class="bre-row"><div class="bre-sample r-1"></div><div class="bre-token"><strong>4 px</strong>botões · inputs</div></div>
+      <div class="bre-row"><div class="bre-sample r-2"></div><div class="bre-token"><strong>8 px</strong>cards</div></div>
+      <div class="bre-row"><div class="bre-sample r-3"></div><div class="bre-token"><strong>16 px</strong>chat WhatsApp · Zilda</div></div>
+    </div>
+
+    <div class="bre-group bre-elev">
+      <h3>Elevação</h3>
+      <div class="bre-meta">0 · sutil · médio</div>
+      <div class="bre-row"><div class="bre-sample e-0"></div><div class="bre-token"><strong>nenhuma</strong>--mc-elev-0</div></div>
+      <div class="bre-row"><div class="bre-sample e-1"></div><div class="bre-token"><strong>sutil</strong>--mc-elev-1 · card</div></div>
+      <div class="bre-row"><div class="bre-sample e-2"></div><div class="bre-token"><strong>médio</strong>--mc-elev-2 · modal</div></div>
+    </div>
+  </div>
+
+  <div class="rule-strong" style="margin-top: 64px;"></div>
+  <div style="display:grid; grid-template-columns: 1fr 240px; gap: 56px; margin-top: 24px;">
+    <div>
+      <h3 class="section-head" style="margin-top:0;">Regra de uso · borda · raio · elevação</h3>
+      <p style="max-width: 680px; color: var(--mc-text-primary); font-size: 15px; line-height: 1.6;">
+        Selo institucional &amp; documentos canônicos: <strong>raio 0, borda 2px Ouro sobre Diamante</strong>.
+        Componentes operacionais: <strong>raio 4-8px</strong>. Mensagens ao cidadão no WhatsApp: <strong>raio 16px</strong>, único contexto onde o raio amistoso é permitido.
+        Sombras dramáticas tipo material design ou neumorfismo: <strong>nunca</strong>. Não somos app de delivery.
+      </p>
+    </div>
+    <aside class="annot">
+      <h4>D &gt; C &gt; V</h4>
+      <p><strong>D:</strong> raio 0, borda 2px Ouro. Cerimonial.</p>
+      <p><strong>C:</strong> raio 0-4px, borda 1px Diamante.</p>
+      <p><strong>V:</strong> raio 4-8px, borda 1px régua.</p>
+    </aside>
+  </div>
+
+  <!-- MOTION (Frente 2) -->
+  <h3 class="section-head" style="margin-top:80px;">Motion · tokens</h3>
+  <div class="section-sub">7 tokens · função, não show · prefers-reduced-motion: tudo zera</div>
+
+  <div>
+    <div class="motion-tokens"><div class="mt-tok">--mc-motion-instant</div><div class="mt-val">0ms</div><div class="mt-use">Mudanças críticas (erro de validação) — sem espera</div></div>
+    <div class="motion-tokens"><div class="mt-tok">--mc-motion-fast</div><div class="mt-val">100ms</div><div class="mt-use">Hover states, focus rings</div></div>
+    <div class="motion-tokens"><div class="mt-tok">--mc-motion-standard</div><div class="mt-val">200ms</div><div class="mt-use">Dropdowns, tooltips, transições de estado</div></div>
+    <div class="motion-tokens"><div class="mt-tok">--mc-motion-slow</div><div class="mt-val">300ms</div><div class="mt-use">Modais entrando/saindo, abertura de detalhes</div></div>
+    <div class="motion-tokens"><div class="mt-tok">--mc-motion-ease-out</div><div class="mt-val">cubic-bezier</div><div class="mt-use">Entradas (acelera, depois desacelera)</div></div>
+    <div class="motion-tokens"><div class="mt-tok">--mc-motion-ease-in</div><div class="mt-val">cubic-bezier</div><div class="mt-use">Saídas (sai rápido)</div></div>
+    <div class="motion-tokens"><div class="mt-tok">--mc-motion-ease-standard</div><div class="mt-val">cubic-bezier</div><div class="mt-use">Transformações de estado</div></div>
+  </div>
+
+  <h3 class="section-head" style="margin-top:64px;">Botão · 4 estados</h3>
+  <div class="section-sub">default → hover → focus → pressed · token --mc-motion-fast</div>
+
+  <div class="motion-demo">
+    <div class="motion-card">
+      <div class="mc-label">default</div>
+      <span class="mc-btn">Confirmar</span>
+      <div class="mc-arrow">→ background 100ms ease-standard</div>
+    </div>
+    <div class="motion-card">
+      <div class="mc-label">hover</div>
+      <span class="mc-btn is-hover">Confirmar</span>
+      <div class="mc-arrow">→ Diamante 700 → 500</div>
+    </div>
+    <div class="motion-card">
+      <div class="mc-label">focus</div>
+      <span class="mc-btn is-focus">Confirmar</span>
+      <div class="mc-arrow">→ outline Ouro 500 · instant</div>
+    </div>
+    <div class="motion-card">
+      <div class="mc-label">pressed</div>
+      <span class="mc-btn is-pressed">Confirmar</span>
+      <div class="mc-arrow">→ translateY(1px) · 100ms</div>
+    </div>
+  </div>
+
+  <h3 class="section-head" style="margin-top:64px;">Dropdown · 3 frames</h3>
+  <div class="section-sub">closed → opening → open · token --mc-motion-standard · ease-out</div>
+
+  <div class="dropdown-frames">
+    <div class="dd-frame closed">
+      <div class="dd-label">closed</div>
+      <span class="dd-trigger">Tipo de benefício</span>
+    </div>
+    <div class="dd-frame opening">
+      <div class="dd-label">opening · 100ms</div>
+      <span class="dd-trigger">Tipo de benefício</span>
+      <div class="dd-menu">
+        <div class="item">Aposentadoria por idade</div>
+        <div class="item">BPC / LOAS</div>
+        <div class="item">Auxílio-doença</div>
+      </div>
+    </div>
+    <div class="dd-frame open">
+      <div class="dd-label">open · 200ms</div>
+      <span class="dd-trigger">Tipo de benefício</span>
+      <div class="dd-menu">
+        <div class="item">Aposentadoria por idade</div>
+        <div class="item">BPC / LOAS</div>
+        <div class="item">Auxílio-doença</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-head" style="margin-top:64px;">Toast · 4 frames</h3>
+  <div class="section-sub">invisible → entering → visible → exiting · token --mc-motion-slow · ease-out + ease-in</div>
+
+  <div class="toast-frames">
+    <div class="toast-frame invisible"><div class="tf-label">invisible</div><span class="toast">Pedido recebido</span></div>
+    <div class="toast-frame entering"><div class="tf-label">entering · 150ms</div><span class="toast">Pedido recebido</span></div>
+    <div class="toast-frame visible"><div class="tf-label">visible · 4s</div><span class="toast">Pedido recebido</span></div>
+    <div class="toast-frame exiting"><div class="tf-label">exiting · 150ms</div><span class="toast">Pedido recebido</span></div>
+  </div>
+
+  <h3 class="section-head" style="margin-top:64px;">O que pode mover · o que não pode mover</h3>
+  <div class="section-sub">disciplina motion · função vs entertainment</div>
+
+  <div class="motion-list-pair">
+    <div class="motion-list can">
+      <h4>✓ Pode mover</h4>
+      <ul>
+        <li>Focus rings (aparecer/desaparecer · 100ms)</li>
+        <li>Buttons hover/pressed (background · 100ms)</li>
+        <li>Dropdowns/tooltips (open/close · 200ms · ease-out)</li>
+        <li>Tabs (indicator slide · 200ms · ease-standard)</li>
+        <li>Modais (fade + scale 0.98→1 · 300ms · ease-out)</li>
+        <li>Loading spinners (rotation contínua mas discreta · ≤ 1s/volta)</li>
+      </ul>
+    </div>
+    <div class="motion-list cannot">
+      <h4>✗ Não pode mover</h4>
+      <ul>
+        <li>Páginas inteiras (sem entry animations)</li>
+        <li>Headers, sidebars, navegação principal</li>
+        <li>Conteúdo de leitura (texto não se anima)</li>
+        <li>Selo Diamante, logo, headlines institucionais</li>
+        <li>Hierarquia D&gt;C&gt;V (decisão é institucional, não animada)</li>
+        <li>Scroll-triggered animations · parallax · entrada dramática</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     P6 — COMPONENTES BÁSICOS
+     ============================================================ -->
+<section class="page" id="p6" aria-labelledby="p6-title" data-screen-label="06 Componentes básicos">
+  <div class="page-meta">
+    <span>MC · Foundation v0.3 · Provisional</span>
+    <span><span class="pm-num">06</span> / 10 · Componentes básicos</span>
+  </div>
+  <div class="page-eyebrow">Página 06</div>
+  <h2 class="page-title" id="p6-title">Componentes básicos</h2>
+  <p class="page-lede">Botões, inputs, cards, badges, tabelas. Foundation v1 — sem ornamentos, sem variações premium. Toda dignidade é igual.</p>
+
+  <div class="comp-block">
+    <h3>Botões</h3>
+    <div class="cb-meta">4 variantes · 3 tamanhos · estados default/hover/focus/disabled · tokens motion aplicados</div>
+
+    <div class="btn-grid" style="grid-template-columns: 140px repeat(3, 1fr); align-items: end;">
+      <div class="row-label">Tamanho</div>
+      <div class="row-label">SM · 36h</div>
+      <div class="row-label">MD · 44h</div>
+      <div class="row-label">LG · 52h</div>
+
+      <div class="row-label">Primário · D</div>
+      <div><button class="btn btn-primary btn-sm">Confirmar</button></div>
+      <div><button class="btn btn-primary btn-md">Confirmar</button></div>
+      <div><button class="btn btn-primary btn-lg">Confirmar</button></div>
+
+      <div class="row-label">Secundário · C</div>
+      <div><button class="btn btn-secondary btn-sm">Revisar</button></div>
+      <div><button class="btn btn-secondary btn-md">Revisar</button></div>
+      <div><button class="btn btn-secondary btn-lg">Revisar</button></div>
+
+      <div class="row-label">Terciário · V</div>
+      <div><button class="btn btn-tertiary btn-sm">Saiba mais</button></div>
+      <div><button class="btn btn-tertiary btn-md">Saiba mais</button></div>
+      <div><button class="btn btn-tertiary btn-lg">Saiba mais</button></div>
+
+      <div class="row-label">Destrutivo</div>
+      <div><button class="btn btn-destructive btn-sm">Excluir</button></div>
+      <div><button class="btn btn-destructive btn-md">Excluir</button></div>
+      <div><button class="btn btn-destructive btn-lg">Excluir</button></div>
+    </div>
+
+    <div class="rule" style="margin: 32px 0 24px;"></div>
+
+    <div class="btn-grid" style="grid-template-columns: 140px repeat(4, auto); align-items: center; justify-content: start;">
+      <div class="row-label">Estados</div>
+      <div class="row-label">default</div>
+      <div class="row-label">hover</div>
+      <div class="row-label">focus</div>
+      <div class="row-label">disabled</div>
+
+      <div class="row-label">Primário</div>
+      <div><button class="btn btn-primary btn-md">Confirmar</button></div>
+      <div><button class="btn btn-primary btn-md" style="background:var(--mc-diamante-500); border-color:var(--mc-diamante-500);">Confirmar</button></div>
+      <div><button class="btn btn-primary btn-md" style="outline:2px solid var(--mc-ouro-500); outline-offset:2px;">Confirmar</button></div>
+      <div><button class="btn btn-primary btn-md" disabled>Confirmar</button></div>
+    </div>
+  </div>
+
+  <div class="comp-block">
+    <h3>Inputs</h3>
+    <div class="cb-meta">texto · textarea · select · checkbox · radio · label sempre acima</div>
+
+    <div class="input-grid">
+      <div class="field">
+        <label>Nome completo <span style="color:var(--mc-vermelho-corpo)">*</span></label>
+        <input class="input" placeholder="ex.: Zilda Aparecida da Silva" type="text">
+        <span class="help">Como aparece em seu documento de identidade.</span>
+      </div>
+
+      <div class="field">
+        <label>CPF</label>
+        <input class="input" placeholder="000.000.000-00" type="text">
+        <span class="help">Somente números.</span>
+      </div>
+
+      <div class="field">
+        <label>E-mail</label>
+        <input class="input is-error" placeholder="email@invalido" type="email" value="zilda@invalido">
+        <span class="err">Formato inválido. Verifique o endereço.</span>
+      </div>
+
+      <div class="field">
+        <label>Documento (auto-preenchido)</label>
+        <input class="input" value="MC-DOC-2026-0042" disabled type="text">
+        <span class="help">Gerado automaticamente pelo sistema.</span>
+      </div>
+
+      <div class="field" style="grid-column: 1 / -1;">
+        <label>Descrição do pedido</label>
+        <textarea class="textarea" placeholder="Conte com suas palavras o que aconteceu. Sem pressa."></textarea>
+        <span class="help">Mínimo 40 caracteres. Texto livre — escreva como você falaria.</span>
+      </div>
+
+      <div class="field">
+        <label>Tipo de benefício</label>
+        <select class="select">
+          <option>Selecione…</option>
+          <option>Aposentadoria por idade</option>
+          <option>Aposentadoria por invalidez</option>
+          <option>BPC / LOAS</option>
+          <option>Auxílio-doença</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Confirmações</label>
+        <div class="checkbox-row"><span class="checkbox is-checked">✓</span> <span>Autorizo o uso dos dados conforme LGPD.</span></div>
+        <div class="checkbox-row"><span class="checkbox"></span> <span>Quero receber atualizações via WhatsApp.</span></div>
+        <div class="radio-row"><span class="radio is-checked"></span> <span>Pessoa física</span></div>
+        <div class="radio-row"><span class="radio"></span> <span>Pessoa jurídica</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-block">
+    <h3>Cards</h3>
+    <div class="cb-meta">institucional · social · risco · neutro</div>
+    <div class="cards-grid">
+      <div class="card card-institucional">
+        <div class="card-eyebrow">Institucional · D</div>
+        <div class="card-title">Parecer técnico INSS</div>
+        <div class="card-body">Documento canônico, citável, hash-anchored. Borda esquerda Diamante 700.</div>
+      </div>
+      <div class="card card-social">
+        <div class="card-eyebrow">Social · Acesso</div>
+        <div class="card-title">Mensagem para Zilda</div>
+        <div class="card-body">Tom amistoso, raio maior, cor Azul Acesso. WhatsApp-friendly sem perder sobriedade.</div>
+      </div>
+      <div class="card card-risco">
+        <div class="card-eyebrow">Risco · RouterEthics</div>
+        <div class="card-title">Prazo decai em 7 dias</div>
+        <div class="card-body">Alerta sóbrio, não alarmante. Vermelho 700 indica dano potencial, não erro técnico.</div>
+      </div>
+      <div class="card card-neutro">
+        <div class="card-eyebrow">Neutro · V</div>
+        <div class="card-title">Anotação interna</div>
+        <div class="card-body">Documento operacional, sem hierarquia cerimonial. Borda neutra, sem cor semântica.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-block">
+    <h3>Badges &amp; Tags</h3>
+    <div class="cb-meta">selo Ouro · status D/C/V · versão · provisional/selado</div>
+    <div class="badge-row" style="gap: 14px;">
+      <span class="badge badge-ouro">★ Selo Ouro</span>
+      <span class="badge badge-d">D · Dignidade</span>
+      <span class="badge badge-c">C · Compliance</span>
+      <span class="badge badge-v">V · Viabilidade</span>
+      <span class="badge badge-version">v0.3 · provisional</span>
+      <span class="badge badge-version">v1.0 · selado</span>
+      <span class="status-chip status-prov">PROVISIONAL</span>
+      <span class="status-chip status-selado">SELADO</span>
+    </div>
+  </div>
+
+  <div class="comp-block" style="border-bottom: 1px solid var(--mc-border-strong);">
+    <h3>Tabela</h3>
+    <div class="cb-meta">headers Diamante · linhas zebradas sutis · mono em IDs</div>
+    <table class="mc-table">
+      <thead>
+        <tr><th>Documento</th><th>Status</th><th>Hierarquia</th><th class="mono">Hash</th><th>Atualizado</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Parecer técnico — pedido 0042</td><td><span class="status-chip status-selado">SELADO</span></td><td>D</td><td class="mono">a4c1b2e8</td><td>15 · mai · 2026</td></tr>
+        <tr><td>Petição inicial — pedido 0043</td><td><span class="status-chip status-prov">PROVISIONAL</span></td><td>C</td><td class="mono">9f0e2d11</td><td>15 · mai · 2026</td></tr>
+        <tr><td>Anotação operacional</td><td><span class="status-chip status-prov">PROVISIONAL</span></td><td>V</td><td class="mono">2b8a0c47</td><td>14 · mai · 2026</td></tr>
+        <tr><td>Documento de identidade</td><td><span class="status-chip status-selado">SELADO</span></td><td>D</td><td class="mono">e3d9f5a2</td><td>10 · mai · 2026</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============================================================
+     P7 — COMPONENTES INSTITUCIONAIS MC + RouterEthics 11.0
+     ============================================================ -->
+<section class="page" id="p7" aria-labelledby="p7-title" data-screen-label="07 Componentes institucionais MC + RouterEthics">
+  <div class="page-meta">
+    <span>MC · Foundation v0.3 · Provisional</span>
+    <span><span class="pm-num">07</span> / 10 · Componentes institucionais · RouterEthics</span>
+  </div>
+  <div class="page-eyebrow">Página 07</div>
+  <h2 class="page-title" id="p7-title">Componentes institucionais MC</h2>
+  <p class="page-lede">Únicos. Não compartilhados com outros sistemas. Carregam a DNA institucional de Meu Cumpadre — distintivos, citáveis, hash-anchored. Em v0.3, materializamos o RouterEthics 11.0 como artefato visual.</p>
+
+  <div class="inst-grid">
+    <div class="inst-panel">
+      <h3>Selo Diamante</h3>
+      <div class="ip-meta">distintivo Ouro+Diamante · documentos canônicos</div>
+      <div style="display:flex; justify-content:center; padding: 24px 0;">
+        <div class="selo-diamante">
+          <div class="selo-top">M C</div>
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+            <path d="M40 10 L66 32 L40 70 L14 32 Z" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+            <path d="M40 10 L28 32 L40 70 L52 32 Z" stroke="#C9A961" stroke-width="1" fill="none"/>
+            <path d="M14 32 L66 32" stroke="#C9A961" stroke-width="1"/>
+          </svg>
+          <div class="selo-text">DOCUMENTO · SELADO</div>
+        </div>
+      </div>
+      <p class="ip-desc">Aplicado apenas a documentos canônicos auditados (POPs selados, pareceres oficiais, declarações institucionais). Raio 0, borda 2px Ouro 500 sobre Diamante 500. Nunca decorativo — sempre semântico.</p>
+    </div>
+
+    <div class="inst-panel">
+      <h3>Indicador D &gt; C &gt; V</h3>
+      <div class="ip-meta">três barras verticais · hierarquia visível</div>
+      <div class="dcv-row" style="padding: 16px 0;">
+        <div class="dcv-indicator">
+          <div class="dcv-bar dcv-d"><div class="dcv-fill"></div><div class="dcv-label">D</div></div>
+          <div class="dcv-bar dcv-c"><div class="dcv-fill"></div><div class="dcv-label">C</div></div>
+          <div class="dcv-bar dcv-v"><div class="dcv-fill"></div><div class="dcv-label">V</div></div>
+        </div>
+        <div class="dcv-legend">
+          <strong>D · Dignidade — 100%</strong> inegociável, sempre máximo<br>
+          <strong>C · Compliance — 66%</strong> rigor proporcional à Dignidade<br>
+          <strong>V · Viabilidade — 33%</strong> última a ser otimizada
+        </div>
+      </div>
+      <p class="ip-desc">Aparece em dashboards internos, decisões de produto e revisões de RouterEthics. Quando V supera C ou D, alerta vermelho institucional.</p>
+    </div>
+  </div>
+
+  <div class="inst-panel" style="margin-bottom: 32px;">
+    <h3>Card Dossiê</h3>
+    <div class="ip-meta">POP VisualLaw v1.3 · 4 camadas cognitivas</div>
+    <div class="dossie" style="max-width: 820px;">
+      <div class="dossie-head">
+        <div>
+          <div class="dh-title">Dossiê — Pedido 0042 / Aposentadoria por idade</div>
+          <div style="font-family:var(--mc-font-mono); font-size:10.5px; letter-spacing:0.1em; color:var(--mc-ouro-300); margin-top:4px;">CIDADÃ · ZILDA APARECIDA DA SILVA · 76 ANOS</div>
+        </div>
+        <div class="dh-id">MC-DOSS-2026-0042<br>SHA · a4c1b2e8</div>
+      </div>
+
+      <div class="dossie-layer">
+        <div class="dl-tag l1">L1 · FATO</div>
+        <div class="dl-body"><strong>O que aconteceu</strong>Zilda contribuiu 14 anos como rural. INSS negou alegando falta de comprovação. Documento existe — está com o sindicato.</div>
+        <div class="dl-citation">CIN · 31:8</div>
+      </div>
+
+      <div class="dossie-layer">
+        <div class="dl-tag l2">L2 · DIREITO</div>
+        <div class="dl-body"><strong>Fundamento legal</strong>Lei 8.213/91, art. 48 §1º. STF Tema 629. Comprovação por início de prova material + testemunhal admitida.</div>
+        <div class="dl-citation">L 8.213 · 48 §1</div>
+      </div>
+
+      <div class="dossie-layer">
+        <div class="dl-tag l3">L3 · TRADUÇÃO</div>
+        <div class="dl-body"><strong>Para Zilda — em PT-BR claro</strong>A senhora trabalhou na roça, isso conta. A lei aceita. Vamos juntar o papel do sindicato e dois vizinhos que viram.</div>
+        <div class="dl-citation">Zilda · ZONA RURAL</div>
+      </div>
+
+      <div class="dossie-layer">
+        <div class="dl-tag l4">L4 · AÇÃO</div>
+        <div class="dl-body"><strong>Próximo passo</strong>Oficial procura sindicato. Mensagem WhatsApp confirma a Zilda. Prazo de recurso: 30 dias. Risco se atrasar: prescrição.</div>
+        <div class="dl-citation">SLA · 30 DIAS</div>
+      </div>
+    </div>
+    <p class="ip-desc" style="max-width: 720px;">Estrutura herdada de POP VisualLaw v1.3: <strong>Fato → Direito → Tradução → Ação</strong>. Toda peça institucional MC carrega essas 4 camadas. L3 é a camada Zilda — sem ela, o dossiê falha a regra Zilda-STF.</p>
+  </div>
+
+  <div class="inst-grid">
+    <div class="inst-panel">
+      <h3>Hash badge</h3>
+      <div class="ip-meta">mono · 8 primeiros chars SHA-256</div>
+      <div style="display:flex; gap: 12px; flex-wrap:wrap; padding: 16px 0;">
+        <span class="hash-badge">a4c1b2e8</span>
+        <span class="hash-badge">9f0e2d11</span>
+        <span class="hash-badge">e3d9f5a2</span>
+        <span class="hash-badge">2b8a0c47</span>
+      </div>
+      <p class="ip-desc">Identificador curto de auditoria. Anexa a todo documento gerado pelo MC para verificação cruzada com cadeia hash-anchored. Exibe sempre os 8 primeiros caracteres do SHA-256.</p>
+    </div>
+
+    <div class="inst-panel">
+      <h3>Status PROVISIONAL / SELADO</h3>
+      <div class="ip-meta">chip mono · semântica de versão</div>
+      <div style="display:flex; gap: 12px; flex-wrap:wrap; padding: 16px 0;">
+        <span class="status-chip status-prov">PROVISIONAL</span>
+        <span class="status-chip status-selado">SELADO</span>
+      </div>
+      <p class="ip-desc"><strong>PROVISIONAL</strong> — documento em construção, não citável formalmente. <strong>SELADO</strong> — documento canônico, hash-anchored, citável em juízo. Não há estado intermediário.</p>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       RouterEthics 11.0 · componente nuclear v0.3 (Frente 5)
+       ===================================================== -->
+  <div class="router" id="router-ethics">
+    <div class="router-eyebrow">Componente institucional MC · v0.3</div>
+    <h3 class="router-title">RouterEthics 11.0</h3>
+    <p class="router-lede">Motor decisório central. 140 nós determinísticos organizados em cascata <strong>D &gt; C &gt; V</strong>. Latência &lt;800ms. Para cada caso entrante, decide a rota de saída — Autonomia, Human API, Marketplace ou Interrupção Dignidade. Este artefato é prova visual de que D&gt;C&gt;V não é slogan — é arquitetura executável.</p>
+
+    <div class="hook0">
+      <div class="hk-tag">Hook 0 · Triagem gov.br (pré-RouterEthics)</div>
+      <div class="hk-title">5 perguntas determinam nível gov.br do cidadão</div>
+      <div class="hk-questions">
+        <span>P1 · documentos</span>
+        <span>P2 · biometria</span>
+        <span>P3 · INSS</span>
+        <span>P4 · 2FA</span>
+        <span>P5 · validação</span>
+      </div>
+    </div>
+    <div class="router-arrow">se Bronze validado mínimo, prossegue</div>
+
+    <div class="router-core">
+      <div class="rc-title">Router-Ethics 11.0 · cascata D&gt;C&gt;V</div>
+      <div class="rc-sub">140 nós · &lt;800ms · 6 filtros universais</div>
+
+      <div class="dcv-cascade">
+        <div class="dcv-col col-d">
+          <div class="dc-head">D · Dignidade</div>
+          <div class="dc-count">45 nós · prioridade absoluta</div>
+          <div class="dc-nodes">
+            <div class="dc-node st-pass">D01</div><div class="dc-node st-pass">D02</div><div class="dc-node st-pass">D03</div>
+            <div class="dc-node st-pass">D05</div><div class="dc-node st-warn">D17</div><div class="dc-node st-pass">D21</div>
+            <div class="dc-node st-pass">D24</div><div class="dc-node st-na">D28</div><div class="dc-node st-pass">D31</div>
+            <div class="dc-node st-na">D33</div><div class="dc-node st-pass">D36</div><div class="dc-node st-na">D40</div>
+            <div class="dc-node st-pass">D42</div><div class="dc-node st-pass">D44</div><div class="dc-node st-pass">D45</div>
+          </div>
+        </div>
+        <div class="dcv-col col-c">
+          <div class="dc-head">C · Compliance</div>
+          <div class="dc-count">45 nós · LGPD/OAB/STF</div>
+          <div class="dc-nodes">
+            <div class="dc-node st-pass">C46</div><div class="dc-node st-pass">C48</div><div class="dc-node st-na">C53</div>
+            <div class="dc-node st-pass">C58</div><div class="dc-node st-pass">C61</div><div class="dc-node st-warn">C72</div>
+            <div class="dc-node st-pass">C75</div><div class="dc-node st-pass">C78</div><div class="dc-node st-na">C81</div>
+            <div class="dc-node st-pass">C84</div><div class="dc-node st-pass">C86</div><div class="dc-node st-na">C88</div>
+            <div class="dc-node st-pass">C89</div><div class="dc-node st-pass">C90</div><div class="dc-node st-na">C91</div>
+          </div>
+        </div>
+        <div class="dcv-col col-v">
+          <div class="dc-head">V · Viabilidade</div>
+          <div class="dc-count">50 nós · custo/escala</div>
+          <div class="dc-nodes">
+            <div class="dc-node st-pass">V91</div><div class="dc-node st-pass">V94</div><div class="dc-node st-na">V98</div>
+            <div class="dc-node st-pass">V102</div><div class="dc-node st-pass">V108</div><div class="dc-node st-na">V112</div>
+            <div class="dc-node st-pass">V116</div><div class="dc-node st-na">V120</div><div class="dc-node st-pass">V124</div>
+            <div class="dc-node st-pass">V128</div><div class="dc-node st-na">V131</div><div class="dc-node st-pass">V134</div>
+            <div class="dc-node st-pass">V137</div><div class="dc-node st-pass">V139</div><div class="dc-node st-pass">V140</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="filters-block">
+        <div class="fb-head">6 filtros universais · middleware pós-cascata</div>
+        <div class="filters-row">
+          <span class="filter-chip">Zilda-STF</span>
+          <span class="filter-chip">OAB firewall</span>
+          <span class="filter-chip">48h SLA</span>
+          <span class="filter-chip">Proof-First</span>
+          <span class="filter-chip">D &gt; C &gt; V</span>
+          <span class="filter-chip">Inversão de ônus</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="router-arrow">decisão · &lt;800ms</div>
+
+    <div class="routes-grid">
+      <div class="route-cell rt-a">
+        <div class="rt-label">Rota A</div>
+        <div class="rt-name">Autonomia</div>
+        <div class="rt-pct">15-25%</div>
+      </div>
+      <div class="route-cell rt-b">
+        <div class="rt-label">Rota B</div>
+        <div class="rt-name">Human API</div>
+        <div class="rt-pct">50-60%</div>
+      </div>
+      <div class="route-cell rt-c">
+        <div class="rt-label">Rota C</div>
+        <div class="rt-name">Marketplace</div>
+        <div class="rt-pct">15-25%</div>
+      </div>
+      <div class="route-cell rt-d">
+        <div class="rt-label">Rota D</div>
+        <div class="rt-name">Interrupção D</div>
+        <div class="rt-pct">3-5%</div>
+      </div>
+    </div>
+
+    <!-- Caso Hib001 · JER001 -->
+    <div class="hib001">
+      <div class="hb-eyebrow">Caso âncora · Hib001</div>
+      <h4 class="hb-title">JER001 · Aposentadoria Híbrida · caminho através do RouterEthics</h4>
+      <p class="hb-lede">Cidadã gov.br Prata. Caso real validado. Visualização concreta do percurso institucional, com cada nó iluminado conforme estado real após passagem do dossiê.</p>
+
+      <div class="timeline">
+        <div class="tl-step">
+          <div class="tl-tag">Hook 0 · Triagem gov.br</div>
+          <div class="tl-list">
+            <span class="pass">P1 · CPF ✓</span>
+            <span class="pass">P2 · CIN ✓</span>
+            <span class="pass">P3 · MEU INSS ✓</span>
+            <span class="pass">Prata · OK</span>
+          </div>
+        </div>
+        <div class="tl-step">
+          <div class="tl-tag">D · Dignidade</div>
+          <div class="tl-list">
+            <span class="pass">D02 ✓ executou</span>
+            <span class="pass">D05 ✓ Zilda-test</span>
+            <span class="warn">D17 ⚠ rural idosa</span>
+          </div>
+        </div>
+        <div class="tl-step">
+          <div class="tl-tag">C · Compliance</div>
+          <div class="tl-list">
+            <span class="pass">C46 ✓ LGPD</span>
+            <span class="warn">C72 ⚠ OAB firewall</span>
+            <span class="pass">C75 ✓ recursal</span>
+          </div>
+        </div>
+        <div class="tl-step">
+          <div class="tl-tag">V · Viabilidade</div>
+          <div class="tl-list">
+            <span class="pass">V91 ✓ confidence</span>
+            <span class="pass">V102 ✓ ≥70</span>
+          </div>
+        </div>
+        <div class="tl-step">
+          <div class="tl-tag">6 Filtros universais</div>
+          <div class="tl-list">
+            <span class="pass">Zilda-STF ✓</span>
+            <span class="pass">OAB ✓</span>
+            <span class="pass">48h ✓</span>
+            <span class="pass">Proof-First ✓</span>
+            <span class="pass">D&gt;C&gt;V ✓</span>
+            <span class="pass">Inversão ✓</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-decision">
+        <div class="td-label">Decisão</div>
+        <div class="td-value">Rota B · Human API</div>
+        <div class="td-note">Caso complexo administrativo · orquestração documental Φ₁ com Beto T2</div>
+      </div>
+    </div>
+
+    <div class="router-footnote">
+      <strong>Função institucional:</strong> este componente NÃO é dashboard de produto. É artefato MC equivalente a diagrama Boeing ou flowchart hospitalar. Quando Dra. Juliana (OAB-GO 38.662) ou auditor FINEP olharem, devem reconhecer <strong>arquitetura de pensamento ético, legal e operacional</strong> — nesta ordem. Hierarquia <strong>D &gt; C &gt; V</strong> visualmente evidente: D em destaque cromático (Ouro), C em peso intermediário, V derradeira. <strong>Mesmo número de nós, peso visual diferente.</strong>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     P8 — ACESSIBILIDADE
+     ============================================================ -->
+<section class="page" id="p8" aria-labelledby="p8-title" data-screen-label="08 Acessibilidade">
+  <div class="page-meta">
+    <span>MC · Foundation v0.3 · Provisional</span>
+    <span><span class="pm-num">08</span> / 10 · Acessibilidade</span>
+  </div>
+  <div class="page-eyebrow">Página 08</div>
+  <h2 class="page-title" id="p8-title">Acessibilidade</h2>
+  <p class="page-lede">WCAG 2.1 AAA é o piso, não o teto. Esta página não é decorativa — Zilda lê, Cofounder PcD vive aqui. Acessibilidade é Dignidade operacionalizada. Em v0.3, a tabela de contraste expandiu para light + dark com honestidade técnica obrigatória.</p>
+
+  <div class="a11y-checklist">
+
+    <div class="a11y-row">
+      <div><span class="a11y-check">✓</span></div>
+      <div class="a11y-criterion"><small>WCAG 1.4.6 · AAA</small>Contraste mínimo 7:1 (corpo) · 4.5:1 (texto grande)</div>
+      <div class="a11y-demo">
+        <div class="contrast-demo">
+          <div class="cd-cell cd-pass">15.77 · AAA</div>
+          <div class="cd-cell cd-fail">1.46 · falha</div>
+        </div>
+      </div>
+      <div class="a11y-token">--mc-diamante-corpo<br>--mc-diamante-100</div>
+    </div>
+
+    <div class="a11y-row">
+      <div><span class="a11y-check">✓</span></div>
+      <div class="a11y-criterion"><small>WCAG 2.4.7 · AA</small>Foco visível em todos os elementos interativos</div>
+      <div class="a11y-demo"><span class="focus-demo">Botão com foco</span></div>
+      <div class="a11y-token">outline 2px<br>--mc-ouro-500</div>
+    </div>
+
+    <div class="a11y-row">
+      <div><span class="a11y-check">✓</span></div>
+      <div class="a11y-criterion"><small>WCAG 2.5.5 · AAA</small>Hit area mínima 44 × 44 px</div>
+      <div class="a11y-demo">
+        <div style="display:flex; gap:12px; align-items:center;">
+          <div class="hit-area-demo"></div>
+          <span class="muted" style="font-size:12px; font-family:var(--mc-font-mono);">44 × 44 hit · alvo 20×20</span>
+        </div>
+      </div>
+      <div class="a11y-token">min-height 44px<br>botões + inputs</div>
+    </div>
+
+    <div class="a11y-row">
+      <div><span class="a11y-check">✓</span></div>
+      <div class="a11y-criterion"><small>WCAG 1.4.4 · AA</small>Texto redimensionável até 200% sem perda funcional</div>
+      <div class="a11y-demo">
+        <span style="font-family:var(--mc-font-sans); font-size:14px;">Aa</span>
+        <span style="font-family:var(--mc-font-sans); font-size:18px; margin: 0 8px;">Aa</span>
+        <span style="font-family:var(--mc-font-sans); font-size:28px;">Aa</span>
+      </div>
+      <div class="a11y-token">unidades rem<br>sem max-width fixa</div>
+    </div>
+
+    <div class="a11y-row">
+      <div><span class="a11y-check">✓</span></div>
+      <div class="a11y-criterion"><small>WCAG 2.3.3 · AAA</small>prefers-reduced-motion respeitado</div>
+      <div class="a11y-demo">@media zera transition + animation + scroll-behavior. Toda microinteração v0.3 obedece — função zero quando o usuário pediu silêncio.</div>
+      <div class="a11y-token">motion-tokens<br>reduce: none</div>
+    </div>
+
+    <div class="a11y-row">
+      <div><span class="a11y-check">✓</span></div>
+      <div class="a11y-criterion"><small>WCAG 1.4.12 · AA</small>Dark-mode com tokens semânticos próprios</div>
+      <div class="a11y-demo">Default segue prefers-color-scheme. Ouro permanece Ouro · Diamante 800 substitui Papel como BG. Contraste validado honestamente em P2b.</div>
+      <div class="a11y-token">[data-theme=dark]<br>bg/text tokens</div>
+    </div>
+
+    <div class="a11y-row">
+      <div><span class="a11y-check">✓</span></div>
+      <div class="a11y-criterion"><small>WCAG 1.2.1 · A</small>Áudio alternativo previsto (Whisper)</div>
+      <div class="a11y-demo">Toda peça textual com transcrição reversa via Whisper PT-BR — Zilda escuta o que não consegue ler.</div>
+      <div class="a11y-token">whisper · pt-BR<br>tts · forvo-style</div>
+    </div>
+
+    <div class="a11y-row">
+      <div><span class="a11y-check">✓</span></div>
+      <div class="a11y-criterion"><small>WCAG 1.3.1 · A</small>Estrutura semântica (h1-h6, landmarks, labels)</div>
+      <div class="a11y-demo">main + section + aria-labelledby por página. TOC com aria-current=location via IntersectionObserver. Labels sempre acima do input.</div>
+      <div class="a11y-token">html semântico<br>aria sob demanda</div>
+    </div>
+
+    <div class="a11y-row">
+      <div><span class="a11y-check">✓</span></div>
+      <div class="a11y-criterion"><small>MC-A11Y-001</small>Linguagem simples (PT-BR Brasil)</div>
+      <div class="a11y-demo">Sem inglês na UI final. Sem juridiquês quando há equivalente coloquial. Camada L3 do Dossiê é obrigatória.</div>
+      <div class="a11y-token">pt-BR · 5ª série<br>Flesch ≥ 70</div>
+    </div>
+
+    <div class="a11y-row">
+      <div><span class="a11y-check">✓</span></div>
+      <div class="a11y-criterion"><small>MC-A11Y-002</small>Hierarquia D &gt; C &gt; V auditável visualmente</div>
+      <div class="a11y-demo">Indicador D&gt;C&gt;V em toda decisão de produto. Quando V supera C ou D, sistema alerta e bloqueia merge.</div>
+      <div class="a11y-token">indicador-dcv<br>router-ethics</div>
+    </div>
+
+  </div>
+
+  <!-- Tabela de contraste light + dark (Frente 1 + 3) -->
+  <div class="contrast-table-wrap">
+    <h3 class="section-head" style="margin-top:0;">Tabela de contraste · light + dark</h3>
+    <div class="section-sub">cada token · vs papel (light) · vs Diamante 800 (dark) · honestidade técnica obrigatória</div>
+    <table class="contrast-table">
+      <thead>
+        <tr>
+          <th style="width:240px;">Token</th>
+          <th style="width:90px;">Hex</th>
+          <th style="width:130px;">vs Papel · light</th>
+          <th style="width:130px;">vs Diamante 800 · dark</th>
+          <th>Uso permitido</th>
+        </tr>
+      </thead>
+      <tbody id="contrast-table-body"></tbody>
+    </table>
+    <p class="muted" style="margin-top:18px; font-size:13px; max-width:760px;">
+      <strong>Honestidade técnica:</strong> Vermelho/Azul/Verde 400 (corpo no dark) ficam na faixa 5.5–6.5:1 contra Diamante 800 — passam <strong>AA</strong>, falham AAA puro. MC documenta a falha em vez de escondê-la. Em texto grande (≥18px ou ≥14px bold) cumpre AAA pela regra large-text. Para corpo de cores cromáticas no dark, considerar texto Papel com cromático em ícone/borda quando contraste 7:1 não for atingível.
+    </p>
+  </div>
+
+  <!-- Princípio MC AAA -->
+  <div class="a11y-principle">
+    <div class="ap-eyebrow">Princípio MC · Acessibilidade</div>
+    <p class="ap-text">«&nbsp;Em MC, cor não é decoração. Cor que não passa AAA não toca texto de corpo.&nbsp;»</p>
+  </div>
+
+  <div class="cofounder-callout">
+    <div class="cc-text">«&nbsp;Esta seção não é decorativa. Toda decisão de acessibilidade é uma decisão de Dignidade. Acessibilidade não é feature — é fundação.&nbsp;»</div>
+    <div class="cc-id">
+      Cofounder PcD<br>
+      CIN · P0003<br>
+      Owner · A11Y
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     P9 — LOGO · 3 EXPLORAÇÕES PLACEHOLDER (Frente 4)
+     ============================================================ -->
+<section class="page" id="p9" aria-labelledby="p9-title" data-screen-label="09 Logo · 3 explorações placeholder">
+  <div class="page-meta">
+    <span>MC · Foundation v0.3 · Provisional</span>
+    <span><span class="pm-num">09</span> / 10 · Logo · 3 explorações</span>
+  </div>
+  <div class="page-eyebrow">Página 09</div>
+  <h2 class="page-title" id="p9-title">Logo · três explorações</h2>
+  <p class="page-lede">Direções visuais para Carlos UX iterar. Nenhuma destas é definitiva. Todas respeitam o vocabulário institucional MC — geometria sóbria, sem brilho, sem gradiente, sem ilustração literal.</p>
+
+  <div class="rascunho-banner">
+    <strong>Rascunho exploratório</strong> · Logo definitivo será cunhado por Carlos UX no Sprint visual 1 pós-Juliana 19/05/2026. Estas três explorações servem como ponto de partida — não como produto final.
+  </div>
+
+  <!-- Exploração A · Diamante geométrico -->
+  <div class="logo-exploration">
+    <div class="le-head">
+      <h3>Exploração A · Diamante geométrico minimalista</h3>
+      <div class="le-tag">Direção · rigor institucional</div>
+    </div>
+    <p class="le-desc">Refinamento do placeholder atual. Composição em proporção áurea aproximada. Linhas finas (1–1.5px stroke), sem gradientes, sem brilho. Comunica rigor, austeridade, foundation sólida — para parecerista OAB e auditor FINEP. Para Zilda, parece selo de cartório oficial.</p>
+
+    <div class="logo-cells">
+      <div class="lc">
+        <div class="lc-label">A.1 · monocromático grande</div>
+        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+          <path d="M60 12 L100 48 L60 108 L20 48 Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M60 12 L42 48 L60 108 L78 48 Z" stroke="currentColor" stroke-width="1" fill="none"/>
+          <path d="M20 48 L100 48" stroke="currentColor" stroke-width="1"/>
+          <path d="M60 12 L78 48 L60 32 L42 48 Z" stroke="currentColor" stroke-width="0.8" fill="none"/>
+        </svg>
+      </div>
+      <div class="lc lc-ouro-bg">
+        <div class="lc-label">A.2 · selo Ouro</div>
+        <svg width="100" height="100" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+          <path d="M60 12 L100 48 L60 108 L20 48 Z" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+          <path d="M60 12 L42 48 L60 108 L78 48 Z" stroke="#C9A961" stroke-width="1" fill="none"/>
+          <path d="M20 48 L100 48" stroke="#C9A961" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="lc">
+        <div class="lc-label">A.3 · 32×32</div>
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 3 L27 13 L16 29 L5 13 Z" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          <path d="M16 3 L11 13 L16 29 L21 13 Z" stroke="currentColor" stroke-width="0.8" fill="none"/>
+          <path d="M5 13 L27 13" stroke="currentColor" stroke-width="0.8"/>
+        </svg>
+      </div>
+      <div class="lc" style="align-items: flex-start; justify-content: center;">
+        <div class="lc-label">A.4 · header com wordmark</div>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <path d="M20 4 L34 16 L20 36 L6 16 Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <path d="M20 4 L14 16 L20 36 L26 16 Z" stroke="currentColor" stroke-width="1" fill="none"/>
+            <path d="M6 16 L34 16" stroke="currentColor" stroke-width="1"/>
+          </svg>
+          <span style="font-family:var(--mc-font-serif); font-weight:600; font-size:22px; letter-spacing:0.04em;">MEU CUMPADRE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exploração B · Ponte/ligação -->
+  <div class="logo-exploration">
+    <div class="le-head">
+      <h3>Exploração B · Símbolo de ponte / ligação</h3>
+      <div class="le-tag">Direção · simetria informacional</div>
+    </div>
+    <p class="le-desc">Visualiza "infraestrutura de simetria informacional" como ponte entre dois mundos: cidadão ↔ Estado. Dois círculos conectados por arco curvo. Abstração geométrica, sem ilustração humana literal. Para Zilda, parece "linha que une" — institucional.</p>
+
+    <div class="logo-cells">
+      <div class="lc">
+        <div class="lc-label">B.1 · monocromático grande</div>
+        <svg width="160" height="100" viewBox="0 0 160 100" fill="none" aria-hidden="true">
+          <circle cx="32" cy="50" r="18" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <circle cx="128" cy="50" r="18" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M50 50 Q80 20 110 50" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M50 50 Q80 80 110 50" stroke="currentColor" stroke-width="0.6" fill="none" stroke-dasharray="2 3"/>
+        </svg>
+      </div>
+      <div class="lc lc-ouro-bg">
+        <div class="lc-label">B.2 · selo Ouro</div>
+        <svg width="140" height="90" viewBox="0 0 160 100" fill="none" aria-hidden="true">
+          <circle cx="32" cy="50" r="18" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+          <circle cx="128" cy="50" r="18" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+          <path d="M50 50 Q80 20 110 50" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+        </svg>
+      </div>
+      <div class="lc">
+        <div class="lc-label">B.3 · 32×32</div>
+        <svg width="32" height="32" viewBox="0 0 40 32" fill="none" aria-hidden="true">
+          <circle cx="8" cy="16" r="5" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          <circle cx="32" cy="16" r="5" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          <path d="M13 16 Q20 6 27 16" stroke="currentColor" stroke-width="1.2" fill="none"/>
+        </svg>
+      </div>
+      <div class="lc" style="align-items: flex-start; justify-content: center;">
+        <div class="lc-label">B.4 · header com wordmark</div>
+        <div style="display:flex; align-items:center; gap:14px;">
+          <svg width="58" height="32" viewBox="0 0 60 32" fill="none" aria-hidden="true">
+            <circle cx="10" cy="16" r="6" stroke="currentColor" stroke-width="1.2" fill="none"/>
+            <circle cx="50" cy="16" r="6" stroke="currentColor" stroke-width="1.2" fill="none"/>
+            <path d="M16 16 Q30 4 44 16" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          </svg>
+          <span style="font-family:var(--mc-font-serif); font-weight:600; font-size:22px; letter-spacing:0.04em;">MEU CUMPADRE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exploração C · Marca tipográfica -->
+  <div class="logo-exploration" style="border-bottom: 1px solid var(--mc-border-strong); padding-bottom: 56px;">
+    <div class="le-head">
+      <h3>Exploração C · Marca tipográfica · ligadura MC</h3>
+      <div class="le-tag">Direção · documentalidade</div>
+    </div>
+    <p class="le-desc">Tratamento tipográfico do nome MC. Logotipo &gt; símbolo. Fraunces italic com ligadura derivada. Comunica documentalidade, citabilidade, peso de Selo Diamante. Para investidor, parece editora institucional — não app.</p>
+
+    <div class="logo-cells">
+      <div class="lc">
+        <div class="lc-label">C.1 · ligadura grande</div>
+        <span style="font-family:var(--mc-font-serif); font-weight:500; font-style:italic; font-size:96px; letter-spacing:-0.04em; line-height:1; color:currentColor;">MC</span>
+      </div>
+      <div class="lc lc-ouro-bg">
+        <div class="lc-label">C.2 · ouro</div>
+        <span style="font-family:var(--mc-font-serif); font-weight:500; font-style:italic; font-size:80px; letter-spacing:-0.04em; line-height:1; color:#C9A961;">MC</span>
+      </div>
+      <div class="lc">
+        <div class="lc-label">C.3 · 32×32</div>
+        <span style="font-family:var(--mc-font-serif); font-weight:600; font-style:italic; font-size:28px; letter-spacing:-0.04em; line-height:1; color:currentColor;">MC</span>
+      </div>
+      <div class="lc" style="align-items: flex-start; justify-content: center;">
+        <div class="lc-label">C.4 · header com wordmark completo</div>
+        <div style="display:flex; align-items:baseline; gap:10px;">
+          <span style="font-family:var(--mc-font-serif); font-weight:600; font-style:italic; font-size:32px; letter-spacing:-0.04em; line-height:1; color:currentColor;">MC</span>
+          <span style="font-family:var(--mc-font-serif); font-weight:500; font-size:18px; letter-spacing:0.04em; color:currentColor;">· Meu Cumpadre</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="muted" style="margin-top: 32px; font-size: 13px; max-width: 760px;">
+    Carlos UX recebe estas três direções no Sprint visual 1. Critério de decisão: <strong>qual delas, em 32px (favicon), ainda comunica seriedade institucional e não se confunde com app genérico</strong>. A decisão final passa por D&gt;C&gt;V e por aprovação Founder.
+  </p>
+</section>
+
+<!-- ============================================================
+     P10 — APLICAÇÃO (Frente 6 bonus)
+     ============================================================ -->
+<section class="page" id="p10" aria-labelledby="p10-title" data-screen-label="10 Aplicação · decision trees + mocks">
+  <div class="page-meta">
+    <span>MC · Foundation v0.3 · Provisional</span>
+    <span><span class="pm-num">10</span> / 10 · Aplicação · como usar este Design System</span>
+  </div>
+  <div class="page-eyebrow">Página 10</div>
+  <h2 class="page-title" id="p10-title">Como usar este Design System</h2>
+  <p class="page-lede">Meta-página. O Foundation se documentando para Carlos UX e próximos designers. Decision trees curtas para escolha rápida + três mocks de tela combinando os componentes em contexto real.</p>
+
+  <div class="decision-trees">
+    <div class="tree">
+      <h4>Cor: Diamante · Ouro · Vermelho · Azul · Verde?</h4>
+      <div class="t-q"><strong>É documento canônico selado?</strong></div>
+      <div class="t-branch">Sim → Diamante 700 + Ouro 500 (selo)</div>
+      <div class="t-q"><strong>É alerta de risco/dano?</strong></div>
+      <div class="t-branch">Sim → Vermelho 700 (corpo) ou 500 (bg com texto branco)</div>
+      <div class="t-q"><strong>É fluxo Acesso (WhatsApp/cidadão)?</strong></div>
+      <div class="t-branch">Sim → Azul 700 (corpo) + raio 16px</div>
+      <div class="t-q"><strong>É confirmação/proteção/SELADO?</strong></div>
+      <div class="t-branch">Sim → Verde 700 (corpo) ou bg SELADO</div>
+      <div class="t-q"><strong>Nada disso?</strong></div>
+      <div class="t-branch">→ Diamante 700 + neutros. Default institucional.</div>
+    </div>
+
+    <div class="tree">
+      <h4>Dark-mode: aplicar quando?</h4>
+      <div class="t-q"><strong>O usuário tem prefers-color-scheme: dark?</strong></div>
+      <div class="t-branch">Sim → aplicar default. Sem perguntar.</div>
+      <div class="t-q"><strong>Cofounder PcD CIN P0003 trabalhando noturno?</strong></div>
+      <div class="t-branch">Sim → dark-mode override manual disponível.</div>
+      <div class="t-q"><strong>Zilda em iluminação ruim, lendo WhatsApp à noite?</strong></div>
+      <div class="t-branch">Sim → dark é acessibilidade, não estética.</div>
+      <div class="t-q"><strong>Documento institucional impresso/PDF?</strong></div>
+      <div class="t-branch">→ light sempre. Print = papel.</div>
+    </div>
+
+    <div class="tree">
+      <h4>Motion: animar ou static?</h4>
+      <div class="t-q"><strong>É feedback funcional (foco/hover/loading)?</strong></div>
+      <div class="t-branch">Sim → motion-fast (100ms).</div>
+      <div class="t-q"><strong>É transição de estado de componente?</strong></div>
+      <div class="t-branch">Sim → motion-standard (200ms).</div>
+      <div class="t-q"><strong>É modal/detalhe abrindo?</strong></div>
+      <div class="t-branch">Sim → motion-slow (300ms · ease-out).</div>
+      <div class="t-q"><strong>É headline, hierarquia, selo, página inteira?</strong></div>
+      <div class="t-branch">→ NUNCA mover. Estático sempre.</div>
+      <div class="t-q"><strong>prefers-reduced-motion: reduce?</strong></div>
+      <div class="t-branch">→ tudo zera. Não negociável.</div>
+    </div>
+  </div>
+
+  <h3 class="section-head">Três mocks · componentes em contexto</h3>
+  <div class="section-sub">WhatsApp Cidadão · ClickUp Beto · Dashboard Cofounder</div>
+
+  <div class="screen-mocks">
+    <!-- Mock 1: WhatsApp Cidadão -->
+    <div class="screen sc-whats">
+      <div class="sc-bar">
+        <span>WhatsApp · Zilda</span>
+        <span class="sc-mode">Cidadão · pilar Acesso</span>
+      </div>
+      <div class="sc-body">
+        <div class="bubble bot">Bom dia, Dona Zilda. Recebi seu pedido. Vou conferir os papéis com o sindicato — sem pressa, no seu tempo.</div>
+        <div class="bubble">Obrigada, meu filho. Tô esperando.</div>
+        <div class="bubble bot">A senhora pode mandar foto do seu RG, mesmo amassado serve.</div>
+        <div class="bubble bot" style="background:#FAFAF7; border-left:3px solid var(--mc-azul-700);"><strong style="font-family:var(--mc-font-serif); font-size:13px;">Próximo passo</strong><br>Oficial procura sindicato segunda. Senhora não precisa fazer nada agora.</div>
+      </div>
+    </div>
+
+    <!-- Mock 2: ClickUp Beto -->
+    <div class="screen sc-clickup">
+      <div class="sc-bar">
+        <span>ClickUp · Beto T2</span>
+        <span class="sc-mode">Human API · Φ₁</span>
+      </div>
+      <div class="sc-body">
+        <div class="cu-task done"><span>Hib001 · triagem inicial JER001</span><span class="cu-meta">D02 · ok</span></div>
+        <div class="cu-task done"><span>Hib001 · Hook 0 gov.br Prata</span><span class="cu-meta">C46 · ok</span></div>
+        <div class="cu-task"><span>Hib001 · OAB firewall recursal</span><span class="cu-meta">C72 · ⚠</span></div>
+        <div class="cu-task"><span>Hib001 · juntar provas materiais</span><span class="cu-meta">SLA 48h</span></div>
+        <div class="cu-task"><span>Hib001 · dossiê final · 4 camadas</span><span class="cu-meta">L1-L4</span></div>
+        <div class="cu-task"><span>Hib001 · enviar Dra. Juliana</span><span class="cu-meta">19/05</span></div>
+      </div>
+    </div>
+
+    <!-- Mock 3: Dashboard Cofounder -->
+    <div class="screen sc-cof">
+      <div class="sc-bar">
+        <span>Dashboard Cofounder</span>
+        <span class="sc-mode">D &gt; C &gt; V · live</span>
+      </div>
+      <div class="sc-body">
+        <div class="cof-row"><strong>Casos ativos</strong><span class="cof-val">42</span></div>
+        <div class="cof-row"><strong>Rota A · Autonomia</strong><span class="cof-val">8 · 19%</span></div>
+        <div class="cof-row"><strong>Rota B · Human API</strong><span class="cof-val">24 · 57%</span></div>
+        <div class="cof-row"><strong>Rota C · Marketplace</strong><span class="cof-val">8 · 19%</span></div>
+        <div class="cof-row"><strong>Rota D · Interrupção</strong><span class="cof-val">2 · 5%</span></div>
+        <div class="cof-row"><strong>Latência média</strong><span class="cof-val">412ms</span></div>
+        <div class="cof-row"><strong>D&gt;C&gt;V violations</strong><span class="cof-val" style="color:var(--mc-verde-protecao-corpo)">0</span></div>
+        <div class="cof-row"><strong>OAB firewall hits</strong><span class="cof-val">3</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Handoff Carlos UX -->
+  <div class="carlos-handoff">
+    <h4>Como Carlos UX itera a partir daqui</h4>
+    <p>Foundation v0.3 é PROVISIONAL. Sprint visual 1 (pós-Juliana 19/05) selará v1.0. Carlos chega com mandato de:</p>
+    <ul>
+      <li>Validar 3 explorações de logo (P9) e escolher direção definitiva</li>
+      <li>Refinar motion specs com casos de uso reais (não só demonstração)</li>
+      <li>Estender componentes institucionais conforme novos casos surgirem</li>
+      <li>Cunhar componentes ausentes: navegação principal, breadcrumbs, modais MC, toasts MC, formulário multi-step Zilda</li>
+      <li>Estabelecer tokens de produto (separados dos tokens de Foundation)</li>
+      <li>Bloquear merge se hierarquia D&gt;C&gt;V não estiver visualmente preservada</li>
+    </ul>
+    <p style="margin-top:14px;"><strong>Princípio nuclear ao Carlos:</strong> tu não está desenhando app — tu está cunhando instituição. Quando bater dúvida, lembra que Zilda lê, OAB audita, FINEP avalia. Os três simultaneamente.</p>
+  </div>
+
+  <div class="rule-strong" style="margin-top: 64px;"></div>
+  <div style="display: grid; grid-template-columns: 1fr auto; gap: 32px; margin-top: 32px; align-items: end;">
+    <div>
+      <div class="page-eyebrow" style="margin-bottom: 12px;">Fim da Foundation v0.3 PROVISIONAL</div>
+      <p class="serif" style="font-size: 20px; font-style: italic; color: var(--mc-text-primary); max-width: 560px;">
+        "Abre a tua boca a favor do mudo, em juízo de todos os desamparados." — Provérbios 31:8
+      </p>
+    </div>
+    <div class="cover-hash">
+      <div>MC · DESIGN SYSTEM</div>
+      <div>FOUNDATION · v0.3</div>
+      <div>STATUS · PROVISIONAL</div>
+      <div>15 · MAI · 2026</div>
+      <div>SHA-256 · 04E6491BCE1E…</div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+/* ============================================================
+   Build palette swatches dynamically with computed WCAG ratios
+   Light + Dark contrast cross-tabulated
+   ============================================================ */
+(function(){
+  const families = {
+    diamante: {name:'diamante', scale:{50:'#E8ECF3',100:'#C9D2E0',300:'#5F76A0',400:'#2C447A',500:'#0F1E3D',600:'#0B1730',700:'#07101F',800:'#050A14'}},
+    ouro:     {name:'ouro',     scale:{50:'#F8F2E2',100:'#EFE2BC',300:'#DCC288',400:'#D3B575',500:'#C9A961',700:'#8C7239'}},
+    vermelho: {name:'vermelho', scale:{50:'#F8E5E5',100:'#EBC0C0',300:'#D27575',400:'#C25555',500:'#B33A3A',700:'#7A1F1F'}},
+    azul:     {name:'azul',     scale:{50:'#E7ECF4',100:'#C5D0E2',300:'#7A91B6',400:'#5E7CAB',500:'#3E5C8C',700:'#243D63'}},
+    verde:    {name:'verde',    scale:{50:'#E4EFEA',100:'#BFD8CB',300:'#7AAE91',400:'#5C9C7C',500:'#3B7B5E',700:'#1F4E3A'}},
+  };
+  const PAPER = '#FAFAF7', NOITE = '#0A0E1A', DARK = '#050A14';
+
+  function hexToRgb(h){h=h.replace('#','');return[parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)]}
+  function lum([r,g,b]){const f=v=>{v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4)};return 0.2126*f(r)+0.7152*f(g)+0.0722*f(b)}
+  function contrast(a,b){const la=lum(hexToRgb(a)),lb=lum(hexToRgb(b));const[L1,L2]=[Math.max(la,lb),Math.min(la,lb)];return((L1+0.05)/(L2+0.05))}
+  function grade(r){if(r>=7)return['AAA','cb-pass-aaa'];if(r>=4.5)return['AA','cb-pass-aa'];if(r>=3)return['AA·LG','cb-pass-aa'];return['fail','cb-fail']}
+  window.MC = window.MC || {}; window.MC.contrast = contrast; window.MC.grade = grade; window.MC.families = families;
+
+  document.querySelectorAll('[data-family-base]').forEach(host => {
+    const fam = families[host.dataset.familyBase];
+    const ref = host.dataset.bg === 'dark' ? DARK : PAPER;
+    if(!fam) return;
+    Object.entries(fam.scale).forEach(([level, hex]) => {
+      const cMain = contrast(hex, ref);
+      const cAlt  = contrast(hex, host.dataset.bg === 'dark' ? PAPER : NOITE);
+      const [gM, clsM] = grade(cMain);
+      const [gA, clsA] = grade(cAlt);
+      const isLight = lum(hexToRgb(hex)) > 0.5;
+      const swatch = document.createElement('div');
+      swatch.className = 'swatch';
+      swatch.innerHTML = `
+        <div class="swatch-chip" style="background:${hex}; color:${isLight ? '#1A1F2C' : '#FAFAF7'};">${level}</div>
+        <div class="swatch-meta">
+          <div class="swatch-token">--mc-${fam.name}-${level}</div>
+          <div class="swatch-hex">${hex.toUpperCase()}</div>
+          <div class="swatch-contrast">
+            <span class="cb ${host.dataset.bg==='dark'?'cb-dark':'cb-paper'} ${clsM}" title="vs ${host.dataset.bg==='dark'?'fundo-dark':'branco-papel'}">${host.dataset.bg==='dark'?'dark':'papel'} <span class="cb-ratio">${cMain.toFixed(1)}</span><span class="cb-grade">${gM}</span></span>
+            <span class="cb ${host.dataset.bg==='dark'?'cb-paper':'cb-noite'} ${clsA}">${host.dataset.bg==='dark'?'papel':'noite'} <span class="cb-ratio">${cAlt.toFixed(1)}</span><span class="cb-grade">${gA}</span></span>
+          </div>
+        </div>`;
+      host.appendChild(swatch);
+    });
+  });
+
+  /* ============================================================
+     Contrast table builder (P8)
+     ============================================================ */
+  const tokensToReport = [
+    {tok:'--mc-diamante-500',  hex:'#0F1E3D'},
+    {tok:'--mc-diamante-700',  hex:'#07101F'},
+    {tok:'--mc-diamante-800',  hex:'#050A14'},
+    {tok:'--mc-vermelho-500',  hex:'#B33A3A'},
+    {tok:'--mc-vermelho-700',  hex:'#7A1F1F'},
+    {tok:'--mc-vermelho-400',  hex:'#C25555'},
+    {tok:'--mc-azul-500',      hex:'#3E5C8C'},
+    {tok:'--mc-azul-700',      hex:'#243D63'},
+    {tok:'--mc-azul-400',      hex:'#5E7CAB'},
+    {tok:'--mc-verde-500',     hex:'#3B7B5E'},
+    {tok:'--mc-verde-700',     hex:'#1F4E3A'},
+    {tok:'--mc-verde-400',     hex:'#5C9C7C'},
+    {tok:'--mc-ouro-500',      hex:'#C9A961'},
+    {tok:'--mc-ouro-700',      hex:'#8C7239'},
+    {tok:'--mc-papel',         hex:'#FAFAF7'},
+    {tok:'--mc-cinza-300',     hex:'#B8B8C2'},
+  ];
+  const usageMap = {
+    '--mc-diamante-500':'BG inverso · headlines · ícones grandes',
+    '--mc-diamante-700':'Corpo · headlines · texto institucional',
+    '--mc-diamante-800':'BG dark-mode primário',
+    '--mc-vermelho-500':'Backgrounds com texto branco · ícones ≥24px',
+    '--mc-vermelho-700':'Corpo · texto de risco (light)',
+    '--mc-vermelho-400':'Corpo · texto de risco (dark)',
+    '--mc-azul-500':'Accents · ícones grandes',
+    '--mc-azul-700':'Corpo · pilar Acesso (light)',
+    '--mc-azul-400':'Corpo · pilar Acesso (dark)',
+    '--mc-verde-500':'Status SELADO bg',
+    '--mc-verde-700':'Corpo · proteção (light)',
+    '--mc-verde-400':'Corpo · proteção (dark)',
+    '--mc-ouro-500':'Selo · borda cerimonial · NUNCA corpo',
+    '--mc-ouro-700':'Accent · NUNCA corpo sobre papel',
+    '--mc-papel':'BG light · corpo no dark',
+    '--mc-cinza-300':'Texto secundário no dark',
+  };
+  const tbody = document.querySelector('#contrast-table-body');
+  if (tbody) {
+    tokensToReport.forEach(({tok,hex}) => {
+      const cLight = contrast(hex, PAPER);
+      const cDark  = contrast(hex, DARK);
+      const [gL, clsL] = grade(cLight);
+      const [gD, clsD] = grade(cDark);
+      const lightCls = cLight>=7?'pass-aaa':(cLight>=4.5?'pass-aa':'fail');
+      const darkCls  = cDark >=7?'pass-aaa':(cDark >=4.5?'pass-aa':'fail');
+      tbody.insertAdjacentHTML('beforeend', `
+        <tr>
+          <td class="ct-token"><span class="swatch-dot" style="background:${hex}"></span>${tok}</td>
+          <td class="ct-hex">${hex.toUpperCase()}</td>
+          <td class="${lightCls}">${cLight.toFixed(2)}:1 · ${gL}</td>
+          <td class="${darkCls}">${cDark.toFixed(2)}:1 · ${gD}</td>
+          <td class="ct-usage">${usageMap[tok] || ''}</td>
+        </tr>`);
+    });
+  }
+
+  /* ============================================================
+     Dark-mode tokens table builder (P2b)
+     ============================================================ */
+  const darkTokens = [
+    {sem:'--mc-bg-primary',     light:'#FAFAF7', dark:'#050A14'},
+    {sem:'--mc-bg-secondary',   light:'#FFFFFF', dark:'#07101F'},
+    {sem:'--mc-bg-elevated',    light:'#FFFFFF', dark:'#0B1730'},
+    {sem:'--mc-text-primary',   light:'#07101F', dark:'#FAFAF7'},
+    {sem:'--mc-text-secondary', light:'#555A66', dark:'#B8B8C2'},
+    {sem:'--mc-text-disabled',  light:'#B8B8C2', dark:'#5C5C66'},
+    {sem:'--mc-border-default', light:'#CFC9BD', dark:'#0B1730'},
+    {sem:'--mc-accent-ouro',    light:'#C9A961', dark:'#C9A961'},
+    {sem:'--mc-risco-vermelho', light:'#7A1F1F', dark:'#C25555'},
+    {sem:'--mc-fluxo-azul',     light:'#243D63', dark:'#5E7CAB'},
+    {sem:'--mc-protecao-verde', light:'#1F4E3A', dark:'#5C9C7C'},
+  ];
+  const dtbody = document.querySelector('#dark-tokens-body');
+  if (dtbody) {
+    darkTokens.forEach(({sem,light,dark})=>{
+      dtbody.insertAdjacentHTML('beforeend', `
+        <tr>
+          <td class="tok">${sem}</td>
+          <td class="val"><span class="sw" style="background:${light}"></span>${light}</td>
+          <td class="val"><span class="sw" style="background:${dark}"></span>${dark}</td>
+        </tr>`);
+    });
+  }
+
+  /* ============================================================
+     Smooth scroll + IntersectionObserver active TOC
+     ============================================================ */
+  document.querySelectorAll('.toc a').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); history.replaceState(null,'',a.getAttribute('href')); }
+    });
+  });
+
+  const tocLinks = new Map();
+  document.querySelectorAll('.toc a[href^="#"]').forEach(a => {
+    const id = a.getAttribute('href').slice(1);
+    tocLinks.set(id, a);
+  });
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        tocLinks.forEach(a => a.removeAttribute('aria-current'));
+        const link = tocLinks.get(e.target.id);
+        if (link) link.setAttribute('aria-current','location');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+  document.querySelectorAll('section.page').forEach(s => io.observe(s));
+
+  /* ============================================================
+     Theme toggle (respeita prefers-color-scheme; sem persistência)
+     ============================================================ */
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  function apply(theme){
+    root.setAttribute('data-theme', theme);
+    if (toggle) toggle.textContent = theme === 'dark' ? 'Dark' : 'Light';
+  }
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) apply('dark');
+  if (toggle) toggle.addEventListener('click', ()=>{
+    apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+})();
+</script>
+
+</body>
+</html>

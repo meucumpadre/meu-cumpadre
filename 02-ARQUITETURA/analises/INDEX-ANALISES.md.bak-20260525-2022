@@ -1,0 +1,30 @@
+﻿---
+tipo: INDEX
+escopo: 02-ARQUITETURA/analises/
+data-atualizacao: 2026-05-12
+---
+
+# Indice de Analises Arquiteturais - Meu Cumpadre
+
+Analises de fundamentacao tecnica que precedem decisoes arquiteturais (ADRs). Documentos canonicos de pesquisa profunda Proof-First.
+
+> Pos-MB-018 (12/05/2026): Pasta criada com migracao da Analise GAIA de 02-ARQUITETURA/stack-llm/.
+
+---
+
+## MC-ANALISE-GAIA-Arquitetura-LLM v1.0
+
+- **Arquivo:** [[MC-ANALISE-GAIA-Arquitetura-LLM-v1_0-2026-0506]]
+- **Data:** 2026-05-06
+- **Tamanho:** 24.492 bytes
+- **Tipo:** Deep research Proof-First, 49 fontes verificaveis
+- **Fundamenta:** [[MC-ADR-012-StackLLM-MultiModelo-v1_0-2026-0512]] e futuras versoes
+- **Tema:** Analise comparativa GAIA-4B vs Sabia-4 vs Claude Bedrock + benchmark OAB + custos + licencas
+- **Conteudo:** stack LLM multi-modelo, separacao firewall LGPD, hardware Mac Mini M4, custos Crisalia R\$ 500-1300/mes, Managed Agents Anthropic, Hallucination ceiling, plano migracao Gemma 4 Apache 2.0
+
+---
+
+Hierarquia: Dignidade > Compliance > Viabilidade
+Selo: "O diamante e carbono que nao desistiu da pressao."
+
+infinito

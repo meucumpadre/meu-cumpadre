@@ -1,0 +1,29 @@
+﻿---
+tipo: INDEX
+escopo: 04-OPERACAO/infraestrutura/
+data-atualizacao: 2026-05-13
+---
+
+# Indice de Infraestrutura - Meu Cumpadre
+
+Registros institucionais de infraestrutura operacional do MC: maquinas, comodatos, camadas IA, instalacoes, custodias fisicas.
+
+---
+
+## MC-REGISTRO-Infraestrutura-DELL-CEO v1.0 (canonico corrente)
+
+- Arquivo: [[MC-REGISTRO-Infraestrutura-DELL-CEO-v1_0-2026-0513]]
+- Data: 2026-05-13
+- Tema: Comodato DELL Beto -> CEO Alessandro 24h
+- Principio cunhado: #21 - Camadas de Ferramentas IA por Finalidade
+- Matriz: C1 (Claude.ai projeto) - C2 (Cowork DELL) - C3 (Claude Code DELL) - C4 (Stack Producao LLM)
+- Linha vermelha: dados sensiveis cidadao JAMAIS em C1/C2/C3
+- Status: ATIVO ate aquisicao de nova maquina dedicada
+- Relaciona: ADR-008 (Stack), ADR-009a (Bitwarden), ADR-011 (3 Cerebros), ADR-012 (LLM)
+
+---
+
+Hierarquia: Dignidade > Compliance > Viabilidade
+Selo: "O diamante e carbono que nao desistiu da pressao."
+
+∞

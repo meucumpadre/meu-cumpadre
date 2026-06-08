@@ -1,0 +1,21 @@
+{
+  "name": "mc-squad-poc",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "PoC mínimo de orquestração multi-agente MC inspirado no OpenSquad, com gates de governança (LGPD zona / Router-Ethics 11.0 / D>C>V / scanner PII) e checkpoints humanos.",
+  "bin": {
+    "mc-squad": "./src/cli.js"
+  },
+  "scripts": {
+    "run:marketing": "node src/cli.js run squads/marketing-manifesto.json --auto",
+    "run:sensivel": "node src/cli.js run squads/triagem-caso-sensivel.json --auto",
+    "demo": "node src/cli.js run squads/marketing-manifesto.json --auto && node src/cli.js run squads/triagem-caso-sensivel.json --auto",
+    "list": "node src/cli.js list",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

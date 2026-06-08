@@ -1,0 +1,24 @@
+﻿---
+tipo: INDEX
+escopo: 03-GOVERNANCA/adrs/
+data-atualizacao: 2026-05-12
+---
+
+# Indice de ADRs - Meu Cumpadre
+
+Lista canonica de Architecture Decision Records selados no Vault.
+
+> [!warning] AUDITORIA PENDENTE (MB-017)
+> Em 12/05/2026 founder Alessandro identificou que ADRs 009b, 011, 012, 014 estao referenciadas como canonicas mas podem nao estar persistidas neste folder (existem em 02-ARQUITETURA/adrs/ - debito tecnico LP#28). MB-017 vai executar auditoria retroativa e migrar as orfas. Este INDEX sera atualizado pos-MB-017.
+
+## ADR-015 - Features Avancadas ClickUp
+
+- **Arquivo:** [[MC-ADR-015-FeaturesAvancadas-ClickUp-v1_0-2026-0512]]
+- **Versao:** v1.0
+- **Data:** 2026-05-12
+- **Status:** PROVISIONAL pre-19/05 (sem bloqueio Juliana - decisao arquitetural-operacional pura)
+- **Decisao central:** Modelo A confirmado + 5 decisoes duras sobre Linked Tasks / Dependencies / TIML. Substituicao de TIML cross-vertical por `cidadao_id_hash` Space-level. Cronograma de adocao em 4 fases por volume operacional.
+- **Principios cunhados:** #11 Governanca forte mora no N8N + #12 Custom Field dropdown > Task Central + #13 View filtrada > TIML + #14 Webhooks reativos + polling complementar
+- **MBs derivados:** MB-018 (criar cidadao_id_hash), MB-019+ (Custom Relationships Fase 2)
+- **Tags:** clickup, arquitetura-3-niveis, dependencies, linked-tasks, timl, n8n-governance, esteira-ia-driven
+

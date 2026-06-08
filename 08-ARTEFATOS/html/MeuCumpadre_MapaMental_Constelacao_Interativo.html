@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meu Cumpadre — Mapa Mental da Constelação</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#060b18;--bg2:#0c1225;
+  --gold:#d4a853;--gold-dim:rgba(212,168,83,0.15);
+  --teal:#2dd4bf;--blue:#3b82f6;--purple:#a78bfa;--rose:#f472b6;
+  --orange:#fb923c;--emerald:#34d399;--red:#f87171;--cyan:#22d3ee;
+  --sky:#38bdf8;--white:#f1f5f9;--muted:#64748b;
+}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--white)}
+
+/* Canvas container */
+#canvas-wrap{width:100%;height:100%;position:relative;cursor:grab}
+#canvas-wrap.grabbing{cursor:grabbing}
+#mindmap{position:absolute;top:0;left:0;transform-origin:0 0}
+
+/* Top bar */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 24px;background:linear-gradient(180deg,rgba(6,11,24,0.95) 0%,rgba(6,11,24,0) 100%);pointer-events:none}
+.topbar>*{pointer-events:auto}
+.topbar .brand{display:flex;align-items:center;gap:10px}
+.topbar .brand h1{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;background:linear-gradient(135deg,var(--gold),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.topbar .brand span{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase}
+.controls{display:flex;gap:8px}
+.controls button{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);color:var(--white);width:36px;height:36px;border-radius:10px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.controls button:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.15)}
+
+/* Info panel */
+.info-panel{position:fixed;bottom:20px;left:20px;z-index:100;background:rgba(12,18,37,0.92);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:20px 24px;max-width:380px;opacity:0;transform:translateY(20px);transition:all .4s cubic-bezier(.4,0,.2,1);pointer-events:none}
+.info-panel.active{opacity:1;transform:translateY(0);pointer-events:auto}
+.info-panel .close{position:absolute;top:12px;right:14px;background:none;border:none;color:var(--muted);cursor:pointer;font-size:1.2rem}
+.info-panel .ip-icon{font-size:2rem;margin-bottom:8px}
+.info-panel h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:2px}
+.info-panel .ip-tag{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;display:inline-block;padding:2px 10px;border-radius:100px;border:1px solid;margin-bottom:10px;opacity:.7}
+.info-panel p{font-size:.85rem;color:var(--muted);line-height:1.6;margin-bottom:12px}
+.info-panel .ip-bridges{display:flex;flex-wrap:wrap;gap:5px}
+.info-panel .ip-bridge{font-family:'JetBrains Mono',monospace;font-size:.65rem;padding:3px 9px;border-radius:100px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:var(--muted)}
+.info-panel .ip-stats{display:flex;gap:16px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06)}
+.info-panel .ip-stat{text-align:center}
+.info-panel .ip-stat .val{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700}
+.info-panel .ip-stat .lbl{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+
+/* Legend */
+.legend{position:fixed;bottom:20px;right:20px;z-index:100;background:rgba(12,18,37,0.85);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:14px 18px;font-size:.7rem;color:var(--muted)}
+.legend h4{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.legend-row{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.legend-row .dot{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+.legend-row:last-child{margin-bottom:0}
+
+/* Minimap */
+.minimap{position:fixed;top:60px;right:20px;z-index:100;width:160px;height:120px;background:rgba(12,18,37,0.8);border:1px solid rgba(255,255,255,0.06);border-radius:10px;overflow:hidden}
+.minimap canvas{width:100%;height:100%}
+.minimap .viewport{position:absolute;border:1px solid var(--gold);border-radius:2px;pointer-events:none;opacity:.6}
+
+/* Tooltip */
+.tooltip{position:fixed;z-index:200;background:rgba(12,18,37,0.95);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 12px;font-size:.75rem;pointer-events:none;opacity:0;transition:opacity .15s;white-space:nowrap}
+.tooltip.show{opacity:1}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="brand">
+    <h1>Meu Cumpadre</h1>
+    <span>Mapa Mental · Constelação 9 Verticais</span>
+  </div>
+  <div class="controls">
+    <button onclick="zoomIn()" title="Zoom In">+</button>
+    <button onclick="zoomOut()" title="Zoom Out">−</button>
+    <button onclick="resetView()" title="Reset">⌂</button>
+    <button onclick="toggleAll()" title="Expandir/Colapsar" id="toggleBtn">◉</button>
+  </div>
+</div>
+
+<!-- INFO PANEL -->
+<div class="info-panel" id="infoPanel">
+  <button class="close" onclick="closePanel()">✕</button>
+  <div class="ip-icon" id="ipIcon"></div>
+  <h3 id="ipName"></h3>
+  <div class="ip-tag" id="ipTag"></div>
+  <p id="ipDesc"></p>
+  <div class="ip-bridges" id="ipBridges"></div>
+  <div class="ip-stats" id="ipStats"></div>
+</div>
+
+<!-- LEGEND -->
+<div class="legend">
+  <h4>Legenda</h4>
+  <div class="legend-row"><div class="dot" style="background:var(--gold)"></div>Bloco 1 (Frequência 3)</div>
+  <div class="legend-row"><div class="dot" style="background:var(--purple)"></div>Bloco 2 (Frequência 6)</div>
+  <div class="legend-row"><div class="dot" style="background:var(--teal)"></div>Bloco 3 (Frequência 9)</div>
+  <div class="legend-row"><div class="dot" style="background:rgba(255,255,255,0.2);border:1px dashed rgba(255,255,255,0.3)"></div>Passarela (Skybridge)</div>
+  <div class="legend-row"><div class="dot" style="background:var(--sky)"></div><strong>NOVA: Habitacional</strong></div>
+</div>
+
+<!-- TOOLTIP -->
+<div class="tooltip" id="tooltip"></div>
+
+<!-- CANVAS -->
+<div id="canvas-wrap">
+  <canvas id="mindmap"></canvas>
+</div>
+
+<script>
+// ====== DATA MODEL ======
+const V = [
+  { id:0, name:'MCP', sub:'Núcleo Identitário', emoji:'🔮', color:'#d4a853', bloco:0,
+    desc:'Memory Context Protocol — Cristal inteligente de persistência. 4 tiers: Identidade, Contexto, Documentação, Auditoria LGPD.',
+    tag:'NÚCLEO CENTRAL', metric:'R$0,05/user', rules:'4 Tiers', ltv:'∞',
+    children:['Perfil Persona','Docs Centralizados','Log Auditoria','Cloud KMS'] },
+  { id:1, name:'Previdenciário', sub:'Vertical Âncora', emoji:'⚖️', color:'#d4a853', bloco:1,
+    desc:'Porta de entrada (60% dos usuários). 13 sub-benefícios. Taxa de concessão 97% vs 45% tradicional. Motor de confiança.',
+    tag:'ÂNCORA · BLOCO 1', metric:'97%', rules:'3.000+', ltv:'R$2-8K',
+    children:['Aposentadoria Idade','Aposentadoria Rural','BPC/LOAS','Auxílio-Doença','Pensão por Morte','Aposentadoria Especial','Salário-Maternidade','Auxílio-Reclusão','Seguro Desemprego','Seguro Defeso','Abono PIS','Auxílio Acidente','Aposentadoria Tempo'] },
+  { id:2, name:'Saúde', sub:'Documentação Médica', emoji:'💊', color:'#f472b6', bloco:1,
+    desc:'Laudos periciais para INSS. Telemedicina PREVIDAS. Exames de imagem. Aceitação de laudos 93%.',
+    tag:'BLOCO 1 · PREVIDAS', metric:'93%', rules:'~200', ltv:'R$500/ano',
+    children:['Telemedicina','Laudos Periciais','Exames Imagem','Triagem Médica','Assessoria Saúde'] },
+  { id:3, name:'Bancário', sub:'Proteção Financeira', emoji:'🏦', color:'#fb923c', bloco:1,
+    desc:'Combate a consignados predatórios (R$6,3B em fraudes). Detecção 95%. Portabilidade ética.',
+    tag:'BLOCO 1 · CONSIGNADO', metric:'95% detecção', rules:'~150', ltv:'R$1-3K',
+    children:['Watchdog Consignado','Portabilidade','Detecção Fraude','Renegociação'] },
+  { id:4, name:'Cartório', sub:'Prova Material', emoji:'📜', color:'#a78bfa', bloco:2,
+    desc:'Certidões inteira teor, genealogia estratégica. 200+ tipos de documentos. Efetividade 90%.',
+    tag:'BLOCO 2', metric:'90% efetiv.', rules:'~180', ltv:'R$300-800',
+    children:['Certidão Nascimento','Certidão Casamento','Certidão Óbito','Inteira Teor','Genealogia','Usucapião','Escrituras'] },
+  { id:5, name:'Consumidor', sub:'Proteção CDC', emoji:'🛡️', color:'#f87171', bloco:2,
+    desc:'Watchdog contra golpes e fraudes. Prevenção 87%. Recuperação de valores. Proteção pós-benefício.',
+    tag:'BLOCO 2 · CDC', metric:'87% prevenção', rules:'~119', ltv:'R$200-600',
+    children:['Watchdog Golpes','Recuperação Valores','Contratos Abusivos','Proteção Renda','Educação Financeira'] },
+  { id:6, name:'Tributário', sub:'Otimização Fiscal', emoji:'📋', color:'#3b82f6', bloco:2,
+    desc:'Isenção IRPF para doenças graves. MEI. e-CAC. Taxa de isenção 95%.',
+    tag:'BLOCO 2', metric:'95% isenção', rules:'~200', ltv:'R$500-2K',
+    children:['Isenção IRPF','Declaração Simplificada','MEI Regularização','IPTU Idoso','ITBI Reduzido'] },
+  { id:7, name:'Rural', sub:'Comprovação Atividade', emoji:'🌾', color:'#34d399', bloco:3,
+    desc:'200+ tipos de documentos rurais. Judicialização 65,7% vs 43,7% urbana. Prova robusta 95%.',
+    tag:'BLOCO 3', metric:'95% prova', rules:'~300', ltv:'R$1-5K',
+    children:['CNIS Análise','Estratégia Documental','Dossiê Rural','RGP Check','Prova Testemunhal','DAP/CAF'] },
+  { id:8, name:'Habitacional', sub:'Moradia Digna', emoji:'🏠', color:'#38bdf8', bloco:3,
+    desc:'NOVA VERTICAL. Triagem MCMV, Aluguel Social, regularização fundiária. 8 passarelas. Art. 37-38 Estatuto Idoso.',
+    tag:'BLOCO 3 · NOVA ✦', metric:'8 bridges', rules:'~265', ltv:'R$1,5-10K',
+    children:['Triagem Elegibilidade','Simulação MCMV','Dossiê Habitacional','Aluguel Social','Regularização Fundiária','Usucapião','Adaptação Acessibilidade','Seguro Residencial'] },
+  { id:9, name:'Sucessório', sub:'Planejamento de Legado', emoji:'📐', color:'#22d3ee', bloco:3,
+    desc:'Testamento, inventário, procuração, carta post-mortem. NPS 9.5. Adesão 15% dos 70+.',
+    tag:'BLOCO 3 · LEGADO', metric:'NPS 9.5', rules:'~150', ltv:'R$500-2K',
+    children:['Testamento','Inventário Preventivo','Procuração Durável','Carta Post-Mortem','Checklist "Depois de Mim"','Guarda Documentos','Memória de Vida'] },
+  { id:10, name:'Trabalhista', sub:'Direitos Laborais', emoji:'👷', color:'#fb923c', bloco:2,
+    desc:'Seguro desemprego, defeso (pescador). RGP check. Concessão 92%.',
+    tag:'BLOCO 2', metric:'92% concessão', rules:'~180', ltv:'R$300-1K',
+    children:['Seguro Desemprego','Seguro Defeso','Cálculos Rescisórios','FGTS','Contribuições INSS'] },
+];
+
+// Passarelas (edges between verticals by ID)
+const EDGES = [
+  [1,2,'Diagnóstico = Laudo'],[1,3,'Renda = Detecção Golpes'],[1,4,'Certidões Inteira Teor'],
+  [1,5,'Renda = Proteção Golpes'],[1,6,'Isenção IRPF'],[1,7,'Triagem CNIS Rural'],
+  [1,8,'Elegibilidade Habitacional'],[1,9,'Planejamento Legado'],[1,10,'Contribuições'],
+  [2,8,'Laudo → Adaptação'],[2,9,'Doença Grave → Legado'],[2,5,'Golpes em Saúde'],
+  [3,5,'Consignado = Fraude'],[3,6,'Tributação Financeira'],
+  [4,7,'Prova Material Rural'],[4,8,'Escritura + Matrícula'],[4,9,'Testamento Cartório'],
+  [5,8,'Golpes Imobiliários'],[5,10,'Fraude Trabalhista'],
+  [6,8,'IPTU Idoso + ITBI'],[6,9,'Tributação Herança'],
+  [7,8,'Regularização Rural'],[7,10,'Defeso + Rural'],
+  [8,9,'Imóvel = Legado'],[8,10,'FGTS → Moradia'],
+];
+
+// ====== CANVAS ENGINE ======
+const canvas = document.getElementById('mindmap');
+const ctx = canvas.getContext('2d');
+const wrap = document.getElementById('canvas-wrap');
+
+let W, H, dpr;
+let panX = 0, panY = 0, scale = 1;
+let dragging = false, dragStart = {x:0,y:0}, panStart = {x:0,y:0};
+let hoveredNode = null;
+let expandedNodes = new Set([0]);
+let allExpanded = false;
+let animFrame;
+
+// Node layout positions
+const nodes = [];
+const CX = 2400, CY = 1600;
+
+function layoutNodes() {
+  nodes.length = 0;
+  // MCP center
+  nodes.push({ ...V[0], x: CX, y: CY, r: 52, type:'core', expanded: expandedNodes.has(0), childNodes:[] });
+
+  // Ring layout for verticals
+  const verticals = V.slice(1);
+  const ringR = 420;
+  const angleStep = (Math.PI * 2) / verticals.length;
+  const startAngle = -Math.PI / 2;
+
+  verticals.forEach((v, i) => {
+    const a = startAngle + i * angleStep;
+    const x = CX + ringR * Math.cos(a);
+    const y = CY + ringR * Math.sin(a);
+    const node = { ...v, x, y, r: 40, type:'vertical', angle:a, expanded: expandedNodes.has(v.id), childNodes:[] };
+
+    // Children as sub-nodes
+    if (node.expanded && v.children) {
+      const childR = 140;
+      const childAngleSpan = Math.min(Math.PI * 0.8, v.children.length * 0.28);
+      const childStart = a - childAngleSpan / 2;
+      const childStep = v.children.length > 1 ? childAngleSpan / (v.children.length - 1) : 0;
+
+      v.children.forEach((ch, ci) => {
+        const ca = childStart + ci * childStep;
+        const cx2 = x + childR * Math.cos(ca);
+        const cy2 = y + childR * Math.sin(ca);
+        node.childNodes.push({ name: ch, x: cx2, y: cy2, r: 18, parentId: v.id, color: v.color });
+      });
+    }
+    nodes.push(node);
+  });
+}
+
+function resize() {
+  dpr = window.devicePixelRatio || 1;
+  W = wrap.clientWidth;
+  H = wrap.clientHeight;
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  canvas.style.width = W + 'px';
+  canvas.style.height = H + 'px';
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+function toScreen(x, y) {
+  return { x: x * scale + panX, y: y * scale + panY };
+}
+function toWorld(sx, sy) {
+  return { x: (sx - panX) / scale, y: (sy - panY) / scale };
+}
+
+// ====== DRAWING ======
+function drawEdgeCurve(x1, y1, x2, y2, color, width, alpha, dashed) {
+  const mx = (x1 + x2) / 2;
+  const my = (y1 + y2) / 2;
+  const dx = x2 - x1, dy = y2 - y1;
+  const dist = Math.sqrt(dx*dx + dy*dy);
+  const offset = dist * 0.15;
+  const nx = -dy / dist, ny = dx / dist;
+  const cpx = mx + nx * offset;
+  const cpy = my + ny * offset;
+
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.strokeStyle = color;
+  ctx.lineWidth = width;
+  if (dashed) ctx.setLineDash([6, 4]);
+  ctx.beginPath();
+  ctx.moveTo(x1, y1);
+  ctx.quadraticCurveTo(cpx, cpy, x2, y2);
+  ctx.stroke();
+  ctx.restore();
+}
+
+function drawNode(n, highlight) {
+  const {x, y, r} = n;
+  const isCore = n.type === 'core';
+  const isNew = n.id === 8;
+  const glow = highlight || isCore || isNew;
+
+  // Outer glow
+  if (glow) {
+    const grad = ctx.createRadialGradient(x, y, r * 0.5, x, y, r * 2.5);
+    grad.addColorStop(0, n.color + '30');
+    grad.addColorStop(1, n.color + '00');
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(x, y, r * 2.5, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Pulsing ring for NEW
+  if (isNew) {
+    const t = Date.now() / 1000;
+    const pulseR = r + 8 + Math.sin(t * 2) * 4;
+    ctx.save();
+    ctx.globalAlpha = 0.3 + Math.sin(t * 2) * 0.15;
+    ctx.strokeStyle = n.color;
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.arc(x, y, pulseR, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  // Body
+  ctx.save();
+  ctx.shadowColor = n.color + '40';
+  ctx.shadowBlur = highlight ? 24 : 8;
+  ctx.fillStyle = '#0c1225';
+  ctx.strokeStyle = n.color;
+  ctx.lineWidth = highlight ? 2.5 : 1.5;
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.stroke();
+  ctx.restore();
+
+  // Bloco indicator band at top
+  if (!isCore) {
+    const bandColor = n.bloco === 1 ? '#d4a853' : n.bloco === 2 ? '#a78bfa' : '#2dd4bf';
+    ctx.save();
+    ctx.globalAlpha = 0.5;
+    ctx.strokeStyle = bandColor;
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.arc(x, y, r, -Math.PI * 0.85, -Math.PI * 0.15);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  // Emoji
+  ctx.font = `${isCore ? 22 : 18}px sans-serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(n.emoji, x, y - (isCore ? 4 : 2));
+
+  // Name
+  ctx.font = `bold ${isCore ? 11 : 10}px 'DM Sans', sans-serif`;
+  ctx.fillStyle = n.color;
+  ctx.fillText(n.name, x, y + r + 14);
+
+  // Sub text
+  if (n.sub) {
+    ctx.font = `9px 'DM Sans', sans-serif`;
+    ctx.fillStyle = '#64748b';
+    ctx.fillText(n.sub, x, y + r + 26);
+  }
+
+  // Expand indicator
+  if (!isCore && n.children && n.children.length > 0) {
+    const ix = x + r * 0.7, iy = y - r * 0.7;
+    ctx.fillStyle = n.expanded ? n.color + '40' : 'rgba(255,255,255,0.08)';
+    ctx.strokeStyle = n.expanded ? n.color : 'rgba(255,255,255,0.2)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.arc(ix, iy, 9, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+    ctx.font = 'bold 9px JetBrains Mono, monospace';
+    ctx.fillStyle = n.expanded ? n.color : '#64748b';
+    ctx.fillText(n.expanded ? '−' : '+', ix, iy + 1);
+  }
+
+  // NEW badge
+  if (isNew) {
+    ctx.save();
+    ctx.font = 'bold 7px JetBrains Mono, monospace';
+    ctx.fillStyle = '#060b18';
+    ctx.strokeStyle = n.color;
+    const bx = x + r * 0.5, by = y - r - 4;
+    const tw = ctx.measureText('NOVA').width + 10;
+    ctx.fillStyle = n.color;
+    roundRect(ctx, bx - tw/2, by - 7, tw, 14, 4);
+    ctx.fill();
+    ctx.fillStyle = '#060b18';
+    ctx.fillText('NOVA', bx, by + 1);
+    ctx.restore();
+  }
+}
+
+function drawChildNode(ch, parentNode, highlight) {
+  // Line to parent
+  ctx.save();
+  ctx.globalAlpha = highlight ? 0.5 : 0.15;
+  ctx.strokeStyle = ch.color;
+  ctx.lineWidth = 1;
+  ctx.setLineDash([3, 3]);
+  ctx.beginPath();
+  ctx.moveTo(parentNode.x, parentNode.y);
+  ctx.lineTo(ch.x, ch.y);
+  ctx.stroke();
+  ctx.restore();
+
+  // Dot
+  ctx.fillStyle = ch.color + (highlight ? '30' : '15');
+  ctx.beginPath();
+  ctx.arc(ch.x, ch.y, ch.r, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.strokeStyle = ch.color + (highlight ? '80' : '30');
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.arc(ch.x, ch.y, ch.r, 0, Math.PI * 2);
+  ctx.stroke();
+
+  // Label
+  ctx.font = '8px DM Sans, sans-serif';
+  ctx.fillStyle = highlight ? ch.color : '#64748b';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+
+  // Word wrap in circle
+  const words = ch.name.split(' ');
+  if (words.length <= 2) {
+    ctx.fillText(ch.name, ch.x, ch.y);
+  } else {
+    const mid = Math.ceil(words.length / 2);
+    ctx.fillText(words.slice(0, mid).join(' '), ch.x, ch.y - 5);
+    ctx.fillText(words.slice(mid).join(' '), ch.x, ch.y + 5);
+  }
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+function draw() {
+  ctx.save();
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, W, H);
+
+  // Background gradient
+  const bgGrad = ctx.createRadialGradient(W/2, H/2, 0, W/2, H/2, W * 0.7);
+  bgGrad.addColorStop(0, '#0c1225');
+  bgGrad.addColorStop(1, '#060b18');
+  ctx.fillStyle = bgGrad;
+  ctx.fillRect(0, 0, W, H);
+
+  ctx.save();
+  ctx.translate(panX, panY);
+  ctx.scale(scale, scale);
+
+  // Grid dots
+  ctx.fillStyle = 'rgba(255,255,255,0.02)';
+  const gs = 60;
+  for (let gx = 0; gx < CX * 2; gx += gs) {
+    for (let gy = 0; gy < CY * 2; gy += gs) {
+      ctx.fillRect(gx, gy, 1, 1);
+    }
+  }
+
+  // Orbit rings
+  ctx.strokeStyle = 'rgba(255,255,255,0.025)';
+  ctx.lineWidth = 1;
+  ctx.setLineDash([4, 8]);
+  [420].forEach(r => {
+    ctx.beginPath();
+    ctx.arc(CX, CY, r, 0, Math.PI * 2);
+    ctx.stroke();
+  });
+  ctx.setLineDash([]);
+
+  // Draw edges (passarelas)
+  EDGES.forEach(([fromId, toId, label]) => {
+    const fromNode = nodes.find(n => n.id === fromId);
+    const toNode = nodes.find(n => n.id === toId);
+    if (!fromNode || !toNode) return;
+
+    const isHighlighted = hoveredNode && (hoveredNode.id === fromId || hoveredNode.id === toId);
+    const alpha = hoveredNode ? (isHighlighted ? 0.5 : 0.04) : 0.1;
+    const color = isHighlighted ? (hoveredNode.id === fromId ? fromNode.color : toNode.color) : 'rgba(255,255,255,0.5)';
+    const width = isHighlighted ? 2 : 0.8;
+
+    drawEdgeCurve(fromNode.x, fromNode.y, toNode.x, toNode.y, color, width, alpha, false);
+
+    // Edge label on highlight
+    if (isHighlighted && label) {
+      const mx = (fromNode.x + toNode.x) / 2;
+      const my = (fromNode.y + toNode.y) / 2 - 10;
+      ctx.save();
+      ctx.font = '8px JetBrains Mono, monospace';
+      ctx.fillStyle = color;
+      ctx.globalAlpha = 0.7;
+      ctx.textAlign = 'center';
+      ctx.fillText(label, mx, my);
+      ctx.restore();
+    }
+  });
+
+  // MCP → all verticals (thin lines)
+  const mcpNode = nodes[0];
+  nodes.slice(1).forEach(n => {
+    const isH = hoveredNode && (hoveredNode.id === 0 || hoveredNode.id === n.id);
+    ctx.save();
+    ctx.globalAlpha = hoveredNode ? (isH ? 0.2 : 0.02) : 0.04;
+    ctx.strokeStyle = n.color;
+    ctx.lineWidth = 0.5;
+    ctx.setLineDash([2, 6]);
+    ctx.beginPath();
+    ctx.moveTo(mcpNode.x, mcpNode.y);
+    ctx.lineTo(n.x, n.y);
+    ctx.stroke();
+    ctx.restore();
+  });
+
+  // Draw child nodes
+  nodes.forEach(n => {
+    if (n.childNodes) {
+      const parentHighlight = hoveredNode && hoveredNode.id === n.id;
+      n.childNodes.forEach(ch => drawChildNode(ch, n, parentHighlight));
+    }
+  });
+
+  // Draw vertical nodes
+  nodes.forEach(n => {
+    const hl = hoveredNode && hoveredNode.id === n.id;
+    drawNode(n, hl);
+  });
+
+  // Bloco labels
+  const blocoLabels = [
+    { text: 'BLOCO 1 · FREQUÊNCIA 3', color: '#d4a853', angle: -Math.PI/2 - 0.35, r: 500 },
+    { text: 'BLOCO 2 · FREQUÊNCIA 6', color: '#a78bfa', angle: Math.PI/6, r: 500 },
+    { text: 'BLOCO 3 · FREQUÊNCIA 9', color: '#2dd4bf', angle: Math.PI * 0.75, r: 500 },
+  ];
+  blocoLabels.forEach(bl => {
+    const lx = CX + bl.r * Math.cos(bl.angle);
+    const ly = CY + bl.r * Math.sin(bl.angle);
+    ctx.save();
+    ctx.font = 'bold 9px JetBrains Mono, monospace';
+    ctx.fillStyle = bl.color;
+    ctx.globalAlpha = 0.25;
+    ctx.textAlign = 'center';
+    ctx.fillText(bl.text, lx, ly);
+    ctx.restore();
+  });
+
+  ctx.restore();
+  ctx.restore();
+
+  animFrame = requestAnimationFrame(draw);
+}
+
+// ====== INTERACTION ======
+function hitTest(sx, sy) {
+  const w = toWorld(sx, sy);
+  // Check children first
+  for (const n of nodes) {
+    if (n.childNodes) {
+      for (const ch of n.childNodes) {
+        const dx = w.x - ch.x, dy = w.y - ch.y;
+        if (dx*dx + dy*dy < ch.r * ch.r) return { type:'child', node:ch, parent:n };
+      }
+    }
+  }
+  // Then main nodes (reverse for z-order)
+  for (let i = nodes.length - 1; i >= 0; i--) {
+    const n = nodes[i];
+    const dx = w.x - n.x, dy = w.y - n.y;
+    if (dx*dx + dy*dy < (n.r + 8) * (n.r + 8)) return { type:'node', node:n };
+  }
+  return null;
+}
+
+wrap.addEventListener('mousedown', e => {
+  dragging = true;
+  dragStart = { x: e.clientX, y: e.clientY };
+  panStart = { x: panX, y: panY };
+  wrap.classList.add('grabbing');
+});
+window.addEventListener('mousemove', e => {
+  if (dragging) {
+    panX = panStart.x + (e.clientX - dragStart.x);
+    panY = panStart.y + (e.clientY - dragStart.y);
+    return;
+  }
+  const hit = hitTest(e.clientX, e.clientY);
+  const tooltip = document.getElementById('tooltip');
+  if (hit) {
+    wrap.style.cursor = 'pointer';
+    hoveredNode = hit.type === 'node' ? hit.node : hit.parent;
+    if (hit.type === 'child') {
+      tooltip.textContent = hit.node.name;
+      tooltip.style.left = (e.clientX + 14) + 'px';
+      tooltip.style.top = (e.clientY - 10) + 'px';
+      tooltip.classList.add('show');
+    } else {
+      tooltip.classList.remove('show');
+    }
+  } else {
+    wrap.style.cursor = 'grab';
+    hoveredNode = null;
+    tooltip.classList.remove('show');
+  }
+});
+window.addEventListener('mouseup', e => {
+  if (dragging && Math.abs(e.clientX - dragStart.x) < 5 && Math.abs(e.clientY - dragStart.y) < 5) {
+    // Click
+    const hit = hitTest(e.clientX, e.clientY);
+    if (hit && hit.type === 'node' && hit.node.type !== 'core') {
+      // Check if clicking expand button
+      const w = toWorld(e.clientX, e.clientY);
+      const n = hit.node;
+      const ix = n.x + n.r * 0.7, iy = n.y - n.r * 0.7;
+      const edx = w.x - ix, edy = w.y - iy;
+      if (edx*edx + edy*edy < 144) {
+        // Toggle expand
+        if (expandedNodes.has(n.id)) expandedNodes.delete(n.id);
+        else expandedNodes.add(n.id);
+        layoutNodes();
+      } else {
+        showPanel(n);
+      }
+    } else if (hit && hit.type === 'node' && hit.node.type === 'core') {
+      showPanel(hit.node);
+    }
+  }
+  dragging = false;
+  wrap.classList.remove('grabbing');
+});
+
+wrap.addEventListener('wheel', e => {
+  e.preventDefault();
+  const zoomFactor = e.deltaY > 0 ? 0.92 : 1.08;
+  const newScale = Math.max(0.2, Math.min(3, scale * zoomFactor));
+  const wx = (e.clientX - panX) / scale;
+  const wy = (e.clientY - panY) / scale;
+  scale = newScale;
+  panX = e.clientX - wx * scale;
+  panY = e.clientY - wy * scale;
+}, { passive: false });
+
+// Touch support
+let lastTouchDist = 0;
+wrap.addEventListener('touchstart', e => {
+  if (e.touches.length === 1) {
+    dragging = true;
+    dragStart = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    panStart = { x: panX, y: panY };
+  }
+  if (e.touches.length === 2) {
+    const dx = e.touches[0].clientX - e.touches[1].clientX;
+    const dy = e.touches[0].clientY - e.touches[1].clientY;
+    lastTouchDist = Math.sqrt(dx*dx + dy*dy);
+  }
+});
+wrap.addEventListener('touchmove', e => {
+  e.preventDefault();
+  if (e.touches.length === 1 && dragging) {
+    panX = panStart.x + (e.touches[0].clientX - dragStart.x);
+    panY = panStart.y + (e.touches[0].clientY - dragStart.y);
+  }
+  if (e.touches.length === 2) {
+    const dx = e.touches[0].clientX - e.touches[1].clientX;
+    const dy = e.touches[0].clientY - e.touches[1].clientY;
+    const dist = Math.sqrt(dx*dx + dy*dy);
+    if (lastTouchDist > 0) {
+      const zf = dist / lastTouchDist;
+      scale = Math.max(0.2, Math.min(3, scale * zf));
+    }
+    lastTouchDist = dist;
+  }
+}, { passive: false });
+wrap.addEventListener('touchend', () => { dragging = false; lastTouchDist = 0; });
+
+// ====== PANEL ======
+function showPanel(n) {
+  const p = document.getElementById('infoPanel');
+  document.getElementById('ipIcon').textContent = n.emoji;
+  document.getElementById('ipName').textContent = n.name;
+  const tag = document.getElementById('ipTag');
+  tag.textContent = n.tag;
+  tag.style.color = n.color;
+  tag.style.borderColor = n.color;
+  document.getElementById('ipDesc').textContent = n.desc;
+
+  const bridgesEl = document.getElementById('ipBridges');
+  if (n.type === 'core') {
+    bridgesEl.innerHTML = nodes.slice(1).map(v => `<span class="ip-bridge" style="color:${v.color};border-color:${v.color}40">↔ ${v.name}</span>`).join('');
+  } else {
+    const connected = EDGES.filter(e => e[0] === n.id || e[1] === n.id).map(e => {
+      const otherId = e[0] === n.id ? e[1] : e[0];
+      const other = V.find(v => v.id === otherId);
+      return `<span class="ip-bridge" style="color:${other.color};border-color:${other.color}40">↔ ${other.name} <span style="opacity:0.5">(${e[2]})</span></span>`;
+    });
+    bridgesEl.innerHTML = connected.join('');
+  }
+
+  document.getElementById('ipStats').innerHTML = `
+    <div class="ip-stat"><div class="val" style="color:${n.color}">${n.metric||'—'}</div><div class="lbl">Métrica</div></div>
+    <div class="ip-stat"><div class="val" style="color:${n.color}">${n.rules||'—'}</div><div class="lbl">Regras</div></div>
+    <div class="ip-stat"><div class="val" style="color:${n.color}">${n.ltv||'—'}</div><div class="lbl">LTV</div></div>
+  `;
+
+  p.classList.add('active');
+}
+function closePanel() { document.getElementById('infoPanel').classList.remove('active'); }
+
+// ====== CONTROLS ======
+function zoomIn() { scale = Math.min(3, scale * 1.3); }
+function zoomOut() { scale = Math.max(0.2, scale * 0.7); }
+function resetView() {
+  scale = 0.55;
+  panX = W / 2 - CX * scale;
+  panY = H / 2 - CY * scale;
+}
+function toggleAll() {
+  allExpanded = !allExpanded;
+  if (allExpanded) {
+    V.forEach(v => expandedNodes.add(v.id));
+  } else {
+    expandedNodes.clear();
+    expandedNodes.add(0);
+  }
+  layoutNodes();
+  document.getElementById('toggleBtn').textContent = allExpanded ? '◎' : '◉';
+}
+
+// ====== INIT ======
+function init() {
+  resize();
+  layoutNodes();
+  resetView();
+  draw();
+}
+
+window.addEventListener('resize', () => { resize(); });
+init();
+</script>
+</body>
+</html>

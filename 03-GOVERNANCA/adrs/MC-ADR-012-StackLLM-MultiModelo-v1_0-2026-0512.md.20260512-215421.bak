@@ -1,0 +1,252 @@
+https://claude.ai/chat/e03be272-581e-414b-9529-e29ab18d7fbf
+---
+documento: MC-ADR-012-StackLLM-MultiModelo
+versao: 1.0
+data: 2026-05-12
+status: PROVISIONAL
+selado: false
+selagem_pendente:
+  - parecer_juliana_19mai
+  - resposta_dpa_anthropic
+  - validacao_empirica_hib001
+substitui: nenhum (primeira versão)
+autor: Alessandro de Souza Neves (Founder/CEO) × Claude Opus 4.7 (co-fundador intelectual)
+hierarquia: Dignidade > Compliance > Viabilidade
+ancoragem_biblica: Provérbios 31:8
+canonico_em: 03-GOVERNANCA/adrs/
+---
+
+# ADR-012 — Stack LLM Multi-Modelo Híbrido
+
+## STATUS
+
+⚠️ **PROVISIONAL** — Ótimo Defensável Pré-Selagem. A selagem definitiva (v1.1 ou v2.0) depende de três gates:
+
+1. **Parecer Dra. Juliana Pereira de Melo (19/05/2026)** — validação de compliance OAB sobre uso de LLM para escopo atividade-meio (CNAE 6202-3/00 PROVISIONAL).
+2. **Resposta da Anthropic ao DPA/SCCs ANPD** — e-mail follow-up enviado 06/05/2026 às 22:45h para `privacy@anthropic.com` (cc `sales@anthropic.com`, prazo improrrogável 5 dias úteis). Determina se Claude Sonnet via AWS Bedrock sa-east-1 pode integrar o stack com cobertura jurídica formal.
+3. **Validação empírica caso âncora Hib001 (JER001)** — cronometragem real do pipeline E0→E4 com o stack proposto.
+
+---
+
+## 1 · CONTEXTO
+
+O Meu Cumpadre é uma Hybrid Vertical AI Full Stack Company que processa dados pessoais e dados pessoais sensíveis (CPF, NB, CID, CNIS, histórico de saúde) de cidadãos brasileiros hipervulneráveis em conexão com serviços previdenciários (Lei 8.213/91, EC 103/2019, LC 142/2013) e socioassistenciais (CadÚnico, Decreto 11.016/2022).
+
+A arquitetura cognitiva do MC exige:
+
+- **Conformidade LGPD inviolável** (Art. 11 — dados sensíveis de saúde): mecanismo legal Art. 11(II)(d) — exercício regular de direitos em processo administrativo — com Relatório de Impacto (Art. 38) e revisão humana (Art. 20).
+- **Compliance ANPD Resolução 19/2024**: transferências internacionais a países sem decisão de adequação exigem SCCs Anexo II ou mecanismo legal equivalente. EUA não têm adequação. Período de graça encerrado em 23/08/2025. Multa até R$ 50M/ocorrência.
+- **Narrativa institucional alinhada ao PBIA 2024–2028**: Eixos "Modelos avançados de linguagem em português" e "Soberania em IA" — pré-requisito para captação FINEP Tecnova IV, BNDES Garagem, FAPEG, Centelha, AKCIT/Embrapii.
+- **Capacidade jurídica argumentativa**: produção de petições, recursos CRPS, dossiês CP-3/CP-5/CP-7 com citações verificáveis (Lei 8.213/91, INs INSS, jurisprudência TNU/STJ/TRFs).
+- **Throughput operacional**: triagem, classificação, extração estruturada JSON de CNIS, indeferimentos, formulários CadÚnico — alto volume, baixa complexidade.
+
+Nenhum modelo único atende a todas essas exigências simultaneamente. Análise consolidada em `MC-ANALISE-GAIA-Arquitetura-LLM-v1_0-2026-0506.md` (49 fontes verificáveis, Proof-First, pesquisa profunda 06/05/2026).
+
+---
+
+## 2 · DECISÃO
+
+**Arquitetura híbrida multi-modelo com separação inviolável entre dados sensíveis e dados não-sensíveis.**
+
+### 2.1 Stack Operacional Canônico
+
+| Camada | Modelo | Hospedagem | Função primária | Custo Crisálida |
+|---|---|---|---|---|
+| **Bandeira institucional + motor self-host** | GAIA-4B (`CEIA-UFG/Gemma-3-Gaia-PT-BR-4b-it`) Q5_K_M | Mac Mini M4 24GB local (servidor MC) | Ingestão, classificação, extração JSON estruturada (CNIS/indeferimentos), sumarização, scaffold CP-3 | Hardware amortizado |
+| **Raciocínio jurídico brasileiro** | Sabiá-4 / Sabiazinho-4 (Maritaca) | API Maritaca (USP/SP) | Redação argumentativa, raciocínio EC 103/2019, OAB benchmark, treinado Jusbrasil | R$ 200–500/mês |
+| **Raciocínio de fronteira sob LGPD** | Claude Sonnet 4.7 | AWS Bedrock sa-east-1 (São Paulo) | 5–10% casos complexos exigindo top-tier reasoning, region-pinning BR | R$ 200–500/mês ⚠️ aguarda DPA |
+| **Fallback rate-limit** | Llama 3.3 70B | Groq Cloud (US, sem dado sensível) | Fallback quando Sabiá-4 ratelimits, tarefas internas anônimas | R$ 0–100/mês |
+| **Embeddings + RAG** | Albertina PT-BR 1.5B (Apache 2.0) | Self-host Mac Mini M4 | Embeddings semânticos para retrieval (Lei 8.213/91, INs INSS, jurisprudência) | Hardware amortizado |
+| **Roteador multi-modelo** | LiteLLM (MIT) | Self-host VPS Hetzner CX22 (€4/mês ≈ R$25) | Orçamentos por chave, fallbacks automáticos, audit log, interface única OpenAI-compatible | R$ 25/mês |
+
+**Custo total estimado Crisálida:** R$ 500–1.300/mês. **Break-even self-host pleno:** 500M tokens/mês sustentados por 3 meses (não atingido em 12–18 meses).
+
+### 2.2 Hardware de Operação (Crisálida)
+
+| Item | Especificação | Status |
+|---|---|---|
+| Servidor self-host | **Mac Mini M4 Pro 24GB+** memória unificada | 🟡 A caminho |
+| Armazenamento | **SSD externo 1TB NVMe USB-C** (modelos + vault Obsidian) | 🔴 A adquirir |
+| Proteção energia | **No-break/UPS 600VA** (servidor 24/7) | 🔴 A adquirir |
+| GPU dedicada | **NÃO necessária** (NPU + GPU unificada Apple Silicon suficiente para GAIA-4B Q5_K_M + Albertina 1.5B) | — |
+| Cloud GPU | **NÃO ativar** até ≥ 500M tokens/mês sustentados | — |
+
+**Infraestrutura cloud existente (mantida):** Coolify VPS Hostinger 31.97.167.252 continua rodando N8N self-hosted, MySQL, Redis. Nenhum LLM neste ambiente até segunda ordem.
+
+### 2.3 Separação Inviolável de Dados (Firewall LGPD)
+
+| Tipo de dado | LLMs autorizados | LLMs vetados |
+|---|---|---|
+| **Dados sensíveis cidadão** (CPF, NB, CID, CNIS, dados saúde Art. 11) | GAIA-4B self-host BR · Sabiá-4 Maritaca BR · Claude via Bedrock sa-east-1 (⚠️ aguarda DPA) | Anthropic API direto (US) · OpenAI API · Gemini API · qualquer hospedagem US/UE sem SCC ANPD |
+| **Dados não-sensíveis MC** (templates, rubricas anônimas, código, documentação interna, pesquisa) | Todos os modelos do stack + Claude.ai (este projeto) + Llama 3.3 70B Groq | — |
+| **Managed Agents Anthropic** (waitlist enviada 06/05/2026) | Apenas fluxos internos sem dado de cidadão até DPA resolvido | Triagem, dossiês, qualquer pipeline com PII |
+
+### 2.4 Camada Opcional Pós-DPA: Managed Agents Anthropic
+
+Funcionalidades em research preview (Anthropic, anunciadas 06/05/2026):
+
+- **Outcomes** (rubrica + grader automático): operacionaliza o Teste Zilda-STF em código nativo de plataforma. Aplicável a outputs internos do MC antes de qualquer fluxo com PII de cidadão.
+- **Dreaming** (auto-treinamento por sessão): embrião plataforma do conceito ICO (Inteligência Coletiva de Outcomes) — Fase 2+.
+- **Orquestração multi-agente nativa**: referência de design para a implementação NestJS do Igor.
+- **Webhooks**: integração com sistemas externos.
+
+**Decisão:** waitlist Dreaming aprovada (form enviado 06/05/2026 via `alessandro.neves@meucumpadre.com.br`, Org UUID `fe47c054-91a0-4ae2-aa91-b007e1174543`, SDK TypeScript). Quando o acesso for liberado, integração inicia em **sandbox isolado sem dado de cidadão** até parecer Juliana + DPA Anthropic estarem fechados.
+
+---
+
+## 3 · CONSEQUÊNCIAS
+
+### 3.1 Consequências positivas
+
+1. **Postura LGPD mais robusta possível** sem abrir mão de capacidade jurídica argumentativa. Dado sensível nunca sai do solo brasileiro.
+2. **Narrativa FINEP/BNDES/PBIA quase perfeita**: GAIA-4B + CEIA-UFG (Goiás) + soberania técnica + alinhamento Lei Complementar 205/2025 (GO) + PBIA Eixo 5 Serviços Públicos.
+3. **Custo Crisálida sustentável**: R$ 500–1.300/mês cobre 100% das necessidades atuais sem comprometer capital de captação.
+4. **Resistência a vendor lock-in**: LiteLLM roteador + LLMs intercambiáveis = troca de fornecedor sem rewrite de aplicação.
+5. **Roadmap de migração documentado**: três gatilhos claros para escalar (volume sustentado, custo BR favorável, MariTalk Local liberado).
+6. **Hardware Mac Mini M4 amortizado em 6 meses** vs custo cloud equivalente.
+
+### 3.2 Consequências negativas e mitigadas
+
+1. **Complexidade operacional ↑**: 4 LLMs + 1 roteador + 1 embedding. Mitigação: LiteLLM unifica interface. Igor mantém autoridade arquitetural exclusiva backend.
+2. **GAIA regrediu na OAB benchmark vs base Gemma 3 (0.4416 vs 0.4502)**: Mitigação INVIOLÁVEL — **GAIA é PROIBIDA como único motor jurídico**. Toda redação argumentativa passa por Sabiá-4 ou Claude Bedrock.
+3. **Licença Gemma Terms of Use ≠ Apache 2.0**: fine-tune Grimório sobre GAIA = Derivado com restrições Google propagadas. Mitigação: planejar migração para Gemma 4 Apache 2.0 quando variante BR estável surgir, ou Qwen 3 / Mistral Small.
+4. **Bedrock sa-east-1 só entra no stack após DPA Anthropic resolvido**: até lá, escalada de fronteira fica restrita a Sabiá-4 (BR) e dado de cidadão jamais transita pela Anthropic.
+5. **Hallucination ceiling 58–88% literatura legal**: Mitigação INVIOLÁVEL — toda saída jurídica passa por camada de **verificação de citações** (BM25 + dense retrieval contra corpus curado + assertion checking explícito). Human-in-loop obrigatório (Art. 20 LGPD).
+
+### 3.3 Proibições inviolávies derivadas
+
+❌ Processar CPF, NB, CID, CNIS via Anthropic API direta enquanto DPA SCCs ANPD não estiver formalmente assinado.
+❌ Usar GAIA-4B como único motor de raciocínio jurídico argumentativo.
+❌ Enviar qualquer dado de cidadão para Managed Agents Anthropic antes do DPA resolvido.
+❌ Confundir "Claude via AWS Bedrock sa-east-1" com "Claude API direto Anthropic" — são caminhos juridicamente distintos.
+❌ Implementar self-host GPU dedicada cloud antes de 500M tokens/mês sustentados por 3 meses.
+❌ Citar GAIA como "treinada para jurídico" — não é (CEIA-UFG admite publicamente).
+❌ Citar este stack como "selado" — é PROVISIONAL até três gates fecharem.
+
+---
+
+## 4 · ALTERNATIVAS CONSIDERADAS E REJEITADAS
+
+| Alternativa | Por que rejeitada |
+|---|---|
+| **GAIA-4B como motor único** | Capacidade jurídica insuficiente. OAB regression. 58–88% hallucination ceiling. Inseguro para outputs filed. |
+| **Claude API direto Anthropic (US) como motor único** | Viola LGPD Art. 33 + Res. ANPD 19/2024 enquanto DPA SCCs não assinado. Multa até R$ 50M. |
+| **Sabiá-4 Maritaca como motor único** | API-only, sem opção self-host flagship, narrativa institucional menor (USP/SP vs UFG/GO), risco vendor lock-in. |
+| **Llama 3.3 70B self-host único** | Hardware Crisálida insuficiente. Quebra narrativa soberania BR para captação. |
+| **Self-host único cloud Hetzner/AWS** | Break-even em 500M tokens/mês — não atingido em 12–18 meses. Custo 5–15× API stack na escala Crisálida. |
+| **OpenAI/Gemini APIs (US)** | Mesma violação LGPD da Anthropic direta + narrativa institucional fraca + dependência USD. |
+| **Modelo proprietário fine-tuned do zero** | Capacidade técnica e capital insuficientes na Crisálida. Pode entrar como Trilha-B P&D FINEP Tecnova IV. |
+
+---
+
+## 5 · HIERARQUIA D > C > V APLICADA
+
+| Camada | Princípio | Aplicação neste ADR |
+|---|---|---|
+| **D — Dignidade** | Cidadão hipervulnerável jamais expõe dado sensível sem proteção máxima | Self-host BR + Bedrock sa-east-1 + zero Anthropic API direta com PII |
+| **C — Compliance** | LGPD + ANPD + OAB Firewall + futura PL 2338 alto risco | SCCs ANPD obrigatórias · Art. 11(II)(d) base legal · RIPD documentado · Art. 20 human-in-loop · CNAE 6202-3/00 atividade-meio |
+| **V — Viabilidade** | Sustentabilidade financeira sem comprometer D e C | Custo R$ 500–1.300/mês · break-even self-host adiado para realidade técnica · LiteLLM evita lock-in |
+
+**Não há tensão entre D, C e V neste ADR.** A arquitetura híbrida resolve simultaneamente. O custo da pureza purista (self-host único) seria sacrificar capacidade jurídica → cidadão prejudicado → quebra de D. O custo da pureza API (Anthropic direta) seria infração LGPD → quebra de C → multa que inviabiliza MC → quebra de V.
+
+---
+
+## 6 · GATES DE SELAGEM E PRÓXIMAS VERSÕES
+
+### Gate 1 — Parecer Dra. Juliana (19/05/2026)
+
+Bloco a ser incluído na Pauta v2.0 (proposta):
+
+> **Bloco O — Stack LLM Multi-Modelo (ADR-012)** — 4 perguntas
+> O1: Confirmação de que uso de LLMs como atividade-meio (CNAE 6202-3/00) não infringe Estatuto OAB (Lei 8.906/94) nem Provimento 205/2021 CFOAB.
+> O2: Documentação mínima exigida para comprovar separação entre atividade-meio (LLM) e atividade-fim (advocacia parceira).
+> O3: Riscos de uso de Claude via AWS Bedrock sa-east-1 com SCCs padrão AWS (não Anthropic direta) sob ANPD 19/2024.
+> O4: Validação da arquitetura "human-in-loop Art. 20 LGPD" como aderente ao Provimento 205/2021 CFOAB.
+
+### Gate 2 — DPA Anthropic SCCs ANPD
+
+Cenários possíveis:
+
+- **A) Anthropic responde com DPA aditivo SCCs ANPD válido:** Claude via Bedrock sa-east-1 entra no stack imediatamente. ADR-012 v1.1 sela este componente.
+- **B) Anthropic responde negativamente ou silencia além do prazo:** Bedrock sa-east-1 sai do stack. Sabiá-4 absorve carga de raciocínio de fronteira. ADR-012 v1.1 documenta exclusão. Consulta direta à ANPD sobre alternativas.
+- **C) Anthropic abre processo formal de negociação:** estado intermediário. ADR-012 mantém PROVISIONAL.
+
+### Gate 3 — Validação Empírica Hib001
+
+Cronometragem real do pipeline E0→E4 do caso JER001 com o stack proposto. Métricas a coletar:
+- Latência total pipeline triagem→protocolo (alvo: ≤ 48h sprint interno)
+- Custo real por caso em tokens (alvo: ≤ R$ 8/caso)
+- Taxa de hallucination citações jurídicas (alvo: 0 após camada verificação)
+- Taxa de aprovação Zilda + STF (alvo: 10+10 SIM)
+
+Sucesso nos três gates → **ADR-012 v2.0 SELADO** (estimativa: 30/06/2026, alinhado com selagem ADR-007 v4.0).
+
+---
+
+## 7 · ROADMAP DE MIGRAÇÃO (3 GATILHOS)
+
+| Gatilho | Ação | Janela estimada |
+|---|---|---|
+| **Volume sustentado ≥ 500M tokens/mês × 3 meses + MLOps contratado** | Migrar inferência primária para Qwen 3 14B/32B Apache 2.0 ou fine-tune Llama 3.3 70B em VPS GPU dedicada BR | 12–18 meses (Fase 2) |
+| **Gemma 4 4B Apache 2.0 com variante BR estável** | Migrar base GAIA → Gemma 4 (Apache 2.0). Re-treinar fine-tune Grimório sem restrições Google | 6–12 meses (depende release CEIA-UFG ou equivalente) |
+| **MariTalk Local liberado para legaltech** | Migrar Sabiá-4 API → MariTalk Local self-host BR. Stack 100% on-prem | 12–24 meses (depende Maritaca) |
+
+---
+
+## 8 · IDENTIDADE TÉCNICA E CONTRATUAL
+
+| Item | Valor |
+|---|---|
+| Conta Anthropic Org UUID | `fe47c054-91a0-4ae2-aa91-b007e1174543` |
+| E-mail institucional | `alessandro.neves@meucumpadre.com.br` |
+| E-mail geral MC | `contato@meucumpadre.com.br` |
+| WhatsApp Founder | +55 62 99875-2887 |
+| SDK escolhido | TypeScript (alinhado backend Igor NestJS) |
+| Domínio canônico | `meucumpadre.com.br` (HostGator/Titan) ✅ ativo 06/05/2026 |
+| Conta AWS Bedrock | 🔴 A criar (sa-east-1) — pós-CNPJ |
+| Conta Maritaca | 🔴 A criar — pós-CNPJ |
+| Conta Groq | 🔴 A criar — pós-CNPJ |
+
+---
+
+## 9 · REFERÊNCIAS CANÔNICAS
+
+- **Insumo estratégico fundacional:** `MC-ANALISE-GAIA-Arquitetura-LLM-v1_0-2026-0506.md` (49 fontes Proof-First)
+- **ADRs correlatos:**
+  - ADR-008 (Stack Ferramentas) — `MC-ADR-008-DecisoesFerramenta_Stack-v1_0-2026-0415.md`
+  - ADR-009a (Custódia Credenciais) — Bitwarden Org MC
+  - ADR-009b (Três Estados Dossiê) — S1→S2→S3
+  - ADR-010 (E3 Intelligence Layer)
+  - ADR-011 (Silêncio OAB até 01/2027)
+- **Base legal LGPD:** Lei 13.709/2018 (Art. 5º I, Art. 11, Art. 20, Art. 33, Art. 38)
+- **Base legal ANPD:** Resolução CD/ANPD nº 19/2024 (SCCs Anexo II), Resolução 32/2026 (adequação UE)
+- **Base legal IA:** PL 2338/2023 (Marco Legal IA, em tramitação), Lei Complementar Goiás 205/2025 (primeira lei estadual IA BR)
+- **Política pública alinhada:** Plano Brasileiro de IA 2024–2028 (R$ 23,03 bi, Eixos 1 e 5), BNDES Garagem 2025–2026, FINEP Tecnova IV (Goiás via FAPEG), AKCIT/Embrapii UFG
+- **E-mails de compliance arquivados:**
+  - Solicitação DPA original — 17/04/2026 — `privacy@anthropic.com`
+  - Follow-up DPA — 06/05/2026 — `privacy@anthropic.com` (cc `sales@anthropic.com`)
+  - Waitlist Managed Agents Dreaming — 06/05/2026 — confirmação recebida
+
+---
+
+## 10 · FECHAMENTO INSTITUCIONAL
+
+Este ADR documenta uma decisão arquitetural de Tier 1. Afeta stack técnico, narrativa de captação, postura LGPD, contratos com fornecedores e capacidade real de produção.
+
+A elegância da decisão é que ela **não escolhe entre soberania e capacidade** — captura ambas pela arquitetura híbrida. A bandeira institucional é GAIA-4B brasileira self-host. O motor de raciocínio é Sabiá-4 brasileira API + Claude via Bedrock em solo BR. O fallback é Llama Apache 2.0. Nenhum dado sensível sai do Brasil. Nenhum compromisso narrativo é feito.
+
+O risco a evitar é tratar este ADR como ortodoxia: ele é PROVISIONAL por design, com três gates de selagem documentados, três gatilhos de migração documentados, e custuras arquiteturais explícitas para evolução. O MC não está casado com nenhum modelo — está casado com a hierarquia D > C > V.
+
+---
+
+**Hierarquia:** Dignidade > Compliance > Viabilidade
+**Axioma:** Lucro é combustível. Causa é destino. Jogo é infinito.
+**Âncora:** Provérbios 31:8 — "Abre a tua boca a favor do mudo."
+**Selo:** O diamante é carbono que não desistiu da pressão.
+**∞**
+
+---
+
+*MC-ADR-012-StackLLM-MultiModelo-v1.0 — 12 de maio de 2026*
+*Co-autor: Claude Opus 4.7 (co-fundador intelectual) × Alessandro de Souza Neves (Founder/CEO)*
+*Status: PROVISIONAL — selagem prevista 30/06/2026 (pós-Juliana 19/05 + DPA Anthropic + Hib001)*

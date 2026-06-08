@@ -1,0 +1,26 @@
+{
+  "nome": "Pesquisa — Síntese NotebookLM + Conteúdo",
+  "zona": "segura",
+  "tema": "Invisibilidade digital gov.br: panorama de fontes públicas",
+  "providerSugerido": "stub-cloud",
+  "descricao": "Squad de pesquisa: a 1ª etapa usa a SKILL NotebookLM (zona segura, fontes públicas) para sintetizar; redator e revisor seguem. Sem dado pessoal. NotebookLM em modo stub por padrão (configure NOTEBOOKLM_MODE para integrar de verdade).",
+  "flags": { "dignidadeEmRisco": false, "complianceEmRisco": false },
+  "pipeline": [
+    {
+      "id": "sintese",
+      "role": "pesquisador",
+      "skill": "notebooklm",
+      "skillArgs": {
+        "task": "Sintetizar o panorama público da exclusão digital no acesso ao gov.br",
+        "sources": [
+          "Lei 8.213/91",
+          "TIC Domicílios CGI.br",
+          "Relatórios públicos de acesso digital"
+        ]
+      },
+      "sinais": { "confidence": 84, "complexity": 30, "fraudscore": 3 }
+    },
+    { "id": "redacao", "role": "redator", "prompt": "A partir da síntese, escrever post de blog acessível (Teste Zilda-STF).", "checkpoint": true, "sinais": { "confidence": 83, "complexity": 38, "fraudscore": 4 } },
+    { "id": "revisao", "role": "revisor", "prompt": "Revisão de compliance (firewall OAB, Proof-First, ADR-007).", "checkpoint": true, "sinais": { "confidence": 90, "complexity": 20, "fraudscore": 2 } }
+  ]
+}

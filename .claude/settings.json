@@ -1,0 +1,52 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git push origin --tags)",
+      "Bash(git push origin --tags --force-with-lease)",
+      "Bash(git push origin main)",
+      "Bash(git fetch origin)",
+      "Bash(git pull origin main --rebase)",
+      "Bash(git status)",
+      "Bash(git log*)",
+      "Bash(git diff*)",
+      "Bash(git ls-remote*)"
+    ],
+    "deny": [
+      "Bash(git push --force origin main)",
+      "Bash(git push --force-with-lease origin main)",
+      "Bash(git reset --hard*)",
+      "Bash(git filter-branch*)",
+      "Bash(rm -rf*)",
+      "Bash(Remove-Item -Recurse -Force*)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/session-start.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "MC_LINT_MODE=block python3 .claude/hooks/mc-lint.py"
+          }
+        ]
+      }
+    ]
+  },
+  "_metadata": {
+    "codigo": "MC-MB-063 v1.0 Vetor 3",
+    "cunhado_em": "2026-05-26",
+    "principio_63_v2": "Workaround Classifier · permissions explicitas",
+    "operador": "Founder Alessandro em TALAO",
+    "contador_adr_020_v2_1": "D+0 · 2026-05-26"
+  }
+}

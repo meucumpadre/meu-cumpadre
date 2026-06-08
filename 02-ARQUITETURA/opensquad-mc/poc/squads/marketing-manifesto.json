@@ -1,0 +1,15 @@
+{
+  "nome": "Marketing — Carrossel Manifesto Missionário",
+  "zona": "segura",
+  "tema": "Invisibilidade gov.br e a travessia digital do hipervulnerável",
+  "providerSugerido": "stub-cloud",
+  "descricao": "Produz um carrossel de Instagram a partir do manifesto missionário MC. Zona SEGURA: sem dado pessoal, provider cloud permitido (Gemini/Claude).",
+  "flags": { "dignidadeEmRisco": false, "complianceEmRisco": false },
+  "pipeline": [
+    { "id": "pesquisa", "role": "pesquisador", "prompt": "Levantar fontes e ângulos sobre a invisibilidade digital.", "sinais": { "confidence": 88, "complexity": 25, "fraudscore": 3 } },
+    { "id": "estrategia", "role": "estrategista", "prompt": "Definir estrutura editorial do carrossel (Teste Zilda-STF).", "sinais": { "confidence": 90, "complexity": 30, "fraudscore": 2 } },
+    { "id": "redacao", "role": "redator", "prompt": "Escrever os 6 cards.", "checkpoint": true, "sinais": { "confidence": 82, "complexity": 40, "fraudscore": 5 } },
+    { "id": "design", "role": "designer", "prompt": "Briefing visual conforme identidade MC.", "sinais": { "confidence": 86, "complexity": 35, "fraudscore": 4 } },
+    { "id": "revisao", "role": "revisor", "prompt": "Revisão de compliance (firewall OAB, Proof-First, ADR-007).", "checkpoint": true, "sinais": { "confidence": 91, "complexity": 20, "fraudscore": 2 } }
+  ]
+}

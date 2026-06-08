@@ -1,0 +1,95 @@
+---
+id: MC-PRINCIPIOS-INDEX
+titulo: Índice Canônico dos Princípios MC
+versao: 1.0
+data_atualizacao: 2026-05-13
+total_principios_ativos: 22
+total_arquivos: 23 (inclui sentinela #3 RESERVADO)
+---
+
+# 📚 Princípios MC · Índice Canônico
+
+> Mapa de navegação dos princípios fundacionais do ecossistema Meu Cumpadre.
+> Cada princípio é um arquivo individual com frontmatter Obsidian, enunciado, origem, aplicação, antiexemplos e cross-references.
+> Última consolidação: MB-025A · 13/05/2026
+
+## Tabela mestra
+
+| # | Título | Escopo | Cunhagem | Status |
+|---|---|---|---|---|
+| 1 | [Inventário de Caminhos](MC-PRINCIPIO-001-InventarioDeCaminhos-v1_0-2026-0513.md) | governanca-operacional | pré-12/05 | ATIVO |
+| 1b | [Teste antes de Afirmar Funcional](MC-PRINCIPIO-001b-TesteAntesDeAfirmarFuncional-v1_0-2026-0513.md) | governanca-operacional | pré-12/05 | ATIVO |
+| 2 | [Vocabulário Institucional](MC-PRINCIPIO-002-VocabularioInstitucional-v1_0-2026-0513.md) | governanca-comunicacional | 11/05 | ATIVO |
+| 3 | [RESERVADO](MC-PRINCIPIO-003-RESERVADO-v1_0-2026-0513.md) | governanca-meta | 13/05 | RESERVADO |
+| 4 | [Errata Absorve, Não Inventa](MC-PRINCIPIO-004-ErrataAbsorveNaoInventa-v1_0-2026-0513.md) | governanca-documental | pré-12/05 | ATIVO |
+| 5 | [Persistência de Patches](MC-PRINCIPIO-005-PersistenciaDePatches-v1_0-2026-0513.md) | governanca-documental | 12/05 | ATIVO |
+| 6 | [Camadas de Segurança Operacional](MC-PRINCIPIO-006-CamadasDeSegurancaOperacional-v1_0-2026-0513.md) | governanca-operacional | pré-12/05 | ATIVO |
+| 7 | [Cadeia de Autorização Dual](MC-PRINCIPIO-007-CadeiaDeAutorizacaoDual-v1_0-2026-0513.md) | governanca-operacional | pré-12/05 (ADR-011) | ATIVO |
+| 8 | [Verde/Amarelo/Vermelho LGPD](MC-PRINCIPIO-008-VerdeAmareloVermelhoLGPD-v1_0-2026-0513.md) | compliance-lgpd | pré-12/05 | ATIVO |
+| 9 | [Esteira primeiro, humano valida](MC-PRINCIPIO-009-EsteiraPrimeiroHumanoValida-v1_0-2026-0513.md) | arquitetura-operacional | pré-12/05 | ATIVO |
+| 10 | [Arquitetura herda, espec documenta](MC-PRINCIPIO-010-ArquiteturaHerdaSpecDocumenta-v1_0-2026-0513.md) | arquitetura-operacional | pré-12/05 | ATIVO |
+| 11 | [Governança forte mora no N8N](MC-PRINCIPIO-011-GovernancaForteMoraNoN8N-v1_0-2026-0513.md) | arquitetura-tecnica | pré-12/05 | ATIVO |
+| 12 | [Custom Field dropdown > Task Central](MC-PRINCIPIO-012-CustomFieldDropdownMaiorQueTaskCentral-v1_0-2026-0513.md) | arquitetura-clickup | pré-12/05 | ATIVO |
+| 13 | [View filtrada > TIML](MC-PRINCIPIO-013-ViewFiltradaMaiorQueTIML-v1_0-2026-0513.md) | arquitetura-clickup | pré-12/05 | ATIVO |
+| 14 | [Webhooks reativos + polling complementar](MC-PRINCIPIO-014-WebhooksReativosPlusPolling-v1_0-2026-0513.md) | arquitetura-integracao | pré-12/05 | ATIVO |
+| 15 | [Entrega cofounder cross-vertical](MC-PRINCIPIO-015-EntregaCofounderCrossVertical-v1_0-2026-0513.md) | governanca-cofounder | 12/05 | ATIVO |
+| 15.1 | [Descoberta dispara reconstituição](MC-PRINCIPIO-015_1-DescobertaDisparaReconstituicao-v1_0-2026-0513.md) | governanca-cofounder | 12/05 | ATIVO |
+| 16 | [Iniciativa estratégica cofounder 20x](MC-PRINCIPIO-016-IniciativaEstrategicaCofounder20x-v1_0-2026-0513.md) | governanca-cofounder | 12/05 | ATIVO |
+| 17 | [gov.br = infraestrutura nacional identidade](MC-PRINCIPIO-017-GovBrInfraestruturaNacionalIdentidade-v1_0-2026-0513.md) | arquitetura-produto-estrategia | 12/05 | ATIVO |
+| 18 | [Risco Provisional Documentado](MC-PRINCIPIO-018-RiscoProvisionalDocumentado-v1_0-2026-0513.md) | governanca-compliance-D-C-V | 12/05 | ATIVO |
+| 19 | [Patches são instrumentos temporários](MC-PRINCIPIO-019-PatchesSaoInstrumentosTemporarios-v1_0-2026-0513.md) | governanca-documental | 12/05 | ATIVO |
+| 20 | [Workflow de Sincronização Permanente](MC-PRINCIPIO-020-WorkflowSincronizacaoPermanente-v1_0-2026-0513.md) | governanca-operacional | 12/05 | ATIVO |
+| 21 | [Cronometria do Humano, não do Caso](MC-PRINCIPIO-021-CronometriaDoHumano-v1_0-2026-0513.md) | governanca-operacional | 13/05 | ATIVO |
+| 22 | [5 Pontos Humanos Irredutíveis (H1-H5)](MC-PRINCIPIO-022-CincoPontosHumanos-v1_0-2026-0513.md) | arquitetura-operacional | 13/05 | ATIVO |
+
+> ⚠️ **Nota MB-029 / colisão pendente:** Existe um arquivo `MC-PRINCIPIO-PENDENTE-DocumentacaoCanonicaUnificada-COLISAO22-v1_0-2026-0513.md` nesta mesma pasta + flag `_COLISAO-PRINCIPIOS-MB029-vs-Hib001-2026-0513.md`. São princípios cunhados em sessão Claude.ai paralela (MB-028/MB-029) que colidiram com a numeração #21/#22 da sessão Hib001. Renumeração final (sugerida: #23 e #24) aguarda decisão founder · este índice será atualizado quando resolvido.
+
+## Por escopo
+
+### Governança operacional
+#1, #1b, #6, #7, #20, #21
+
+### Governança documental
+#4, #5, #19
+
+### Governança cofounder
+#15, #15.1, #16
+
+### Governança meta
+#3 (reservado)
+
+### Governança compliance D-C-V
+#18
+
+### Governança comunicacional
+#2
+
+### Arquitetura operacional
+#9, #10, #22
+
+### Arquitetura técnica
+#11
+
+### Arquitetura ClickUp
+#12, #13
+
+### Arquitetura integração
+#14
+
+### Arquitetura produto-estratégia
+#17
+
+### Compliance LGPD
+#8
+
+## Regras de uso
+
+1. **Aplicação inviolável:** todo princípio ATIVO é vinculante para artefatos canônicos MC
+2. **Antecedência cronológica:** princípios mais antigos prevalecem sobre mais novos em caso de conflito, salvo errata explícita
+3. **Cunhagem:** princípio novo só vira ATIVO após sessão Founder + Cofounder validar enunciado, origem, aplicação, antiexemplos
+4. **Patches:** revisões a princípio vivem em `03-GOVERNANCA/patches/` até virar nova versão (Princípio #5)
+5. **Renumeração:** vedada salvo errata crítica documentada por Founder (vide #3 reservado)
+
+---
+
+**D > C > V** · Provérbios 31:8 · *O diamante é carbono que não desistiu da pressão* · ∞

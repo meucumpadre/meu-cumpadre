@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meu Cumpadre — Constelação de Verticais</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0e1a;--bg2:#0f1528;--gold:#d4a853;--gold-dim:#8b6914;
+  --teal:#2dd4bf;--blue:#3b82f6;--purple:#a78bfa;--rose:#f472b6;
+  --orange:#fb923c;--emerald:#34d399;--red:#f87171;--cyan:#22d3ee;
+  --sky:#38bdf8;--white:#f1f5f9;--muted:#64748b;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden;min-height:100vh}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(212,168,83,0.08) 0%,transparent 60%),radial-gradient(ellipse at 20% 80%,rgba(45,212,191,0.05) 0%,transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(167,139,250,0.05) 0%,transparent 50%)}
+.hero-badge{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(212,168,83,0.3);padding:6px 20px;border-radius:100px;margin-bottom:2rem;animation:fadeDown .8s ease both;backdrop-filter:blur(4px)}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:900;text-align:center;line-height:1.1;animation:fadeDown 1s ease both .2s;background:linear-gradient(135deg,var(--white) 0%,var(--gold) 50%,var(--teal) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:clamp(1rem,2vw,1.25rem);color:var(--muted);text-align:center;max-width:680px;margin:1.5rem auto 3rem;line-height:1.7;animation:fadeDown 1s ease both .4s}
+.hero-stats{display:flex;gap:3rem;flex-wrap:wrap;justify-content:center;animation:fadeDown 1s ease both .6s}
+.hero-stat{text-align:center}
+.hero-stat .num{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:900;color:var(--gold)}
+.hero-stat .label{font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.15em;margin-top:4px}
+.scroll-hint{position:absolute;bottom:2rem;animation:bounce 2s infinite;color:var(--muted);font-size:.8rem;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.scroll-hint svg{width:24px;height:24px;stroke:var(--gold);stroke-width:2;fill:none}
+
+/* CONSTELLATION MAP */
+.constellation-section{padding:4rem 2rem;position:relative}
+.constellation-section h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);text-align:center;margin-bottom:.5rem;color:var(--white)}
+.constellation-section .subtitle{text-align:center;color:var(--muted);margin-bottom:3rem;font-size:1rem}
+
+.constellation-map{position:relative;width:100%;max-width:900px;margin:0 auto;aspect-ratio:1/1}
+.constellation-map svg{width:100%;height:100%}
+
+/* VERTICAL CARDS */
+.verticals-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;max-width:1200px;margin:0 auto;padding:4rem 2rem}
+.v-card{position:relative;background:linear-gradient(135deg,rgba(15,21,40,0.9),rgba(15,21,40,0.6));border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:2rem;overflow:hidden;cursor:pointer;transition:all .4s cubic-bezier(.4,0,.2,1)}
+.v-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:20px 20px 0 0;opacity:.8}
+.v-card:hover{transform:translateY(-6px);border-color:rgba(255,255,255,0.12);box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+.v-card .icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin-bottom:1.2rem;position:relative}
+.v-card .icon::after{content:'';position:absolute;inset:-4px;border-radius:20px;opacity:0.15}
+.v-card h3{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;margin-bottom:.4rem}
+.v-card .tag{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;padding:3px 10px;border-radius:100px;border:1px solid;display:inline-block;margin-bottom:1rem;opacity:.7}
+.v-card p{font-size:.9rem;color:var(--muted);line-height:1.6;margin-bottom:1.2rem}
+.v-card .bridges{display:flex;flex-wrap:wrap;gap:6px}
+.v-card .bridge{font-size:.7rem;padding:3px 10px;border-radius:100px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:var(--muted);font-family:'JetBrains Mono',monospace;transition:all .3s}
+.v-card:hover .bridge{border-color:rgba(255,255,255,0.15);color:var(--white)}
+.v-card .metric{position:absolute;top:1.5rem;right:1.5rem;font-family:'JetBrains Mono',monospace;font-size:.7rem;padding:4px 10px;border-radius:8px;opacity:.6}
+
+/* Color variants */
+.v-previdenciario{--vc:var(--gold)}
+.v-rural{--vc:var(--emerald)}
+.v-saude{--vc:var(--rose)}
+.v-cartorio{--vc:var(--purple)}
+.v-tributario{--vc:var(--blue)}
+.v-trabalhista{--vc:var(--orange)}
+.v-consumidor{--vc:var(--red)}
+.v-sucessorio{--vc:var(--cyan)}
+.v-habitacional{--vc:var(--sky)}
+
+.v-card h3{color:var(--vc)}
+.v-card::before{background:linear-gradient(90deg,var(--vc),transparent)}
+.v-card .icon{background:rgba(255,255,255,0.03)}
+.v-card .icon::after{background:var(--vc)}
+.v-card .tag{color:var(--vc);border-color:var(--vc)}
+.v-card .metric{background:rgba(255,255,255,0.04);color:var(--vc)}
+
+/* PASSARELAS MATRIX */
+.matrix-section{padding:4rem 2rem;max-width:1100px;margin:0 auto}
+.matrix-section h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);text-align:center;margin-bottom:.5rem}
+.matrix-section .subtitle{text-align:center;color:var(--muted);margin-bottom:3rem;font-size:1rem}
+.matrix-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:1rem}
+.matrix{border-collapse:separate;border-spacing:3px;width:100%;min-width:780px}
+.matrix th,.matrix td{padding:8px 6px;text-align:center;font-size:.65rem;border-radius:6px;font-family:'JetBrains Mono',monospace}
+.matrix th{background:rgba(255,255,255,0.04);color:var(--muted);font-weight:500;letter-spacing:.05em;white-space:nowrap}
+.matrix th:first-child{text-align:left;padding-left:12px}
+.matrix td{transition:all .3s}
+.matrix td.self{background:rgba(255,255,255,0.02);color:rgba(255,255,255,0.1)}
+.matrix td.strong{background:rgba(45,212,191,0.15);color:var(--teal);cursor:pointer;font-weight:700}
+.matrix td.strong:hover{background:rgba(45,212,191,0.3);transform:scale(1.05)}
+.matrix td.medium{background:rgba(212,168,83,0.1);color:var(--gold);cursor:pointer}
+.matrix td.medium:hover{background:rgba(212,168,83,0.25)}
+.matrix td.light{background:rgba(255,255,255,0.03);color:var(--muted);cursor:pointer}
+.matrix td.light:hover{background:rgba(255,255,255,0.08)}
+.matrix td.none{background:transparent;color:rgba(255,255,255,0.04)}
+.matrix .row-label{text-align:left;padding-left:12px;font-weight:700;white-space:nowrap}
+
+/* LEGEND */
+.legend{display:flex;gap:2rem;justify-content:center;margin-top:2rem;flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:8px;font-size:.75rem;color:var(--muted)}
+.legend-dot{width:14px;height:14px;border-radius:4px}
+
+/* CASCATA */
+.cascade-section{padding:4rem 2rem;max-width:900px;margin:0 auto}
+.cascade-section h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);text-align:center;margin-bottom:.5rem}
+.cascade-section .subtitle{text-align:center;color:var(--muted);margin-bottom:3rem}
+.cascade-timeline{position:relative;padding-left:3rem}
+.cascade-timeline::before{content:'';position:absolute;left:16px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--gold),var(--teal),var(--purple),var(--rose),var(--blue),var(--emerald),var(--cyan),var(--sky))}
+.cascade-item{position:relative;margin-bottom:1.5rem;padding-left:2rem;animation:fadeLeft .6s ease both;opacity:0}
+.cascade-item:nth-child(1){animation-delay:.1s}
+.cascade-item:nth-child(2){animation-delay:.2s}
+.cascade-item:nth-child(3){animation-delay:.3s}
+.cascade-item:nth-child(4){animation-delay:.4s}
+.cascade-item:nth-child(5){animation-delay:.5s}
+.cascade-item:nth-child(6){animation-delay:.6s}
+.cascade-item:nth-child(7){animation-delay:.7s}
+.cascade-item:nth-child(8){animation-delay:.8s}
+.cascade-item::before{content:'';position:absolute;left:-2.05rem;top:12px;width:14px;height:14px;border-radius:50%;border:3px solid var(--bg);z-index:1}
+.cascade-item .time{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;margin-bottom:4px}
+.cascade-item .content{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1rem 1.2rem}
+.cascade-item .content h4{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:4px}
+.cascade-item .content p{font-size:.85rem;color:var(--muted);line-height:1.5}
+
+.ci-prev::before{background:var(--gold)}
+.ci-prev .time,.ci-prev h4{color:var(--gold)}
+.ci-trib::before{background:var(--blue)}
+.ci-trib .time,.ci-trib h4{color:var(--blue)}
+.ci-cons::before{background:var(--red)}
+.ci-cons .time,.ci-cons h4{color:var(--red)}
+.ci-hab::before{background:var(--sky)}
+.ci-hab .time,.ci-hab h4{color:var(--sky)}
+.ci-cart::before{background:var(--purple)}
+.ci-cart .time,.ci-cart h4{color:var(--purple)}
+.ci-saude::before{background:var(--rose)}
+.ci-saude .time,.ci-saude h4{color:var(--rose)}
+.ci-suc::before{background:var(--cyan)}
+.ci-suc .time,.ci-suc h4{color:var(--cyan)}
+.ci-rural::before{background:var(--emerald)}
+.ci-rural .time,.ci-rural h4{color:var(--emerald)}
+
+/* FOOTER */
+.footer{text-align:center;padding:4rem 2rem 2rem;border-top:1px solid rgba(255,255,255,0.04);margin-top:4rem}
+.footer q{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold);font-style:italic;display:block;margin-bottom:1rem}
+.footer .sig{font-size:.8rem;color:var(--muted)}
+
+/* ANIMATIONS */
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+@keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(-8px)}60%{transform:translateY(-4px)}}
+@keyframes pulse-ring{0%{transform:scale(1);opacity:0.5}100%{transform:scale(1.8);opacity:0}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes orbit{from{transform:rotate(0deg) translateX(380px) rotate(0deg)}to{transform:rotate(360deg) translateX(380px) rotate(-360deg)}}
+
+.animated{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.4,0,.2,1)}
+.animated.visible{opacity:1;transform:translateY(0)}
+
+/* STAR PARTICLES */
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0}
+.star{position:absolute;width:2px;height:2px;background:var(--white);border-radius:50%;animation:twinkle var(--d) ease-in-out infinite alternate}
+@keyframes twinkle{from{opacity:0.1}to{opacity:0.7}}
+
+/* Responsive */
+@media(max-width:768px){
+  .hero-stats{gap:1.5rem}
+  .hero-stat .num{font-size:1.8rem}
+  .verticals-grid{grid-template-columns:1fr;padding:2rem 1rem}
+  .matrix{font-size:.55rem}
+  .cascade-timeline{padding-left:2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- STARS -->
+<div class="stars" id="stars"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Hybrid Vertical AI Full Stack Company</div>
+  <h1>Constelação de Verticais<br>Meu Cumpadre</h1>
+  <p>9 verticais especializadas conectadas por passarelas inteligentes, orquestrando a emancipação de 40-60 milhões de hipervulneráveis através de desintermediação radical.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">9</div><div class="label">Verticais</div></div>
+    <div class="hero-stat"><div class="num">36</div><div class="label">Passarelas</div></div>
+    <div class="hero-stat"><div class="num">3.265+</div><div class="label">Regras Proof-First</div></div>
+    <div class="hero-stat"><div class="num">R$52B</div><div class="label">Mercado</div></div>
+  </div>
+  <div class="scroll-hint">
+    <span>explorar constelação</span>
+    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- CONSTELLATION SVG MAP -->
+<section class="constellation-section animated">
+  <h2>Mapa da Constelação</h2>
+  <p class="subtitle">Fractal 3 · 6 · 9 — As verticais como comadres interconectadas</p>
+  <div class="constellation-map">
+    <svg viewBox="0 0 800 800" id="constellationSvg">
+      <defs>
+        <radialGradient id="glow-gold" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#d4a853" stop-opacity="0.3"/><stop offset="100%" stop-color="#d4a853" stop-opacity="0"/></radialGradient>
+        <radialGradient id="glow-teal" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#2dd4bf" stop-opacity="0.2"/><stop offset="100%" stop-color="#2dd4bf" stop-opacity="0"/></radialGradient>
+        <filter id="blur"><feGaussianBlur stdDeviation="2"/></filter>
+      </defs>
+      <!-- Center glow -->
+      <circle cx="400" cy="400" r="120" fill="url(#glow-gold)"/>
+      <circle cx="400" cy="400" r="200" fill="url(#glow-teal)" opacity="0.5"/>
+      <!-- Orbits -->
+      <circle cx="400" cy="400" r="160" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1" stroke-dasharray="4 8"/>
+      <circle cx="400" cy="400" r="280" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1" stroke-dasharray="4 8"/>
+      <!-- Connections (passarelas) will be drawn by JS -->
+      <g id="connections"></g>
+      <!-- Nodes will be drawn by JS -->
+      <g id="nodes"></g>
+      <!-- Center MCP -->
+      <circle cx="400" cy="400" r="36" fill="rgba(212,168,83,0.1)" stroke="var(--gold)" stroke-width="1.5"/>
+      <text x="400" y="395" text-anchor="middle" fill="#d4a853" font-family="Playfair Display,serif" font-size="11" font-weight="700">MCP</text>
+      <text x="400" y="410" text-anchor="middle" fill="#64748b" font-family="JetBrains Mono,monospace" font-size="7">NÚCLEO</text>
+    </svg>
+  </div>
+</section>
+
+<!-- VERTICAL CARDS -->
+<section class="animated">
+  <div class="verticals-grid" id="cards"></div>
+</section>
+
+<!-- MATRIX -->
+<section class="matrix-section animated">
+  <h2>Matriz de Passarelas 9×9</h2>
+  <p class="subtitle">Intensidade de conexão entre verticais — cada célula é uma skybridge</p>
+  <div class="matrix-wrap">
+    <table class="matrix" id="matrixTable"></table>
+  </div>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(45,212,191,0.4)"></div>Forte (bidirecional, automática)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(212,168,83,0.3)"></div>Média (bidirecional, assistida)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(255,255,255,0.08)"></div>Leve (unidirecional)</div>
+  </div>
+</section>
+
+<!-- CASCADE -->
+<section class="cascade-section animated">
+  <h2>Evento Cascata</h2>
+  <p class="subtitle">Dona Zilda, 68 anos, Quixadá-CE — Aposentadoria rural aprovada → cascata em 48h</p>
+  <div class="cascade-timeline">
+    <div class="cascade-item ci-prev"><div class="time">T+0 — GATILHO</div><div class="content"><h4>⚡ Previdenciário</h4><p>Aposentadoria rural concedida. Benefício de 1 SM ativado. MCP atualiza perfil e dispara cascata automática.</p></div></div>
+    <div class="cascade-item ci-trib"><div class="time">T+1h</div><div class="content"><h4>📋 Tributário</h4><p>Router-Ethics detecta elegibilidade para isenção de IRPF. Simulação automática confirma: Dona Zilda não precisa declarar.</p></div></div>
+    <div class="cascade-item ci-cons"><div class="time">T+3h</div><div class="content"><h4>🛡️ Consumidor</h4><p>Watchdog ativado: monitora consignados não autorizados no novo benefício. Alerta: 2 tentativas de empréstimo bloqueadas.</p></div></div>
+    <div class="cascade-item ci-hab"><div class="time">T+6h</div><div class="content"><h4>🏠 Habitacional</h4><p>Triagem detecta: aluguel consome 42% da renda. Elegível para Aluguel Social municipal e MCMV Faixa 1. Dossiê iniciado.</p></div></div>
+    <div class="cascade-item ci-cart"><div class="time">T+12h</div><div class="content"><h4>📜 Cartório</h4><p>Verificação documental: imóvel que ocupa há 18 anos sem escritura. Possível usucapião urbana. Certidões solicitadas.</p></div></div>
+    <div class="cascade-item ci-saude"><div class="time">T+24h</div><div class="content"><h4>💊 Saúde</h4><p>Agenda adaptação domiciliar: barras de apoio, rampa de acesso. Telemedicina agendada para revisão de hipertensão.</p></div></div>
+    <div class="cascade-item ci-rural"><div class="time">T+36h</div><div class="content"><h4>🌾 Rural</h4><p>Cross-check: documentação rural completa pode servir como prova adicional para usucapião. Dossiê integrado.</p></div></div>
+    <div class="cascade-item ci-suc"><div class="time">T+48h</div><div class="content"><h4>📐 Sucessório</h4><p>Anjo inicia conversa sensível: planejamento de legado do imóvel para os netos. Testamento simplificado proposto.</p></div></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer animated">
+  <q>Lucro é combustível, causa é destino, jogo é infinito.</q>
+  <p class="sig">Meu Cumpadre · Constelação Integrada de Verticais Especializadas · 2026</p>
+</div>
+
+<script>
+// DATA
+const verticals = [
+  { id:'prev', name:'Previdenciário', short:'PREV', emoji:'⚖️', color:'#d4a853', angle:0, ring:1, tag:'ÂNCORA · BLOCO 1', desc:'Porta de entrada (60% dos usuários). 13 sub-benefícios mapeados. Taxa de concessão 97% vs 45% tradicional. Motor de confiança inicial.', metric:'97% concessão', bridges:['Saúde','Rural','Cartório','Consumidor','Tributário','Trabalhista','Sucessório','Habitacional'], rules:'3.000+' },
+  { id:'saude', name:'Saúde', short:'SAÚDE', emoji:'💊', color:'#f472b6', angle:40, ring:1, tag:'BLOCO 1', desc:'Documentação médica para INSS. Telemedicina, laudos periciais, exames. Aceitação de laudos em 93%. Passarela vital para incapacidade.', metric:'93% laudos', bridges:['Previdenciário','Consumidor','Habitacional','Sucessório'], rules:'~200' },
+  { id:'bancario', name:'Bancário', short:'BANC', emoji:'🏦', color:'#fb923c', angle:80, ring:1, tag:'BLOCO 1', desc:'Proteção contra consignados predatórios. Detecção de fraude em 95%. Portabilidade ética. R$6,3B de fraudes no ecossistema.', metric:'95% detecção', bridges:['Previdenciário','Consumidor','Tributário'], rules:'~150' },
+  { id:'cartorio', name:'Cartório', short:'CART', emoji:'📜', color:'#a78bfa', angle:120, ring:2, tag:'BLOCO 2', desc:'Certidões inteira teor, genealogia estratégica. Prova material para rural e previdenciário. 200+ tipos de documentos. Efetividade 90%.', metric:'90% efetiv.', bridges:['Rural','Previdenciário','Sucessório','Habitacional'], rules:'~180' },
+  { id:'telemedicina', name:'Telemedicina', short:'TELE', emoji:'🩺', color:'#f472b6', angle:160, ring:2, tag:'BLOCO 2 · PREVIDAS', desc:'Consultas remotas, laudos periciais à distância. Integração SUS/ANS. Acesso para 89% dos rurais com conectividade precária.', metric:'Acesso 89%', bridges:['Saúde','Previdenciário','Habitacional'], rules:'~100' },
+  { id:'consumidor', name:'Consumidor', short:'CONS', emoji:'🛡️', color:'#f87171', angle:200, ring:2, tag:'BLOCO 2 · CDC', desc:'Watchdog contra golpes, fraudes e abusos. Prevenção em 87%. Recuperação de valores. Proteção de renda pós-benefício.', metric:'87% prevenção', bridges:['Previdenciário','Bancário','Habitacional','Trabalhista'], rules:'~119' },
+  { id:'rural', name:'Rural', short:'RUR', emoji:'🌾', color:'#34d399', angle:240, ring:3, tag:'BLOCO 3', desc:'Comprovação de atividade rural (200+ tipos de docs). Judicialização 65,7% vs 43,7% urbana. Prova robusta em 95%.', metric:'95% prova', bridges:['Previdenciário','Cartório','Trabalhista','Habitacional'], rules:'~300' },
+  { id:'habitacional', name:'Habitacional', short:'HAB', emoji:'🏠', color:'#38bdf8', angle:280, ring:3, tag:'BLOCO 3 · NOVA', desc:'Moradia digna para idosos. Triagem de elegibilidade MCMV, Aluguel Social, regularização fundiária. 8 passarelas bidirecionais.', metric:'8 bridges', bridges:['Previdenciário','Rural','Cartório','Consumidor','Tributário','Saúde','Sucessório','Trabalhista'], rules:'~265' },
+  { id:'sucessorio', name:'Sucessório', short:'SUC', emoji:'📐', color:'#22d3ee', angle:320, ring:3, tag:'BLOCO 3 · LEGADO', desc:'Planejamento de legado: testamento, inventário, procuração, carta post-mortem. NPS 9.5. Adesão 15% dos 70+.', metric:'NPS 9.5', bridges:['Previdenciário','Cartório','Habitacional','Saúde','Tributário'], rules:'~150' },
+];
+
+const cx=400, cy=400;
+const rings = [160, 230, 310];
+
+// Position nodes
+verticals.forEach(v => {
+  const r = rings[v.ring - 1];
+  const a = (v.angle - 90) * Math.PI / 180;
+  v.x = cx + r * Math.cos(a);
+  v.y = cy + r * Math.sin(a);
+});
+
+// Draw constellation SVG
+const connG = document.getElementById('connections');
+const nodeG = document.getElementById('nodes');
+
+// Draw connections
+const drawn = new Set();
+verticals.forEach(v => {
+  v.bridges.forEach(bName => {
+    const target = verticals.find(t => t.name === bName);
+    if (!target) return;
+    const key = [v.id, target.id].sort().join('-');
+    if (drawn.has(key)) return;
+    drawn.add(key);
+    const line = document.createElementNS('http://www.w3.org/2000/svg','line');
+    line.setAttribute('x1', v.x); line.setAttribute('y1', v.y);
+    line.setAttribute('x2', target.x); line.setAttribute('y2', target.y);
+    line.setAttribute('stroke', 'rgba(255,255,255,0.06)');
+    line.setAttribute('stroke-width', '1');
+    line.classList.add('conn-line');
+    line.dataset.from = v.id;
+    line.dataset.to = target.id;
+    connG.appendChild(line);
+  });
+});
+
+// Draw nodes
+verticals.forEach(v => {
+  const g = document.createElementNS('http://www.w3.org/2000/svg','g');
+  g.classList.add('node');
+  g.dataset.id = v.id;
+  g.style.cursor = 'pointer';
+  // Glow
+  const glow = document.createElementNS('http://www.w3.org/2000/svg','circle');
+  glow.setAttribute('cx', v.x); glow.setAttribute('cy', v.y); glow.setAttribute('r', '28');
+  glow.setAttribute('fill', v.color); glow.setAttribute('opacity', '0.08');
+  g.appendChild(glow);
+  // Circle
+  const circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+  circle.setAttribute('cx', v.x); circle.setAttribute('cy', v.y); circle.setAttribute('r', '22');
+  circle.setAttribute('fill', 'rgba(10,14,26,0.9)'); circle.setAttribute('stroke', v.color);
+  circle.setAttribute('stroke-width', '1.5');
+  g.appendChild(circle);
+  // Emoji
+  const emoji = document.createElementNS('http://www.w3.org/2000/svg','text');
+  emoji.setAttribute('x', v.x); emoji.setAttribute('y', v.y + 5);
+  emoji.setAttribute('text-anchor', 'middle'); emoji.setAttribute('font-size', '16');
+  emoji.textContent = v.emoji;
+  g.appendChild(emoji);
+  // Label
+  const label = document.createElementNS('http://www.w3.org/2000/svg','text');
+  label.setAttribute('x', v.x); label.setAttribute('y', v.y + 38);
+  label.setAttribute('text-anchor', 'middle'); label.setAttribute('fill', v.color);
+  label.setAttribute('font-family', 'JetBrains Mono,monospace'); label.setAttribute('font-size', '8');
+  label.setAttribute('font-weight', '700'); label.setAttribute('letter-spacing', '0.1em');
+  label.textContent = v.short;
+  g.appendChild(label);
+
+  // Hover highlight
+  g.addEventListener('mouseenter', () => {
+    document.querySelectorAll('.conn-line').forEach(l => {
+      if (l.dataset.from === v.id || l.dataset.to === v.id) {
+        l.setAttribute('stroke', v.color); l.setAttribute('stroke-width', '2'); l.setAttribute('opacity', '0.6');
+      } else {
+        l.setAttribute('opacity', '0.02');
+      }
+    });
+    circle.setAttribute('stroke-width', '3');
+    glow.setAttribute('opacity', '0.2');
+  });
+  g.addEventListener('mouseleave', () => {
+    document.querySelectorAll('.conn-line').forEach(l => {
+      l.setAttribute('stroke', 'rgba(255,255,255,0.06)'); l.setAttribute('stroke-width', '1'); l.setAttribute('opacity', '1');
+    });
+    circle.setAttribute('stroke-width', '1.5');
+    glow.setAttribute('opacity', '0.08');
+  });
+
+  nodeG.appendChild(g);
+});
+
+// CARDS
+const cardsEl = document.getElementById('cards');
+verticals.forEach(v => {
+  const cls = `v-${v.id === 'bancario' ? 'trabalhista' : v.id === 'telemedicina' ? 'saude' : v.id}`;
+  cardsEl.innerHTML += `
+    <div class="v-card ${cls}">
+      <div class="metric">${v.metric}</div>
+      <div class="icon">${v.emoji}</div>
+      <div class="tag">${v.tag}</div>
+      <h3>${v.name}</h3>
+      <p>${v.desc}</p>
+      <div class="bridges">${v.bridges.map(b => `<span class="bridge">→ ${b}</span>`).join('')}</div>
+    </div>
+  `;
+});
+
+// MATRIX
+const names = verticals.map(v => v.short);
+const matrixData = {};
+verticals.forEach(v => { matrixData[v.short] = {}; });
+
+// Populate matrix strength
+verticals.forEach(v => {
+  v.bridges.forEach(bName => {
+    const t = verticals.find(x => x.name === bName);
+    if (!t) return;
+    const cur = matrixData[v.short][t.short] || 0;
+    matrixData[v.short][t.short] = Math.max(cur, 2);
+    matrixData[t.short][v.short] = Math.max(matrixData[t.short][v.short] || 0, 2);
+  });
+});
+
+// Downgrade some to medium/light for realism
+const strongPairs = [
+  ['PREV','SAÚDE'],['PREV','RUR'],['PREV','CART'],['PREV','HAB'],['PREV','CONS'],
+  ['HAB','CART'],['HAB','CONS'],['HAB','SUC'],['RUR','CART'],['SAÚDE','TELE']
+];
+const spSet = new Set(strongPairs.map(p => p.sort().join('-')));
+
+const mt = document.getElementById('matrixTable');
+let html = '<tr><th></th>' + names.map(n => `<th>${n}</th>`).join('') + '</tr>';
+names.forEach((rn, ri) => {
+  html += `<tr><td class="row-label" style="color:${verticals[ri].color}">${rn}</td>`;
+  names.forEach((cn, ci) => {
+    if (ri === ci) { html += '<td class="self">●</td>'; return; }
+    const val = matrixData[rn]?.[cn] || 0;
+    const key = [rn, cn].sort().join('-');
+    const isStrong = spSet.has(key);
+    const cls = val === 0 ? 'none' : isStrong ? 'strong' : val >= 2 ? 'medium' : 'light';
+    const sym = cls === 'strong' ? '⬥' : cls === 'medium' ? '◆' : cls === 'light' ? '◇' : '·';
+    html += `<td class="${cls}">${sym}</td>`;
+  });
+  html += '</tr>';
+});
+mt.innerHTML = html;
+
+// STARS
+const starsEl = document.getElementById('stars');
+for (let i = 0; i < 120; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  s.style.left = Math.random() * 100 + '%';
+  s.style.top = Math.random() * 100 + '%';
+  s.style.setProperty('--d', (2 + Math.random() * 4) + 's');
+  s.style.animationDelay = Math.random() * 3 + 's';
+  s.style.width = s.style.height = (1 + Math.random() * 2) + 'px';
+  starsEl.appendChild(s);
+}
+
+// Scroll animations
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.animated').forEach(el => obs.observe(el));
+
+// Cascade animation on scroll
+const cascadeObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.style.animationPlayState = 'running';
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.cascade-item').forEach(el => {
+  el.style.animationPlayState = 'paused';
+  cascadeObs.observe(el);
+});
+</script>
+</body>
+</html>

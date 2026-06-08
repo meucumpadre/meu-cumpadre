@@ -1,0 +1,231 @@
+﻿# MC-CLAUDE.md — Meu Cumpadre Ecosystem v2.1
+
+> Lucro é combustível. Causa é destino. Jogo é infinito.
+> Hierarquia inviolável: **Dignidade > Compliance > Viabilidade**
+> Provérbios 31:8 · "O diamante é carbono que não desistiu da pressão."
+
+---
+
+## Identidade — Ontologia v4.0
+
+**MC NÃO É:** escritório de advocacia, legaltech, despachante digital, marketplace de advogados, app do INSS.
+
+**MC É:** infraestrutura de simetria informacional que opera **abaixo** da camada do mercado jurídico previdenciário, equipa o cidadão hipervulnerável para a própria travessia administrativa, e sustenta D > C > V como tese filosófica de 2.500 anos.
+
+| Campo | Valor |
+|---|---|
+| Razão Social | MEU CUMPADRE — ORQUESTRAÇÃO DOCUMENTAL E TECNOLOGIA LTDA. |
+| CNAE | 6201-5/01 (atividade-meio) |
+| Fase | 🌱 Crisálida (pré-revenue · piloto N=150 · estrutura Z3) |
+| Missão | Restituir acesso digital a 40-60M de hipervulneráveis brasileiros |
+
+**Os três jogadores:** Escritório Convencional (cadáver ambulante) · Escritório com IA (predador eficiente) · MC (outra arquitetura — Inversão Cósmica).
+
+---
+
+## Regras Invioláveis (enforcement via Hooks — não orientação)
+
+1. **D > C > V** — Dignidade do hipervulnerável prevalece sobre conformidade regulatória, que prevalece sobre viabilidade técnica.
+
+2. **Firewall OAB** — MC = atividade-meio. NUNCA exercer advocacia, prometer resultado jurídico, fazer match comercial, reter credenciais como instrumento de cobrança. Atividade-fim = Dra. Juliana Pereira de Melo (parceira jurídica B2B).
+
+3. **Correção 48h (PERMANENTE)** — "48 horas" = sprint **interno** triagem→protocolo INSS (E0→E4), exclusivamente com documentação completa. Pós-protocolo: análise INSS ~52,67d média (LAI SEI 24851867), 35-52d (BEPS 2025), DDB→DIP ~24d. **NUNCA prometer prazo de concessão.**
+
+4. **Proof-First** — Zero dados fabricados. Toda métrica precisa de fonte verificável (Lei + Evidência + hash SHA-256). Sem fonte → marcar `[FONTE PENDENTE]`. Gemini fabrica dados — sempre cross-referenciar.
+
+5. **Proteção LGPD** — CPF, NB, CID, CNIS = processados EXCLUSIVAMENTE em stack self-hosted (Llama 4 Scout/GCP Brasil). Senhas gov.br **nunca** no ClickUp — Bitwarden Org MC (ADR-009a Modelo B).
+
+6. **Router-Ethics 11.0** — 140 nós determinísticos em 3 blocos (D01-D45 / C36-C80 / V71-V120) + 7 hooks de integração. Três scores independentes: **Confidence (Verde ≥70 / Amarela 40-70 / Vermelha <40)**, Complexity, Fraudscore. Handoff se qualquer um cruza threshold. Autonomia só se todos aprovam. Supersede v10.0 v3.0 (2026-0421). Lote 4 (backend NestJS) PROVISIONAL — revalidar pós-19/05/2026.
+
+7. **Protocolo DIB Urgency** — B31/B91/B42/B43 com janela 30 dias do evento médico (Art. 60 §1º Lei 8.213/91). Após: DIB = DER, retroativo perdido. Caso ≤30 dias → SLA 24h úteis obrigatório.
+
+---
+
+## Precificação Atual (ADR-007 v3.5 — PROVISIONAL até 19/05/2026)
+
+| ID | Nome | Valor | Escopo |
+|---|---|---|---|
+| **Φ₁** | Dossiê + Protocolo Padrão | **R$ 2.200** (até **4×** s/ juros) | B2C standard |
+| **Φ₁c** | Φ₁ CadÚnico (renda ≤ ½ SM) | **R$ 1.500** (até 5×) | B2C preço social |
+| **Φ₃** | Teto de Dignidade | parcela ≤ 0,5 × β_rms | constraint |
+| **Φ₄** | Guardião | R$ 19,90/mês · Φ₃ · R$0 (D>C>V) | B2C OPT-IN pós-E5 |
+| **Ψ₁** | Licenciamento Dossiê | 3 tiers: R$600-800 / R$1.200-1.800 / R$2.500-4.000 | B2B advogado |
+| **Ψ₂** | Assinatura Profissional | 3 tiers: R$699 / R$1.499 / R$2.499/mês | B2B SaaS |
+
+**Aritmética:** COGS R$ 578 [A4-PENDENTE] · Margem Φ₁ ~72,4% / Φ₁c ~58,7% efetiva · OPEX Z3 R$ 18k/mês · BE ~11 casos/mês Standard.
+
+**Princípios:** preço rastreia custo e complexidade, **nunca valor desbloqueado** (Inversão Cósmica). Φ₂ ELIMINADO do B2C. Success fee percentual VEDADO. Zero cobrança B2C adicional ao Φ₁.
+
+**Parcelamento Φ₁ 4× fundamento:** Lei 14.181/2021 art. 54-A — R$2.200/3× = 44,8% SM (viola teto 35%); R$2.200/4× = 33,5% SM (passa).
+
+---
+
+## Stack Técnica
+
+- **Backend:** NestJS + TypeScript + MySQL (Igor — autoridade arquitetural)
+- **LLM Triage:** Gemini 2.5 Flash (~70%, dados não-sensíveis)
+- **LLM Core:** Llama 4 Scout self-hosted GCP Brasil (~25%, dados sensíveis)
+- **LLM Ético:** Claude Sonnet via MCP (~5%, decisões éticas)
+- **Infra:** WhatsApp Cloud API oficial · N8N 1.88 self-hosted · Hostinger 31.97.167.252 · GCP (Firestore, BigQuery, Cloud KMS, Vision OCR)
+- **Assinaturas:** ZapSign (ADR-014) · **Custódia senhas:** Bitwarden Org MC
+- **Orquestração:** MCP (Model Context Protocol — JSON-RPC 2.0)
+
+**Descartados:** DeepSeek cloud, Zapier, DocuSign, Make (produção), HubSpot, Evolution API.
+
+---
+
+## Equipe Crisálida Z3 (Abr/2026)
+
+| Pessoa | Papel | Tier |
+|---|---|---|
+| **Alessandro de Souza Neves** | Founder/CEO · 22 anos INSS (vínculo extinto Portaria PRES/INSS 1.505/2025) | T3 |
+| **Beto** (Gilberto) | Operador (atendimento WhatsApp/ClickUp) | T1+T2 híbrido |
+| **Igor** (RJ) | Dev backend NestJS/TS/MySQL | autoridade técnica |
+| **Carlos** | UX designer | — |
+| **Dra. Juliana Pereira de Melo** | Parceira jurídica B2B · OAB-GO 38.662 · exclusividade até dez/2026 | T4 |
+
+⚠️ **Nunca usar "Juliana Alencar"** — ciclo encerrado 13/04/2026.
+
+---
+
+## Jornada E0-E7 (com Φ₁ cobrindo integralmente)
+
+E0 Sinal Fraco → E1 Primeiro Contato (com **Protocolo DIB Urgency** para B31/B91/B42/B43) → E2 Triagem/Deliberação → E3 Coleta Documental → E4 Protocolo INSS → E5 Watchdog → E6 Resolução → E7 Soberania.
+
+Sprint 48h = E0→E4 interno. Φ₁ cobre toda a jornada sem cobrança adicional.
+
+---
+
+## Convenções
+
+**Backend (Igor):** TypeScript strict · sem `any` implícito · DTOs obrigatórios · dados sensíveis nunca em logs · Conventional Commits · branch `main` → `develop` → `feature/MC-XXX`.
+
+**Documentação:** `MC-[TIPO]-[Descriptor]-v[X.X]-[YYYY-MMDD].md` · Markdown para AI agents · DOCX para institucional · **Teste Zilda-STF** (Dona Zilda 68 anos E ministro do STF simultaneamente).
+
+**Context Budget:** sessão principal 30-40% · `/compact` ou `/clear` quando >60% · Spec-Driven (Research → PRD → Spec → Implement em sessões separadas).
+
+---
+
+## Custódia (ADR-009a v2.0 + ADR-009b)
+
+**Senhas gov.br:** Bitwarden Org MC · AES-256 · 2FA TOTP · audit log mensal · auto-lock 15min. Vedado retenção como instrumento de cobrança.
+
+**Três Estados do Dossiê:** S1 Intermediário (custodiante MC, 30-60d) → S2 Consolidado (apaga em D+7 da entrega) → S3 Probatório (titular: escritório parceiro, 10 anos CED). Transição S2→S3 exige **Token de Transferência Assinado (TTA)**.
+
+**Inadimplência:** D+5 notificação · D+20 suspensão comunicação ativa · D+60 cancelamento. Movimentação processual sempre comunicada (CDC art. 6º III).
+**Apagamentos por Alessandro pessoalmente** (D3 selada 27/04/2026) — Bitwarden D+0 encerramento · S2 cryptographic erasure D+7 entrega.
+
+---
+
+## Comandos Frequentes
+
+```bash
+npm run build          # compilar backend
+npm run test           # testes unitários
+npm run lint           # padrões de código
+npm run migration:run  # migrações MySQL
+npm run start:dev      # servidor dev
+```
+
+---
+
+## Proibições Absolutas
+
+- ❌ Citar **R$ 1.500 standard / R$ 900 CadÚnico** (superado — é R$ 2.200 / R$ 1.500)
+- ❌ Citar **Φ₂ como cobrança B2C** (eliminado em ADR-007 v3.x)
+- ❌ Citar **Φ₁ Standard com parcelamento 3×** (corrigido para 4× em ADR-007 v3.5)
+- ❌ Citar **Ψ₁ como R$200-800 faixa única** (corrigido para 3 tiers em ADR-007 v3.4)
+- ❌ Citar **Ψ₂ como R$299-599** (corrigido para 3 tiers em ADR-007 v3.4)
+- ❌ Citar **Router-Ethics 9.0 / 91 nós / Score ≥39** OU **10.0 / 105 nós** como versão atual (é 11.0, 140 nós, 7 hooks, threshold tripartite)
+- ❌ Chamar MC de "legaltech", "escritório com IA" ou "marketplace de advogados"
+- ❌ Referir **Juliana Alencar** (ciclo encerrado — é Dra. Juliana Pereira de Melo)
+- ❌ Citar Alessandro como "servidor INSS ativo" (vínculo extinto Portaria 1.505/2025)
+- ❌ Prometer prazo de concessão INSS · prometer resultado jurídico
+- ❌ Senha gov.br no ClickUp (viola ADR-009a)
+- ❌ Reter credenciais como instrumento de cobrança
+- ❌ Cancelar por inadimplência antes de D+60
+- ❌ Suspender comunicação processual durante inadimplência (CDC art. 6º III)
+- ❌ Tratar DeepSeek como opção viável
+- ❌ Fabricar estatísticas sem fonte (Proof-First)
+- ❌ Apresentar valuation como ARR (é Capital Morto Desbloqueado — CMD)
+- ❌ Citar Autentique como plataforma ativa (vedada ADR-014, 10/05/2026 — substituída por ZapSign)
+
+---
+
+## Arquitetura 3 Cérebros (ADR-011)
+
+| Zona | Path | Papel | Claude Code |
+|---|---|---|---|
+| 🧠 Cérebro 1 | `G:\Meu Drive\0 0 MEU CUMPADRE\0 0 Gestão Software\Documentação\` | Laboratório vivo — conhecimento em construção | Leitura livre. Nunca migrar para Vault sem gate explícito de Alessandro. |
+| 🏛️ Cérebro 2 | `G:\Meu Drive\0 0 MEU CUMPADRE\0 0 Gestão Software\OBSIDIAN\MEU CUMPADRE\` | Memória canônica — conhecimento selado | Leitura livre. Escrita somente com aprovação explícita. |
+| 🤝 Espaço 3 | Claude.ai Project Knowledge | Mesa de julgamento — o que merece migrar e quando | Espelho semântico do Vault. Não de Documentação/. |
+
+**Regra operacional — fluxo bidirecional:**
+- Claude Code lê `Documentação/` livremente como referencial vivo
+- Nada migra para o Vault sem gate explícito ("aprovado para vault")
+- Todo doc selado no Vault pode ter cópia espelho em `Documentação/` para consulta e evolução (comando: "espelhar em Documentação/")
+- Alessandro nunca edita o Vault diretamente — só o Claude Code escreve lá
+- Fonte de verdade: sempre o Vault. Documentação/ = mesa de trabalho
+
+---
+
+## Fontes Canônicas (ponteiros — não conteúdo)
+
+| Tópico | Arquivo |
+|---|---|
+| Identidade/Manifesto | [[_MC-MANIFESTO-NovaOrdem-v1.0-2026-0427 Identidade Posicionamento e Valuation MC]] |
+| Manifesto missionário | [[MC-MANIFESTO-Invisibilidade-GovBr-v7_0-2026-0503]] |
+| Custo sistêmico/CMD | [[MC-ESTUDO-Arquitetura-Custo-Sistemico-v1_0-2026-0427]] |
+| Precificação atual | [[MC-ADR-007-CampoPrecificacao-v3_8-ADDENDUM-2026-0507]] |
+| Custódia | [[MC-ADR-009a-Custodia_Credenciais_GovBr-v2_0-2026-0425]] |
+| Três Estados | [[MC-ADR-009b-TresEstados-Custodia-Dossie-v1_0-2026-0417]] |
+| Stack | [[MC-ADR-008-DecisoesFerramenta_Stack-v1_0-2026-0415]] |
+| Assinatura eletrônica | [[MC-ADR-014-PlataformaAssinaturaEletronica-v1_0-2026-0510]] |
+| Router-Ethics 11.0 | [[_MC-RouterEthics_11_v1_1-2026-0505-CLevel]] |
+| Jornada E0-E7 | [[MC-PROCESSO-Jornada_E0E7_Mestre-v1_3_1-2026-0509]] |
+| POPs operacionais E0-E7 | [[06-OPERACOES/protocolos/README]] |
+| Parceria jurídica | [[MC-PARTNER-JulianaMelo-Qualificacao-v1_2-2026-0421]] |
+| Parecer consolidado | [[_MC-PARECER-CONSOLIDADO-v3_4-2026-0427]] |
+| Contrato Φ₁ | [[MC-CONTRATO-Phi1-MINUTA-v2_4-2026-0502]] |
+| Skill mestre | [[.claude/skills/meu-cumpadre-orquestrador-mestre/SKILL]] |
+| Mapa do vault | [[MC-MAPA-Vault-v1_2-2026-0429]] |
+| Patches Governança v3.0 | [[INDEX-PATCHES]] (índice em `03-GOVERNANCA/`) — v3.0-4 v2.0 errata Lorrane persistido 12/05 |
+| Estudo Ementa 069/Epicentro (canonizado 12/05/2026) | [[MC-ESTUDO-Ementa069-Epicentro-v2_0-2026-0419]] — selagem condicionada a parecer Juliana 19/05 |
+| Relatório executivo Ementa 069/Epicentro (anexo pacote Juliana #19) | [[MC-RELATORIO-Ementa069-Epicentro-v1_0-2026-0512]] — selagem condicionada a parecer Juliana 19/05 |
+
+---
+
+## Princípios MC
+
+> 📍 **Princípios canônicos individuais persistidos em** `03-GOVERNANCA/principios/`
+>
+> Cada princípio MC (#1, #1b, #2, #3 RESERVADO, #4-#22 + #15.1) vive em arquivo individual com frontmatter Obsidian, enunciado, origem, aplicação, antiexemplos, cross-references e `hash_corpo` SHA-256. Para o conteúdo completo, consultar arquivos individuais. Ver [[_INDEX]] em `03-GOVERNANCA/principios/` para mapa de navegação completo por número e por escopo.
+>
+> Migração canônica executada em MB-025A (13/05/2026). Esta nota é referência apenas; a fonte da verdade são os arquivos individuais e o `_INDEX.md`.
+
+---
+
+*MC-CLAUDE.md v2.1 | 2026-05-05 | pós-adversarial Fase 2 + ADR-007 v3.5*
+*Autor: Alessandro de Souza Neves × Claude Sonnet 4.6 (co-fundador intelectual)*
+*Substitui: v2.0 (2026-04-27)*
+*Hierarquia: D > C > V | Provérbios 31:8 | SEMPRE*
+---
+
+## Documentos relacionados
+- [[_MC-MANIFESTO-NovaOrdem-v1.0-2026-0427 Identidade Posicionamento e Valuation MC]]
+- [[MC-INSTRUCOES-PROJETO-v6_0_2-2026-0509]]
+- [[MC-PROCESSO-Jornada_E0E7_Mestre-v1_3_1-2026-0509]]
+- [[_MC-RouterEthics_11_v1_1-2026-0505-CLevel]] (supersede `RouterEthics_10_MeuCumpadre_Unificado_v3_0-2026-0421`)
+- [[MC-ADR-007-CampoPrecificacao-v3_8-ADDENDUM-2026-0507]]
+- [[MC-ADR-009a-Custodia_Credenciais_GovBr-v2_0-2026-0425]]
+- [[MC-ADR-009b-TresEstados-Custodia-Dossie-v1_0-2026-0417]]
+- [[MC-ADR-010-E3-Intelligence-Layer-v1_0-2026-0428]]
+- [[MC-ADR-011-Arquitetura3Cerebros-v1_0-2026-0509]]
+- [[MC-ADR-013-ConvencoesOperacionais-IVCAD-MC-v1_0-2026-0507]]
+- [[MC-ADR-014-PlataformaAssinaturaEletronica-v1_0-2026-0510]]
+- [[MC-PARECER-CONSOLIDADO-v3_4-2026-0427]]
+- [[MC-PAUTA-Juliana-19Mai-v2_0-2026-0509]]
+- [[MC-GOVBR-ArvoreDecisao-APIHumana-v1_1-2026-0509]]
+- [[MC-ESTUDO-Arquitetura-Custo-Sistemico-v1_0-2026-0427]]
+- [[MC-ESTUDO-Ementa069-Epicentro-v2_0-2026-0419]] (anexo Pauta Juliana 19/05; selagem condicionada)
+- [[MC-RELATORIO-Ementa069-Epicentro-v1_0-2026-0512]] (anexo Pauta Juliana 19/05 doc #19; selagem condicionada)

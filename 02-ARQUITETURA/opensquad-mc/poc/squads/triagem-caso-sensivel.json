@@ -1,0 +1,12 @@
+{
+  "nome": "Operação — Triagem de Caso (dado sensível)",
+  "zona": "sensivel",
+  "tema": "Triagem E2 de caso previdenciário (CPF/NB/CID)",
+  "providerSugerido": "stub-cloud",
+  "descricao": "DEMONSTRAÇÃO DE GATE: squad zona SENSÍVEL com provider cloud sugerido. O Firewall ADR-009a/LGPD DEVE bloquear na entrada. Para rodar de verdade, exige provider self-hosted (llama4-scout-gcp-br ou stub-self-hosted).",
+  "flags": { "dignidadeEmRisco": false, "complianceEmRisco": false },
+  "pipeline": [
+    { "id": "ocr", "role": "pesquisador", "prompt": "Extrair dados do CNIS.", "sinais": { "confidence": 75, "complexity": 60, "fraudscore": 10 } },
+    { "id": "deliberacao", "role": "estrategista", "prompt": "Deliberar enquadramento.", "checkpoint": true, "sinais": { "confidence": 65, "complexity": 75, "fraudscore": 35 } }
+  ]
+}

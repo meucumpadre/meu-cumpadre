@@ -1,0 +1,275 @@
+/* ============================================================
+   MEU CUMPADRE — Guia Claude Code · tema PDF (WeasyPrint)
+   "O diamante é carbono que não desistiu da pressão."
+   ============================================================ */
+
+@page {
+  size: A4;
+  margin: 22mm 18mm 20mm 18mm;
+  @bottom-center {
+    content: "Meu Cumpadre · Guia Claude Code · v1.0 · 2026-06-05";
+    font-family: 'DejaVu Sans', sans-serif;
+    font-size: 7.5pt;
+    color: #8a93a6;
+  }
+  @bottom-right {
+    content: counter(page);
+    font-family: 'DejaVu Sans', sans-serif;
+    font-size: 8pt;
+    color: #5b6577;
+  }
+}
+
+@page cover { margin: 0; }
+@page :first { margin: 0; }
+
+:root {
+  --ink: #1c2230;
+  --ink-soft: #3a4356;
+  --muted: #6b7488;
+  --line: #e2e6ee;
+  --diamond: #0e8c8c;       /* teal diamante */
+  --diamond-dk: #0a6a6a;
+  --graphite: #232a3a;       /* carbono */
+  --amber: #c8761a;          /* alerta / pressão */
+  --amber-bg: #fdf4e6;
+  --green: #1f8a4c;
+  --green-bg: #ecf7f0;
+  --red: #b3322a;
+  --red-bg: #fbecea;
+  --code-bg: #f5f7fa;
+  --diamond-bg: #e8f4f4;
+  --paper: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'DejaVu Serif', Georgia, serif;
+  color: var(--ink);
+  font-size: 10.2pt;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ---------- CAPA ---------- */
+.cover {
+  page: cover;
+  background: linear-gradient(160deg, #11151f 0%, #1c2230 45%, #232a3a 100%);
+  color: #fff;
+  height: 297mm;
+  padding: 38mm 24mm 26mm 24mm;
+  position: relative;
+  page-break-after: always;
+}
+.cover .kicker {
+  font-family: 'DejaVu Sans', sans-serif;
+  letter-spacing: 3px;
+  font-size: 9pt;
+  text-transform: uppercase;
+  color: #5fd0d0;
+  margin-bottom: 18mm;
+}
+.cover h1 {
+  font-family: 'DejaVu Sans', sans-serif;
+  font-size: 40pt;
+  line-height: 1.04;
+  font-weight: 700;
+  margin: 0 0 6mm 0;
+  color: #ffffff;
+}
+.cover h1 .accent { color: #5fd0d0; }
+.cover .sub {
+  font-size: 13pt;
+  color: #c3cad8;
+  font-family: 'DejaVu Sans', sans-serif;
+  max-width: 130mm;
+  line-height: 1.45;
+}
+.cover .diamond-rule {
+  width: 60mm; height: 3px;
+  background: linear-gradient(90deg, #5fd0d0, transparent);
+  margin: 12mm 0;
+}
+.cover .motto {
+  position: absolute;
+  bottom: 30mm; left: 24mm; right: 24mm;
+  font-style: italic;
+  font-size: 11pt;
+  color: #9fb0c4;
+  border-left: 3px solid #5fd0d0;
+  padding-left: 8mm;
+}
+.cover .meta {
+  position: absolute;
+  bottom: 16mm; left: 24mm;
+  font-family: 'DejaVu Sans', sans-serif;
+  font-size: 8.5pt;
+  color: #7c879b;
+  letter-spacing: 0.5px;
+}
+
+/* ---------- TIPOGRAFIA ---------- */
+h1, h2, h3, h4 {
+  font-family: 'DejaVu Sans', sans-serif;
+  color: var(--graphite);
+  line-height: 1.2;
+}
+h2 {
+  font-size: 19pt;
+  margin: 0 0 4mm 0;
+  padding-bottom: 2.5mm;
+  border-bottom: 2px solid var(--diamond);
+  color: var(--diamond-dk);
+  page-break-after: avoid;
+}
+h2 .num {
+  display: inline-block;
+  background: var(--diamond);
+  color: #fff;
+  font-size: 12pt;
+  padding: 0.5mm 3mm;
+  border-radius: 3px;
+  margin-right: 3mm;
+  vertical-align: middle;
+}
+h3 {
+  font-size: 13pt;
+  margin: 6mm 0 2mm 0;
+  color: var(--graphite);
+  page-break-after: avoid;
+}
+h4 {
+  font-size: 10.5pt;
+  margin: 4mm 0 1.5mm 0;
+  color: var(--diamond-dk);
+  page-break-after: avoid;
+}
+p { margin: 0 0 2.5mm 0; }
+strong { color: var(--graphite); }
+a { color: var(--diamond-dk); text-decoration: none; }
+
+.section { page-break-before: always; }
+
+/* ---------- LISTAS ---------- */
+ul, ol { margin: 0 0 3mm 0; padding-left: 6mm; }
+li { margin-bottom: 1.2mm; }
+
+/* ---------- CÓDIGO ---------- */
+code {
+  font-family: 'DejaVu Sans Mono', monospace;
+  font-size: 8.6pt;
+  background: var(--code-bg);
+  color: #b3322a;
+  padding: 0.3mm 1.2mm;
+  border-radius: 2px;
+}
+pre {
+  background: var(--graphite);
+  color: #e8edf5;
+  font-family: 'DejaVu Sans Mono', monospace;
+  font-size: 8.4pt;
+  line-height: 1.45;
+  padding: 3.5mm 4mm;
+  border-radius: 4px;
+  border-left: 3px solid var(--diamond);
+  overflow-x: hidden;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 2mm 0 3.5mm 0;
+  page-break-inside: avoid;
+}
+pre code { background: none; color: #e8edf5; padding: 0; font-size: 8.4pt; }
+
+/* ---------- TABELAS ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'DejaVu Sans', sans-serif;
+  font-size: 8.6pt;
+  margin: 2mm 0 4mm 0;
+  page-break-inside: avoid;
+}
+th {
+  background: var(--graphite);
+  color: #fff;
+  text-align: left;
+  padding: 2mm 2.5mm;
+  font-weight: 700;
+}
+td {
+  padding: 1.8mm 2.5mm;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+tr:nth-child(even) td { background: #f7f9fc; }
+
+/* ---------- CALLOUTS ---------- */
+.box {
+  padding: 3mm 4mm;
+  border-radius: 4px;
+  margin: 3mm 0;
+  font-family: 'DejaVu Sans', sans-serif;
+  font-size: 9pt;
+  line-height: 1.45;
+  page-break-inside: avoid;
+}
+.box .tag {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 7.5pt;
+  display: block;
+  margin-bottom: 1.5mm;
+}
+.box.mc { background: var(--diamond-bg); border-left: 3px solid var(--diamond); }
+.box.mc .tag { color: var(--diamond-dk); }
+.box.warn { background: var(--amber-bg); border-left: 3px solid var(--amber); }
+.box.warn .tag { color: var(--amber); }
+.box.danger { background: var(--red-bg); border-left: 3px solid var(--red); }
+.box.danger .tag { color: var(--red); }
+.box.ok { background: var(--green-bg); border-left: 3px solid var(--green); }
+.box.ok .tag { color: var(--green); }
+
+/* ---------- SUMÁRIO ---------- */
+.toc { page-break-after: always; }
+.toc h2 { border: none; color: var(--graphite); }
+.toc ol { list-style: none; padding: 0; counter-reset: toc; }
+.toc li {
+  font-family: 'DejaVu Sans', sans-serif;
+  font-size: 10.5pt;
+  padding: 2mm 0;
+  border-bottom: 1px dotted var(--line);
+  counter-increment: toc;
+}
+.toc li::before {
+  content: counter(toc, decimal-leading-zero);
+  color: var(--diamond);
+  font-weight: 700;
+  margin-right: 4mm;
+}
+.toc li .desc { color: var(--muted); font-size: 8.5pt; display: block; margin-left: 11mm; }
+
+/* ---------- INTRO / lead ---------- */
+.lead {
+  font-size: 11.5pt;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  border-left: 3px solid var(--diamond);
+  padding-left: 6mm;
+  margin: 4mm 0;
+}
+
+.cheatcard {
+  background: #f7f9fc;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 3mm 4mm;
+  margin: 3mm 0;
+  page-break-inside: avoid;
+}
+.cheatcard h4 { margin-top: 0; }
+
+hr { border: none; border-top: 1px solid var(--line); margin: 5mm 0; }
+
+.small { font-size: 8.5pt; color: var(--muted); font-family: 'DejaVu Sans', sans-serif; }

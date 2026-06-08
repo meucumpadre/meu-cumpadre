@@ -1,0 +1,877 @@
+{
+  "_meta": {
+    "registro": "MC-Registro-Unidades-Agenticas",
+    "spec": "MC-SPEC-RegistroAgentes-ASE v0.1 (SELADO · PR #19)",
+    "gerado_de_commit": "eb4eafa",
+    "gerador": ".claude/registro/gerar-registro.py v0.1",
+    "principio": "gerado, não mantido · projeção determinística do .claude/",
+    "zona": "Verde · zero PII",
+    "nota": "derivado · NÃO canônico por si (canônico = os artefatos). NÃO selado, NÃO no Vault."
+  },
+  "cobertura": {
+    "total_artefatos": 18,
+    "instrumentadas_completas": 18,
+    "instrumentadas_incompletas": 0,
+    "nao_instrumentadas": 0,
+    "pct_instrumentado": 100
+  },
+  "unidades": [
+    {
+      "id": "checklist-docs",
+      "nome": "Checklist de Documentos por Benefício",
+      "tipo": "skill",
+      "versao": "n/d",
+      "status": "INSTALADO",
+      "papel": "Lista documentos necessários por tipo de benefício previdenciário",
+      "gatilhos": [
+        "/checklist-docs",
+        "checklist de documentos",
+        "que documentos preciso"
+      ],
+      "entrega": "checklist de documentos por benefício",
+      "metodo_fonte": "[FONTE PENDENTE: POPs Jornada E0-E7]",
+      "instancia_aci": "transversal",
+      "camada_ase": "L2",
+      "compoe_com": [],
+      "nao_confundir_com": [],
+      "gate": "R1",
+      "zona": "Verde",
+      "lgpd_nota": "genérico por benefício · sem PII",
+      "vedacoes_honradas": [
+        "Proof-First",
+        "D>C>V"
+      ],
+      "para_no_gate": "ferramenta operacional · não escreve canônico",
+      "custo": {
+        "gasta_agente": false,
+        "opt_in": false,
+        "fan_out": null
+      },
+      "emite_audit": false,
+      "depende_de": [],
+      "_origem": ".claude/skills/checklist-docs/SKILL.md",
+      "_artefato": "skill",
+      "_artefatos": [
+        ".claude/skills/checklist-docs/SKILL.md"
+      ]
+    },
+    {
+      "id": "diario",
+      "nome": "Diário Operacional do Founder",
+      "tipo": "skill",
+      "versao": "n/d",
+      "status": "INSTALADO",
+      "papel": "Cria nota diária padronizada para registro operacional do Founder",
+      "gatilhos": [
+        "/diario",
+        "diário",
+        "registrar o dia"
+      ],
+      "entrega": "nota diária padronizada",
+      "metodo_fonte": "[FONTE PENDENTE]",
+      "instancia_aci": "C1",
+      "camada_ase": "L1",
+      "compoe_com": [],
+      "nao_confundir_com": [],
+      "gate": "R1",
+      "zona": "Verde",
+      "lgpd_nota": "registro interno · sem PII de cliente",
+      "vedacoes_honradas": [
+        "D>C>V"
+      ],
+      "para_no_gate": "escreve em C1 (Documentação), não no Vault canônico",
+      "custo": {
+        "gasta_agente": false,
+        "opt_in": false,
+        "fan_out": null
+      },
+      "emite_audit": false,
+      "depende_de": [],
+      "_origem": ".claude/skills/diario/SKILL.md",
+      "_artefato": "skill",
+      "_artefatos": [
+        ".claude/skills/diario/SKILL.md"
+      ]
+    },
+    {
+      "id": "handoff-juridico",
+      "nome": "Handoff Jurídico (E6 → Dra. Juliana)",
+      "tipo": "skill",
+      "versao": "n/d",
+      "status": "INSTALADO",
+      "papel": "Prepara dossiê completo para transferência de caso à Dra. Juliana na fase E6 (recursal/judicial)",
+      "gatilhos": [
+        "/handoff-juridico",
+        "handoff",
+        "transferir para Juliana",
+        "fase E6",
+        "preparar recurso"
+      ],
+      "entrega": "dossiê de transferência formatado para atuação advocatícia",
+      "metodo_fonte": "MC-PROCESSO-Jornada_E0E7 (E6) · MC-PARTNER-JulianaMelo",
+      "instancia_aci": "C5",
+      "camada_ase": "L3",
+      "compoe_com": [],
+      "nao_confundir_com": [],
+      "gate": "R3",
+      "zona": "Vermelha",
+      "lgpd_nota": "PII de caso (CPF/NB/CID) · trafega sob stack soberana · Firewall OAB: atividade-fim é da advogada, MC só prepara o handoff",
+      "vedacoes_honradas": [
+        "Firewall-OAB",
+        "LGPD",
+        "D>C>V",
+        "Proof-First"
+      ],
+      "para_no_gate": "handoff humano · MC NÃO pratica advocacia nem promete resultado",
+      "custo": {
+        "gasta_agente": false,
+        "opt_in": false,
+        "fan_out": null
+      },
+      "emite_audit": false,
+      "depende_de": [],
+      "_origem": ".claude/skills/handoff-juridico/SKILL.md",
+      "_artefato": "skill",
+      "_artefatos": [
+        ".claude/skills/handoff-juridico/SKILL.md"
+      ]
+    },
+    {
+      "id": "mc-audit",
+      "nome": "mc-audit (emissor de telemetria · audit JSONL)",
+      "tipo": "hook",
+      "versao": "v0.1",
+      "status": "PROVISIONAL",
+      "papel": "Hook emissor que apensa UMA linha JSONL Zona-Verde por invocação de UA (só metadado de governança do Registro · nunca payload) — o hook-in do campo emite_audit, fonte da alça de otimização L5",
+      "gatilhos": [
+        "PreToolUse/PostToolUse sobre Skill/Task/Agent (quando fiado em settings.json · ato R2)",
+        "echo '{...}' | python3 .claude/hooks/mc-audit.py (teste)"
+      ],
+      "entrega": "1 linha apensa em .claude/registro/audit/audit.jsonl (conjunto fechado de chaves · zero payload)",
+      "metodo_fonte": "MC-SPEC-RegistroAgentes-ASE-v0_1:112 (Bloco E · emite_audit) · §6 Fase 4",
+      "instancia_aci": "transversal",
+      "camada_ase": "L5",
+      "compoe_com": [
+        "mc-compasso-sweep",
+        "mc-dossie-proof-first",
+        "mc-pre-selagem",
+        "squad-r3"
+      ],
+      "nao_confundir_com": [
+        {
+          "id": "mc-lint",
+          "motivo": "mc-lint é Stop hook block-mode que ENFORÇA proibições (gate mecânico); mc-audit é observação passiva fail-safe que NUNCA bloqueia"
+        },
+        {
+          "id": "gerar-registro",
+          "motivo": "o gerador faz o SNAPSHOT byte-idêntico do .claude/ (L1); mc-audit grava a SÉRIE TEMPORAL de eventos de execução (L5)"
+        }
+      ],
+      "gate": "R2",
+      "zona": "Verde",
+      "lgpd_nota": "FIREWALL: lê só o id da UA (chave whitelisted) · descarta args/prompt/paths · grava só conjunto fechado de metadado de governança · session_id hasheado sha256[:8] · zero PII por construção",
+      "vedacoes_honradas": [
+        "Proof-First",
+        "D>C>V",
+        "Firewall-OAB",
+        "LGPD",
+        "Zona-Verde",
+        "#50.2"
+      ],
+      "para_no_gate": "true — DEFAULT OFF (não fiado em settings.json). Ligar a captura ao vivo é o ato R2 do Founder; o hook não se autoinstala, não sela, não escreve no Vault",
+      "custo": {
+        "gasta_agente": false,
+        "opt_in": true,
+        "fan_out": null
+      },
+      "emite_audit": false,
+      "depende_de": [
+        "registro-unidades-agenticas.json"
+      ],
+      "_origem": ".claude/hooks/mc-audit.py",
+      "_artefato": "hook",
+      "_artefatos": [
+        ".claude/hooks/mc-audit.py",
+        ".claude/hooks/mc-audit.rua.yml"
+      ]
+    },
+    {
+      "id": "mc-compasso-sweep",
+      "nome": "Compasso Sweep — curadoria de fontes <5%",
+      "tipo": "skill",
+      "versao": "v0.1",
+      "status": "INSTALADO",
+      "data": "2026-06-02",
+      "papel": "Curadoria por exclusão de fontes públicas sob a MC-RÉGUA-COMPASSO (<5%); entrega pronta p/ NotebookLM",
+      "gatilhos": [
+        "/mc-compasso-sweep TEMA | RECORTE",
+        "passar no compasso",
+        "garimpar/curar fontes",
+        "régua <5%",
+        "bloco de URLs puro"
+      ],
+      "entrega": "tabela curada + BLOCO de URLs puro + balotes com motivo + cobertura por pilar",
+      "metodo_fonte": "MC-RÉGUA-COMPASSO-Metodo-v1_0-2026-0601.md (§1.4 :59-78 · §2 :108-171 · §4 :233-332 · §6.1 :384-399 · §7 :492-516)",
+      "instancia_aci": "transversal",
+      "camada_ase": "L2-L3",
+      "compoe_com": [],
+      "nao_confundir_com": [
+        {
+          "id": "mc-especimen-autoevolutivo",
+          "motivo": "aquele é motor de método de CASOS (#45/#46/#47); este é curadoria de FONTES"
+        },
+        {
+          "id": "squad-r3",
+          "motivo": "aquele é parecer de COMPLIANCE; este é inteligência de mercado pública"
+        }
+      ],
+      "gate": "R1",
+      "zona": "Verde",
+      "lgpd_nota": "Caderno NotebookLM é público (§6.2 :425). CPF/NB/CID/CNIS nunca entram.",
+      "vedacoes_honradas": [
+        "Proof-First",
+        "Zona-Verde",
+        "D>C>V",
+        "Firewall-OAB"
+      ],
+      "para_no_gate": "true — NÃO injeta no NotebookLM, NÃO sela, NÃO escreve no Vault; devolve a colheita ao Founder",
+      "custo": {
+        "gasta_agente": true,
+        "opt_in": true,
+        "fan_out": "N (1 caçador por pilar, em paralelo)"
+      },
+      "regressao": {
+        "fixture": "golden fixture WhatsApp Cloud API (rodar sem args)",
+        "veredito_esperado": "2 admitidas + 4 balotes → regressao_fixture.veredito = PASSOU"
+      },
+      "emite_audit": false,
+      "depende_de": [
+        "WebSearch",
+        "WebFetch",
+        "Workflow tool"
+      ],
+      "_origem": ".claude/skills/mc-compasso-sweep/SKILL.md",
+      "_artefato": "skill",
+      "_artefatos": [
+        ".claude/skills/mc-compasso-sweep/SKILL.md",
+        ".claude/workflows/mc-compasso-sweep.workflow.js (workflow executor)"
+      ]
+    },
+    {
+      "id": "mc-dossie-proof-first",
+      "nome": "Dossiê Proof-First de Alegações",
+      "tipo": "skill",
+      "versao": "v0.1",
+      "status": "INSTALADO",
+      "papel": "Decompõe um tema em proposições verificáveis (lado A + contraprova B), carimba estado de prova, sela SIV",
+      "gatilhos": [
+        "/mc-dossie-proof-first",
+        "dossiê proof-first",
+        "lastrear esta alegação",
+        "linha de evidência",
+        "provar com fonte:linha"
+      ],
+      "entrega": "Linha de Evidência + tabela + bloco SIV (SHA-256)",
+      "metodo_fonte": "CP-MC (5 vedações) · método Proof-First (Lei+Evidência+hash)",
+      "instancia_aci": "transversal",
+      "camada_ase": "L2-L3",
+      "compoe_com": [],
+      "nao_confundir_com": [
+        {
+          "id": "handoff-juridico",
+          "motivo": "este NÃO é o dossiê probatório do cidadão (atividade-meio sob R3, vive no C1); é dossiê de doutrina/método/mercado"
+        }
+      ],
+      "gate": "R1",
+      "zona": "Verde",
+      "lgpd_nota": "doutrina/método/métrica/norma/mercado · NUNCA ingere PII de cliente",
+      "vedacoes_honradas": [
+        "Proof-First",
+        "Zona-Verde",
+        "Firewall-OAB",
+        "D>C>V"
+      ],
+      "para_no_gate": "NÃO sela, NÃO escreve no Vault · devolve a Linha de Evidência",
+      "custo": {
+        "gasta_agente": true,
+        "opt_in": true,
+        "fan_out": "lado A + lado B"
+      },
+      "emite_audit": false,
+      "depende_de": [
+        "WebSearch",
+        "WebFetch"
+      ],
+      "_origem": ".claude/skills/mc-dossie-proof-first/SKILL.md",
+      "_artefato": "skill",
+      "_artefatos": [
+        ".claude/skills/mc-dossie-proof-first/SKILL.md",
+        ".claude/workflows/mc-dossie-proof-first.workflow.js (workflow executor)"
+      ]
+    },
+    {
+      "id": "mc-especimen-autoevolutivo",
+      "nome": "Motor Espécimen Auto-Evolutivo (#45/#46/#47)",
+      "tipo": "skill",
+      "versao": "vN",
+      "status": "INSTALADO",
+      "papel": "Engenharia reversa de UM espécimen de-identificado + diff do template-mestre + regressão Hib001 + proposta upgrade vN→vN+1",
+      "gatilhos": [
+        "/mc-especimen-autoevolutivo",
+        "espécimen auto-evolutivo",
+        "motor #45/#46/#47",
+        "regressão Hib001",
+        "diff do template-mestre"
+      ],
+      "entrega": "rascunhos: Trilha B + diff + regressão + proposta de upgrade + nota de catálogo",
+      "metodo_fonte": "Princípios #45 Diamante Bifronte · #46 Eng. Reversa · #47 DNA Precede Ato · golden fixture Hib001",
+      "instancia_aci": "transversal",
+      "camada_ase": "L2-L3",
+      "compoe_com": [],
+      "nao_confundir_com": [
+        {
+          "id": "mc-compasso-sweep",
+          "motivo": "aquele é curadoria de FONTES; este é motor de método de CASOS"
+        },
+        {
+          "id": "squad-r3",
+          "motivo": "aquele é parecer de COMPLIANCE; este evolui o método do caso"
+        }
+      ],
+      "gate": "R3",
+      "zona": "Verde",
+      "lgpd_nota": "opera SÓ no método/Zona Verde (Firewall OAB) · PII de cliente NUNCA entra (vive no C1 sob R3)",
+      "vedacoes_honradas": [
+        "Firewall-OAB",
+        "Proof-First",
+        "Zona-Verde",
+        "D>C>V"
+      ],
+      "para_no_gate": "NÃO sela, NÃO escreve no Vault · gate humano Founder + Dra. Juliana (R3)",
+      "custo": {
+        "gasta_agente": true,
+        "opt_in": true,
+        "fan_out": "por fase do motor"
+      },
+      "emite_audit": false,
+      "depende_de": [],
+      "_origem": ".claude/skills/mc-especimen-autoevolutivo/SKILL.md",
+      "_artefato": "skill",
+      "_artefatos": [
+        ".claude/skills/mc-especimen-autoevolutivo/SKILL.md",
+        ".claude/workflows/mc-especimen-autoevolutivo.workflow.js (workflow executor)"
+      ]
+    },
+    {
+      "id": "mc-grok-context-engineer",
+      "nome": "Engenheiro de Contexto Claude→Grok Build",
+      "tipo": "agent",
+      "versao": "v0.1",
+      "status": "PROVISIONAL",
+      "papel": "Produz comando/prompt/pacote de contexto PRECISO e FIREWALLADO p/ o Founder colar no terminal Grok Build (Plano de Engenharia)",
+      "gatilhos": [
+        "subagente mc-grok-context-engineer",
+        "próximo comando p/ Grok Build",
+        "pacote de contexto firewallado"
+      ],
+      "entrega": "pacote de contexto/prompt pronto p/ colar no Grok",
+      "metodo_fonte": "harness Grok Build · DNA MC (firewall)",
+      "instancia_aci": "transversal",
+      "camada_ase": "L3",
+      "compoe_com": [],
+      "nao_confundir_com": [],
+      "gate": "R1",
+      "zona": "Verde",
+      "lgpd_nota": "SOMENTE Zona Verde · zero B2C · zero PII/dado sensível · NÃO usar p/ caso de cliente ou atividade-fim jurídica",
+      "vedacoes_honradas": [
+        "Zona-Verde",
+        "Firewall-OAB",
+        "Proof-First",
+        "LGPD"
+      ],
+      "para_no_gate": "produz pacote p/ o Founder colar · não executa no Grok",
+      "custo": {
+        "gasta_agente": true,
+        "opt_in": true,
+        "fan_out": null
+      },
+      "emite_audit": false,
+      "depende_de": [
+        "WebSearch",
+        "WebFetch"
+      ],
+      "_origem": ".claude/agents/mc-grok-context-engineer.md",
+      "_artefato": "agent",
+      "_artefatos": [
+        ".claude/agents/mc-grok-context-engineer.md"
+      ]
+    },
+    {
+      "id": "mc-lint",
+      "nome": "mc-lint (Stop hook · Proibições Absolutas)",
+      "tipo": "hook",
+      "versao": "v0.1",
+      "status": "INSTALADO",
+      "papel": "Stop hook block-mode que enforça as Proibições Absolutas do CLAUDE.md de forma determinística (advisory → verificação)",
+      "gatilhos": [
+        "Stop hook (automático ao fim do turno)",
+        "python3 .claude/hooks/mc-lint.py --all"
+      ],
+      "entrega": "bloqueia o Stop + lista de violações (label · arquivo:linha · correção) se houver hit",
+      "metodo_fonte": "CLAUDE.md · Proibições Absolutas · ADR-007/009a/014",
+      "instancia_aci": "transversal",
+      "camada_ase": "L4",
+      "compoe_com": [
+        "mc-pre-selagem"
+      ],
+      "nao_confundir_com": [
+        {
+          "id": "sister-ancia",
+          "motivo": "mc-lint é determinístico (regex de tokens vedados); a sister-ancia é revisão adversarial semântica"
+        }
+      ],
+      "gate": "R1",
+      "zona": "Verde",
+      "lgpd_nota": "varre só linhas adicionadas em .md/.txt/.json · sem PII",
+      "vedacoes_honradas": [
+        "Proof-First",
+        "D>C>V",
+        "Firewall-OAB",
+        "LGPD"
+      ],
+      "para_no_gate": "É um gate mecânico (block-mode) · bloqueia o turno até corrigir; não sela nem conserta",
+      "custo": {
+        "gasta_agente": false,
+        "opt_in": false,
+        "fan_out": null
+      },
+      "emite_audit": false,
+      "depende_de": [
+        "git"
+      ],
+      "_origem": ".claude/hooks/mc-lint.py",
+      "_artefato": "hook",
+      "_artefatos": [
+        ".claude/hooks/mc-lint.py",
+        ".claude/hooks/mc-lint.rua.yml"
+      ]
+    },
+    {
+      "id": "mc-pre-selagem",
+      "nome": "Ritual de Pré-Selagem (gate de qualidade)",
+      "tipo": "skill",
+      "versao": "v0.1",
+      "status": "INSTALADO",
+      "papel": "Gate antes de selar no Vault: 3 checagens (mc-lint · sister-ancia · rito/gate) → veredito PODE-SELAR/CONDICIONADO/BLOQUEADO",
+      "gatilhos": [
+        "/mc-pre-selagem",
+        "pré-selagem",
+        "posso selar isto?",
+        "checar antes do vault"
+      ],
+      "entrega": "veredito + bloqueios + gates pendentes + rito requerido",
+      "metodo_fonte": "sister-ancia (9 eixos) · mc-lint · ritos R1/R2/R3 · ADR-011",
+      "instancia_aci": "transversal",
+      "camada_ase": "L4",
+      "compoe_com": [
+        "sister-ancia",
+        "mc-lint"
+      ],
+      "nao_confundir_com": [
+        {
+          "id": "squad-r3",
+          "motivo": "aquele é parecer de compliance de política/preço; este é gate de qualidade de QUALQUER artefato"
+        },
+        {
+          "id": "sister-ancia",
+          "motivo": "a sister-ancia é UMA das 3 camadas que a pré-selagem orquestra"
+        }
+      ],
+      "gate": "R1",
+      "zona": "Verde",
+      "lgpd_nota": "alvo que toca OAB/LGPD/PII ⇒ catraca dura R3 (Dra. Juliana)",
+      "vedacoes_honradas": [
+        "D>C>V",
+        "Proof-First",
+        "Firewall-OAB",
+        "LGPD"
+      ],
+      "para_no_gate": "NÃO sela, NÃO escreve, NÃO conserta · devolve go/no-go ao humano",
+      "custo": {
+        "gasta_agente": true,
+        "opt_in": true,
+        "fan_out": "3 checagens paralelas"
+      },
+      "emite_audit": false,
+      "depende_de": [
+        "sister-ancia",
+        "mc-lint"
+      ],
+      "_origem": ".claude/skills/mc-pre-selagem/SKILL.md",
+      "_artefato": "skill",
+      "_artefatos": [
+        ".claude/skills/mc-pre-selagem/SKILL.md",
+        ".claude/workflows/mc-pre-selagem.workflow.js (workflow executor)"
+      ]
+    },
+    {
+      "id": "mc-prompt",
+      "nome": "Forja de Metaprompts MC",
+      "tipo": "skill",
+      "versao": "n/d",
+      "status": "INSTALADO",
+      "papel": "Gera/otimiza system prompts de excelência (Anthropic best-practices + DNA MC) p/ instâncias claude.ai",
+      "gatilhos": [
+        "/mc-prompt",
+        "criar prompt",
+        "metaprompt",
+        "system prompt",
+        "otimizar prompt"
+      ],
+      "entrega": "prompt formatado com o pé MC + ativação por comando",
+      "metodo_fonte": "CATALOGO-TECNICAS + TEMPLATE-MC-PROMPT (na própria skill)",
+      "instancia_aci": "transversal",
+      "camada_ase": "L2",
+      "compoe_com": [],
+      "nao_confundir_com": [],
+      "gate": "R1",
+      "zona": "Verde",
+      "lgpd_nota": "forja de prompt · sem PII",
+      "vedacoes_honradas": [
+        "Proof-First",
+        "D>C>V",
+        "Firewall-OAB"
+      ],
+      "para_no_gate": "devolve o prompt · não executa nem sela",
+      "custo": {
+        "gasta_agente": false,
+        "opt_in": false,
+        "fan_out": null
+      },
+      "emite_audit": false,
+      "depende_de": [],
+      "_origem": ".claude/skills/mc-prompt/SKILL.md",
+      "_artefato": "skill",
+      "_artefatos": [
+        ".claude/skills/mc-prompt/SKILL.md"
+      ]
+    },
+    {
+      "id": "meu-cumpadre-orquestrador-mestre",
+      "nome": "Orquestrador Mestre MC (SUPERSEDED · tombstone)",
+      "tipo": "skill",
+      "versao": "v3.1.0-SUPERSEDED",
+      "status": "SUPERSEDED",
+      "papel": "[SUPERSEDED] Era a skill mestre monolítica de orquestração/identidade; aposentada — cada função migrou para fonte canônica (ver mapa no corpo)",
+      "gatilhos": [
+        "/meu-cumpadre-orquestrador-mestre (retorna o redirecionamento)"
+      ],
+      "entrega": "redirecionamento para as fontes canônicas + ponteiro p/ o legado",
+      "metodo_fonte": "MC-PROPOSTA-Aposentadoria-OrquestradorMestre-v0_1 · conteúdo em 99-ARQUIVO-Legado/skills/",
+      "instancia_aci": "transversal",
+      "camada_ase": "L3",
+      "compoe_com": [],
+      "nao_confundir_com": [
+        {
+          "id": "orquestracao",
+          "motivo": "aquele é protocolo genérico de plan-mode do Code (ATIVO); este é o monólito MC aposentado"
+        }
+      ],
+      "gate": "R1",
+      "zona": "Verde",
+      "lgpd_nota": "tombstone · sem conteúdo operacional · sem PII",
+      "vedacoes_honradas": [
+        "D>C>V",
+        "Firewall-OAB",
+        "Proof-First"
+      ],
+      "para_no_gate": "tombstone · só redireciona · não orquestra nem sela",
+      "custo": {
+        "gasta_agente": false,
+        "opt_in": false,
+        "fan_out": null
+      },
+      "emite_audit": false,
+      "depende_de": [],
+      "_origem": ".claude/skills/meu-cumpadre-orquestrador-mestre/SKILL.md",
+      "_artefato": "skill",
+      "_artefatos": [
+        ".claude/skills/meu-cumpadre-orquestrador-mestre/SKILL.md"
+      ]
+    },
+    {
+      "id": "novo-cliente",
+      "nome": "Entrada de Novo Cliente",
+      "tipo": "skill",
+      "versao": "n/d",
+      "status": "INSTALADO",
+      "papel": "Cria nota padronizada para novo cliente no vault (início da jornada previdenciária)",
+      "gatilhos": [
+        "/novo-cliente",
+        "novo cliente",
+        "cadastrar cliente",
+        "abrir caso"
+      ],
+      "entrega": "nota de cliente padronizada",
+      "metodo_fonte": "Jornada E0-E7 (E0/E1)",
+      "instancia_aci": "C1",
+      "camada_ase": "L1",
+      "compoe_com": [],
+      "nao_confundir_com": [],
+      "gate": "R1",
+      "zona": "Vermelha",
+      "lgpd_nota": "RECEBE CPF · PII Vermelha · NÃO persistir PII plain text no Vault (#5/#8) · senha gov.br só Bitwarden (ADR-009a)",
+      "vedacoes_honradas": [
+        "LGPD",
+        "D>C>V",
+        "Firewall-OAB"
+      ],
+      "para_no_gate": "intake operacional · não pratica advocacia nem promete prazo",
+      "custo": {
+        "gasta_agente": false,
+        "opt_in": false,
+        "fan_out": null
+      },
+      "emite_audit": false,
+      "depende_de": [],
+      "_origem": ".claude/skills/novo-cliente/SKILL.md",
+      "_artefato": "skill",
+      "_artefatos": [
+        ".claude/skills/novo-cliente/SKILL.md"
+      ]
+    },
+    {
+      "id": "orquestracao",
+      "nome": "Protocolo de Orquestração (plan-mode)",
+      "tipo": "skill",
+      "versao": "n/d",
+      "status": "INSTALADO",
+      "papel": "Ativa modo de planejamento + subagentes + verificação para tarefas complexas (3+ passos)",
+      "gatilhos": [
+        "/orquestracao",
+        "planeje",
+        "tarefa complexa",
+        "orquestre",
+        "monte um plano"
+      ],
+      "entrega": "plano + delegação a subagentes + verificação",
+      "metodo_fonte": "best-practices de orquestração Claude Code",
+      "instancia_aci": "transversal",
+      "camada_ase": "L2",
+      "compoe_com": [],
+      "nao_confundir_com": [
+        {
+          "id": "meu-cumpadre-orquestrador-mestre",
+          "motivo": "este é genérico (Code plan-mode); o mestre é o roteador ÉTICO do produto MC"
+        }
+      ],
+      "gate": "R1",
+      "zona": "Verde",
+      "lgpd_nota": "orquestração de tarefa · sem PII",
+      "vedacoes_honradas": [
+        "D>C>V",
+        "Proof-First"
+      ],
+      "para_no_gate": "planeja e delega · não sela",
+      "custo": {
+        "gasta_agente": true,
+        "opt_in": false,
+        "fan_out": "por subagente"
+      },
+      "emite_audit": false,
+      "depende_de": [],
+      "_origem": ".claude/skills/orquestracao/SKILL.md",
+      "_artefato": "skill",
+      "_artefatos": [
+        ".claude/skills/orquestracao/SKILL.md"
+      ]
+    },
+    {
+      "id": "sister-ancia",
+      "nome": "Sister Anciã (revisor adversarial)",
+      "tipo": "agent",
+      "versao": "n/d",
+      "status": "INSTALADO",
+      "papel": "Revisor adversarial doutrinário em contexto fresco (9 eixos): D>C>V, Firewall OAB, Proof-First, LGPD, Inversão Cósmica, valores superados, confusão de instância, gate/versão",
+      "gatilhos": [
+        "subagente sister-ancia",
+        "revisar artefato/diff antes de selar",
+        "revisão adversarial"
+      ],
+      "entrega": "lista de gaps por severidade (🔴/🟡/🟢) + veredito-sugestão",
+      "metodo_fonte": "SISTEMA-PROMPT-SisterAncia · 9 eixos doutrinários",
+      "instancia_aci": "C3.2",
+      "camada_ase": "L4",
+      "compoe_com": [],
+      "nao_confundir_com": [
+        {
+          "id": "mc-pre-selagem",
+          "motivo": "a pré-selagem ORQUESTRA a sister-ancia + mc-lint + rito; a sister é UMA camada"
+        }
+      ],
+      "gate": "R1",
+      "zona": "Verde",
+      "lgpd_nota": "revisa artefatos MC (Zona Verde) · não ingere PII de cliente",
+      "vedacoes_honradas": [
+        "Proof-First",
+        "D>C>V",
+        "Firewall-OAB",
+        "LGPD"
+      ],
+      "para_no_gate": "REPORTA gaps · NÃO conserta, NÃO sela",
+      "custo": {
+        "gasta_agente": true,
+        "opt_in": true,
+        "fan_out": null
+      },
+      "emite_audit": false,
+      "depende_de": [],
+      "_origem": ".claude/agents/sister-ancia.md",
+      "_artefato": "agent",
+      "_artefatos": [
+        ".claude/agents/sister-ancia.md"
+      ]
+    },
+    {
+      "id": "squad-r3",
+      "nome": "Squad Causal R3 (parecer de compliance MC)",
+      "tipo": "skill",
+      "versao": "n/d",
+      "status": "INSTALADO",
+      "papel": "Parecer de compliance/OAB do próprio MC (autorregulação) com teste adversarial Zilda-STF sobre política/preço/cláusula/produto",
+      "gatilhos": [
+        "/squad-r3",
+        "squad r3",
+        "parecer adversarial",
+        "isso fere o firewall/compliance?"
+      ],
+      "entrega": "parecer adversarial (Coletor→Tesista→Red-Team→Cascata D→C→V→Escriba) parando no Gate R3",
+      "metodo_fonte": "Cascata D>C>V · Teste Zilda-STF · Router-Ethics",
+      "instancia_aci": "C3.1",
+      "camada_ase": "L4",
+      "compoe_com": [
+        "squad-r3-pipeline",
+        "squad-r3-redteam-core"
+      ],
+      "nao_confundir_com": [
+        {
+          "id": "mc-pre-selagem",
+          "motivo": "aquele é gate de qualidade de artefato; este é parecer de compliance de política/preço"
+        },
+        {
+          "id": "meu-cumpadre-orquestrador-mestre",
+          "motivo": "NÃO serve p/ análise jurídica do caso de um cidadão (isso é Router-Ethics→Rota C→advogada)"
+        }
+      ],
+      "gate": "R3",
+      "zona": "Verde",
+      "lgpd_nota": "autorregulação do MC (política/preço/cláusula) · NÃO é caso de cidadão · sem PII",
+      "vedacoes_honradas": [
+        "Firewall-OAB",
+        "D>C>V",
+        "Proof-First",
+        "Zilda-STF"
+      ],
+      "para_no_gate": "para no Gate R3 humano · NÃO sela",
+      "custo": {
+        "gasta_agente": true,
+        "opt_in": true,
+        "fan_out": "pipeline (5 papéis)"
+      },
+      "emite_audit": false,
+      "depende_de": [],
+      "_origem": ".claude/skills/squad-r3/SKILL.md",
+      "_artefato": "skill",
+      "_artefatos": [
+        ".claude/skills/squad-r3/SKILL.md",
+        ".claude/workflows/squad-r3-pipeline.js (workflow executor)",
+        ".claude/workflows/squad-r3-redteam-core.js (workflow executor)"
+      ]
+    },
+    {
+      "id": "status-caso",
+      "nome": "Status de Caso",
+      "tipo": "skill",
+      "versao": "n/d",
+      "status": "INSTALADO",
+      "papel": "Gera resumo de status de um caso/cliente a partir das notas do vault",
+      "gatilhos": [
+        "/status-caso",
+        "status do cliente",
+        "como está o caso",
+        "andamento do processo"
+      ],
+      "entrega": "resumo de status do caso",
+      "metodo_fonte": "Jornada E0-E7 (estados) · notas do Vault",
+      "instancia_aci": "C2",
+      "camada_ase": "L2",
+      "compoe_com": [],
+      "nao_confundir_com": [],
+      "gate": "R1",
+      "zona": "Amarela",
+      "lgpd_nota": "lê notas de caso (refs) · Amarela · sem PII plain text",
+      "vedacoes_honradas": [
+        "LGPD",
+        "D>C>V",
+        "Proof-First"
+      ],
+      "para_no_gate": "resumo de leitura · não altera estado nem promete prazo",
+      "custo": {
+        "gasta_agente": false,
+        "opt_in": false,
+        "fan_out": null
+      },
+      "emite_audit": false,
+      "depende_de": [],
+      "_origem": ".claude/skills/status-caso/SKILL.md",
+      "_artefato": "skill",
+      "_artefatos": [
+        ".claude/skills/status-caso/SKILL.md"
+      ]
+    },
+    {
+      "id": "watchdog",
+      "nome": "Watchdog E5 (monitor de casos no INSS)",
+      "tipo": "skill",
+      "versao": "n/d",
+      "status": "INSTALADO",
+      "papel": "Monitora casos na fase E5 (aguardando análise INSS) + relatório de pendências e alertas",
+      "gatilhos": [
+        "/watchdog",
+        "watchdog",
+        "casos pendentes INSS",
+        "fase E5",
+        "o que está parado"
+      ],
+      "entrega": "relatório de pendências/alertas dos casos E5",
+      "metodo_fonte": "Jornada E0-E7 (E5) · prazos LAI/BEPS",
+      "instancia_aci": "C2",
+      "camada_ase": "L2",
+      "compoe_com": [],
+      "nao_confundir_com": [],
+      "gate": "R1",
+      "zona": "Amarela",
+      "lgpd_nota": "refs de caso · Amarela · NUNCA promete prazo de concessão INSS (Correção 48h)",
+      "vedacoes_honradas": [
+        "LGPD",
+        "D>C>V",
+        "Correção-48h"
+      ],
+      "para_no_gate": "relatório de leitura · não altera estado",
+      "custo": {
+        "gasta_agente": false,
+        "opt_in": false,
+        "fan_out": null
+      },
+      "emite_audit": false,
+      "depende_de": [],
+      "_origem": ".claude/skills/watchdog/SKILL.md",
+      "_artefato": "skill",
+      "_artefatos": [
+        ".claude/skills/watchdog/SKILL.md"
+      ]
+    }
+  ],
+  "incompletas": [],
+  "nao_instrumentadas": []
+}

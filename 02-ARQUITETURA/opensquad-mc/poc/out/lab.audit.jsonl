@@ -1,0 +1,23 @@
+{"ts":"2026-06-01T16:30:13.483Z","ev":"zone_ok","zona":"segura","provider":"gemini-2.5-flash","tier":"cloud"}
+{"ts":"2026-06-01T16:30:13.483Z","ev":"dcv","ordem":"D>C>V","decisao":"PROSSEGUIR"}
+{"ts":"2026-06-01T16:30:13.483Z","ev":"router_ethics","stage":"ingestao","confidence":92,"complexity":15,"fraudscore":1,"faixaConfidence":"Verde","handoff":false,"autonomia":true,"motivos":[]}
+{"ts":"2026-06-01T16:30:13.483Z","ev":"stage_start","stage":"ingestao","role":"pesquisador"}
+{"ts":"2026-06-01T16:30:13.484Z","ev":"source_load","stage":"ingestao","file":"sources/claude-design-notebooklm.md","bytes":1586}
+{"ts":"2026-06-01T16:30:13.485Z","ev":"stage_done","stage":"ingestao","bytes":1645}
+{"ts":"2026-06-01T16:30:13.485Z","ev":"stage_start","stage":"engenharia-reversa","role":"pesquisador"}
+{"ts":"2026-06-01T16:30:13.485Z","ev":"router_ethics","stage":"engenharia-reversa","confidence":80,"complexity":55,"fraudscore":4,"faixaConfidence":"Verde","handoff":false,"autonomia":true,"motivos":[]}
+{"ts":"2026-06-01T16:30:13.485Z","ev":"checkpoint_auto_approve","stage":"engenharia-reversa","handoff":false,"motivos":[],"nota":"modo --auto: aprovação humana SIMULADA (em produção, pausa real)"}
+{"ts":"2026-06-01T16:30:14.554Z","ev":"stage_done","stage":"engenharia-reversa","bytes":281}
+{"ts":"2026-06-01T16:30:14.554Z","ev":"stage_start","stage":"lapidacao-mc","role":"estrategista"}
+{"ts":"2026-06-01T16:30:14.554Z","ev":"router_ethics","stage":"lapidacao-mc","confidence":82,"complexity":50,"fraudscore":3,"faixaConfidence":"Verde","handoff":false,"autonomia":true,"motivos":[]}
+{"ts":"2026-06-01T16:30:28.699Z","ev":"stage_done","stage":"lapidacao-mc","bytes":9467}
+{"ts":"2026-06-01T16:30:28.699Z","ev":"stage_start","stage":"blueprint-lab","role":"redator"}
+{"ts":"2026-06-01T16:30:28.699Z","ev":"router_ethics","stage":"blueprint-lab","confidence":84,"complexity":45,"fraudscore":3,"faixaConfidence":"Verde","handoff":false,"autonomia":true,"motivos":[]}
+{"ts":"2026-06-01T16:30:28.700Z","ev":"checkpoint_auto_approve","stage":"blueprint-lab","handoff":false,"motivos":[],"nota":"modo --auto: aprovação humana SIMULADA (em produção, pausa real)"}
+{"ts":"2026-06-01T16:30:45.622Z","ev":"stage_done","stage":"blueprint-lab","bytes":12175}
+{"ts":"2026-06-01T16:30:45.622Z","ev":"stage_start","stage":"revisao","role":"revisor"}
+{"ts":"2026-06-01T16:30:45.623Z","ev":"checkpoint_auto_approve","stage":"revisao","handoff":false,"motivos":[],"nota":"modo --auto: aprovação humana SIMULADA (em produção, pausa real)"}
+{"ts":"2026-06-01T16:30:45.623Z","ev":"router_ethics","stage":"revisao","confidence":90,"complexity":20,"fraudscore":2,"faixaConfidence":"Verde","handoff":false,"autonomia":true,"motivos":[]}
+{"ts":"2026-06-01T16:30:56.263Z","ev":"stage_done","stage":"revisao","bytes":6358}
+{"ts":"2026-06-01T16:30:56.267Z","ev":"compliance_audit","veredito":"REPROVADO","criticos":3,"altos":0,"avisos":5,"achados":["POS-01/AVISO","POS-02/CRITICO","POS-03/CRITICO","OAB-01/CRITICO","PROOF-01/AVISO","PROOF-01/AVISO","PROOF-01/AVISO","PROOF-01/AVISO"]}
+{"ts":"2026-06-01T16:30:56.267Z","ev":"compliance_advisory","veredito":"REPROVADO","criticos":["POS-02","POS-03","OAB-01"],"nota":"modo advisory (documento interno): não bloqueia, requer revisão humana"}

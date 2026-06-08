@@ -1,0 +1,80 @@
+# Vault MC — .gitignore
+# Cunhado 2026-05-26 sob MC-ADR-020 v2.0 + Patch-Memo MB-061
+# LGPD + Princípio #36 + IP MC honrados · Founder operador único TALÃO
+
+# Obsidian metadados locais
+.obsidian/workspace
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.obsidian/graph.json
+
+!.obsidian/app.json
+!.obsidian/appearance.json
+!.obsidian/community-plugins.json
+!.obsidian/core-plugins.json
+
+.trash/
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+*.swp
+*.swo
+*~
+.~lock.*
+*.lock
+
+# Buffers cofounder
+_VOLATIL/
+_BUFFER-*
+**/transit/*
+
+# .git resíduo preservado para audit (#4) · não versionar
+_git-residuo-pre-MB061-*/
+
+# Shortcuts virtuais Google Drive (não-arquivos físicos)
+*.gdoc
+*.gsheet
+*.gslides
+*.gform
+*.gsite
+*.gdraw
+*.glink
+
+# PII Vermelha · NUNCA commitar (LGPD + Hook 0 gov.br)
+**/PII-VERMELHA/
+**/_PRIVADO-CLIENTE/
+**/casos/**/CNIS-*.pdf
+**/casos/**/RG-*.pdf
+**/casos/**/CPF-fisico-*.pdf
+**/casos/**/CIN-*.pdf
+**/casos/**/laudo-medico-*.pdf
+
+# Credenciais
+*.env
+*.env.*
+**/credentials/
+**/keys/
+*.key
+*.pem
+secrets.yaml
+# Python bytecode (hooks)
+__pycache__/
+*.pyc
+.venv/
+.venv-*/
+venv/
+
+# pacotes de entrega gerados (regeneráveis · não versionar)
+MC-RUA-Documentacao-Completa-*.zip
+
+# Frente 4 · purga PII do tip (2026-06-08) — LGPD / D>C>V
+# Dump consolidado do Vault: continha CPF/NIS/NIT/login de cliente. NUNCA versionar.
+Obsidian_Master.txt
+*_Master.txt
+# Backups que carregavam PII de cliente — bloquear reentrada
+*.preMB-CLAUDIA-*

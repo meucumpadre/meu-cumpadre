@@ -1,0 +1,198 @@
+﻿---
+tipo: PROTOCOLO
+codigo: SYNC-PROTOCOLO
+titulo: Workflow de Sincronizacao Permanente Documentacao Vault
+versao: 1.0
+data: 2026-05-12
+status: ATIVO Fase 1 (manual via MB)
+autor: Claude Opus 4.7 (cofounder) x Alessandro de Souza Neves (founder)
+fundamenta: Principio #15 (entrega cross-vertical) + Principio #20 (sync permanente)
+---
+
+# SYNC-PROTOCOLO - Sincronizacao Permanente Documentacao Vault
+
+> Endereca a lacuna sistemica identificada em 12/05/2026: artefatos canonicos produzidos nascem em Documentacao/ (Cerebro 1, laboratorio vivo) e precisam migrar para Vault Obsidian/ (Cerebro 2, memoria canonica institucional). Sem protocolo, migracao foi historicamente oportunistica, resultando em orfas e duplicacoes.
+
+---
+
+## 1. Cerebros e responsabilidades
+
+| Cerebro | Path | Funcao | Quem escreve |
+|---|---|---|---|
+| Cerebro 1 - Documentacao | G:\Meu Drive\0 0 MEU CUMPADRE\0 0 Gestao Software\Documentacao\ | Laboratorio vivo, deep research, rascunhos, materiais brutos | Cofounder Claude.ai, deep research externos, founder |
+| Cerebro 2 - Vault Obsidian | G:\Meu Drive\0 0 MEU CUMPADRE\0 0 Gestao Software\OBSIDIAN\MEU CUMPADRE\ | Memoria canonica institucional, ADRs/Specs/Patches selados | Code DELL via MB autorizado |
+| Cerebro 3 - Claude.ai | (em runtime apenas, sem persistencia local) | Mesa de julgamento, cofounder cunha decisoes | Claude.ai online |
+
+## 2. Heuristica de classificacao automatica
+
+| Prefixo | Destino canonico no Vault |
+|---|---|
+| MC-ADR-* (nao patch) | 03-GOVERNANCA/adrs/ |
+| MC-ADR-*-PATCH-* | 03-GOVERNANCA/patches/ |
+| MC-SPEC-* ClickUp v3 | 02-ARQUITETURA/specs/clickup-v3/ |
+| MC-SPEC-* outras | 02-ARQUITETURA/specs/ |
+| MC-ANALISE-* | 02-ARQUITETURA/analises/ |
+| MC-METODOLOGIA-* | 02-ARQUITETURA/metodologias/ |
+| MC-GOVBR-* | 02-ARQUITETURA/govbr/ |
+| MC-CONTRATO-* | 03-GOVERNANCA/contratos/ |
+| MC-MANIFESTO-* | 05-ESTRATEGIA/manifestos/ |
+| MC-PRODUTO-* | 05-ESTRATEGIA/produtos/ |
+| MC-INDICADORES-* | 04-OPERACAO/indicadores/ |
+| MC-POP-* | 04-OPERACAO/pops/ |
+| MC-RELATORIO-* | 06-COMUNICACAO/relatorios/ |
+| Outros MC- | _INBOX/ (manual cofounder) |
+
+## 3. Fluxo de sincronizacao
+
+### Fase 1 - Manual via MB (atual, ate 100 casos)
+1. Cofounder produz artefato em /mnt/user-data/outputs/ (Claude.ai)
+2. Founder baixa e move para Documentacao/ ou _INBOX/ do Vault
+3. Cofounder produz MB de persistencia
+4. Code DELL executa MB com sweep + hash + migracao
+5. Reporte volta ao cofounder para validacao
+
+### Fase 2 - Automatizada via N8N (100-1000 casos)
+1. N8N cron diario 23:00
+2. Sweep heuristico em Documentacao/ por arquivos MC-* modificados ultimas 24h
+3. Para cada candidato, verifica se ja existe no Vault
+4. Se nao existe: gera reporte MD em 04-OPERACAO/logs/sync-YYYY-MM-DD.md
+5. Notifica cofounder via Slack/email
+6. Cofounder valida via Claude.ai
+7. Cofounder responde AUTORIZADO ou PAUSAR caso X
+8. N8N executa migracao via Code DELL
+9. Log permanente em 04-OPERACAO/logs/
+
+### Fase 3 - Continua (1000+ casos)
+- Sweep a cada 6h
+- Cache de hashes para deteccao de drift
+- Alerta automatico para arquivos orfaos > 7 dias
+
+## 4. Gate de validacao cofounder
+
+Reporte deve conter:
+- Lista de candidatos com hash + tamanho + data modificacao
+- Proposta de destino canonico
+- Verificacao de copias existentes no Vault
+- Avaliacao de risco
+
+Cofounder responde:
+- AUTORIZADO MIGRAR TUDO
+- AUTORIZADO MIGRAR PARCIAL: [lista]
+- PAUSAR: [casos]
+
+## 5. Logging permanente
+
+Cada migracao registrada em 04-OPERACAO/logs/sync-vault-YYYY-MM.md.
+
+## 6. Pastas canonicas do Vault MC v3.1.1+
+
+OBSIDIAN/MEU CUMPADRE/
+- _INBOX/ - transiente, classificacao manual
+- 01-DNA/ - branding, manifestos fundacionais (existente)
+- 02-ARQUITETURA/
+  - adrs/ legacy (sera migrado)
+  - specs/clickup-v3/ specs ClickUp v3.x
+  - analises/ Proof-First (MB-018)
+  - metodologias/
+  - govbr/
+- 03-GOVERNANCA/
+  - adrs/ CANONICO ADRs seladas
+  - patches/ patches pendentes + _HISTORICO_PATCHES_APLICADOS/
+  - contratos/
+- 04-OPERACAO/ (nota: Vault tem tambem 06-OPERACOES/ legacy - resolver futuro)
+  - indicadores/
+  - pops/
+  - logs/
+- 05-ESTRATEGIA/
+  - manifestos/
+  - produtos/
+- 06-COMUNICACAO/
+  - relatorios/
+
+## 7. Principios relacionados
+
+- #1 Inventario de Caminhos
+- #4 Errata Absorve Nao Inventa
+- #5 Persistencia de Patches
+- #6 Camadas de Seguranca Operacional
+- #7 Cadeia de Autorizacao Dual
+- #15 Entrega cofounder cross-vertical
+- #15.1 Descoberta de orfaos dispara MB reconstituicao
+- #16 Iniciativa estrategica cofounder 20x
+- #19 Patches sao instrumentos temporarios
+- #20 Workflow de Sincronizacao Permanente (este protocolo)
+
+## 8. Roadmap
+
+- Fase 1 (atual): manual via MB pontual
+- Fase 2 (~3 meses, pos-Igor): N8N cron diario 23h
+- Fase 3 (~12 meses): continua a cada 6h + cache hash + alertas
+
+---
+
+Hierarquia: Dignidade > Compliance > Viabilidade
+Selo: "O diamante e carbono que nao desistiu da pressao."
+
+infinito
+
+## Execução 2026-05-13 — MB-028 — Pilar Identidade Visual
+
+**Trigger:** Princípio #21 (cunhado 13/05/2026) — sync automático pilar Identidade Visual
+**MB de origem:** MB-028
+**Operador:** Code DELL (Cérebro 1 → Cérebro 2)
+**Resultado:** ⚠️ PARCIAL — 2/3 artefatos sincronizados (PROMPT-CoworkClaude ausente na origem)
+
+### Artefatos sincronizados
+
+| # | Arquivo | Destino | Hash SHA-256 |
+|---|---|---|---|
+| 1 | MC-MANIFESTO-IdentidadeVisual-v1_0-2026-0513.md | 05-ESTRATEGIA/manifestos/ | DAE0FDB586FCDFC6A171106D0A866AB807383904D564331871600B50BF436372 |
+| 2 | MC-SPEC-IdentidadeVisual-Tecnico-v1_0-2026-0513.md | 02-ARQUITETURA/specs/identidade-visual/ | 342BEF85877DBB1FB5CC5BA3E37ED847981258EACAFCD7A4B7C1A7A4D0BBFA75 |
+| 3 | MC-PROMPT-CoworkClaude-IdentidadeVisual-v1_0-2026-0513.md | ❌ NÃO LOCALIZADO NA ORIGEM | — |
+
+### Pastas criadas
+- 02-ARQUITETURA/specs/identidade-visual/ (nova)
+- 04-OPERACAO/scripts/identidade-visual/ (nova — preparada para o PROMPT quando localizado)
+- 05-ESTRATEGIA/manifestos/ já existia
+
+### Backups criados
+- Nenhum (sem sobrescrita de arquivos canônicos pré-existentes)
+- Log SYNC-PROTOCOLO recebeu backup .bak antes do append
+
+### Origem real (path detectado, divergente do MB)
+- MB previa: `Documentação\Claude_Outputs\2026-05-13\`
+- Realidade: `Documentação\Identidade Visual\` (sem subpasta de data)
+
+### Observações
+- Sweep estendido executado nos paths primários, alternativos (Beto Downloads/Desktop) e recursivo em G:\Meu Drive\0 0 MEU CUMPADRE
+- PROMPT-CoworkClaude-IdentidadeVisual-v1_0-2026-0513.md NÃO foi encontrado em path algum — provavelmente não foi exportado da sessão Claude.ai ou está com nome diferente
+- Princípio #4 honrado: Copy-Item (originais preservados, zero Move/Delete)
+- Princípio #6 honrado: hash-verify SHA-256 OK para os 2 artefatos copiados
+- Alias check: único hit foi `MC-PATCH-MEMO-v3_0-1-IdentidadeExecutor.md` (escopo distinto — Identidade Executor, não Identidade Visual) — sem conflito
+
+## Execução 2026-05-13 (complemento) — MB-028.1 — Pilar Identidade Visual (fechamento)
+
+**Trigger:** Re-sweep solicitado pelo founder após inclusão do PROMPT no Drive
+**MB de origem:** MB-028 (complemento — fecha PARCIAL para SUCESSO)
+**Operador:** Code DELL (Cérebro 1 → Cérebro 2)
+**Resultado:** ✅ SUCESSO — 3/3 artefatos sincronizados
+
+### Artefato sincronizado neste complemento
+
+| # | Arquivo | Destino | Hash SHA-256 |
+|---|---|---|---|
+| 3 | MC-PROMPT-CoworkClaude-IdentidadeVisual-v1_0-2026-0513.md | 04-OPERACAO/scripts/identidade-visual/ | E9C11F5C6DFA86C6A10D136AF961246CBA887BF26196D404A9070A856F5019B8 |
+
+### Estado final do MB-028 (consolidado)
+
+| # | Arquivo | Destino | Hash SHA-256 | Verify |
+|---|---|---|---|---|
+| 1 | MC-MANIFESTO-IdentidadeVisual-v1_0-2026-0513.md | 05-ESTRATEGIA/manifestos/ | DAE0FDB586FCDFC6A171106D0A866AB807383904D564331871600B50BF436372 | ✅ |
+| 2 | MC-SPEC-IdentidadeVisual-Tecnico-v1_0-2026-0513.md | 02-ARQUITETURA/specs/identidade-visual/ | 342BEF85877DBB1FB5CC5BA3E37ED847981258EACAFCD7A4B7C1A7A4D0BBFA75 | ✅ |
+| 3 | MC-PROMPT-CoworkClaude-IdentidadeVisual-v1_0-2026-0513.md | 04-OPERACAO/scripts/identidade-visual/ | E9C11F5C6DFA86C6A10D136AF961246CBA887BF26196D404A9070A856F5019B8 | ✅ |
+
+### Observações
+- PROMPT foi salvo pelo founder no path canônico de origem (Documentação\Identidade Visual\) às 13:08:22 — 5 min após a execução inicial do MB-028
+- Princípio #4 honrado: Copy-Item (original preservado)
+- Princípio #6 honrado: hash-verify SHA-256 OK
+- MB-028 fechado em estado ✅ SUCESSO (3/3 artefatos do pilar Identidade Visual persistidos no Vault)

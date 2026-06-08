@@ -1,0 +1,145 @@
+---
+tipo: INDEX
+escopo: 03-GOVERNANCA/patches/
+data-atualizacao: 2026-05-15
+ultima-adicao: MB-045 Cascata ERRATA Identidade Visual Fase A finalização (SPEC v2.1 + Meta-Prompt v1.1, 15/05/2026)
+---
+
+# Indice de Patches - Meu Cumpadre
+
+Patches sao instrumentos temporarios que adicionam, modificam ou suplementam ADRs canonicas. Quando aplicados (ou quando o conteudo cunhado opera plenamente), sao arquivados em `_HISTORICO_PATCHES_APLICADOS/`.
+
+> **Principio #19 (cunhado 12/05/2026):** Patches sao instrumentos temporarios, nao canonicos.
+
+---
+
+## Patches Pendentes
+
+### MC-PATCH-MEMO-v3_0-5-POPVisualLaw-AntiInjection (cunhado MB-029, 14/05/2026)
+- Arquivo: [[MC-PATCH-MEMO-v3_0-5-POPVisualLaw-AntiInjection-2026-0514]]
+- Referência ADR: [[../adrs/MC-ADR-016-ComplianceDocumental-AntiInjection-v1_0-2026-0514]]
+- Status: PROVISIONAL (absorção em POP-VisualLaw PARTE 2 v1.4 e PARTE 3 v1.4 pós-19/05)
+- Origem: caso TRT-8 Parauapebas 12/05/2026 (Galileu detectou prompt injection em fonte branca)
+- Escopo: 5 mudanças cirúrgicas — E.5 Stack (ExifTool+qpdf+mc-pdf-audit), F.1 Workflow (sub-etapa E4.5), C.14 Firewall OAB (disclosure IA), G.1 Calibração 3 palcos, J KPIs novos
+- Selagem futura: POP-VisualLaw PARTE 2 v1.4 + PARTE 3 v1.4 + arquivamento em `_HISTORICO_PATCHES_APLICADOS/` (Princípio #19)
+
+### MC-PRINCIPIO-25-Caminho-Operacional-Adequado-v0_2-PROVISIONAL (renumerado de #22 em 13/05 ~22:30)
+- Arquivo: [[MC-PRINCIPIO-25-Caminho-Operacional-Adequado-v0_2-PROVISIONAL-2026-0513]]
+- Princípio cunhado: #25 - Caminho Operacional Adequado por Capacidade (C1 MCP vs C3 MB)
+- Status: PROVISIONAL (aguarda Bloco O Juliana 19/05, perguntas O6+O7)
+- Selagem futura: ADR-017 v1.0
+- Histórico: antigo arquivo v0.1 como #22 marcado SUPERSEDED em `patches/`
+
+### MC-PRINCIPIO-26-AntiColisao-PreCunhagem-v0_1-PROVISIONAL (cunhado 13/05 ~22:30)
+- Arquivo: [[MC-PRINCIPIO-26-AntiColisao-PreCunhagem-v0_1-PROVISIONAL-2026-0513]]
+- Princípio cunhado: #26 - Anti-Colisão Pré-Cunhagem (Inventário Princípios Obrigatório)
+- Status: PROVISIONAL (aguarda Bloco O Juliana 19/05, pergunta O8 nova)
+- Selagem futura: ADR-017 v1.0 ampliada
+- Motivo: detectada colisão tripla 3 sessões Claude.ai paralelas 13/05; este princípio previne recorrência
+
+### MC-PRINCIPIO-27-Camada-C5-Claude-Design-v0_2-PROVISIONAL (refinado de v0.1 em 13/05 ~23:30)
+- Arquivo: [[MC-PRINCIPIO-27-Camada-C5-Claude-Design-v0_2-PROVISIONAL-2026-0513]]
+- Princípio cunhado: #27 v0.2 - Matriz Visual Multi-Camada (C5 fundacional + C2-Visual massa)
+- Status: PROVISIONAL (aguarda Bloco O Juliana 19/05)
+- Selagem futura: ADR-018 v1.0
+- Histórico: v0.1 SUPERSEDED em patches/ (era restritivo demais — vetava Cowork)
+
+### MC-PRINCIPIO-28-Texto-Canonico-Precede-Imagem-v0_1-PROVISIONAL (cunhado founder 13/05 ~23:45)
+- Arquivo: [[MC-PRINCIPIO-28-Texto-Canonico-Precede-Imagem-v0_1-PROVISIONAL-2026-0513]]
+- Princípio cunhado: #28 - Texto Canônico Precede Imagem (Verbo Primeiro)
+- Status: PROVISIONAL (aguarda Bloco O Juliana 19/05, pergunta O10 nova)
+- Selagem futura: ADR-018 v1.0 ampliada
+- Âncora: João 1:1 - cascata inviolável Verbo→Imagem
+- Motivo: founder identificou erro cofounder propondo Cowork produzir visual antes da cascata textual estar completa
+
+---
+
+## Patches Aplicados (Historico)
+
+### MC-ADR-012-PATCH-v1_0-para-v1_1-2026-0512
+- Arquivo: [[_HISTORICO_PATCHES_APLICADOS/MC-ADR-012-PATCH-v1_0-para-v1_1-2026-0512]]
+- ADR resultante: [[MC-ADR-012-StackLLM-MultiModelo-v1_1-2026-0513]]
+- Principio cunhado: #18 - Risco Provisional Documentado
+- Status: APLICADO
+
+### MC-PATCH-MEMO-v3_0-1-IdentidadeExecutor
+- Arquivo: [[_HISTORICO_PATCHES_APLICADOS/MC-PATCH-MEMO-v3_0-1-IdentidadeExecutor]]
+- Principio cunhado: #15 - Entrega cofounder cross-vertical obrigatoria
+- Status: APLICADO
+
+### MC-PATCH-MEMO-v3_0-2-DuploPapelMelo
+- Arquivo: [[_HISTORICO_PATCHES_APLICADOS/MC-PATCH-MEMO-v3_0-2-DuploPapelMelo]]
+- Principio cunhado: #15.1 - Descoberta de orfao dispara MB de reconstituicao
+- Status: APLICADO
+
+### MC-PATCH-MEMO-v3_0-3-MissionBriefCodificacao
+- Arquivo: [[_HISTORICO_PATCHES_APLICADOS/MC-PATCH-MEMO-v3_0-3-MissionBriefCodificacao]]
+- Principio cunhado: #16 - Iniciativa estrategica cofounder 20x
+- Status: APLICADO
+
+### MC-PATCH-MEMO-v3_0-4-ErrataLorrane-v2_0-DEFINITIVA
+- Arquivo: [[_HISTORICO_PATCHES_APLICADOS/MC-PATCH-MEMO-v3_0-4-ErrataLorrane-v2_0-DEFINITIVA]]
+- Principio cunhado: #17 - gov.br como infraestrutura nacional de identidade digital
+- Status: APLICADO
+
+---
+
+Hierarquia: Dignidade > Compliance > Viabilidade
+Selo: "O diamante e carbono que nao desistiu da pressao."
+
+∞
+### MC-PRINCIPIO-29-99-ARQUIVO-Legado-v0_1-PROVISIONAL (cunhado 14/05 ~05h UTC)
+- Arquivo: [[MC-PRINCIPIO-29-99-ARQUIVO-Legado-v0_1-PROVISIONAL-2026-0514]]
+- Principio cunhado: #29 - Pasta 99-ARQUIVO-Legado canonica por pilar
+- Status: PROVISIONAL (aguarda Bloco O Juliana 19/05, pergunta O12 nova)
+- Selagem futura: subprincipio operacional do #24 via ADR-018
+- Origem: convencao operacional emergente durante MB-031 Cowork 13/05
+
+### MC-ADR-019-LimitacaoMCP-Drive-v0_1-PROVISIONAL (cunhado 14/05 ~05h UTC)
+- Arquivo: [[MC-ADR-019-LimitacaoMCP-Drive-v0_1-PROVISIONAL-2026-0514]]
+- ADR cunhada: ADR-019 - Limitacao MCP Google Drive (sem rename/move nativo)
+- Status: PROVISIONAL (aguarda Bloco O Juliana 19/05, pergunta O11 nova)
+- Selagem futura: ADR-019 v1.0 em 03-GOVERNANCA/adrs/
+- Origem: descoberta empirica MB-031 Cowork 13/05
+
+---
+
+## Housekeeping — ERRATAs aplicadas (cascata Cerebro 1 -> Cerebro 2)
+
+### MB-044 — Housekeeping ERRATA Identidade Visual (executado 15/05/2026)
+- Log: [[../../04-OPERACAO/logs/SYNC-ERRATA-IdentidadeVisual-2026-0515]]
+- Escopo: cascata ERRATA-v1_0 (Selo + Vocabulario, 14/05) + traco v1_1 (Prompt-Aplicacoes-GPT, 15/05) consistente Drive<->Vault
+- Operacoes: 5 arquivos pre-ERRATA arquivados em `99-ARQUIVO-Legado/canonicos-pre-errata/` (01-IDENTIDADE e aplicacoes); 1 arquivo novo copiado Drive->Vault
+- Hash-verify SHA-256: 6/6 operacoes com match=True
+- Principios aplicados: #4 (Errata Absorve, Nao Inventa), #24 (Documentacao Canonica Unificada por Pilar), #29 (99-ARQUIVO-Legado canonica por pilar)
+- Status: APLICADO
+- Pastas criadas:
+  - `01-IDENTIDADE/99-ARQUIVO-Legado/canonicos-pre-errata/`
+  - `04-OPERACAO/scripts/identidade-visual/aplicacoes/99-ARQUIVO-Legado/canonicos-pre-errata/`
+
+### MB-045 — Cascata ERRATA Identidade Visual Fase A finalizacao (executado 15/05/2026)
+- Log: [[../../04-OPERACAO/logs/SYNC-ERRATA-IdentidadeVisual-2026-0515]] (secao MB-045)
+- Escopo: SPEC v2.0->v2.1 + Meta-Prompt v1.0->v1.1 (4 operacoes: 2 arquivamentos + 2 sincs Drive->Vault)
+- Operacoes: SPEC v2.0 arquivada + SPEC v2.1 sincronizada do Drive + Meta-Prompt v1.0 arquivado + Meta-Prompt v1.1 sincronizado do Drive
+- Hash-verify SHA-256: 4/4 operacoes com match=True (hash Meta-Prompt v1.1 confere com referencia de producao da MB-045)
+- Principios aplicados: #1, #4, #6, #15, #19, #20, #29, #31
+- Status: APLICADO
+- Pastas criadas:
+  - `02-ARQUITETURA/specs/identidade-visual/99-ARQUIVO-Legado/canonicos-pre-errata/`
+  - `04-OPERACAO/scripts/identidade-visual/99-ARQUIVO-Legado/canonicos-pre-errata/` (idempotente — ja existia a do MB-044, criada nova para Meta-Prompt)
+- Cunhagem: Cerebro 3.1 (Claude.ai Opus 4.7) sob autorizacao macro Founder Alessandro de Souza Neves
+- Drive IDs: SPEC v2.1 `1zVDgSrGPWJBkvBHaZWjdFzCbVTMA7RXM` · Meta-Prompt v1.1 `1d551qqoTM9cpliQKndqYaqFoglrG7Ki5`
+- Anomalia (nao acionavel): duplicata SPEC v2.0 em `02-ARQUITETURA/` raiz (fora de specs/) endereco futuro
+
+## Housekeeping — Pautas
+
+| MB | Data | Descrição | Status |
+|---|---|---|---|
+| MB-046 | 2026-05-15 | Cascata Pauta Juliana evolução v2.5 → v2.6 (sub-bloco O6-O8 inserido + v2.5 arquivada em canonicos-pre-evolucao/) | ✅ Aplicado |
+
+## Housekeeping — RIPDs
+
+| MB | Data | Descrição | Status |
+|---|---|---|---|
+| MB-047 | 2026-05-15 | Cascata RIPD-Φ₁ evolução v0.1 → v0.2 (G1-G8 absorvidos: síntese executiva + tabela operadores + §8-§12 + v0.1 arquivada em canonicos-pre-evolucao/) | ✅ Aplicado |
+
