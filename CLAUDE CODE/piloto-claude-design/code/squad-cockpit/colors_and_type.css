@@ -1,0 +1,393 @@
+/* ============================================================
+   MEU CUMPADRE · DESIGN SYSTEM
+   colors_and_type.css — tokens canônicos (extraído de Foundation v0.3 PROVISIONAL)
+
+   Hierarquia inviolável: Dignidade > Compliance > Viabilidade
+   Selo: "O diamante é carbono que não desistiu da pressão."
+   Frase-âncora: TECNOLOGIA INVISÍVEL. DIGNIDADE ACESSÍVEL.
+   Pilares: ACESSO | ORGANIZAÇÃO | PROTEÇÃO | SOBERANIA
+
+   Fontes via Google Fonts (substituição flagada — webfonts oficiais não fornecidos):
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+   ============================================================ */
+
+:root {
+  /* ============================
+     COR · Família Diamante (primária · institucional · Hierarquia D)
+     ============================ */
+  --mc-diamante-50:  #E8ECF3;
+  --mc-diamante-100: #C9D2E0;
+  --mc-diamante-300: #5F76A0;
+  --mc-diamante-400: #2C447A;
+  --mc-diamante-500: #0F1E3D;  /* azul-noite institucional */
+  --mc-diamante-600: #0B1730;
+  --mc-diamante-700: #07101F;
+  --mc-diamante-800: #050A14;
+
+  /* ============================
+     COR · Família Ouro (cunhada via ERRATA cromática 24/05/2026)
+     #D4AF37 SUBSTITUI #C9A961 (mantido como alias para compat).
+     ============================ */
+  --mc-ouro-50:  #F8F2E2;
+  --mc-ouro-100: #EFE2BC;
+  --mc-ouro-300: #DCC288;
+  --mc-ouro-400: #D3B575;
+  --mc-ouro-500: #D4AF37;  /* Dourado Texturizado canônico v0.3.1 */
+  --mc-ouro-700: #8C7239;
+
+  /* Alias canônico cunhado pelo DESIGN.md v0.5 */
+  --mc-dourado-texturizado: #D4AF37;
+  --mc-preto-cosmico:       #1A120B;  /* Preto-marrom quente terroso · NUNCA #000 */
+
+  /* ============================
+     COR · Família Vermelho Dignidade (risco · denúncia · RouterEthics nó D)
+     ============================ */
+  --mc-vermelho-50:  #F8E5E5;
+  --mc-vermelho-100: #EBC0C0;
+  --mc-vermelho-300: #D27575;
+  --mc-vermelho-400: #C25555;
+  --mc-vermelho-500: #B33A3A;
+  --mc-vermelho-700: #7A1F1F;
+
+  /* ============================
+     COR · Família Azul Acesso (fluxo · Pilar Acesso · WhatsApp-friendly)
+     ============================ */
+  --mc-azul-50:  #E7ECF4;
+  --mc-azul-100: #C5D0E2;
+  --mc-azul-300: #7A91B6;
+  --mc-azul-400: #5E7CAB;
+  --mc-azul-500: #3E5C8C;
+  --mc-azul-700: #243D63;
+
+  /* ============================
+     COR · Família Verde Proteção (confiança · Pilar Proteção · SELADO)
+     ============================ */
+  --mc-verde-50:  #E4EFEA;
+  --mc-verde-100: #BFD8CB;
+  --mc-verde-300: #7AAE91;
+  --mc-verde-400: #5C9C7C;
+  --mc-verde-500: #3B7B5E;
+  --mc-verde-700: #1F4E3A;
+
+  /* ============================
+     COR · Neutros
+     ============================ */
+  --mc-noite:        #0A0E1A;  /* preto-noite */
+  --mc-papel:        #FAFAF7;  /* off-white, levemente quente — documento, não tela */
+  --mc-tinta:        #1A1F2C;
+  --mc-tinta-muted:  #555A66;
+  --mc-cinza-100:    #E5E2D7;
+  --mc-cinza-300:    #B8B8C2;
+  --mc-cinza-500:    #5C5C66;
+  --mc-rule:         #CFC9BD;  /* régua sutil */
+  --mc-rule-strong:  #1A1F2C;  /* régua institucional */
+
+  /* ============================
+     TOKENS SEMÂNTICOS · CORPO (v0.3 · WCAG AAA hard-fail)
+     Texto de corpo SEMPRE aponta para 700.
+     500 = backgrounds com texto branco / ícones ≥24px / accents.
+     ============================ */
+  --mc-diamante-corpo:       var(--mc-diamante-700);
+  --mc-vermelho-corpo:       var(--mc-vermelho-700);
+  --mc-azul-acesso-corpo:    var(--mc-azul-700);
+  --mc-verde-protecao-corpo: var(--mc-verde-700);
+  --mc-risco-vermelho:       var(--mc-vermelho-700);
+  --mc-fluxo-azul:           var(--mc-azul-700);
+  --mc-protecao-verde:       var(--mc-verde-700);
+
+  /* ============================
+     TOKENS SEMÂNTICOS · SUPERFÍCIES (light · default)
+     ============================ */
+  --mc-bg-primary:     var(--mc-papel);
+  --mc-bg-secondary:   #FFFFFF;
+  --mc-bg-elevated:    #FFFFFF;
+  --mc-bg-inverse:     var(--mc-diamante-500);
+  --mc-text-primary:   var(--mc-diamante-corpo);
+  --mc-text-secondary: var(--mc-tinta-muted);
+  --mc-text-disabled:  var(--mc-cinza-300);
+  --mc-text-inverse:   var(--mc-papel);
+  --mc-border-default: var(--mc-rule);
+  --mc-border-strong:  var(--mc-rule-strong);
+  --mc-accent-ouro:    var(--mc-ouro-500);
+
+  /* ============================
+     ESPAÇAMENTO · baseline 8pt
+     ============================ */
+  --mc-sp-1: 4px;
+  --mc-sp-2: 8px;
+  --mc-sp-3: 16px;
+  --mc-sp-4: 24px;
+  --mc-sp-5: 32px;
+  --mc-sp-6: 48px;
+  --mc-sp-7: 64px;
+  --mc-sp-8: 96px;
+
+  /* ============================
+     BORDA · RAIO
+     0 = selo institucional · 4 = botão/input · 8 = card · 16 = chat WhatsApp (Zilda)
+     ============================ */
+  --mc-border-0: 0;
+  --mc-border-1: 1px;
+  --mc-border-2: 2px;
+  --mc-radius-0: 0;
+  --mc-radius-1: 4px;
+  --mc-radius-2: 8px;
+  --mc-radius-3: 16px;
+
+  /* ============================
+     ELEVAÇÃO · 3 níveis sutis (sem sombras dramáticas)
+     ============================ */
+  --mc-elev-0: none;
+  --mc-elev-1: 0 1px 2px rgba(10,14,26,.06), 0 0 0 1px rgba(10,14,26,.04);
+  --mc-elev-2: 0 4px 12px rgba(10,14,26,.08), 0 0 0 1px rgba(10,14,26,.05);
+
+  /* ============================
+     TIPOGRAFIA · 3 famílias
+     Fraunces — headline serif (contemplação/marca · opsz 144 em sizes ≥ 32)
+     Inter — sans humanista (corpo · acessibilidade Zilda)
+     JetBrains Mono — auditabilidade (hash, ID, código)
+     ============================ */
+  --mc-font-serif: "Fraunces", "Source Serif Pro", Georgia, serif;
+  --mc-font-sans:  "Inter", system-ui, -apple-system, sans-serif;
+  --mc-font-mono:  "JetBrains Mono", "SF Mono", Consolas, monospace;
+
+  /* ============================
+     TIPOGRAFIA · escala semântica (referência canônica · tokens prontos)
+     ============================ */
+  --mc-text-h1-family:  var(--mc-font-serif);
+  --mc-text-h1-size:    56px;
+  --mc-text-h1-lh:      1.05;
+  --mc-text-h1-weight:  500;
+
+  --mc-text-h2-family:  var(--mc-font-serif);
+  --mc-text-h2-size:    40px;
+  --mc-text-h2-lh:      1.10;
+  --mc-text-h2-weight:  500;
+
+  --mc-text-h3-family:  var(--mc-font-serif);
+  --mc-text-h3-size:    28px;
+  --mc-text-h3-lh:      1.15;
+  --mc-text-h3-weight:  500;
+
+  --mc-text-h4-family:  var(--mc-font-sans);
+  --mc-text-h4-size:    22px;
+  --mc-text-h4-lh:      1.25;
+  --mc-text-h4-weight:  600;
+
+  --mc-text-h5-family:  var(--mc-font-sans);
+  --mc-text-h5-size:    18px;
+  --mc-text-h5-lh:      1.30;
+  --mc-text-h5-weight:  600;
+
+  --mc-text-h6-family:  var(--mc-font-sans);
+  --mc-text-h6-size:    14px;
+  --mc-text-h6-lh:      1.40;
+  --mc-text-h6-weight:  600;
+
+  --mc-text-body-family: var(--mc-font-sans);
+  --mc-text-body-size:   16px;
+  --mc-text-body-lh:     1.55;
+  --mc-text-body-weight: 400;
+
+  --mc-text-caption-size:  12px;
+  --mc-text-caption-lh:    1.40;
+
+  --mc-text-label-size:    13px;
+  --mc-text-label-weight:  600;
+  --mc-text-label-tracking: 0.04em;
+
+  --mc-text-code-family: var(--mc-font-mono);
+  --mc-text-code-size:   13px;
+
+  /* ============================
+     MOTION · 7 tokens · função, não show
+     prefers-reduced-motion: tudo zera (não negociável)
+     ============================ */
+  --mc-motion-instant:       0ms;
+  --mc-motion-fast:          100ms;
+  --mc-motion-standard:      200ms;
+  --mc-motion-slow:          300ms;
+  --mc-motion-ease-out:      cubic-bezier(0.16, 1, 0.3, 1);
+  --mc-motion-ease-in:       cubic-bezier(0.7, 0, 0.84, 0);
+  --mc-motion-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   DARK MODE · institucionalmente distinto
+   Ouro permanece Ouro · Diamante muda de papel para fundo
+   Corpos cromáticos (vermelho/azul/verde) sobem para 400 (contraste honesto)
+   ============================================================ */
+[data-theme="dark"] {
+  --mc-bg-primary:     var(--mc-diamante-800);
+  --mc-bg-secondary:   var(--mc-diamante-700);
+  --mc-bg-elevated:    var(--mc-diamante-600);
+  --mc-bg-inverse:     var(--mc-papel);
+  --mc-text-primary:   var(--mc-papel);
+  --mc-text-secondary: var(--mc-cinza-300);
+  --mc-text-disabled:  var(--mc-cinza-500);
+  --mc-text-inverse:   var(--mc-diamante-700);
+  --mc-border-default: var(--mc-diamante-600);
+  --mc-border-strong:  var(--mc-cinza-300);
+
+  --mc-diamante-corpo:       var(--mc-papel);
+  --mc-vermelho-corpo:       var(--mc-vermelho-400);
+  --mc-azul-acesso-corpo:    var(--mc-azul-400);
+  --mc-verde-protecao-corpo: var(--mc-verde-400);
+  --mc-risco-vermelho:       var(--mc-vermelho-400);
+  --mc-fluxo-azul:           var(--mc-azul-400);
+  --mc-protecao-verde:       var(--mc-verde-400);
+
+  --mc-elev-1: 0 1px 2px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.04);
+  --mc-elev-2: 0 4px 12px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --mc-bg-primary:     var(--mc-diamante-800);
+    --mc-bg-secondary:   var(--mc-diamante-700);
+    --mc-bg-elevated:    var(--mc-diamante-600);
+    --mc-bg-inverse:     var(--mc-papel);
+    --mc-text-primary:   var(--mc-papel);
+    --mc-text-secondary: var(--mc-cinza-300);
+    --mc-text-disabled:  var(--mc-cinza-500);
+    --mc-text-inverse:   var(--mc-diamante-700);
+    --mc-border-default: var(--mc-diamante-600);
+    --mc-border-strong:  var(--mc-cinza-300);
+    --mc-diamante-corpo:       var(--mc-papel);
+    --mc-vermelho-corpo:       var(--mc-vermelho-400);
+    --mc-azul-acesso-corpo:    var(--mc-azul-400);
+    --mc-verde-protecao-corpo: var(--mc-verde-400);
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION · respeito inegociável
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   BASE · documento institucional, não tela de aplicativo
+   ============================================================ */
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--mc-font-sans);
+  font-size: var(--mc-text-body-size);
+  line-height: var(--mc-text-body-lh);
+  color: var(--mc-text-primary);
+  background: var(--mc-bg-primary);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ============================================================
+   CLASSES SEMÂNTICAS · tipografia pronta-pra-uso
+   ============================================================ */
+.mc-h1 {
+  font-family: var(--mc-text-h1-family);
+  font-size: var(--mc-text-h1-size);
+  line-height: var(--mc-text-h1-lh);
+  font-weight: var(--mc-text-h1-weight);
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 144;
+  color: var(--mc-text-primary);
+  margin: 0;
+}
+.mc-h2 {
+  font-family: var(--mc-text-h2-family);
+  font-size: var(--mc-text-h2-size);
+  line-height: var(--mc-text-h2-lh);
+  font-weight: var(--mc-text-h2-weight);
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 144;
+  color: var(--mc-text-primary);
+  margin: 0;
+}
+.mc-h3 {
+  font-family: var(--mc-text-h3-family);
+  font-size: var(--mc-text-h3-size);
+  line-height: var(--mc-text-h3-lh);
+  font-weight: var(--mc-text-h3-weight);
+  letter-spacing: -0.01em;
+  color: var(--mc-text-primary);
+  margin: 0;
+}
+.mc-h4 {
+  font-family: var(--mc-text-h4-family);
+  font-size: var(--mc-text-h4-size);
+  line-height: var(--mc-text-h4-lh);
+  font-weight: var(--mc-text-h4-weight);
+  color: var(--mc-text-primary);
+  margin: 0;
+}
+.mc-h5 {
+  font-family: var(--mc-text-h5-family);
+  font-size: var(--mc-text-h5-size);
+  line-height: var(--mc-text-h5-lh);
+  font-weight: var(--mc-text-h5-weight);
+  color: var(--mc-text-primary);
+  margin: 0;
+}
+.mc-h6, .mc-eyebrow {
+  font-family: var(--mc-text-h6-family);
+  font-size: var(--mc-text-h6-size);
+  line-height: var(--mc-text-h6-lh);
+  font-weight: var(--mc-text-h6-weight);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mc-text-primary);
+  margin: 0;
+}
+.mc-eyebrow-mono {
+  font-family: var(--mc-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mc-text-secondary);
+}
+.mc-body {
+  font-family: var(--mc-text-body-family);
+  font-size: var(--mc-text-body-size);
+  line-height: var(--mc-text-body-lh);
+  color: var(--mc-text-primary);
+}
+.mc-lede {
+  font-family: var(--mc-font-serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--mc-text-primary);
+}
+.mc-caption {
+  font-family: var(--mc-font-sans);
+  font-size: var(--mc-text-caption-size);
+  line-height: var(--mc-text-caption-lh);
+  color: var(--mc-text-secondary);
+}
+.mc-label {
+  font-family: var(--mc-font-sans);
+  font-size: var(--mc-text-label-size);
+  font-weight: var(--mc-text-label-weight);
+  letter-spacing: var(--mc-text-label-tracking);
+  text-transform: uppercase;
+  color: var(--mc-text-primary);
+}
+.mc-code, .mc-mono {
+  font-family: var(--mc-font-mono);
+  font-size: var(--mc-text-code-size);
+  color: var(--mc-text-primary);
+}
+
+/* Helpers */
+.mc-muted { color: var(--mc-text-secondary); }
+.mc-serif { font-family: var(--mc-font-serif); }
+.mc-sans  { font-family: var(--mc-font-sans); }
+.mc-mono-family { font-family: var(--mc-font-mono); }
