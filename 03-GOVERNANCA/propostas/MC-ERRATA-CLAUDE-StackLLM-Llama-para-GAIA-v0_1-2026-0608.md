@@ -1,9 +1,10 @@
 ---
 artefato: MC-ERRATA-CLAUDE-StackLLM-Llama-para-GAIA
 versao: v0.1
-status: PROPOSTA · aguardando R2 (C3.1 + Sister Anciã → selo Founder)
+status: VOLTA (rito R2 rodado · 2026-06-09) · RE-ROTEAR R3 · aguarda reescrita v0.2 (C3.1) — NÃO selar, CLAUDE.md NÃO tocado
 data: 2026-06-08
-rito: R2 (refactor do manual-mãe CLAUDE.md = fundacional)
+rito: declarado R2 — RE-ROTEADO p/ R3 (edita Regra LGPD ancorada em ADR sob parecer Dra. Juliana 10/10) · fail-closed
+veredito_r2: VOLTA · escalada_R3=true · 3 BLOQUEIA (Anciã) · ver §Veredito R2 abaixo
 escopo: corrigir drift no CLAUDE.md §Stack — modelo self-host desatualizado vs ADR-012
 lastro: ADR-012 v1.2 PROVISIONAL-REFINADO (2026-05-28)
 executor: Falcão-canônico (Code TALÃO · sessão na org meucumpadre/meu-cumpadre)
@@ -43,4 +44,29 @@ O manual-mãe semeia toda instância nova → o drift se propaga. Barato matar a
 Esta errata **NÃO** se conflate com a selagem da Convenção de Assinaturas (gate leve, já feita). É R2 **próprio**, rodada **separada**.
 
 ---
-*Parqueada no Vault como PROPOSTA R2-pendente por Falcão (Code TALÃO · 2026-06-09). CLAUDE.md NÃO foi tocado — aguarda o rito R2 completo (C3.1 + Sister Anciã + selo Founder) antes de qualquer aplicação no manual-mãe.*
+
+## Veredito R2 (rito rodado · 2026-06-09 · /squad-r2)
+
+> **VEREDITO: VOLTA** · `escalada_R3 = true` · régua determinística (`nBloqueia > 0 ⇒ VOLTA`).
+> Deliberação: F0 Enquadrar + F1 C3.1 (orquestrador) + **F2 Sister Anciã (agente real)** + F3 Coerência + F4 Síntese. **NÃO selado. CLAUDE.md NÃO tocado.**
+
+**3 BLOQUEIA (Sister Anciã):**
+1. **Proof-First / supersessão** — o texto PARA mantém `(~25%, sensível)` colado em GAIA. ADR-012:67 põe GAIA em **~70-75%**; o slot ~25% é **Sabiá-4**. A errata corrige `Llama→GAIA` e canoniza um percentual errado por arrasto. *(errata:28-29 vs ADR-012:67)*
+2. **Coerência LGPD não-reconciliada** — Regra 5 diz CID **EXCLUSIVAMENTE** self-hosted; ADR-012:120-121 documenta escalada de CID via Claude **Bedrock sa-east-1** (opt-in + DPIA + Art. 11 II "d") e GAIA só "preferencialmente". A palavra "EXCLUSIVAMENTE" já é falsa hoje, e a errata troca o nome do motor sem tocá-la. *(CLAUDE.md:30 vs ADR-012:120-121)*
+3. **Disciplina de gate (R3)** — edita a Regra 5 (Proteção LGPD) ancorando-a num ADR cujo status é `PROVISIONAL · aguarda parecer Dra. Juliana 10/10/2026`, e a pendência dela é exatamente a base legal da transferência internacional do CID. **Matéria R3, não R2.** *(ADR-012:5,137)*
+
+**+ CORRIGIR:** garantir que **ambas** as linhas (CLAUDE.md:30 e :80) larguem o "GCP"; o PARA não nomeia a infra nova (coerente com "apontar, não cravar").
+**+ NOTA:** mc-lint acusa ~540 ocorrências "Llama/GCP" em legados de `01-DNA/` — corrigir só o manual-mãe não fecha a superfície (dado, não pendência desta rodada).
+
+**Ponto cego (Anciã):** *"A única edição que importa é semântica — 'EXCLUSIVAMENTE self-hosted' virou ficção no dia em que o ADR-012 admitiu Bedrock para CID. A errata que não toca essa palavra está canonizando uma promessa LGPD que o sistema não cumpre."* → falha no Teste Zilda-STF.
+
+**O que corrigir antes de re-deliberar (→ v0.2, por C3.1):**
+- tirar `~25%` de GAIA; refletir o multi-modelo real (ou só apontar ADR-012 sem cravar percentual);
+- **reconciliar "EXCLUSIVAMENTE"** na Regra 5 com a escalada Bedrock (a edição que de fato importa);
+- **re-rotear como R3** (Dra. Juliana antes do selo);
+- ambas as linhas 30 e 80 largarem "GCP".
+
+**Disposição:** errata `v0.1` → aguarda **v0.2 reescrita** (C3.1). CLAUDE.md permanece **v3.0** (não aplicado). Mapa de supersessão: nenhum. Mesmo a v0.2 corrigida **exige a Dra. Juliana (R3) antes de selar** — o R2 sozinho não basta.
+
+---
+*Parqueada por Falcão (Code TALÃO · 2026-06-08) e submetida ao rito R2 em 2026-06-09. Veredito VOLTA + escalada R3 carimbado acima como audit trail. CLAUDE.md NÃO foi tocado — aguarda reescrita v0.2 (C3.1) e parecer R3 (Dra. Juliana) antes de qualquer aplicação no manual-mãe.*
