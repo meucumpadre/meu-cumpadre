@@ -27,7 +27,7 @@
 2. **Firewall OAB** — MC = atividade-meio. NUNCA exercer advocacia, prometer resultado jurídico, fazer match comercial, reter credenciais como instrumento de cobrança. Atividade-fim = Dra. Juliana Pereira de Melo (parceira jurídica B2B).
 3. **Correção 48h (PERMANENTE)** — "48 horas" = sprint **interno** triagem→protocolo INSS (E0→E4), exclusivamente com documentação completa. Pós-protocolo: análise INSS ~52,67d média (LAI SEI 24851867), 35-52d (BEPS 2025), DDB→DIP ~24d. **NUNCA prometer prazo de concessão.**
 4. **Proof-First** — Zero dados fabricados. Toda métrica precisa de fonte verificável (Lei + Evidência + hash SHA-256). Sem fonte → marcar `[FONTE PENDENTE]`. Gemini fabrica dados — sempre cross-referenciar.
-5. **Proteção LGPD** — CPF, NB, CID, CNIS = processados EXCLUSIVAMENTE em stack self-hosted (Llama 4 Scout/GCP Brasil). Senhas gov.br **nunca** no ClickUp — Bitwarden Org MC (ADR-009a Modelo B).
+5. **Proteção LGPD** — CPF, NB, CID, CNIS = processados EXCLUSIVAMENTE em stack self-hosted (motor GAIA-4B/Gemma 3 · ver ADR-012 v1.2 PROVISIONAL). Senhas gov.br **nunca** no ClickUp — Bitwarden Org MC (ADR-009a Modelo B).
 6. **Router-Ethics 11.0** — 140 nós determinísticos em 3 blocos (D01-D45 / C36-C80 / V71-V120) + 7 hooks. Três scores independentes: **Confidence (Verde ≥70 / Amarela 40-70 / Vermelha <40)**, Complexity, Fraudscore. Handoff se qualquer um cruza threshold. Autonomia só se todos aprovam. Supersede v10.0 v3.0 (2026-0421). Lote 4 (backend NestJS) PROVISIONAL — revalidar no aval final pós-cascata Juliana (não '19/05' · MB-057).
 7. **Protocolo DIB Urgency** — B31/B91/B42/B43 com janela 30 dias do evento médico (Art. 60 §1º Lei 8.213/91). Após: DIB = DER, retroativo perdido. Caso ≤30 dias → SLA 24h úteis obrigatório.
 
@@ -77,7 +77,7 @@ Princípio: preço rastreia custo e complexidade, **nunca valor desbloqueado** (
 ## Stack Técnica
 
 - **Backend:** NestJS + TypeScript + MySQL (Igor — autoridade arquitetural)
-- **LLMs:** Gemini 2.5 Flash (~70% triagem, não-sensível) · Llama 4 Scout self-hosted GCP BR (~25%, sensível) · Claude Sonnet via MCP (~5%, ético)
+- **LLMs:** Gemini 2.5 Flash (~70% triagem, não-sensível) · GAIA-4B/Gemma 3 self-host (~25%, sensível · ver ADR-012 v1.2 PROVISIONAL) · Claude Sonnet via MCP (~5%, ético)
 - **Infra:** WhatsApp Cloud API · N8N 1.88 self-hosted · Hostinger · GCP (Firestore, BigQuery, Cloud KMS, Vision OCR)
 - **Assinaturas:** ZapSign (ADR-014) · **Custódia senhas:** Bitwarden Org MC
 - **Descartados:** DeepSeek cloud, Zapier, DocuSign, Make (produção), HubSpot, Evolution API, Autentique.
