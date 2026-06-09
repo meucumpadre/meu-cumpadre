@@ -12,7 +12,8 @@
       "Bash(git commit *)",
       "Bash(mkdir -p /home/user/meu-cumpadre/.claude/hooks && echo \"Diretório criado\")",
       "Bash(cp \"/home/user/meu-cumpadre/.claude/workflows/mc-strategic-intelligence.workflow.js\" ./wf.mjs)",
-      "Bash(node --check ./wf.mjs)"
+      "Bash(node --check ./wf.mjs)",
+      "mcp__Algrow__get_channel_monetization"
     ]
   }
 }
