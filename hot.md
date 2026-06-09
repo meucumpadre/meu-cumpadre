@@ -42,7 +42,8 @@ substitui: "snapshot 29/05 (11 dias defasado · freeze ativo) · reescrito ao es
 - ✅ **_INDEX princípios v1.7 (03/06):** renumeração órfã #21→#23 completada (ficou 21 dias pela metade) · 32 ativos.
 
 ## Pendências vivas
-- 🔴 **Errata CLAUDE v0.2** — bola com a **C3.1** (`MEU CUMPADRE novo`); brief de reescrita entregue. Depois sobe p/ **R3 Juliana** (toca Art. 11 / ADR-012 sob parecer dela 10/10). Falcão monta o kit-dossiê de lastro quando a v0.2 voltar.
+- 🟡 **Errata CLAUDE → v0.3** — v0.2 (C3.1) auditada pela Anciã: **CONDICIONADO** (3 BLOQUEIA da v0.1 limpos · A/B/C validados · 1 CORRIGIR: Regra 5 suavizou o "NUNCA Claude API direta" do #8 ATIVO). Bola com a **C3.1** (`MEU CUMPADRE novo`) p/ costura v0.3 (preservar piso do #8). Depois → **R3 Juliana** (Art. 11 / ADR-012 · parecer 10/10). Falcão monta o kit-dossiê quando a v0.3 voltar. CLAUDE.md segue v3.0.
+- 🟡 **Backlog drift de nome (2 itens abertos 09/06)** — `MC-ERRATA-Principio008-...` (#8 ATIVO+LGPD → **R3**) e `MC-ERRATA-Principio021-...` (#21 PROVISIONAL → **selo Founder**). Footprint do mesmo drift "Llama 4 Scout/GCP" além do manual-mãe. Em `03-GOVERNANCA/propostas/`, não iniciados.
 - 🟡 **Painel Estratégico** (`📋 Painel Estratégico.md`) — congelado em **06/04**, ainda cita "contrato de gaveta Alencar" e métricas de abril. **Próximo atraso a resolver.**
 - 🟡 **Reorg de prefixos duplicados na raiz** — confirmado ainda aberto: dois `01-`, `04-`, `05-`, `06-`. Precisa sign-off (não é higiene livre).
 - 🟡 **Persistir #47** (Responsabilização Cruzada · RESERVADO sem arquivo) — é cunhagem; liberado pós-freeze, aguarda decisão.

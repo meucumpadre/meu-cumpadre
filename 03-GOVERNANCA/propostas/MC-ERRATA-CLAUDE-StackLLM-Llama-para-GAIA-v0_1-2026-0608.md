@@ -1,7 +1,7 @@
 ---
 artefato: MC-ERRATA-CLAUDE-StackLLM-Llama-para-GAIA
 versao: v0.1
-status: VOLTA (rito R2 rodado · 2026-06-09) · RE-ROTEAR R3 · aguarda reescrita v0.2 (C3.1) — NÃO selar, CLAUDE.md NÃO tocado
+status: SUPERSEDIDA pela v0.2 (2026-06-09) · histórico R2 (VOLTA + escalada R3) preservado abaixo — NÃO selar, CLAUDE.md NÃO tocado
 data: 2026-06-08
 rito: declarado R2 — RE-ROTEADO p/ R3 (edita Regra LGPD ancorada em ADR sob parecer Dra. Juliana 10/10) · fail-closed
 veredito_r2: VOLTA · escalada_R3=true · 3 BLOQUEIA (Anciã) · ver §Veredito R2 abaixo
@@ -69,4 +69,12 @@ Esta errata **NÃO** se conflate com a selagem da Convenção de Assinaturas (ga
 **Disposição:** errata `v0.1` → aguarda **v0.2 reescrita** (C3.1). CLAUDE.md permanece **v3.0** (não aplicado). Mapa de supersessão: nenhum. Mesmo a v0.2 corrigida **exige a Dra. Juliana (R3) antes de selar** — o R2 sozinho não basta.
 
 ---
-*Parqueada por Falcão (Code TALÃO · 2026-06-08) e submetida ao rito R2 em 2026-06-09. Veredito VOLTA + escalada R3 carimbado acima como audit trail. CLAUDE.md NÃO foi tocado — aguarda reescrita v0.2 (C3.1) e parecer R3 (Dra. Juliana) antes de qualquer aplicação no manual-mãe.*
+
+## Sucessão → v0.2 (2026-06-09)
+
+A C3.1 reescreveu a v0.2 (`MC-ERRATA-CLAUDE-Regra5-e-StackLLM-ponteiro-ADR012`), que **supersede esta v0.1** e larga a moldura rejeitada "Llama-para-GAIA" (nome de motor) pela moldura real "Regra 5 + ponteiro ADR-012". Auditoria da Sister Anciã sobre a v0.2 (2026-06-09): **CONDICIONADO** — os 3 BLOQUEIA desta v0.1 estão LIMPOS; decisões de cunhagem A/B/C validadas; **1 CORRIGIR de fidelidade** (a Regra 5 reescrita suavizou a vedação nominal "NUNCA Claude API direta" do Princípio #8 ATIVO). Por decisão do Founder, a v0.2 voltou à C3.1 para costura → **v0.3** (preservar o piso do #8), antes do kit-dossiê R3 da Dra. Juliana.
+
+Footprint de drift ampliado na auditoria → 2 itens de backlog abertos: `MC-ERRATA-Principio008-...` (R3) e `MC-ERRATA-Principio021-...` (selo Founder).
+
+---
+*Esta v0.1 fica como registro histórico do rito R2 (VOLTA). A linha viva é v0.2 → v0.3 → R3. CLAUDE.md permanece v3.0, intocado.*
