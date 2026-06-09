@@ -2,7 +2,7 @@
 artefato: MC-REGISTRO-Assinaturas-Stack
 versao: v1.0
 data: 2026-06-08
-governado_por: MC-CONVENCAO-RegistroDeAssinaturas (v0.1 · 03-GOVERNANCA/convencoes/) — Founder-validada 2026-06-09
+governado_por: MC-CONVENCAO-RegistroDeAssinaturas (v1.0 · 03-GOVERNANCA/convencoes/) — SELADA · gate leve · Founder ✓ 2026-06-08
 formato: LLM-legível (frontmatter + tabela) · fonte de verdade de assinaturas/planos
 regra: sem credenciais aqui (→ Bitwarden Org MC · ADR-009a) · sem PII de cliente
 custos: valores marcados [A PREENCHER] quando não confirmados (Proof-First — não fabricar)

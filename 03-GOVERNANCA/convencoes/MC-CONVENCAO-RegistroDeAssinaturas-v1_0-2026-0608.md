@@ -1,9 +1,10 @@
 ---
 artefato: MC-CONVENCAO-RegistroDeAssinaturas
-versao: v0.1
-status: ATIVO · GATE LEVE concedido (Founder · 2026-06-09)
+versao: v1.0
+status: SELADA · gate leve · Founder ✓ 2026-06-08
 data: 2026-06-08
-gate_concedido: Founder (TALÃO) · 2026-06-09
+gate_concedido: Founder (TALÃO) · 2026-06-08
+nota_versao: v0.1 (rascunho/deliberação) → v1.0 (primeira versão SELADA · gate leve) · bump de escriba no selo, conteúdo inalterado
 tipo: convenção operacional (NÃO é princípio fundacional)
 subordinada_a: R2 (fonte única) + Princípio #24 (documentação canônica unificada)
 gate: leve (Founder valida) — NÃO consome rito R2 (Founder+C3.1+Anciã+Juliana)
@@ -47,8 +48,8 @@ Não apaga — marca `DESCARTADO` com data e motivo (espírito do Princípio #4)
 ## Status de gate (rito)
 - [x] Deliberação C3.1 (reclassificou → convenção) + Falcão R5 (confirmou número/modelo/duplicação)
 - [x] #26 — perna de **repo** (sweep `_INDEX` + colisões): rodada por Falcão. Achado: nº de princípio era desnecessário (isto é convenção, sai da série); colisão `_INDEX` #44–48 (2 díg × 3 díg) = dívida à parte.
-- [ ] #26 — perna `conversation_search`: capacidade claude.ai (C3.1) — pendente (**não bloqueante** do gate leve)
-- [x] **Gate leve — validação do Founder** (selo final · 2026-06-09)
+- [x] #26 — perna `conversation_search` (C3.1): achado **LIMPO** — sem colisão de conceito nem de número (resultado registrado, não só tick)
+- [x] **Gate leve — validação do Founder** (selo final · Founder ✓ 2026-06-08)
 
 ## Achado correlato (handoff para R2 próprio)
 `CLAUDE.md §Stack` ainda diz **"Llama 4 Scout"**; o canônico é **GAIA-4B/Gemma 3 (ADR-012)**. Drift no manual-mãe → corrigir em errata/refactor R2 do CLAUDE.md (não nesta convenção).
