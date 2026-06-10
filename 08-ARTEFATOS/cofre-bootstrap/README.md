@@ -12,10 +12,12 @@ Replica o setup do Meu Cumpadre em **outros cofres Obsidian** (ex.: `mcholding-c
 <cofre>/
 ├── .claude/
 │   ├── settings.json                 # hooks wired (SessionStart + Stop/lint)
-│   └── hooks/
-│       ├── cofre-lint.py             # MOTOR genérico (sem identidade MC)
-│       ├── lint-rules.json           # proibições DESTE cofre (você preenche)
-│       └── session-start.sh          # setup Docling (só no Code web)
+│   ├── hooks/
+│   │   ├── cofre-lint.py             # MOTOR genérico (sem identidade MC)
+│   │   ├── lint-rules.json           # proibições DESTE cofre (você preenche)
+│   │   └── session-start.sh          # setup Docling (só no Code web)
+│   ├── skills/                       # 16 skills de doutrina (ver SKILLS-MANIFEST.md)
+│   └── agents/                       # sister-ancia + mc-grok-context-engineer
 ├── CLAUDE.md                         # identidade do cofre (do template, c/ placeholders)
 ├── notebooklm-grid.py                # grid de cadernos (PII-safe)  [se incluído]
 └── METODO-EngenhariaReversa.md       # método ER-MC                  [se incluído]
@@ -44,8 +46,17 @@ O instalador é **idempotente**: não sobrescreve `CLAUDE.md` nem `lint-rules.js
 - **PII nunca** no NotebookLM (Google US) nem em repo/commit. De-identifique antes.
 - Cofres com casos reais → mesma política de de-identificação 🔴 do MC.
 
-## Importante — o que NÃO é copiado
+## Skills de doutrina (bundled — adaptação necessária)
 
-As **skills de doutrina do MC** (squad-r2/r3, mc-especimen, mc-compasso, pré-selagem…)
-são identidade MC e **não** são genéricas. Cada cofre define a própria doutrina.
-O kit traz só o **esqueleto reutilizável** + a camada de inteligência NotebookLM.
+O kit inclui as **16 skills de doutrina do MC** (+ 2 agentes) em
+`template/.claude/skills/` e `.../agents/` — instaladas junto com o harness.
+**Elas carregam identidade MC.** Consulte `SKILLS-MANIFEST.md`: classifica cada
+uma em 🟢 (transferível como padrão, ajuste leve) vs 🔴 (MC-específica — reescrever
+ou remover por cofre, ex.: `squad-r3`/OAB, `novo-cliente`, `watchdog`, `status-caso`).
+
+> A `meu-cumpadre-orquestrador-mestre` (SUPERSEDED) **não** foi incluída — não se
+> replica artefato aposentado a cofre novo.
+
+⚠️ **Antes do block-mode:** revise as 🔴 do manifesto. Senão o cofre opera com
+doutrina alheia. As 🟢 (mc-prompt, squad-r2, mc-pre-selagem, mc-dossie-proof-first,
+mc-strategic-intelligence, mc-compasso, mc-especimen…) servem quase direto.
