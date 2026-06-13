@@ -1,0 +1,17 @@
+{
+  "_comment": "Regras de Proibições Absolutas DESTE cofre. Copie p/ lint-rules.json e preencha. Engine = cofre-lint.py (generalizado, sem identidade MC). Vazio = engine inerte.",
+  "_schema": {
+    "skip_path_fragments": "trechos de caminho a ignorar (legado/backup)",
+    "negation_markers": "se a linha contém um destes, ela ENUNCIA a proibição (não comete) → pula",
+    "rules": "lista de {pattern (regex), label (rótulo curto), fix (forma correta)}"
+  },
+  "skip_path_fragments": ["99-ARQUIVO/", "_LEGADO", "_HISTORICO/", ".bak"],
+  "negation_markers": ["❌", "⚠️", "🚫", "vedad", "proibi", "superad", "nunca ", "errata", "descartad", "deprecad"],
+  "rules": [
+    {
+      "pattern": "EXEMPLO_termo_proibido",
+      "label": "Exemplo de proibição",
+      "fix": "Substitua pela regra real do cofre. Apague este exemplo."
+    }
+  ]
+}
