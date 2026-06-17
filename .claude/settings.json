@@ -36,7 +36,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "MC_LINT_MODE=block python3 .claude/hooks/mc-lint.py"
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/mc-lint-run.sh"
           }
         ]
       }
