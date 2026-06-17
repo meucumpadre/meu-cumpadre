@@ -26,6 +26,10 @@ import subprocess
 import sys
 
 MODE = os.environ.get("MC_LINT_MODE", "warn").strip().lower()
+if "--block" in sys.argv:
+    MODE = "block"
+elif "--warn" in sys.argv:
+    MODE = "warn"
 
 # Extensões que carregam doutrina/artefato MC (onde as proibições importam).
 SCAN_EXT = (".md", ".txt", ".json", ".markdown")
