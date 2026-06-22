@@ -13,6 +13,63 @@ description: >
   sela). É o irmão R2 do /squad-r3 (que roda o rito R3 → Dra. Juliana). Gatilhos:
   "rito R2", "squad r2", "cunhar este ADR/Princípio", "posso selar este fundacional?",
   "deliberar com C3.1 e a Anciã", "passar a cunhagem pelo trio".
+rua:
+  # Bloco A · Identidade
+  id: squad-r2
+  nome: Squad R2 (rito de cunhagem fundacional MC)
+  tipo: skill
+  versao: v0.1
+  status: PROVISIONAL
+  data: 2026-06-03
+  # Bloco B · Função
+  papel: Executa o RITO R2 (cunhagem fundacional — ADR · Princípio · refactor do CLAUDE.md
+    · mudança de stack) via deliberação do trio (C3.1 + Sister Anciã, Founder no gate);
+    estressa e RECOMENDA, não redige nem sela
+  gatilhos:
+  - /squad-r2
+  - squad r2
+  - rito R2
+  - cunhar este ADR/Princípio
+  - posso selar este fundacional?
+  - deliberar com C3.1 e a Anciã
+  entrega: veredito (PRONTO-PARA-SELAR / CONDICIONADO / VOLTA) + mapa de supersessão +
+    bump de versão + pendências_R2 + escalada_R3 quando tocar OAB/LGPD/PII/ANPD
+  metodo_fonte: Rito R2 (trio C3.1 + Sister Anciã) · deliberação adversarial · disciplina
+    de supersessão e versão · catraca fail-closed → escalada R3
+  # Bloco C · Posição na MC-ACI
+  instancia_aci: transversal
+  camada_ase: L4
+  compoe_com:
+  - squad-r2.workflow
+  nao_confundir_com:
+  - id: squad-r3
+    motivo: aquele é o rito R3 (compliance/OAB/LGPD → Dra. Juliana); este é o rito R2
+      (cunhagem fundacional · o Founder sela)
+  - id: mc-pre-selagem
+    motivo: aquele apenas DETECTA qual rito o artefato exige (+ roda mc-lint/sister-ancia);
+      aqui o rito R2 é EXECUTADO
+  # Bloco D · Governança (fail-closed)
+  gate: R2
+  zona: Verde
+  lgpd_nota: artefato fundacional = doutrina/método · PII nunca entra em prompt · se tocar
+    OAB/LGPD/PII/ANPD/Soberania, marca escalada_R3 e a selagem passa a exigir a Dra. Juliana
+  vedacoes_honradas:
+  - D>C>V
+  - Proof-First
+  - Firewall-OAB
+  - Zona-Verde
+  para_no_gate: "true — NÃO redige o artefato, NÃO sela, NÃO escreve no Vault · recomenda
+    e PARA no gate (o Founder sela; C3.1 e a Anciã deliberam)"
+  # Bloco E · Operação & Telemetria
+  custo:
+    gasta_agente: true
+    opt_in: true
+    fan_out: trio (C3.1 + Sister Anciã + coerência)
+  regressao:
+    fixture: "ADR de exemplo que supersede outro E passa a tratar PII (rodar sem args)"
+    veredito_esperado: "CONDICIONADO + escalada_R3"
+  emite_audit: false
+  depende_de: []
 ---
 
 ## Comando

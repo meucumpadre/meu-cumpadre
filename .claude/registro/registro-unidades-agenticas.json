@@ -2,15 +2,15 @@
   "_meta": {
     "registro": "MC-Registro-Unidades-Agenticas",
     "spec": "MC-SPEC-RegistroAgentes-ASE v0.1 (SELADO · PR #19)",
-    "gerado_de_commit": "eb4eafa",
+    "gerado_de_commit": "dbd6521",
     "gerador": ".claude/registro/gerar-registro.py v0.1",
     "principio": "gerado, não mantido · projeção determinística do .claude/",
     "zona": "Verde · zero PII",
     "nota": "derivado · NÃO canônico por si (canônico = os artefatos). NÃO selado, NÃO no Vault."
   },
   "cobertura": {
-    "total_artefatos": 18,
-    "instrumentadas_completas": 18,
+    "total_artefatos": 21,
+    "instrumentadas_completas": 21,
     "instrumentadas_incompletas": 0,
     "nao_instrumentadas": 0,
     "pct_instrumentado": 100
@@ -91,6 +91,56 @@
       "_artefato": "skill",
       "_artefatos": [
         ".claude/skills/diario/SKILL.md"
+      ]
+    },
+    {
+      "id": "extrator-sites",
+      "nome": "Extrator de Sites (v2 - Porteiro Exigente)",
+      "tipo": "skill",
+      "versao": "2.0.0",
+      "status": "INSTALADO",
+      "papel": "Mineração paralela de sites + validação rigorosa de entregáveis (Excel/PDF/CSV)",
+      "gatilhos": [
+        "/extrator_sites",
+        "minerar site",
+        "extrair urls",
+        "mapear site"
+      ],
+      "entrega": "Excel + PDF + CSV com URLs completos e validados",
+      "metodo_fonte": "Orquestração + 5 subagentes paralelos + Porteiro Exigente",
+      "instancia_aci": "transversal",
+      "camada_ase": "L2",
+      "compoe_com": [],
+      "nao_confundir_com": [
+        {
+          "id": "mc-compasso-sweep",
+          "motivo": "aquele CURA fontes públicas sob a régua <5% p/ NotebookLM; este MINERA todos os URLs internos de um site e valida os entregáveis (Excel/PDF/CSV)"
+        },
+        {
+          "id": "mc-strategic-intelligence",
+          "motivo": "aquele orquestra pesquisa→NotebookLM→colheita estratégica; este é mineração determinística de estrutura de site"
+        }
+      ],
+      "gate": "R1",
+      "zona": "Verde",
+      "lgpd_nota": "Verde DESDE QUE o alvo seja site PÚBLICO sem PII (mapa de estrutura, não dado sensível) · ferramenta de propósito geral, apontável a qualquer site → é CONDIÇÃO DE USO, não propriedade da UA · NÃO apontar a portal autenticado/gov.br nem a alvo que exponha CPF/NB/CID/CNIS em URL → fora de escopo (escala ao operador)",
+      "vedacoes_honradas": [
+        "Proof-First",
+        "Zona-Verde",
+        "D>C>V"
+      ],
+      "para_no_gate": "true — ferramenta operacional · gera Excel/PDF/CSV de URLs validados · NÃO sela, NÃO escreve no Vault · dedup determinístico (100% reproduzível)",
+      "custo": {
+        "gasta_agente": true,
+        "opt_in": true,
+        "fan_out": "5 (mineradores paralelos)"
+      },
+      "emite_audit": false,
+      "depende_de": [],
+      "_origem": ".claude/skills/extrator-sites/SKILL.md",
+      "_artefato": "skill",
+      "_artefatos": [
+        ".claude/skills/extrator-sites/SKILL.md"
       ]
     },
     {
@@ -557,6 +607,80 @@
       ]
     },
     {
+      "id": "mc-strategic-intelligence",
+      "nome": "Strategic Intelligence — orquestrador research → NotebookLM → mesa de trabalho",
+      "tipo": "skill",
+      "versao": "v0.1",
+      "status": "INSTALADO",
+      "data": "2026-06-06",
+      "papel": "Orquestra pesquisa + análise NotebookLM + estruturação Markdown padrão MC; gera insumo de alta qualidade pro Proprietary Data Flywheel (MoR) e pra governança (GHS-Pipefy)",
+      "gatilhos": [
+        "/mc-strategic-intelligence TEMA | RECORTE",
+        "inteligência estratégica",
+        "pesquisar tema estratégico",
+        "analisar no NotebookLM",
+        "insumo pro Flywheel",
+        "briefing estratégico"
+      ],
+      "entrega": "Brief de Inteligência (Markdown MC) + bloco Flywheel/MoR + conexões Skybridge + sugestão de artefato Pipefy/SoR + arquivos salvos na mesa de trabalho (Cérebro 1)",
+      "metodo_fonte": "MC-INFRA-NotebookLM-CLI-v1_0-2026-0406.md · Router-Ethics 11.0 (_MC-RouterEthics_11_v1_1-2026-0505-CLevel) · ADR-011 (3 Cérebros) · MC-SOR v0.1 × MoR (disrupter-escala-zilda) · Proof-First (CLAUDE.md §4)",
+      "instancia_aci": "transversal",
+      "camada_ase": "L2-L4",
+      "compoe_com": [
+        "mc-compasso-sweep",
+        "mc-dossie-proof-first",
+        "deep-research"
+      ],
+      "nao_confundir_com": [
+        {
+          "id": "MC-SOR (System of Record do cidadão)",
+          "motivo": "o SoR guarda PII do hipervulnerável em stack soberana; ESTA skill alimenta o Flywheel/MoR (método DE-IDENTIFICADO, Zona Verde) — nunca ingere PII"
+        },
+        {
+          "id": "mc-compasso-sweep",
+          "motivo": "aquele só CURA fontes (régua <5%) e para; este orquestra fonte→NotebookLM→análise→Markdown"
+        },
+        {
+          "id": "squad-r3",
+          "motivo": "aquele é parecer de COMPLIANCE/OAB; este é inteligência de mercado pública"
+        }
+      ],
+      "gate": "R1",
+      "zona": "Verde",
+      "lgpd_nota": "NotebookLM = Google US, fora do perímetro Llama BR. CPF/NB/CID/CNIS e PII não anonimizada NUNCA viram source. Caso real → de-identificar antes (prefixo CASE-).",
+      "vedacoes_honradas": [
+        "Proof-First",
+        "Zona-Verde",
+        "D>C>V",
+        "Firewall-OAB",
+        "LGPD"
+      ],
+      "para_no_gate": "true — salva em Cérebro 1 (mesa de trabalho); NÃO sela em Cérebro 2 sem 'aprovado para vault'; NÃO edita o CLAUDE.md sozinho (R2) — PROPÕE e para no gate",
+      "custo": {
+        "gasta_agente": true,
+        "opt_in": true,
+        "fan_out": "N (1 pesquisador por eixo do recorte) + 1 NotebookLM por caderno"
+      },
+      "regressao": {
+        "fixture": "sem args → roda o fixture 'NTEP CID-CNAE' (testa o pipeline de estruturação, não a rede)",
+        "veredito_esperado": "Brief estruturado + bloco Flywheel + conexão Skybridge Saúde/Trabalhista"
+      },
+      "emite_audit": false,
+      "depende_de": [
+        "WebSearch",
+        "WebFetch",
+        "notebooklm-py CLI (Bash)",
+        "deep-research",
+        "mc-compasso-sweep"
+      ],
+      "_origem": ".claude/skills/mc-strategic-intelligence/SKILL.md",
+      "_artefato": "skill",
+      "_artefatos": [
+        ".claude/skills/mc-strategic-intelligence/SKILL.md",
+        ".claude/workflows/mc-strategic-intelligence.workflow.js (workflow executor)"
+      ]
+    },
+    {
       "id": "meu-cumpadre-orquestrador-mestre",
       "nome": "Orquestrador Mestre MC (SUPERSEDED · tombstone)",
       "tipo": "skill",
@@ -730,6 +854,67 @@
       "_artefato": "agent",
       "_artefatos": [
         ".claude/agents/sister-ancia.md"
+      ]
+    },
+    {
+      "id": "squad-r2",
+      "nome": "Squad R2 (rito de cunhagem fundacional MC)",
+      "tipo": "skill",
+      "versao": "v0.1",
+      "status": "PROVISIONAL",
+      "data": "2026-06-03",
+      "papel": "Executa o RITO R2 (cunhagem fundacional — ADR · Princípio · refactor do CLAUDE.md · mudança de stack) via deliberação do trio (C3.1 + Sister Anciã, Founder no gate); estressa e RECOMENDA, não redige nem sela",
+      "gatilhos": [
+        "/squad-r2",
+        "squad r2",
+        "rito R2",
+        "cunhar este ADR/Princípio",
+        "posso selar este fundacional?",
+        "deliberar com C3.1 e a Anciã"
+      ],
+      "entrega": "veredito (PRONTO-PARA-SELAR / CONDICIONADO / VOLTA) + mapa de supersessão + bump de versão + pendências_R2 + escalada_R3 quando tocar OAB/LGPD/PII/ANPD",
+      "metodo_fonte": "Rito R2 (trio C3.1 + Sister Anciã) · deliberação adversarial · disciplina de supersessão e versão · catraca fail-closed → escalada R3",
+      "instancia_aci": "transversal",
+      "camada_ase": "L4",
+      "compoe_com": [
+        "squad-r2.workflow"
+      ],
+      "nao_confundir_com": [
+        {
+          "id": "squad-r3",
+          "motivo": "aquele é o rito R3 (compliance/OAB/LGPD → Dra. Juliana); este é o rito R2 (cunhagem fundacional · o Founder sela)"
+        },
+        {
+          "id": "mc-pre-selagem",
+          "motivo": "aquele apenas DETECTA qual rito o artefato exige (+ roda mc-lint/sister-ancia); aqui o rito R2 é EXECUTADO"
+        }
+      ],
+      "gate": "R2",
+      "zona": "Verde",
+      "lgpd_nota": "artefato fundacional = doutrina/método · PII nunca entra em prompt · se tocar OAB/LGPD/PII/ANPD/Soberania, marca escalada_R3 e a selagem passa a exigir a Dra. Juliana",
+      "vedacoes_honradas": [
+        "D>C>V",
+        "Proof-First",
+        "Firewall-OAB",
+        "Zona-Verde"
+      ],
+      "para_no_gate": "true — NÃO redige o artefato, NÃO sela, NÃO escreve no Vault · recomenda e PARA no gate (o Founder sela; C3.1 e a Anciã deliberam)",
+      "custo": {
+        "gasta_agente": true,
+        "opt_in": true,
+        "fan_out": "trio (C3.1 + Sister Anciã + coerência)"
+      },
+      "regressao": {
+        "fixture": "ADR de exemplo que supersede outro E passa a tratar PII (rodar sem args)",
+        "veredito_esperado": "CONDICIONADO + escalada_R3"
+      },
+      "emite_audit": false,
+      "depende_de": [],
+      "_origem": ".claude/skills/squad-r2/SKILL.md",
+      "_artefato": "skill",
+      "_artefatos": [
+        ".claude/skills/squad-r2/SKILL.md",
+        ".claude/workflows/squad-r2.workflow.js (workflow executor)"
       ]
     },
     {

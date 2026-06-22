@@ -27,6 +27,37 @@ rua:
   - mapear site
   entrega: Excel + PDF + CSV com URLs completos e validados
   metodo_fonte: Orquestração + 5 subagentes paralelos + Porteiro Exigente
+  # Bloco C · Posição na MC-ACI
+  instancia_aci: transversal
+  camada_ase: L2
+  compoe_com: []
+  nao_confundir_com:
+  - id: mc-compasso-sweep
+    motivo: aquele CURA fontes públicas sob a régua <5% p/ NotebookLM; este MINERA todos
+      os URLs internos de um site e valida os entregáveis (Excel/PDF/CSV)
+  - id: mc-strategic-intelligence
+    motivo: aquele orquestra pesquisa→NotebookLM→colheita estratégica; este é mineração
+      determinística de estrutura de site
+  # Bloco D · Governança (fail-closed)
+  gate: R1
+  zona: Verde
+  lgpd_nota: Verde DESDE QUE o alvo seja site PÚBLICO sem PII (mapa de estrutura, não
+    dado sensível) · ferramenta de propósito geral, apontável a qualquer site → é
+    CONDIÇÃO DE USO, não propriedade da UA · NÃO apontar a portal autenticado/gov.br nem
+    a alvo que exponha CPF/NB/CID/CNIS em URL → fora de escopo (escala ao operador)
+  vedacoes_honradas:
+  - Proof-First
+  - Zona-Verde
+  - D>C>V
+  para_no_gate: "true — ferramenta operacional · gera Excel/PDF/CSV de URLs validados ·
+    NÃO sela, NÃO escreve no Vault · dedup determinístico (100% reproduzível)"
+  # Bloco E · Operação & Telemetria
+  custo:
+    gasta_agente: true
+    opt_in: true
+    fan_out: "5 (mineradores paralelos)"
+  emite_audit: false
+  depende_de: []
 ---
 
 # extrator-sites (v2 — Com Porteiro Exigente)

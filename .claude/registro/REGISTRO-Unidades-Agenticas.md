@@ -3,9 +3,9 @@
 > **GERADO — não editar à mão.** Fonte da verdade = os artefatos em `.claude/`.
 > Regenere com `python3 .claude/registro/gerar-registro.py`. Derivado · NÃO canônico · NÃO selado · Zona Verde.
 
-- **Commit de origem:** `eb4eafa`
+- **Commit de origem:** `dbd6521`
 - **Spec:** MC-SPEC-RegistroAgentes-ASE v0.1 (SELADO · PR #19)
-- **Cobertura:** 18 completas · 0 incompletas · 0 não-instrumentadas · **100%** de 18 artefatos
+- **Cobertura:** 21 completas · 0 incompletas · 0 não-instrumentadas · **100%** de 21 artefatos
 
 ## Unidades instrumentadas (completas)
 
@@ -13,6 +13,7 @@
 |---|---|---|---|---|---|---|---|
 | `checklist-docs` | skill | **R1** | Verde | transversal | agente:✗ opt-in:✗ | ferramenta operacional · não escreve canônico | INSTALADO |
 | `diario` | skill | **R1** | Verde | C1 | agente:✗ opt-in:✗ | escreve em C1 (Documentação), não no Vault canônico | INSTALADO |
+| `extrator-sites` | skill | **R1** | Verde | transversal | agente:✓ opt-in:✓ | true | INSTALADO |
 | `handoff-juridico` | skill | **R3** | Vermelha | C5 | agente:✗ opt-in:✗ | handoff humano · MC NÃO pratica advocacia nem promete resultado | INSTALADO |
 | `mc-audit` | hook | **R2** | Verde | transversal | agente:✗ opt-in:✓ | true | PROVISIONAL |
 | `mc-compasso-sweep` | skill | **R1** | Verde | transversal | agente:✓ opt-in:✓ | true | INSTALADO |
@@ -22,10 +23,12 @@
 | `mc-lint` | hook | **R1** | Verde | transversal | agente:✗ opt-in:✗ | É um gate mecânico (block-mode) · bloqueia o turno até corrigir; não sela nem conserta | INSTALADO |
 | `mc-pre-selagem` | skill | **R1** | Verde | transversal | agente:✓ opt-in:✓ | NÃO sela, NÃO escreve, NÃO conserta · devolve go/no-go ao humano | INSTALADO |
 | `mc-prompt` | skill | **R1** | Verde | transversal | agente:✗ opt-in:✗ | devolve o prompt · não executa nem sela | INSTALADO |
+| `mc-strategic-intelligence` | skill | **R1** | Verde | transversal | agente:✓ opt-in:✓ | true | INSTALADO |
 | `meu-cumpadre-orquestrador-mestre` | skill | **R1** | Verde | transversal | agente:✗ opt-in:✗ | tombstone · só redireciona · não orquestra nem sela | SUPERSEDED |
 | `novo-cliente` | skill | **R1** | Vermelha | C1 | agente:✗ opt-in:✗ | intake operacional · não pratica advocacia nem promete prazo | INSTALADO |
 | `orquestracao` | skill | **R1** | Verde | transversal | agente:✓ opt-in:✗ | planeja e delega · não sela | INSTALADO |
 | `sister-ancia` | agent | **R1** | Verde | C3.2 | agente:✓ opt-in:✓ | REPORTA gaps · NÃO conserta, NÃO sela | INSTALADO |
+| `squad-r2` | skill | **R2** | Verde | transversal | agente:✓ opt-in:✓ | true | PROVISIONAL |
 | `squad-r3` | skill | **R3** | Verde | C3.1 | agente:✓ opt-in:✓ | para no Gate R3 humano · NÃO sela | INSTALADO |
 | `status-caso` | skill | **R1** | Amarela | C2 | agente:✗ opt-in:✗ | resumo de leitura · não altera estado nem promete prazo | INSTALADO |
 | `watchdog` | skill | **R1** | Amarela | C2 | agente:✗ opt-in:✗ | relatório de leitura · não altera estado | INSTALADO |
