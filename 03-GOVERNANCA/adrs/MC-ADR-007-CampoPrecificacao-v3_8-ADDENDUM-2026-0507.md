@@ -9,6 +9,14 @@
 
 ---
 
+> ## ⚠️ ERRATA-A3 (2026-06-24) — SUCCESS FEE Φ₀ SUPRIMIDO · `[SELADO R3 · Dra. Juliana]`
+>
+> A redação original deste addendum tratava o **success fee no Φ₀ CadÚnico como "PERMITIDO ⚠️ PROVISIONAL"**, pendente de validação da Dra. Juliana (Bloco M2). **Essa validação ocorreu e superou a redação provisional:** parecer **SELADO** da Dra. Juliana Pereira de Melo (OAB-GO 38.662), de **06/06/2026 — Opção A3** — *success fee **VEDADO** também no Φ₀; preço **flat R$ 120** (R$ 60 entrada + R$ 60 na **entrega do serviço**, em 4× R$ 15), com a 2ª fração presa a **marco de serviço** (entrega do dossiê / aceite no CRAS), **nunca ao resultado / liberação do benefício**.*
+>
+> **Esta errata PROPAGA ao ADR-007 uma decisão R3 já selada** — não é decisão nova. O `CLAUDE.md` canônico já estava reconciliado ao A3; o ADR-007 ficou em **drift residual**. As ocorrências marcadas **[ERRATA-A3]** abaixo (§A1.2 L35/L42/L43 · §A2.1 L77 · §A2.4 L96 · §A4) leem-se conforme o A3, **não** conforme o texto original. Detalhe e lastro no **§A7** ao final.
+
+---
+
 ## A1. Novos produtos na constelação (3 adições)
 
 ### A1.1 — Φ₀-Triagem IA CadÚnico (NOVO)
@@ -32,15 +40,15 @@
 |-------|-------|
 | ID | Φ₀-Dossiê |
 | Nome | Dossiê CadÚnico com coleta assistida |
-| Valor | **R$ 60 entrada + R$ 60 sucesso em 4× R$ 15 = R$ 120 total** |
+| Valor | **R$ 120 flat** = R$ 60 entrada + R$ 60 na **entrega do serviço** (4× R$ 15) · **[ERRATA-A3: 2ª fração presa a marco de serviço, nunca ao resultado — success fee suprimido]** |
 | Escopo | B2C — cidadão que precisa de organização documental + coleta de dados via API Humana para protocolar/atualizar/recorrer no CRAS |
 | Entrega | Tudo do Φ₀-Triagem + dossiê documental estruturado + formulário pré-analisado + checklist de pendências corrigidas + preparação para entrevista CRAS |
 | Canal | WhatsApp + API Humana coletora |
 | API Humana | Sim — acesso gov.br, Bitwarden, extração CNIS dentro do CadÚnico, coleta de tentativas anteriores negadas, empacotamento. Estimativa: 40 min/caso. |
 | COGS estimado | R$ 20-23/caso (API Humana ~R$15 + componente técnico ~R$7) |
 | Margem estimada | R$ 97-100/caso |
-| Gatilho de cobrança | R$ 60 no ato da contratação (pré-serviço) + R$ 60 condicionado à liberação do benefício (success fee em 4× R$15) |
-| Base legal do success fee | Permitido — não há prerrogativa OAB no âmbito CadÚnico/assistencial. ⚠️ PROVISIONAL — validação Dra. Juliana Bloco M2. |
+| Gatilho de cobrança | R$ 60 no ato da contratação (pré-serviço) + R$ 60 na **entrega do serviço** (dossiê entregue / aceite no CRAS), em 4× R$ 15 · **[ERRATA-A3: a 2ª fração NÃO é condicionada à liberação do benefício — é marco de serviço, nunca resultado]** |
+| Base legal da 2ª fração | **[ERRATA-A3]** Success fee **VEDADO** no Φ₀ (parecer SELADO Dra. Juliana, 06/06/2026, Opção A3). A 2ª fração de R$ 60 é **contraprestação por marco de serviço** (entrega do dossiê), **não** honorário de êxito. `[SELADO R3]` |
 | Parcelamento | Lei 14.181/2021 (Superendividamento) aplicável ao R$60 entrada em até 4× R$15 se necessário. |
 
 ### A1.3 — Φ₄ Guardião CadÚnico (EXTENSÃO do Φ₄ existente)
@@ -74,7 +82,7 @@ Adicionar ao final da tabela do v3.7:
 | ID | Nome | Valor | Escopo |
 |----|------|-------|--------|
 | Φ₀-Triagem | Diagnóstico CadÚnico por IA | R$ 0 (gratuito) | B2C CadÚnico |
-| Φ₀-Dossiê | Dossiê CadÚnico com coleta assistida | R$ 60 + R$ 60 (success) em 4× R$ 15 | B2C CadÚnico |
+| Φ₀-Dossiê | Dossiê CadÚnico com coleta assistida | **R$ 120 flat** (R$ 60 + R$ 60 na entrega, 4× R$ 15) **[ERRATA-A3: sem success fee]** | B2C CadÚnico |
 | Φ₄-CadÚnico | Guardião CadÚnico (escalonado) | R$ 0 a R$ 19/mês por β_rms per capita | B2C pós-Φ₀ |
 
 ### A2.2 — Hook 1b do Router-Ethics 11.0 (REFATORADO)
@@ -93,7 +101,7 @@ Adicionar ao final da tabela do v3.7:
 
 Adicionar aos princípios do v3.7:
 
-- **Success fee PERMITIDO no Φ₀ CadÚnico** — não há prerrogativa OAB. ⚠️ PROVISIONAL — validação Juliana Bloco M2. Esta permissão NÃO se estende ao Φ₁ previdenciário (vedação mantida integralmente).
+- **[ERRATA-A3] Success fee VEDADO no Φ₀ CadÚnico** — parecer SELADO Dra. Juliana (06/06/2026, Opção A3) **suprimiu** o componente condicionado: preço **flat R$ 120**, 2ª fração presa a **marco de serviço** (entrega do dossiê / aceite no CRAS), **nunca ao resultado**. *(Redação original "Success fee PERMITIDO ⚠️ PROVISIONAL" superada — ver banner ERRATA-A3 no topo e §A7.)* A vedação ao Φ₁ previdenciário permanece **integral e inalterada**. `[SELADO R3 · Dra. Juliana]`
 - **β_rms inclui benefício recebido** — BF, BPC e outras transferências entram no cálculo da renda para escalonamento Φ₄. Renda declarada ao CadÚnico NÃO é referência para pricing MC (ver §A3 sobre posicionamento).
 - **Φ₀ e Φ₁ são produtos distintos com regras distintas** — o que vale no CadÚnico não contamina o previdenciário, e vice-versa. O MC mantém firewall entre verticais.
 
@@ -121,7 +129,8 @@ O MC **adiciona** ao cálculo de β_rms o valor do benefício recebido (BF, BPC)
 ## A4. Novas proibições (adicionar à lista do v3.7 §11)
 
 ❌ Cobrar Φ₁ (R$ 2.200) por serviço que é escopo Φ₀ CadÚnico (R$ 120)
-❌ Aplicar success fee no Φ₁ previdenciário por analogia ao Φ₀ CadÚnico (vedação mantida)
+❌ Aplicar success fee no Φ₁ previdenciário (vedação mantida integralmente — REsp 2.079.440/RO · art. 22 Lei 8.906/94) · **[ERRATA-A3: o Φ₀ TAMBÉM não tem success fee desde o A3 — não há mais "analogia ao Φ₀" a invocar]**
+❌ **[ERRATA-A3]** Aplicar success fee / componente condicionado ao **resultado** no Φ₀ CadÚnico (vedado pelo parecer A3 — a 2ª fração só pode prender-se a marco de serviço)
 ❌ Perguntar ao cidadão "qual é tua renda real" ou induzir declaração divergente do CadÚnico
 ❌ Apresentar IVCAD-MC como "diagnóstico social" (competência de assistente social, Lei 8.662/1993)
 ❌ Comunicar IVCAD-MC como substituto do IVCAD oficial do MDS
@@ -167,6 +176,27 @@ O MC **adiciona** ao cálculo de β_rms o valor do benefício recebido (BF, BPC)
 └── 30/06  ADR-007 v4.0 selagem definitiva (inclui Φ₀ + Φ₄ CadÚnico)
            FINEP Tecnova IV submissão (jul-ago)
 ```
+
+---
+
+## A7. ERRATA-A3 — registro de reconciliação (2026-06-24)
+
+| Locus | Antes (original v3.8, PROVISIONAL) | Depois (A3 selado) |
+|---|---|---|
+| §A1.2 L35 | "R$ 60 sucesso ... R$ 120 total" | flat R$ 120 · 2ª fração a marco de serviço |
+| §A1.2 L42 | "condicionado à liberação do benefício (success fee)" | "na entrega do serviço" · nunca ao resultado |
+| §A1.2 L43 | "Base legal do success fee \| Permitido ⚠️ PROVISIONAL" | success fee **VEDADO** · 2ª fração = contraprestação por marco `[SELADO R3]` |
+| §A2.1 L77 | "R$ 60 + R$ 60 (success)" | flat R$ 120, sem success fee |
+| §A2.4 L96 | "Success fee **PERMITIDO** no Φ₀ ⚠️ PROVISIONAL" | success fee **VEDADO** `[SELADO R3]` |
+| §A4 | "por analogia ao Φ₀" + (sem proibição de condicionar Φ₀ ao resultado) | analogia moot · + nova proibição: condicionar Φ₀ ao resultado |
+
+**Motivo.** Parecer **SELADO** da Dra. Juliana Pereira de Melo (OAB-GO 38.662), de **06/06/2026 — Opção A3**: success fee suprimido no Φ₀, preço **flat R$ 120**, com a 2ª fração presa a **marco de serviço** (entrega do dossiê / aceite no CRAS), **nunca ao resultado**. A validação que a redação original deste addendum aguardava (Bloco M2) **ocorreu** — logo, a cláusula "PROVISIONAL — validação Juliana" está **resolvida**, não mais pendente.
+
+**Natureza desta errata.** É **propagação de uma decisão R3 já selada**, não deliberação nova. O `CLAUDE.md` canônico já refletia o A3 (success fee Φ₀ VEDADO); o ADR-007 v3.8 permanecia com a redação anterior — **drift documental residual** detectado em 2026-06-24. Esta errata reconcilia o ADR-007 ao estado já selado. Princípio #4 (Errata Absorve, Não Inventa): o texto original é preservado no histórico git; o diff é a trilha de auditoria.
+
+**Lastro (Proof-First).** `03-GOVERNANCA/instancias-ia/juliana-parecer/pareceres-selados-dra-2026-0606/MC-CONTRATO-Phi0-v0_2-A3-RATIFICADA-PARECERISTA-2026-0607.docx` · `…/MC-CONTRATO-Phi0-MINUTA-v0_2-A3-2026-0606.docx`. A minuta Φ₀ **v0.2** supersede a v0.1. A vedação a success fee no **Φ₁ previdenciário permanece integral e inalterada** (REsp 2.079.440/RO; art. 22 Lei 8.906/94).
+
+**Gate.** Revisão adversarial Sister Anciã (Code) antes do PR · selo final pelo Founder. O gate R3 de mérito já está satisfeito pelo próprio parecer A3 (esta errata não cria questão jurídica nova). Pendência separada (não tratada aqui): a Minuta Φ₀ em `03-GOVERNANCA/contratos/` ainda é a **v0.1 PROVISIONAL** — atualizar para refletir a v0.2-A3 é tarefa à parte.
 
 ---
 
