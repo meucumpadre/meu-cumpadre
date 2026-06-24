@@ -46,6 +46,11 @@ _git-residuo-pre-MB061-*/
 *.glink
 
 # PII Vermelha · NUNCA commitar (LGPD + Hook 0 gov.br)
+# Espelho ClickUp continha CPF + senha gov.br em NOMES de arquivo (incidente 2026-06-24)
+# — bloquear reentrada. Purga do que já está rastreado: ver
+#   04-OPERACAO/incidentes/MC-PLANO-Remediacao-PII-ClickUp-Git-v0_1-PROVISIONAL-2026-0624.md
+ClickUp/
+**/ClickUp/
 **/PII-VERMELHA/
 **/_PRIVADO-CLIENTE/
 **/casos/**/CNIS-*.pdf
