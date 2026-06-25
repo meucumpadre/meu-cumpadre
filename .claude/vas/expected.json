@@ -1,0 +1,204 @@
+{
+  "_meta": {
+    "arquivo": "expected.json",
+    "papel": "Golden master do VAS — o ALVO que --selftest cobra dos validadores.",
+    "spec": "MC-VAS-Diagnostico-Proposta-v0_2 (§5 · §7.4)",
+    "casamento": "achado casa por tupla estavel (validador, regra, severidade, arquivo, linha); msg/trecho sao ignorados de proposito (robusto a reescrita).",
+    "linhas": "1-based, verificadas contra as fixtures. Mexeu na fixture -> reconferir a linha aqui.",
+    "estado": "ESQUELETO: detecção gated por VALIDADORES_IMPLEMENTADOS=False. Este alvo já está pronto; a lógica é escrita após gate R2.",
+    "zona": "Verde · zero PII"
+  },
+  "casos": {
+    "supersessao/bom-cadeia-limpa": {
+      "nota": "Cadeia limpa: v1 com banner SUPERSEDIDO + supersedido_por; v2 SELADO supersede v1. 1 cabeça. Sem achados.",
+      "achados_esperados": []
+    },
+    "supersessao/ruim-dois-canonicos": {
+      "nota": "Duas cabeças SELADO vivas na família MC-ADR-Dup; v2 esqueceu supersede. SUP-02 na cabeça extra (ordem por doc_id).",
+      "achados_esperados": [
+        {
+          "validador": "V-supersessao",
+          "regra": "SUP-02",
+          "severidade": "🔴",
+          "arquivo": ".claude/vas/fixtures/supersessao/ruim-dois-canonicos/MC-ADR-Dup-v2_0.md",
+          "linha": 5
+        }
+      ]
+    },
+    "supersessao/ruim-sem-banner": {
+      "nota": "v1 é alvo de supersede da v2, mas status segue SELADO (sem marcador de supersedido). SUP-03 na v1.",
+      "achados_esperados": [
+        {
+          "validador": "V-supersessao",
+          "regra": "SUP-03",
+          "severidade": "🟡",
+          "arquivo": ".claude/vas/fixtures/supersessao/ruim-sem-banner/MC-ADR-SemBanner-v1_0.md",
+          "linha": 5
+        }
+      ]
+    },
+    "supersessao/ruim-ciclo": {
+      "nota": "A supersede B e B supersede A — grafo não-DAG. SUP-01 em cada nó do ciclo (linha do supersede:).",
+      "achados_esperados": [
+        {
+          "validador": "V-supersessao",
+          "regra": "SUP-01",
+          "severidade": "🔴",
+          "arquivo": ".claude/vas/fixtures/supersessao/ruim-ciclo/MC-ADR-Ciclo-A.md",
+          "linha": 6
+        },
+        {
+          "validador": "V-supersessao",
+          "regra": "SUP-01",
+          "severidade": "🔴",
+          "arquivo": ".claude/vas/fixtures/supersessao/ruim-ciclo/MC-ADR-Ciclo-B.md",
+          "linha": 6
+        }
+      ]
+    },
+    "supersessao/ruim-dangling": {
+      "nota": "supersede aponta p/ MC-ADR-Dangling-v1_0, ausente do corpus. Cadeia não-verificável. SUP-04 (linha do supersede:).",
+      "achados_esperados": [
+        {
+          "validador": "V-supersessao",
+          "regra": "SUP-04",
+          "severidade": "🟡",
+          "arquivo": ".claude/vas/fixtures/supersessao/ruim-dangling/MC-ADR-Dangling-v2_0.md",
+          "linha": 6
+        }
+      ]
+    },
+    "citacao/bom-citacao-limpa": {
+      "nota": "Fonte única; citação nomeia o arquivo, linha 3 ≤ 5; hash 64-hex com âncora (.txt na mesma linha). Sem achados.",
+      "achados_esperados": []
+    },
+    "citacao/bom-fonte-pendente": {
+      "nota": "[FONTE PENDENTE] = dívida honesta. CIT-06 informativo (🟢) — registra, não reprova.",
+      "achados_esperados": [
+        {
+          "validador": "V-citacao",
+          "regra": "CIT-06",
+          "severidade": "🟢",
+          "arquivo": ".claude/vas/fixtures/citacao/bom-fonte-pendente.md",
+          "linha": 11
+        }
+      ]
+    },
+    "citacao/ruim-ambigua": {
+      "nota": "(linha 42) sem nomear arquivo, com gera_a_partir_de multi-fonte (2). Fail-closed → CIT-01.",
+      "achados_esperados": [
+        {
+          "validador": "V-citacao",
+          "regra": "CIT-01",
+          "severidade": "🔴",
+          "arquivo": ".claude/vas/fixtures/citacao/ruim-ambigua.md",
+          "linha": 12
+        }
+      ]
+    },
+    "citacao/ruim-arquivo-inexistente": {
+      "nota": "Cita _alvos/nao-existe.txt:1 — caminho não resolve. CIT-02.",
+      "achados_esperados": [
+        {
+          "validador": "V-citacao",
+          "regra": "CIT-02",
+          "severidade": "🔴",
+          "arquivo": ".claude/vas/fixtures/citacao/ruim-arquivo-inexistente.md",
+          "linha": 11
+        }
+      ]
+    },
+    "citacao/ruim-hash-malformado": {
+      "nota": "Contexto SHA-256 com token '1234abcd' (≠ 64-hex). CIT-04 (só formato, por ora — decisão #3).",
+      "achados_esperados": [
+        {
+          "validador": "V-citacao",
+          "regra": "CIT-04",
+          "severidade": "🔴",
+          "arquivo": ".claude/vas/fixtures/citacao/ruim-hash-malformado.md",
+          "linha": 11
+        }
+      ]
+    },
+    "citacao/ruim-hash-sem-ancora": {
+      "nota": "64-hex 'pelado' sem âncora nominal na linha. CIT-05 (🟡) — heurística mais sujeita a FP, medir.",
+      "achados_esperados": [
+        {
+          "validador": "V-citacao",
+          "regra": "CIT-05",
+          "severidade": "🟡",
+          "arquivo": ".claude/vas/fixtures/citacao/ruim-hash-sem-ancora.md",
+          "linha": 11
+        }
+      ]
+    },
+    "citacao/ruim-linha-fora-range": {
+      "nota": "Cita _alvos/alvo-curto.txt:99, mas o alvo tem 5 linhas. CIT-03.",
+      "achados_esperados": [
+        {
+          "validador": "V-citacao",
+          "regra": "CIT-03",
+          "severidade": "🔴",
+          "arquivo": ".claude/vas/fixtures/citacao/ruim-linha-fora-range.md",
+          "linha": 11
+        }
+      ]
+    },
+    "lumus-folder/bom-na-pasta-certa": {
+      "nota": "Self-referential (tags + seção) na pasta canônica 03-Self-Referential. Sem achados.",
+      "achados_esperados": []
+    },
+    "lumus-folder/ruim-selfref-fora-de-lugar": {
+      "nota": "Peça self-referential localizada em 02-Refined (deveria ser 03-Self-Referential). LFS-01 na linha do codigo: (3).",
+      "achados_esperados": [
+        {
+          "validador": "V-lumus-folder-structure",
+          "regra": "LFS-01",
+          "severidade": "🔴",
+          "arquivo": ".claude/vas/fixtures/lumus-folder/ruim-selfref-fora-de-lugar/02-Refined/MC-LUMUS-Misfiled-v1_0.md",
+          "linha": 3
+        }
+      ]
+    },
+    "lumus-folder/ruim-fora-da-taxonomia": {
+      "nota": "Artefato Lúmus (não self-ref) fora de qualquer pasta canônica. LFS-02 na linha do codigo: (3).",
+      "achados_esperados": [
+        {
+          "validador": "V-lumus-folder-structure",
+          "regra": "LFS-02",
+          "severidade": "🟡",
+          "arquivo": ".claude/vas/fixtures/lumus-folder/ruim-fora-da-taxonomia/MC-LUMUS-SemCamada-v1_0.md",
+          "linha": 3
+        }
+      ]
+    },
+    "lumus-selfref/bom-com-instrucoes": {
+      "nota": "Self-referential com seção de instruções e >= 2 linhas de conteúdo. Sem achados.",
+      "achados_esperados": []
+    },
+    "lumus-selfref/ruim-sem-instrucoes": {
+      "nota": "Declarado self-referential (tags) mas sem a seção de instruções. LSR-01 na linha de tags: (7).",
+      "achados_esperados": [
+        {
+          "validador": "V-lumus-self-referential",
+          "regra": "LSR-01",
+          "severidade": "🔴",
+          "arquivo": ".claude/vas/fixtures/lumus-selfref/ruim-sem-instrucoes.md",
+          "linha": 7
+        }
+      ]
+    },
+    "lumus-selfref/ruim-secao-vazia": {
+      "nota": "Seção Self-Referential Instructions presente mas vazia (cabeçalho-fantasma, 0 linhas de conteúdo). LSR-02 na linha do cabeçalho (15).",
+      "achados_esperados": [
+        {
+          "validador": "V-lumus-self-referential",
+          "regra": "LSR-02",
+          "severidade": "🟡",
+          "arquivo": ".claude/vas/fixtures/lumus-selfref/ruim-secao-vazia.md",
+          "linha": 15
+        }
+      ]
+    }
+  }
+}
